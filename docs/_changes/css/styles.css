@@ -1,0 +1,68 @@
+:root {
+  --md-default-bg-color: #fff;
+  --md-primary-fg-color: #0550ff;
+  --md-typeset-a-color: #0550ff;
+  --md-accent-fg-color: #0550ff;
+  .md-typeset h1 {
+    font-weight: bolder;
+    font-size: 2.6em;
+    line-height: 1;
+    margin: 1em 0 1em;
+    color: #212121;
+    text-decoration: underline;
+  }
+
+  /* .md-typeset h1:hover { */
+  /* text-decoration: underline; */
+  /* } */
+
+  .md-typeset h2 {
+    font-weight: 510;
+    font-size: 2.2em;
+    /* line-height: 1; */
+    /* margin: 1em 0 1em; */
+  }
+
+  /* .md-typeset h2:hover { */
+  /*	text-decoration: underline; */
+  /* } */
+
+  .md-typeset h3 {
+    font-weight: 510;
+    font-size: 1.5em;
+    /* line-height: 1; */
+    /* margin: 1em 0 1em; */
+  }
+
+  /* .md-typeset h3:hover { */
+  /*	text-decoration: underline; */
+  /* } */
+
+  .md-typeset h4 {
+    font-weight: 510;
+    font-size: 1em;
+    line-height: 1;
+    margin: 1em 0 1em;
+  }
+
+  code:not(pre > code) {
+    font-weight: 630;
+  }
+}
+
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #111;
+  --md-primary-fg-color: #111;
+  --md-typeset-a-color: #417aff;
+  --md-default-fg-color: #f1f5f9;
+  --md-accent-fg-color: #417aff;
+  --md-code-bg-color: #12171b;
+
+  code:not(pre > code) {
+    font-weight: 630;
+  }
+
+  .md-typeset h1 {
+    color: #f1f5f9;
+  }
+}
