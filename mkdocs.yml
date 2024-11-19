@@ -1,0 +1,114 @@
+site_name: notes
+# repo_name: dpi0/notes
+# repo_url: https://github.com/dpi0/notes
+edit_uri: https://github.com/dpi0/notes/edit/main/docs/
+
+extra_css:
+  - _changes/css/styles.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/dpi0
+      name: dpi0 on Github
+
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:dpi0.dev@proton.me
+
+theme:
+  favicon: _changes/icons/favicon-32x32.png
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    logo: material/slash-forward
+    edit: material/playlist-edit
+    view: material/seed
+
+  name: "material"
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/lightbulb-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to system preference
+
+  features:
+    - content.code.copy
+    #   - content.tooltips
+    - content.action.view
+    #   - content.tabs.link
+    #   - content.code.annotation
+    - content.action.edit
+    #   - content.code.annotate
+    #   - navigation.instant
+    #   - navigation.instant.progress
+    #   - navigation.footer
+    - navigation.sections
+    #   - navigation.top
+    - navigation.tabs
+    - search.suggest
+
+markdown_extensions:
+  - admonition
+  - callouts
+  - tables
+  - nl2br
+  - pymdownx.details
+  - pymdownx.superfences
+  - markdown_captions
+  - toc:
+      permalink: true
+      title: On this page
+  - pymdownx.highlight:
+      anchor_linenums: true
+      # auto_title: true # add lang in the title for all
+      linenums: true # global line numbering for code blocks
+
+plugins:
+  - search
+  # - toggle-sidebar:
+  # - git-revision-date
+  - open-in-new-tab
+  - awesome-pages
+  # - mkdocs-video
+  # - exclude:
+  #     glob:
+  #       - "docs/_changes"
+  #       - "*.tmp"
+  #       - "*.pdf"
+  #       - "*.gz"
+  #     regex:
+  #       - '.*\.(tmp|bin|tar)$'
+  # - termynal:
+  # prompt_literal_start:
+  # - ">"
+  - glightbox
+  - callouts
+  # - mkdocs-breadcrumbs-plugin:
+  # delimiter: " / " # separator between sections
+  # log_level: "WARNING" # "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
+  # exclude_paths:
+  # - "docs/mkdocs/**"
+  # - "docs/mkdocs" # avoid generating index.md
+  # additional_index_folders:
+  # - temp_dir
+  # generate_home_index: false
