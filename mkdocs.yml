@@ -69,26 +69,25 @@ theme:
 
 markdown_extensions:
   - admonition
-  - callouts
   - tables
-  - nl2br
+  # - callouts
   - pymdownx.details
   - pymdownx.superfences
   - markdown_captions
   - toc:
       permalink: true
       title: On this page
-  - pymdownx.highlight:
-      anchor_linenums: true
+  # - pymdownx.highlight:
+      # anchor_linenums: true
       # auto_title: true # add lang in the title for all
-      linenums: true # global line numbering for code blocks
+      # linenums: true # global line numbering for code blocks
 
 plugins:
   - search
   # - toggle-sidebar:
   # - git-revision-date
-  - open-in-new-tab
-  - awesome-pages
+  # - open-in-new-tab
+  # - awesome-pages
   # - mkdocs-video
   # - exclude:
   #     glob:
@@ -101,8 +100,8 @@ plugins:
   # - termynal:
   # prompt_literal_start:
   # - ">"
-  - glightbox
-  - callouts
+  # - glightbox
+  # - callouts
   # - mkdocs-breadcrumbs-plugin:
   # delimiter: " / " # separator between sections
   # log_level: "WARNING" # "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
