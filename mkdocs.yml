@@ -1,7 +1,5 @@
 site_name: notes
-# repo_name: dpi0/notes
-# repo_url: https://github.com/dpi0/notes
-edit_uri: https://github.com/dpi0/notes/edit/main/docs/
+# edit_uri: https://github.com/dpi0/notes-mkdocs/edit/main/docs/
 
 extra_css:
   - _changes/css/styles.css
@@ -10,7 +8,6 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/dpi0
-      name: dpi0 on Github
 
     - icon: fontawesome/solid/paper-plane
       link: mailto:dpi0.dev@proton.me
