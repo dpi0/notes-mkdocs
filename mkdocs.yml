@@ -83,7 +83,6 @@ plugins:
   - search
   - tags
     tags_file: tags.md
-  # - toggle-sidebar:
   # - git-revision-date
   # - open-in-new-tab
   # - awesome-pages
