@@ -1,5 +1,5 @@
 site_name: notes
-# edit_uri: https://github.com/dpi0/notes-mkdocs/edit/main/docs/
+edit_uri: https://github.com/dpi0/notes/edit/main/
 
 extra_css:
   - _changes/css/styles.css
