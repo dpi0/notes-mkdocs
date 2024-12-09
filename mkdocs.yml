@@ -63,6 +63,7 @@ theme:
     #   - navigation.top
     #   - navigation.tabs
     - search.suggest
+    - toc.follow
 
 markdown_extensions:
   - admonition
@@ -98,7 +99,7 @@ plugins:
   # - termynal:
   # prompt_literal_start:
   # - ">"
-  # - glightbox
+  - glightbox
   # - callouts
   # - mkdocs-breadcrumbs-plugin:
   # delimiter: " / " # separator between sections
