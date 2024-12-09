@@ -61,7 +61,7 @@ theme:
     #   - navigation.footer
     - navigation.sections
     #   - navigation.top
-    - navigation.tabs
+    #   - navigation.tabs
     - search.suggest
 
 markdown_extensions:
