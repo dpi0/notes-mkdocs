@@ -1,28 +1,28 @@
-@font-face {
-  font-family: "uncut";
-  src: url("_changes/fonts/uncut-sans/Uncut-Sans-Regular.otf")
-    format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "uncut-med";
-  src: url("_changes/fonts/uncut-sans/Uncut-Sans-Medium.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "uncut-semibold";
-  src: url("_changes/fonts/uncut-sans/Uncut-Sans-Semibold.otf")
-    format("opentype");
-  font-weight: bold;
-  font-style: normal;
-}
+/* @font-face { */
+/*   font-family: "uncut"; */
+/*   src: url("_changes/fonts/uncut-sans/Uncut-Sans-Regular.otf") */
+/*     format("opentype"); */
+/*   font-weight: normal; */
+/*   font-style: normal; */
+/* } */
+/**/
+/* @font-face { */
+/*   font-family: "uncut-med"; */
+/*   src: url("_changes/fonts/uncut-sans/Uncut-Sans-Medium.otf") format("opentype"); */
+/*   font-weight: normal; */
+/*   font-style: normal; */
+/* } */
+/**/
+/* @font-face { */
+/*   font-family: "uncut-semibold"; */
+/*   src: url("_changes/fonts/uncut-sans/Uncut-Sans-Semibold.otf") */
+/*     format("opentype"); */
+/*   font-weight: bold; */
+/*   font-style: normal; */
+/* } */
 
 :root {
-  --md-text-font: "uncut";
+  /* --md-text-font: "uncut"; */
 
   --md-default-bg-color: #fff;
   --md-primary-fg-color: #0550ff;

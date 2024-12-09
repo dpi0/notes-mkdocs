@@ -15,7 +15,7 @@ extra:
 theme:
   favicon: _changes/icons/favicon-32x32.png
   font:
-    text: Inter
+    text: Lexend
     code: JetBrains Mono
   icon:
     logo: material/slash-forward
@@ -76,9 +76,9 @@ markdown_extensions:
       permalink: true
       title: On this page
   # - pymdownx.highlight:
-      # anchor_linenums: true
-      # auto_title: true # add lang in the title for all
-      # linenums: true # global line numbering for code blocks
+  # anchor_linenums: true
+  # auto_title: true # add lang in the title for all
+  # linenums: true # global line numbering for code blocks
 
 plugins:
   - search
