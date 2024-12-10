@@ -15,7 +15,7 @@ extra:
 theme:
   favicon: _changes/icons/favicon-32x32.png
   font:
-    text: Lexend
+    text: Funnel Sans
     code: JetBrains Mono
   icon:
     logo: material/slash-forward
@@ -68,10 +68,10 @@ theme:
 markdown_extensions:
   - admonition
   - tables
-  # - callouts
+  - nl2br
   - pymdownx.details
   - pymdownx.superfences
-  # - markdown_captions
+  - markdown_captions
   - toc:
       permalink: true
       title: On this page
@@ -84,8 +84,11 @@ plugins:
   - search
   - tags:
       tags_file: tags.md
-  # - git-revision-date
-  # - open-in-new-tab
+  - git-revision-date-localized
+  - open-in-new-tab:
+      add_icon: true
+  - glightbox
+  - callouts
   # - awesome-pages
   # - mkdocs-video
   # - exclude:
@@ -99,8 +102,6 @@ plugins:
   # - termynal:
   # prompt_literal_start:
   # - ">"
-  - glightbox
-  # - callouts
   # - mkdocs-breadcrumbs-plugin:
   # delimiter: " / " # separator between sections
   # log_level: "WARNING" # "DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"
