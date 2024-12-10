@@ -1,0 +1,5386 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../regex/">
+      
+      
+        <link rel="next" href="../rhel-flow-centos/">
+      
+      
+      <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+    
+    
+      
+        <title>Restic Backup - notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#local" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="notes" class="md-header__button md-logo" aria-label="notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 21 7.9-18H17L9.1 21z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Restic Backup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 2C5.13 2 2 5.13 2 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7M6 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H6zm13-8h-2l-3.2 9h1.9l.7-2h3.2l.7 2h1.9zm-2.15 5.65L18 15l1.15 3.65z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="notes" class="md-nav__button md-logo" aria-label="notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 21 7.9-18H17L9.1 21z"/></svg>
+
+    </a>
+    notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2018/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2018
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2019/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2019
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2020/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2020
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2021/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2021
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2022/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2023/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Breakfast-Options/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Breakfast Options
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Brilliance-of-The-Curse/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Brilliance of The Curse
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cardio-for-Fat-Loss/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cardio for Fat Loss
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Chachu-Home-Directions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chachu Home Directions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Cooking-Oils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cooking Oils
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Fat-Loss/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fat Loss
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Food-Science/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Food Science
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Kanye-Unreleased-Untitled-Stream-Albums/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kanye Unreleased Untitled Stream Albums
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Old-IMDb-Movie-TV-Ratings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Old IMDb Movie-TV Ratings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Posture-Fix-Exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Posture Fix
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Short-Stories-Readlist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Short Stories Readlist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Soldering-Equipment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Soldering Equipment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Youtube-playlists/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Youtube Playlists
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Youtube-videos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    YouTube videos to watch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cringe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cringe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../economic-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    economic systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fabrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    List of Fabrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fitness/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fitness
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../human-anatomy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Human Anatomy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ideas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ideas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../indian-rivers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Indian Rivers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../learned-from-youtube/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Learned From Youtube
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lessons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../literary-devices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Literary Devices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../punctuation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Punctuation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tab-stash-export/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tab Stash Export
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../todo-excel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Todo Excel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../todo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    todo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../up/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    up
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../watched-tv-films/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Watched TV Films
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../why-some-cheap-protein-powders-exist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    why some cheap protein powders exist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../words/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Words
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_44" >
+        
+          
+          <label class="md-nav__link" for="__nav_44" id="__nav_44_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Books
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_44_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_44">
+            <span class="md-nav__icon md-icon"></span>
+            Books
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../books/atomic-habits-james-clear/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Atomic Habits - James Clear
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../books/how-to-avoid-a-climate-disaster-bill-gates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Avoid a Climate Disaster - Bill Gates
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../books/understanding-the-mysteries-of-human-behaviour-mark-leary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Understanding the Mysteries of Human Behaviour - Mark Leary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_45" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_45" id="__nav_45_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Dev
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_45_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_45">
+            <span class="md-nav__icon md-icon"></span>
+            Dev
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Add-program-to-startup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Add program to startup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Available-dpi0-domain-names-on-hostinger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Available dpi0 domain names on hostinger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KVM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KVM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LUKS-Encryption/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LUKS Encryption
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Push-Mirror-to-GitHub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Push Mirror to GitHub
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SNAT-DNAT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SNAT DNAT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../age-encryption-flow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Age Encryption Flow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ansible/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ansible
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch-desktop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arch Desktop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch-home-server-apps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arch Home Server Apps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch-home-server-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    dev/arch-home-server-setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch-installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arch Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arch-server-manual-install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arch Server Manual Install
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arr-stack-home-server/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arr Stack Home Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gti Basic Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conversions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File Conversions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curl-wget/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Curl Wget
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../custom-rom-old/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Rom Old
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debian-apt-ppa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debian/Ubuntu - APT PPA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dns-records/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DNS Records
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DNS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-networks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker Networks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dsa-problems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DSA Problems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dsa-sorting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DSA Sorting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emulation-games/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Emulation Games
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../encrypted-dns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Encrypted DNS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fail2ban/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    fail2ban
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-compression-decompression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File Compression Decompression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-encryption/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File Encryption
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-hierarchy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File Hierarchy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../file-permissions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File Permissions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../firewall-nftables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Firewall Nftables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-add/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Add
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-branch-and-switch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Branch And Switch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-branching-stratergies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Branching Stratergies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-checkout/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Checkout
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-cherry-pick/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Cherry Pick
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-clean/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Clean
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-commit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Commit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-diff/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Diff
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-fetch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Fetch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-hooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Hooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-init-and-bare/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Init And Bare
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-merge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Merge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-pull/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Pull
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-push/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Push
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-rebase/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Rebase
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-reflog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Reflog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-remote/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Remote
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-reset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Reset
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-revert/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Revert
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-rm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Rm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-show/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Show
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-stash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Stash
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-status/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Status
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-tag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Tag
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-worktree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git Worktree
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../go/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpt-prompts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPT Prompts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../groups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Groups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hard-soft-links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hard Soft Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardwarde-inspection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hardwarde Inspection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../home-server-documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home Server Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../https-ssl-tls-ca/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTPs SSL TLS CA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iem-buying-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IEM Buying Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive-rebase/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interactive Rebase
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intial-disk-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intial Disk Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ip
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../journalctl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Journalctl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux-tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../low-end-games-list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Low End Games List
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lxc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LXC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manage-docker-credentials/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manage Docker Credentials
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../managing-external-drives/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Managing External Drives
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mb-vs-mib-marketing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mb Vs Mib Marketing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../merge-conflicts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Merge Conflicts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../merge-strategies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Merge Strategies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../more-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    More Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../netcat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Netcat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx-mkcert/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nginx Mkcert
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nvim/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neovim
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ollama/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ollama
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pc-build-list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PC Build List
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pi-buying-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pi Buying Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../powershell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Powershell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proton-vpn-wireguard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Proton VPN Wireguard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../proxychains-ng-tor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Proxychains-ng Tor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../py-async/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Py Async
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../py-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Py Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../py-parallel-multi-async/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Py Parallel Multi Async
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reboot-vs-logout/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reboot vs Logout
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Restic Backup
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Restic Backup
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#local" class="md-nav__link">
+    <span class="md-ellipsis">
+      local
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-sftp" class="md-nav__link">
+    <span class="md-ellipsis">
+      using SFTP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-rclone" class="md-nav__link">
+    <span class="md-ellipsis">
+      using rclone
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-rest-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      using REST server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backrest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backrest
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backrest">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forget-and-prune-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forget and Prune Policy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rhel-flow-centos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rhel Flow Centos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../roadmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Roadmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup-arch-on-a-relatively-headless-machine/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup Arch On A Relatively Headless Machine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sudo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sudo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systemd-networkd-vs-networkmanager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Systemd Networkd Vs Networkmanager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systemd-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Systemd Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systemd-timer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Systemd Timer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systemd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Systemd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tabs-vs-spaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tabs Vs Spaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tor-vs-free-vpn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TOR vs Free VPN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trigger-a-workflow-in-repo-B-from-repo-A-on-GitHub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to trigger a workflow in repo-B from repo-A on GitHub
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ubuntu-home-server-apps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ubuntu Home Server Apps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ubuntu-home-server-install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ubuntu Home Server Install
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../umask/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Umask
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../undo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Undo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../useful-google-dorks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Useful Google Dorks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../useful-regex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Useful Regex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../users/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Users
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vagrant/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vagrant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../veracrypt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Veracrypt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../waydroid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Waydroid
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows-desktop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Windows Desktop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yt-dlp-settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    yt-dlp Settings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_46" >
+        
+          
+          <label class="md-nav__link" for="__nav_46" id="__nav_46_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Recipes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_46_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_46">
+            <span class="md-nav__icon md-icon"></span>
+            Recipes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/Bhature/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bhature
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/Chicken-Korma/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chicken Korma
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/aachaari-aaloo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aachaari Aaloo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/amritsari-chhole/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amritsari Chhole
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/bambino-vermicelli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bambino Vermicelli
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/bhindi-or-beans-aaloo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bhindi Or Beans Aaloo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/butter-chaap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Butter Chaap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/butter-chicken/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Butter Chicken
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/butter-paneer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Butter Paneer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/cabbage-aaloo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cabbage Aaloo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/cauliflower-aaloo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cauliflower Aaloo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/chai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chai
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/cheese-masala-macaroni/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheese Masala Macaroni
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/cheese-sandwich/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cheese Sandwich
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/chilli-paneer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chilli Paneer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/egg-bhurji/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Egg Bhurji
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/garam-masala/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garam Masala
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/masala-chaap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Masala Chaap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/masala-chicken/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Masala Chicken
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/masala-paneer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Masala Paneer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/masala-veg-oats/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Masala Veg Oats
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/moong-masoor-daal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Moong Masoor Daal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/omelette/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Omelette
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/rajma/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rajma
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/rice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rice
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/roti/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Roti
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/simple-maggi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simple Maggi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/soya-chunks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Soya Chunks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/spicy-tomato-maggi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spicy Tomato Maggi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/tandoori-chicken-fry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tandoori Chicken Fry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/tomato-maggi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tomato Maggi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/veg-biriyani/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Veg Biriyani
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recipes/veggie-maggi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Veggie Maggi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_47" >
+        
+          
+          <label class="md-nav__link" for="__nav_47" id="__nav_47_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Travel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_47_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_47">
+            <span class="md-nav__icon md-icon"></span>
+            Travel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../travel/best-places-in-delhi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best Places In Delhi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../travel/delhi-metro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Delhi Metro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../travel/places-to-see/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Places To See
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../travel/pvr-directions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pvr Directions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#local" class="md-nav__link">
+    <span class="md-ellipsis">
+      local
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-sftp" class="md-nav__link">
+    <span class="md-ellipsis">
+      using SFTP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-rclone" class="md-nav__link">
+    <span class="md-ellipsis">
+      using rclone
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-rest-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      using REST server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backrest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backrest
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backrest">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forget-and-prune-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Forget and Prune Policy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../tags/#linux" class="md-tag">linux</a>
+    
+  
+    
+    
+    
+      <a href="../../tags/#desktop" class="md-tag">desktop</a>
+    
+  
+    
+    
+    
+      <a href="../../tags/#backup" class="md-tag">backup</a>
+    
+  
+    
+    
+    
+      <a href="../../tags/#windows" class="md-tag">windows</a>
+    
+  
+    
+    
+    
+      <a href="../../tags/#guide" class="md-tag">guide</a>
+    
+  
+</nav>
+
+
+  
+    <a href="https://github.com/dpi0/notes/edit/main/dev/restic-backup.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6v2h11V6zm0 4v2h11v-2zm17 .1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V20h2.1l6.1-6.1zM3 14v2h7v-2z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/dpi0/notes/raw/main/dev/restic-backup.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"/></svg>
+    </a>
+  
+
+
+  <h1>Restic Backup</h1>
+
+<p><a href="https://restic.readthedocs.io/en/latest/040_backup.html#environment-variables">https://restic.readthedocs.io/en/latest/040_backup.html#environment-variables</a></p>
+<h3 id="local">local<a class="headerlink" href="#local" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>&lt;<span class="w"> </span>/dev/urandom<span class="w"> </span>tr<span class="w"> </span>-dc<span class="w"> </span><span class="s1">&#39;A-Za-z0-9&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-c32<span class="w"> </span>&gt;<span class="w"> </span>~/.password_restic
+chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>~/.password_restic
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">RESTIC_REPOSITORY</span><span class="o">=</span><span class="s2">&quot;/hdd/backup/backup_home&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">RESTIC_PASSWORD_FILE</span><span class="o">=</span><span class="nv">$HOME</span>/.password_restic
+
+restic<span class="w"> </span>init<span class="w"> </span>-r<span class="w"> </span><span class="nv">$RESTIC_REPOSITORY</span>
+
+restic<span class="w"> </span>snapshots
+restic<span class="w"> </span>snapshots<span class="w"> </span>-r<span class="w"> </span>/hdd/backup/backup_home<span class="w"> </span>--password-file<span class="w"> </span>~/.password_restic
+
+restic<span class="w"> </span>backup<span class="w"> </span>--dry-run<span class="w"> </span>-vv<span class="w"> </span>--skip-if-unchanged<span class="w"> </span>--tag<span class="o">=</span>home<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--exclude<span class="w"> </span><span class="s1">&#39;**/node_modules&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--exclude<span class="w"> </span><span class="nv">$HOME</span>/.local/share/Trash<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--exclude<span class="w"> </span><span class="nv">$HOME</span>/.local/share/pnpm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--exclude<span class="w"> </span><span class="nv">$HOME</span>/Virtual_Machines<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--exclude<span class="w"> </span><span class="nv">$HOME</span>/ISOs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--exclude<span class="w"> </span><span class="nv">$HOME</span>/.rustup<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--exclude<span class="w"> </span><span class="nv">$HOME</span>/.cache<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--exclude<span class="w"> </span><span class="nv">$HOME</span>/go<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--exclude<span class="w"> </span><span class="nv">$HOME</span>/.cargo<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--exclude<span class="w"> </span><span class="nv">$HOME</span>/.npm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">$HOME</span>
+
+restic<span class="w"> </span>ls<span class="w"> </span>&lt;snapshot_id&gt;
+restic<span class="w"> </span>restore<span class="w"> </span>d7c90b6b:/home/dpi0/zsh<span class="w"> </span>--target<span class="w"> </span>~/restore/nice<span class="w"> </span>--include<span class="w"> </span>alias.sh
+restic<span class="w"> </span>restore<span class="w"> </span>&lt;snapshot_id&gt;<span class="w"> </span>--target<span class="w"> </span><span class="nv">$HOME</span>/restore<span class="w"> </span>--include<span class="w"> </span>/home/dpi0/zsh/yazi/plugins/video-ffmpeg.yazi/init.lua
+
+restic<span class="w"> </span>ls<span class="w"> </span>&lt;snapshot_id&gt;
+restic<span class="w"> </span>restore<span class="w"> </span>d7c90b6b:/home/dpi0/zsh<span class="w"> </span>--target<span class="w"> </span>~/restore/restore_zsh
+
+restic<span class="w"> </span>diff<span class="w"> </span>d7c90b6b<span class="w"> </span>545eeb40
+---
+Files:<span class="w">        </span><span class="m">1893</span><span class="w"> </span>new,<span class="w">    </span><span class="m">17</span><span class="w"> </span>removed,<span class="w">    </span><span class="m">82</span><span class="w"> </span>changed
+Dirs:<span class="w">          </span><span class="m">276</span><span class="w"> </span>new,<span class="w">     </span><span class="m">0</span><span class="w"> </span>removed
+Others:<span class="w">          </span><span class="m">5</span><span class="w"> </span>new,<span class="w">     </span><span class="m">0</span><span class="w"> </span>removed
+Data<span class="w"> </span>Blobs:<span class="w">   </span><span class="m">1743</span><span class="w"> </span>new,<span class="w">   </span><span class="m">245</span><span class="w"> </span>removed
+Tree<span class="w"> </span>Blobs:<span class="w">    </span><span class="m">506</span><span class="w"> </span>new,<span class="w">   </span><span class="m">232</span><span class="w"> </span>removed
+<span class="w">  </span>Added:<span class="w">   </span><span class="m">105</span>.771<span class="w"> </span>MiB
+<span class="w">  </span>Removed:<span class="w"> </span><span class="m">89</span>.087<span class="w"> </span>MiB
+---
+
+diff<span class="w"> </span>5845b002:/home/dpi0/zsh<span class="w"> </span>2ab627a6:/home/dpi0/zsh
+
+restic<span class="w"> </span>stats
+
+restic<span class="w"> </span>check
+&lt;https://restic.readthedocs.io/en/latest/045_working_with_repos.html#checking-integrity-and-consistency&gt;
+</code></pre></div>
+<blockquote>
+<p>[!NOTE]
+REST server is <a href="https://github.com/restic/rest-server?tab=readme-ov-file#why-use-rest-server">better</a> than SFTP transfer</p>
+<ol>
+<li>faster and more scalable</li>
+<li>adds the optional ability to run in append-only mode, prevents an attacker from wiping your server backups when access is gained to the server being backed up.</li>
+<li>really simple implementation and as such could be used on the low-end devices</li>
+<li>in some cases, for example behind corporate firewalls, HTTP/S might be the only protocol allowed</li>
+</ol>
+<p>in my testing, REST is about 20-25% faster than SFTP on a 14G (~15,000 files) transfer (54 sftp vs 42 min on https)</p>
+<p>although it takes a second to setup, REST is clearly better (maybe without the HTTPS overhead it could be faster)</p>
+</blockquote>
+<h3 id="using-sftp">using SFTP<a class="headerlink" href="#using-sftp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>~/.ssh/config
+---
+Host<span class="w"> </span>backup_server
+<span class="w">        </span>Hostname<span class="w"> </span><span class="m">192</span>.168.1.333
+<span class="w">        </span>User<span class="w"> </span>dpi0
+<span class="w">        </span>Port<span class="w"> </span><span class="m">3333</span>
+<span class="w">        </span>IdentityFile<span class="w"> </span>~/.ssh/home-server
+<span class="w">        </span>ServerAliveInterval<span class="w"> </span><span class="m">60</span>
+<span class="w">        </span>ServerAliveCountMax<span class="w"> </span><span class="m">240</span>
+---
+<span class="nb">export</span><span class="w"> </span><span class="nv">RESTIC_REPOSITORY</span><span class="o">=</span><span class="s2">&quot;sftp:backup_server:</span><span class="nv">$HOME</span><span class="s2">/test/backup_test&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">RESTIC_PASSWORD_FILE</span><span class="o">=</span><span class="nv">$HOME</span>/.password_restic
+restic<span class="w"> </span>init<span class="w"> </span>-r<span class="w"> </span><span class="nv">$RESTIC_REPOSITORY</span>
+
+
+restic<span class="w"> </span>--skip-if-unchanged<span class="w"> </span>--tag<span class="o">=</span>server<span class="w"> </span>--tag<span class="o">=</span>dev-go<span class="w"> </span>-vv<span class="w"> </span>backup<span class="w"> </span><span class="nv">$HOME</span>/dev/go
+restic<span class="w"> </span>snapshots
+</code></pre></div>
+<h3 id="using-rclone">using rclone<a class="headerlink" href="#using-rclone" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>restic<span class="w"> </span>-r<span class="w"> </span>rclone:remote_name:dir_path<span class="w"> </span>init
+</code></pre></div>
+<h3 id="using-rest-server">using REST server<a class="headerlink" href="#using-rest-server" title="Permanent link">&para;</a></h3>
+<ul>
+<li>setup the server using the compose file (NOTE the syntax for the environment var, key: value. the key=value syntax doesn't work here fsr)</li>
+<li>also the flags used in compose are <code>--tls --append-only</code> where <code>tls</code> enables TLS and <code>append-only</code> allows creation of new backups but prevents deletion and modification of existing backups. This can be useful when backing up systems that have a potential of being hacked.</li>
+<li>to backup using plain HTTP (not recommended, also remove the tls flag for this)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># create admin user</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>restic_server<span class="w"> </span>create_user<span class="w"> </span>admin
+<span class="c1"># enter password and save this</span>
+
+<span class="c1"># this is for the auth to the rest server (the user password couldn&#39;t find a way to have a password file)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">RESTIC_REST_USERNAME</span><span class="o">=</span>admin<span class="p">;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">RESTIC_REST_PASSWORD</span><span class="o">=</span><span class="s2">&quot;z59FxsYKn70eS0mp2blv9iY9UGsuasK7&quot;</span>
+<span class="c1"># this is for the repo</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">RESTIC_REPOSITORY</span><span class="o">=</span><span class="s2">&quot;rest:http://server:5050/repo_name&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">RESTIC_PASSWORD_FILE</span><span class="o">=</span><span class="nv">$HOME</span>/.password_restic
+restic<span class="w"> </span>init<span class="w"> </span>-r<span class="w"> </span><span class="nv">$RESTIC_REPOSITORY</span>
+<span class="c1"># this creates the repo under mounted `/data` dir, so choose this location carefully</span>
+<span class="c1"># also the server verifies the `admin` user using the `.htpasswd` placed under `/data`</span>
+</code></pre></div>
+<ul>
+<li>to backup using HTTPS:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># ON SERVER</span>
+<span class="c1"># generate pub/priv keys</span>
+<span class="nv">LOCATION</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/restic-rest-server-backup&quot;</span>
+
+sudo<span class="w"> </span>openssl<span class="w"> </span>req<span class="w"> </span><span class="se">\</span>
+-newkey<span class="w"> </span>rsa:4096<span class="w"> </span><span class="se">\</span>
+-sha512<span class="w"> </span><span class="se">\</span>
+-x509<span class="w"> </span><span class="se">\</span>
+-days<span class="w"> </span><span class="m">365</span><span class="w"> </span><span class="se">\</span>
+-addext<span class="w"> </span><span class="s2">&quot;subjectAltName = IP:127.0.0.1,DNS:dpi0.cloud&quot;</span><span class="w"> </span><span class="se">\</span>
+-nodes<span class="w"> </span><span class="se">\</span>
+-keyout<span class="w"> </span><span class="nv">$LOCATION</span>/private_key<span class="w"> </span><span class="se">\</span>
+-out<span class="w"> </span><span class="nv">$LOCATION</span>/public_key
+
+<span class="c1"># the fields are all optional, but is nice to fill email, name, country, state</span>
+<span class="c1"># -nodes (removes password from keys, restic doesn&#39;t work with keys with passwords), days 365 (validity of the cert), -addext &quot;subjectAltName&quot; (is optional)</span>
+
+<span class="nb">unset</span><span class="w"> </span>LOCATION
+
+<span class="c1"># restart server</span>
+docker<span class="w"> </span>compose<span class="w"> </span>down<span class="p">;</span><span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+
+<span class="c1"># create admin user</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">REST_SERVER_USERNAME</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">REST_SERVER_PASSWORD</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>&lt;<span class="w"> </span>/dev/urandom<span class="w"> </span>tr<span class="w"> </span>-dc<span class="w"> </span><span class="s1">&#39;A-Za-z0-9&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-c32<span class="k">)</span><span class="s2">&quot;</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>restic_server<span class="w"> </span>create_user<span class="w"> </span><span class="nv">$REST_SERVER_USERNAME</span><span class="w"> </span><span class="nv">$REST_SERVER_PASSWORD</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$REST_SERVER_PASSWORD</span>
+<span class="nb">unset</span><span class="w"> </span>REST_SERVER_PASSWORD
+docker<span class="w"> </span>compose<span class="w"> </span>down<span class="p">;</span><span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+docker<span class="w"> </span>logs<span class="w"> </span>restic_server
+
+<span class="c1"># ON CLIENT</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">RESTIC_REST_USERNAME</span><span class="o">=</span>admin
+<span class="nb">export</span><span class="w"> </span><span class="nv">RESTIC_REST_PASSWORD</span><span class="o">=</span><span class="s2">&quot;&lt;the_password_set_on_server_for_the_user&gt;&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">RESTIC_REPOSITORY</span><span class="o">=</span><span class="s2">&quot;rest:https://server:5050/REPO_NAME&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">RESTIC_PASSWORD_FILE</span><span class="o">=</span><span class="nv">$HOME</span>/.password_restic
+
+restic<span class="w"> </span>init<span class="w"> </span>-r<span class="w"> </span><span class="nv">$RESTIC_REPOSITORY</span><span class="w"> </span>--insecure-tls
+<span class="c1"># --insecure-tls because these are self signed certs</span>
+
+restic<span class="w"> </span>snapshots<span class="w"> </span>--insecure-tls
+restic<span class="w"> </span>stats<span class="w"> </span>--insecure-tls
+
+<span class="nb">unset</span><span class="w"> </span>RESTIC_REST_PASSWORD
+
+<span class="c1"># using my custom function to clear the password variable from `~/.zsh_history` file as well</span>
+remove_variable_from_history<span class="w"> </span><span class="s2">&quot;RESTIC_REST_PASSWORD&quot;</span>
+</code></pre></div>
+<blockquote>
+<p>[!CAUTION]
+getting a signed certificate from Let's Encrypt requires your domain to be pointing to a <strong>PUBLIC IPv4 Address e.g a public A record</strong></p>
+<p>so <code>dpi0.cloud</code> currently won't work as it points to local ip</p>
+<p>have to use self signed certs</p>
+<p>[!TIP]
+useful when using the rest-server binary and don't have htpasswd binary</p>
+<p>create a <code>.htpasswd</code> file without the <code>httpasswd</code> tool with a random password using <code>md5</code> hash</p>
+<div class="highlight"><pre><span></span><code><span class="sb">`</span><span class="nv">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">;</span><span class="w"> </span><span class="nv">password</span><span class="o">=</span><span class="k">$(</span>&lt;/dev/urandom<span class="w"> </span>tr<span class="w"> </span>-dc<span class="w"> </span><span class="s1">&#39;A-Za-z0-9&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-c32<span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$username</span><span class="s2">:</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$password</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>passwd<span class="w"> </span>-apr1<span class="w"> </span>-stdin<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>backup/.htpasswd<span class="sb">`</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$password</span>
+<span class="nb">unset</span><span class="w"> </span>password
+</code></pre></div>
+<p>but for restic rest server we need to use <code>bcrypt</code> so have to use python + bcrypt + docker (openssl doesn't support brcrypt now)</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Dockerfile</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">python:3</span>
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>bcrypt
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>bcrypt-generator<span class="w"> </span>.
+<span class="nb">export</span><span class="w"> </span><span class="nv">ADMIN_PASSWORD</span><span class="o">=</span><span class="s2">&quot;7jzgikv0DbuGZWr2JquL8U2UTdETS79v&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ADMIN_USERNAME</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span>
+docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>bcrypt-generator<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import bcrypt; print(bcrypt.hashpw(b&#39;</span><span class="nv">$ADMIN_PASSWORD</span><span class="s2">&#39;, bcrypt.gensalt(rounds=5)).decode(&#39;utf-8&#39;))&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>hash.txt
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ADMIN_USERNAME</span><span class="s2">:</span><span class="k">$(</span>cat<span class="w"> </span>hash.txt<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>.htpasswd
+<span class="nb">unset</span><span class="w"> </span>ADMIN_PASSWORD
+remove_variable_from_history<span class="w"> </span>ADMIN_PASSWORD
+</code></pre></div>
+</blockquote>
+<h2 id="backrest">Backrest<a class="headerlink" href="#backrest" title="Permanent link">&para;</a></h2>
+<ul>
+<li>whatever device contains the source files to be backed up, needs to run the backrest container.</li>
+<li>you can then specify the repo location in the backrest gui, either local or rest or sftp or s3 etc</li>
+</ul>
+<p><strong>for rclone in backrest container</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;**/rclone.conf&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$HOME</span>/home-server/.gitignore
+
+cat<span class="w"> </span><span class="nv">$HOME</span>/.config/rclone/rclone.conf<span class="w"> </span>-p
+<span class="c1"># either cp the entire file, or only the necessary rclone account config</span>
+
+<span class="c1"># set a volume map in the `compose.yml` for backrest</span>
+<span class="nv">$PWD</span>/rclone.conf:/root/.config/rclone/rclone.conf
+
+<span class="c1"># confirm</span>
+docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w"> </span>backrest<span class="p">;</span><span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>backrest
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>backrest<span class="w"> </span>cat<span class="w"> </span>/root/.config/rclone/rclone.conf
+</code></pre></div>
+<p>then in the backrest GUI, repo name should be <code>rclone:remote0:testman</code></p>
+<h3 id="forget-and-prune-policy">Forget and Prune Policy<a class="headerlink" href="#forget-and-prune-policy" title="Permanent link">&para;</a></h3>
+<p>say i backup every 2 days. my forget/prune policy</p>
+<ul>
+<li>Keep hourly for 8 hours</li>
+<li>Keep daily for 7 days</li>
+<li>Keep weekly for 4 weeks</li>
+<li>Keep monthly for 3 months</li>
+</ul>
+<p>is set to run every 2 weeks.</p>
+<p>what will be left when the policy runs every 2 weeks?</p>
+<p>i will have <strong>roughly 7 snapshots by the end of a 2-week period</strong></p>
+<ul>
+<li>hourly 8: won't apply, no hourly snapshots were taken.</li>
+<li>daily 7: won't apply, as keep 1 snapshot per day for last 7 days. multiple snapshots were not ttaken daily.</li>
+<li>weekly 4: in two weeks (forget policy time period) as i'm taking snapshot every 2 days. every week 1 will have about 2-3 snapshots. for the last 4 weeks, restic will 1 snapshot per week.</li>
+<li>monthly 3: keep 1 snapshot per month, for the last 3 months.</li>
+</ul>
+<p>what will be kept:</p>
+<table>
+<thead>
+<tr>
+<th>Time Period</th>
+<th>Backup Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Last 7 days</td>
+<td>Every backup (every 2 days)</td>
+</tr>
+<tr>
+<td>2 to 4 weeks</td>
+<td>One snapshot per week</td>
+</tr>
+<tr>
+<td>Last 3 months</td>
+<td>One snapshot per month</td>
+</tr>
+<tr>
+<td>Beyond 3 months</td>
+<td>No snapshots retained</td>
+</tr>
+</tbody>
+</table>
+<p><strong>GPT recommends this policy and time period if i'm taking backup every 3 days.</strong></p>
+<ul>
+<li>Keep daily for 3 days</li>
+<li>Keep weekly for 4-6 weeks</li>
+<li>Keep monthly for 3-6 months</li>
+<li>(Optional): Keep yearly for 1-2 years</li>
+</ul>
+<p>And you would run this policy once every month.</p>
+<p>Reason:</p>
+<ul>
+<li>Keeping snapshots for 3-4 days ensures you’ll retain the latest snapshot if you need quick recovery within a week.</li>
+<li>Keeping one snapshot per week over the last month to month and a half provides enough snapshots to recover from any issues that arise during recent weeks.</li>
+<li>Retaining one snapshot per month for up to 6 months lets you keep long-term versions, while pruning older snapshots that take up space</li>
+<li>If you want some annual retention for critical records or legal compliance, consider keeping one snapshot per year for up to 2 years</li>
+</ul>
+<p><strong>GPT suggested this for a backup every day at 11AM</strong></p>
+<ul>
+<li>Keep hourly for 6 hours</li>
+<li>Keep daily for 7 days</li>
+<li>Keep weekly for 4 weeks</li>
+<li>Keep monthly for 6 months</li>
+<li>(Optional): Keep yearly for 2 years</li>
+</ul>
+<p>And run this policy every week.</p>
+<h2 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">restic_0</span><span class="p">.</span><span class="n">17</span><span class="p">.</span><span class="n">0_windows_amd64</span><span class="p">.</span><span class="n">exe</span> <span class="n">init</span> <span class="p">-</span><span class="n">-repo</span> <span class="n">O</span><span class="p">:</span><span class="err"></span><span class="n">ackup_S</span>
+
+<span class="nv">$env:RESTIC_REPOSITORY</span> <span class="p">=</span> <span class="s2">&quot;O:ackup_S&quot;</span>
+<span class="nv">$env:RESTIC_PASSWORD</span> <span class="p">=</span> <span class="s2">&quot;xyz&quot;</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$folder</span> <span class="k">in</span> <span class="nb">Get-ChildItem</span> <span class="n">-Directory</span> <span class="n">-Path</span> <span class="n">S</span><span class="p">:)</span> <span class="p">{</span>
+  <span class="n">restic_0</span><span class="p">.</span><span class="n">17</span><span class="p">.</span><span class="n">0_windows_amd64</span><span class="p">.</span><span class="n">exe</span> <span class="n">-r</span> <span class="n">O</span><span class="p">:</span><span class="err"></span><span class="n">ackup_S</span> <span class="n">-v</span> <span class="n">backup</span> <span class="s2">&quot;</span><span class="p">$(</span><span class="nv">$folder</span><span class="p">.</span><span class="n">FullName</span><span class="p">)</span><span class="s2">&quot;</span> <span class="p">-</span><span class="n">-skip-if-unchanged</span>
+<span class="p">}</span>
+
+<span class="n">restic</span> <span class="n">snapshots</span>
+<span class="n">restic</span> <span class="n">size</span>
+
+<span class="n">restic</span> <span class="n">restore</span> <span class="n">70904e68</span> <span class="p">-</span><span class="n">-target</span> <span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">dpi0</span><span class="p">\</span><span class="n">Desktop</span><span class="p">\</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c"># create password file</span>
+<span class="nv">$randomString</span> <span class="p">=</span> <span class="n">-join</span> <span class="p">((</span><span class="n">48</span><span class="p">..</span><span class="n">57</span><span class="p">)</span> <span class="p">+</span> <span class="p">(</span><span class="n">65</span><span class="p">..</span><span class="n">90</span><span class="p">)</span> <span class="p">+</span> <span class="p">(</span><span class="n">97</span><span class="p">..</span><span class="n">122</span><span class="p">)</span> <span class="p">|</span> <span class="nb">Get-Random</span> <span class="n">-Count</span> <span class="n">32</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span> <span class="no">[char]</span><span class="nv">$_</span> <span class="p">})</span>
+<span class="nv">$randomString</span> <span class="p">|</span> <span class="nb">Out-File</span> <span class="n">-FilePath</span> <span class="s2">&quot;$HOME\.password_restic&quot;</span>
+
+<span class="nv">$env:REST_SERVER_USERNAME</span> <span class="p">=</span> <span class="s2">&quot;admin&quot;</span>
+<span class="nb">echo </span><span class="nv">$env:REST_SERVER_USERNAME</span>
+
+<span class="nv">$env:RESTIC_REST_PASSWORD</span> <span class="p">=</span> <span class="s2">&quot;&lt;the_password_set_on_server_for_the_user&gt;&quot;</span>
+<span class="nv">$env:RESTIC_REPOSITORY</span> <span class="p">=</span> <span class="s2">&quot;rest:https://server:5050/REPO_NAME&quot;</span>
+<span class="nv">$env:RESTIC_PASSWORD_FILE</span> <span class="p">=</span> <span class="s2">&quot;$HOME\.password_restic&quot;</span>
+
+<span class="n">restic</span> <span class="n">init</span> <span class="n">-r</span> <span class="nv">$RESTIC_REPOSITORY</span> <span class="p">-</span><span class="n">-insecure-tls</span>
+
+<span class="c"># clear entire history</span>
+<span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="s2">&quot;$env:USERPROFILE\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt&quot;</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/dpi0" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:dpi0.dev@proton.me" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.action.view", "content.action.edit", "navigation.sections", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
