@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -41,12 +41,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Funnel Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
       <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/open_in_new_tab.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -5543,10 +5545,10 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>containerd.servic
 sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker.service
 </code></pre></div>
-<blockquote>
-<p>[!NOTE]
-/root takes about 6-7G on fresh with all apps installed</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>/root takes about 6-7G on fresh with all apps installed</p>
+</div>
 <h2 id="auth-gitgithub">auth git/github<a class="headerlink" href="#auth-gitgithub" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>gh<span class="w"> </span>auth<span class="w"> </span>login
 </code></pre></div>
@@ -5624,7 +5626,10 @@ sudo<span class="w"> </span><span class="nv">EDITOR</span><span class="o">=</spa
 <li>run the container and skip the next two steps and go back to tunnels homepage</li>
 </ul>
 <p>it should look like this now</p>
-<p><a class="glightbox" href="https://i.ibb.co/sqMp0bT/A-15-19-30-15-Aug.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="https://i.ibb.co/sqMp0bT/A-15-19-30-15-Aug.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/sqMp0bT/A-15-19-30-15-Aug.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/sqMp0bT/A-15-19-30-15-Aug.png" /></a><figcaption>image</figcaption>
+</figure>
+</p>
 <h2 id="filebrowser"><code>filebrowser</code><a class="headerlink" href="#filebrowser" title="Permanent link">&para;</a></h2>
 <p>to mount multiple directories:</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">/home/user0/dir0:/srv/user0</span>
@@ -5741,16 +5746,16 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 </ul>
 <h4 id="configuring-ssh-keys-with-github">Configuring SSH Keys with GitHub<a class="headerlink" href="#configuring-ssh-keys-with-github" title="Permanent link">&para;</a></h4>
 <ol>
-<li>Create a key pair:
+<li>Create a key pair:<br />
    <div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-f<span class="w"> </span>~/.ssh/github-key<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;ssh key for github&quot;</span>
 </code></pre></div></li>
 <li>Skip the passphrase for now.</li>
 <li>Add the <strong>PUBLIC KEY</strong> (<code>github-key.pub</code>) to your GitHub account.</li>
 <li>Create a directory with the same name as the GitHub repo (e.g., <code>test-github-dir</code>).</li>
-<li>Test the connection:
+<li>Test the connection:<br />
    <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-T<span class="w"> </span>-i<span class="w"> </span>~/.ssh/github-key<span class="w"> </span>git@github.com
 </code></pre></div></li>
-<li>For every shell session, run:
+<li>For every shell session, run:<br />
    <div class="highlight"><pre><span></span><code><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">&quot;</span>
 ssh-add<span class="w"> </span>~/.ssh/github-key
 </code></pre></div></li>
@@ -5799,30 +5804,32 @@ crontab<span class="w"> </span>-e
 <p><strong>build the custom image and then use</strong></p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>buildx<span class="w"> </span>-t<span class="w"> </span>qb-custom<span class="w"> </span>.
 </code></pre></div>
-<p>just for reference but add this in <code>notify.sh</code>: <code>/bin/bash /films/Private/subs.sh --dir-name "$TORRENT_NAME" --dir-search-path "/films" --auto-find-sub --only-rarbg-vxt</code>
+<p>just for reference but add this in <code>notify.sh</code>: <code>/bin/bash /films/Private/subs.sh --dir-name "$TORRENT_NAME" --dir-search-path "/films" --auto-find-sub --only-rarbg-vxt</code><br />
 `</p>
 <h2 id="immich"><code>immich</code><a class="headerlink" href="#immich" title="Permanent link">&para;</a></h2>
 <ul>
 <li>download the .env file from here <a href="https://immich.app/docs/install/docker-compose">https://immich.app/docs/install/docker-compose</a></li>
 <li>in it change, upload location to <code>/hdd/Immich/upload</code> and database <code>immich_db</code></li>
 </ul>
-<blockquote>
-<p>[!NOTE]
-the core issue is that: <strong>you can not control the ownership/permissions of a file/dir on NTFS drives using ntfs-3g. you simply can not — it is not designed to do that.</strong></p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the core issue is that: <strong>you can not control the ownership/permissions of a file/dir on NTFS drives using ntfs-3g. you simply can not — it is not designed to do that.</strong></p>
+</div>
 <p>so doing this in <code>.env</code></p>
 <div class="highlight"><pre><span></span><code>DB_DATA_LOCATION=/hdd/Immich/postgres
 </code></pre></div>
 <p>won't work. as immich fsr needs to set <code>999:root</code> for this directory, as ntfs-3g is unable to set <code>999</code></p>
 <h2 id="dendrite-matrix"><code>dendrite</code> matrix<a class="headerlink" href="#dendrite-matrix" title="Permanent link">&para;</a></h2>
 <p><a href="https://matrix-org.github.io/dendrite/installation/docker/install">https://matrix-org.github.io/dendrite/installation/docker/install</a></p>
-<blockquote>
-<p>[!WARNING]
-a weird issue with dendrite, it doesn't handle the <code>DB_PASSWORD</code> env var from a .env file</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>a weird issue with dendrite, it doesn't handle the <code>DB_PASSWORD</code> env var from a .env file</p>
 <p>have to hardcode the password in the compose smh. used a nice sed command.</p>
-<p>[!CAUTION]
-make sure to not change even the DB's compose service name ffs. just use the current compose file as it is.</p>
-</blockquote>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>make sure to not change even the DB's compose service name ffs. just use the current compose file as it is.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="nv">DB_PASSWORD</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>-base64<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-dc<span class="w"> </span><span class="s1">&#39;A-Za-z0-9^*&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-c<span class="w"> </span><span class="m">32</span><span class="k">)</span>
 <span class="nb">echo</span><span class="w"> </span><span class="nv">$DB_PASSWORD</span>
 
@@ -5865,11 +5872,11 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>dendrite<span class="w"> </span>/usr/bin/create-account<span class="w"> </span>-config<span class="w"> </span>/etc/dendrite/dendrite.yaml<span class="w"> </span>-username<span class="w"> </span><span class="nb">test</span>
 </code></pre></div>
 <p><strong>get a list of clients:</strong> <a href="https://matrix.org/ecosystem/clients/">https://matrix.org/ecosystem/clients/</a></p>
-<blockquote>
-<p>[!WARNING]
-in order to use mobile clients you have to set this up on a public VPS, it won't work as clients can't access the home network (tailscale is too incov here)</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>in order to use mobile clients you have to set this up on a public VPS, it won't work as clients can't access the home network (tailscale is too incov here)</p>
 <p>web clients work just fine tho (for not nice on mobile)</p>
-</blockquote>
+</div>
 <h4 id="to-allow-open-registration">to allow open registration<a class="headerlink" href="#to-allow-open-registration" title="Permanent link">&para;</a></h4>
 <p><a href="https://matrix-org.github.io/dendrite/administration/registration">https://matrix-org.github.io/dendrite/administration/registration</a></p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>vim<span class="w"> </span><span class="nv">$VOLUMES</span>/dendrite/config/dendrite.yaml
@@ -5941,8 +5948,8 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 busybox<span class="w"> </span><span class="se">\</span>
 cp<span class="w"> </span>-r<span class="w"> </span><span class="nv">$MOUNT_POINT_IN_CONTAINER</span><span class="w"> </span>/backup/
 </code></pre></div>
-<blockquote>
-<p>[!TIP] &gt; <strong>LIST ALL BIND MOUNTS ON THE SYSTEM</strong></p>
+<div class="admonition tip">
+<p class="admonition-title">&gt; <strong>LIST ALL BIND MOUNTS ON THE SYSTEM</strong></p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># Get a list of all container IDs</span>
@@ -5974,14 +5981,18 @@ cp<span class="w"> </span>-r<span class="w"> </span><span class="nv">$MOUNT_POIN
 <span class="c1"># usage</span>
 run_script<span class="w"> </span><span class="s2">&quot;https://bin.dpi0.cloud/egVXTs&quot;</span>
 </code></pre></div>
-<p>[!TIP]</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p><strong>get the list of only the named volumes (excluding any anonymous volumes)</strong></p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>volume<span class="w"> </span>ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>rg<span class="w"> </span>-v<span class="w"> </span><span class="s1">&#39;^local\s+[a-f0-9]{64}$&#39;</span>
 
 <span class="c1"># only a clean list of volumes (for scripting)</span>
 docker<span class="w"> </span>volume<span class="w"> </span>ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>rg<span class="w"> </span>-v<span class="w"> </span><span class="s1">&#39;^local\s+[a-f0-9]{64}$&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span>+2<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span>
 </code></pre></div>
-<p>[!TIP]</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p><strong>get the list of named volumes only with their mounted paths (again for scripting)</strong></p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -6002,7 +6013,7 @@ docker<span class="w"> </span>volume<span class="w"> </span>ls<span class="w"> <
 <span class="w">  </span><span class="k">done</span><span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$mounts</span><span class="s2">&quot;</span>
 <span class="k">done</span>
 </code></pre></div>
-</blockquote>
+</div>
 <h2 id="cockpit"><code>cockpit</code><a class="headerlink" href="#cockpit" title="Permanent link">&para;</a></h2>
 <p><a href="https://cockpit-project.org/">https://cockpit-project.org/</a></p>
 <p>GUI for system administration</p>
@@ -6108,8 +6119,26 @@ sudo<span class="w"> </span>reboot
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -6176,6 +6205,8 @@ sudo<span class="w"> </span>reboot
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

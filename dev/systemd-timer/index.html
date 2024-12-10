@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -41,12 +41,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Funnel Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
       <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/open_in_new_tab.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -5036,7 +5038,7 @@ systemctl<span class="w"> </span>--user<span class="w"> </span>start<span class=
 <h2 id="cron-vs-systemd-timer">cron vs systemd-timer<a class="headerlink" href="#cron-vs-systemd-timer" title="Permanent link">&para;</a></h2>
 <p>cron is nice and all but you have to build literally all monitoring into your scripts/execution. there is no log by default, there is no check to see what happens.</p>
 <p>with a service.timer you can just ask the status through systemctl and it will tell you if it's active and waiting, when it was last executed and how long until the trigger executes again.</p>
-<p>Another big advantage: no concurrency issues, dealing with locking etc. With cron it's entirely possible where if the previous execution is still running for some reason, another execution will be kicked off. And if your task is severely broken, to where it's never exiting, you can end up with hundreds or thousands of stuck processes.
+<p>Another big advantage: no concurrency issues, dealing with locking etc. With cron it's entirely possible where if the previous execution is still running for some reason, another execution will be kicked off. And if your task is severely broken, to where it's never exiting, you can end up with hundreds or thousands of stuck processes.<br />
 Systemd addresses this as the service unit that it manages can only run one at a time.</p>
 <p>Another minor advantage might also be cleanly &amp; easily disabling/enabling the job. No having to go into a file and comment it out. Can also just stop the timer, ensuring that a reboot will start it back up.</p>
 <p>SystemD Timers are its equivalent of Cron Jobs. They are timer units that can be used to schedule and control the execution of services or scripts.</p>
@@ -5051,8 +5053,26 @@ Systemd addresses this as the service unit that it manages can only run one at a
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -5119,6 +5139,8 @@ Systemd addresses this as the service unit that it manages can only run one at a
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -41,12 +41,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Funnel Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
       <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/open_in_new_tab.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -4941,27 +4943,54 @@
 <li>further communication will go like this,</li>
 <li>i have some data "abc", use the symmetric key to encrypt, send it over, server decrypts it.</li>
 </ul>
-<blockquote>
-<p>[!WARNING]
-the problem here is that, to first establish the symmetric keys,</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>the problem here is that, to first establish the symmetric keys,</p>
 <p>YOU HAVE TO MAKE SURE THE <strong>IDENTITY OF THE SERVER</strong></p>
-</blockquote>
+</div>
 <h2 id="certificate-authorities-ca">Certificate Authorities CA<a class="headerlink" href="#certificate-authorities-ca" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="https://i.ibb.co/ZSwj4v9/U-10-48-01-09-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="only of a handful of authorities trusted by browsers and companies" src="https://i.ibb.co/ZSwj4v9/U-10-48-01-09-Sep.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/ZSwj4v9/U-10-48-01-09-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/ZSwj4v9/U-10-48-01-09-Sep.png" /></a><figcaption>only of a handful of authorities trusted by browsers and companies</figcaption>
+</figure>
+</p>
 <h3 id="the-flow">the flow<a class="headerlink" href="#the-flow" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="https://i.ibb.co/fv5z4BV/U-10-50-03-09-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="client sends request to the server" src="https://i.ibb.co/fv5z4BV/U-10-50-03-09-Sep.png" /></a></p>
-<p><a class="glightbox" href="https://i.ibb.co/2PgM8r1/U-10-50-25-09-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="server gives it's PUB key to the CA" src="https://i.ibb.co/2PgM8r1/U-10-50-25-09-Sep.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/fv5z4BV/U-10-50-03-09-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/fv5z4BV/U-10-50-03-09-Sep.png" /></a><figcaption>client sends request to the server</figcaption>
+</figure>
+</p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/2PgM8r1/U-10-50-25-09-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/2PgM8r1/U-10-50-25-09-Sep.png" /></a><figcaption>server gives it's PUB key to the CA</figcaption>
+</figure>
+</p>
 <p><strong>the CA encrypts the SERVER PUB KEY with it's own CA PRIV KEY</strong></p>
-<p><a class="glightbox" href="https://i.ibb.co/Pt16Z6q/U-09-Sep-15-44-57.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="CA issues a cert, with 3 fields &amp; most importantly a signature" src="https://i.ibb.co/Pt16Z6q/U-09-Sep-15-44-57.png" /></a></p>
-<p><a class="glightbox" href="https://i.ibb.co/qRbvLfk/U-09-Sep-15-46-49.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="sends that cert, back to the server" src="https://i.ibb.co/qRbvLfk/U-09-Sep-15-46-49.png" /></a></p>
-<p><a class="glightbox" href="https://i.ibb.co/gJcyHvj/U-09-Sep-15-47-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="server sends that cert to the client, so that client can verify the identity of the server" src="https://i.ibb.co/gJcyHvj/U-09-Sep-15-47-11.png" /></a></p>
-<p><a class="glightbox" href="https://i.ibb.co/CtHTg4V/U-09-Sep-15-48-21.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="client sees the cert is from digicert which EVERYONE TRUSTS, and asks for CA PUB KEY" src="https://i.ibb.co/CtHTg4V/U-09-Sep-15-48-21.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/Pt16Z6q/U-09-Sep-15-44-57.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/Pt16Z6q/U-09-Sep-15-44-57.png" /></a><figcaption>CA issues a cert, with 3 fields &amp; most importantly a signature</figcaption>
+</figure>
+</p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/qRbvLfk/U-09-Sep-15-46-49.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/qRbvLfk/U-09-Sep-15-46-49.png" /></a><figcaption>sends that cert, back to the server</figcaption>
+</figure>
+</p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/gJcyHvj/U-09-Sep-15-47-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/gJcyHvj/U-09-Sep-15-47-11.png" /></a><figcaption>server sends that cert to the client, so that client can verify the identity of the server</figcaption>
+</figure>
+</p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/CtHTg4V/U-09-Sep-15-48-21.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/CtHTg4V/U-09-Sep-15-48-21.png" /></a><figcaption>client sees the cert is from digicert which EVERYONE TRUSTS, and asks for CA PUB KEY</figcaption>
+</figure>
+</p>
 <p><strong>only the CA PUB KEY can decrypt the encrypted SERVER'S PUB KEY, so that the client can get the SERVER'S PUB KEY</strong></p>
-<p><a class="glightbox" href="https://i.ibb.co/cTvgsH1/U-09-Sep-15-50-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="then client can simply check, whether SERVER's PUB KEY == SERVER'S ACTUAL PUB KEY" src="https://i.ibb.co/cTvgsH1/U-09-Sep-15-50-12.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/cTvgsH1/U-09-Sep-15-50-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/cTvgsH1/U-09-Sep-15-50-12.png" /></a><figcaption>then client can simply check, whether SERVER's PUB KEY == SERVER'S ACTUAL PUB KEY</figcaption>
+</figure>
+</p>
 <h2 id="chain-of-trust">chain of trust<a class="headerlink" href="#chain-of-trust" title="Permanent link">&para;</a></h2>
 <p><strong>the CA's PRIV KEY can not be compromised. at no cost.</strong></p>
 <p>you want the actual CA's PRIV KEY so be as far away as possible</p>
-<p><a class="glightbox" href="https://i.ibb.co/GPhc3pv/U-09-Sep-15-52-44.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="intermediate CLOUDFLARE CA sits b/w the actual CA and the server" src="https://i.ibb.co/GPhc3pv/U-09-Sep-15-52-44.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/GPhc3pv/U-09-Sep-15-52-44.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/GPhc3pv/U-09-Sep-15-52-44.png" /></a><figcaption>intermediate CLOUDFLARE CA sits b/w the actual CA and the server</figcaption>
+</figure>
+</p>
 
 
 
@@ -4970,8 +4999,26 @@ the problem here is that, to first establish the symmetric keys,</p>
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -5038,6 +5085,8 @@ the problem here is that, to first establish the symmetric keys,</p>
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

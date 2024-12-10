@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -41,12 +41,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Funnel Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
       <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/open_in_new_tab.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -5199,10 +5201,10 @@
 
   <h1>Arr Stack Home Server</h1>
 
-<blockquote>
-<p>[!NOTE]
-follow order</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>follow order</p>
+</div>
 <h2 id="1-radarr">1. <code>radarr</code><a class="headerlink" href="#1-radarr" title="Permanent link">&para;</a></h2>
 <ul>
 <li>films (gets stuff done with prowlarr and bazarr)</li>
@@ -5258,7 +5260,10 @@ follow order</p>
 <li>for testing "request" a movie like "dogville" (this'll send the request to radarr)</li>
 </ul>
 <p>in the end it should look like this:</p>
-<p><a class="glightbox" href="https://i.ibb.co/zhmJ49G/A-19-59-26-13-Aug.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="https://i.ibb.co/zhmJ49G/A-19-59-26-13-Aug.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/zhmJ49G/A-19-59-26-13-Aug.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/zhmJ49G/A-19-59-26-13-Aug.png" /></a><figcaption>image</figcaption>
+</figure>
+</p>
 <h2 id="4-flaresolverr">4. <code>flaresolverr</code><a class="headerlink" href="#4-flaresolverr" title="Permanent link">&para;</a></h2>
 <ul>
 <li>solves captchas (for tracking sites)</li>
@@ -5276,7 +5281,10 @@ follow order</p>
 <li><strong>similarly connect sonarr and prowlarr</strong></li>
 <li>go back to radarr, now in settings &gt; indexers you'll hopefully see this:</li>
 </ul>
-<p><a class="glightbox" href="https://i.ibb.co/pwcSkHL/A-22-06-47-13-Aug.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="https://i.ibb.co/pwcSkHL/A-22-06-47-13-Aug.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/pwcSkHL/A-22-06-47-13-Aug.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/pwcSkHL/A-22-06-47-13-Aug.png" /></a><figcaption>image</figcaption>
+</figure>
+</p>
 <h3 id="back-to-radarr">back to radarr...<a class="headerlink" href="#back-to-radarr" title="Permanent link">&para;</a></h3>
 <ul>
 <li>now add a download client. settings &gt; download clients. add qb. host "qb" (the container name). port "8090" (internally exposed port). username and password of qb. test and move on.</li>
@@ -5291,9 +5299,18 @@ follow order</p>
 <li><a href="https://sub.dpi0.cloud">https://sub.dpi0.cloud</a> and follow the <a href="https://wiki.bazarr.media/Getting-Started/Setup-Guide/">https://wiki.bazarr.media/Getting-Started/Setup-Guide/</a></li>
 </ul>
 <h2 id="final-settings">final settings<a class="headerlink" href="#final-settings" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="https://i.ibb.co/TLNLpQC/A-18-11-46-15-Aug.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="https://i.ibb.co/TLNLpQC/A-18-11-46-15-Aug.png" /></a></p>
-<p><a class="glightbox" href="https://i.ibb.co/MgCBLP0/A-18-13-46-15-Aug.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="https://i.ibb.co/MgCBLP0/A-18-13-46-15-Aug.png" /></a></p>
-<p><a class="glightbox" href="https://i.ibb.co/kQx0mWL/A-18-14-46-15-Aug.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="https://i.ibb.co/kQx0mWL/A-18-14-46-15-Aug.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/TLNLpQC/A-18-11-46-15-Aug.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/TLNLpQC/A-18-11-46-15-Aug.png" /></a><figcaption>image</figcaption>
+</figure>
+</p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/MgCBLP0/A-18-13-46-15-Aug.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/MgCBLP0/A-18-13-46-15-Aug.png" /></a><figcaption>image</figcaption>
+</figure>
+</p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/kQx0mWL/A-18-14-46-15-Aug.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/kQx0mWL/A-18-14-46-15-Aug.png" /></a><figcaption>image</figcaption>
+</figure>
+</p>
 <p>me using qb</p>
 <ul>
 <li>tag private stuff with my-films and my-tv</li>
@@ -5358,8 +5375,26 @@ follow order</p>
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -5426,6 +5461,8 @@ follow order</p>
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -41,12 +41,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Funnel Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
       <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/open_in_new_tab.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -5019,13 +5021,25 @@
 </ul>
 <h2 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h2>
 <h3 id="sessioncookies-vs-tokens">session/cookies vs tokens<a class="headerlink" href="#sessioncookies-vs-tokens" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="https://i.ibb.co/KxCzf2g/U-23-19-08-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="diff b/w session and tokens" src="https://i.ibb.co/KxCzf2g/U-23-19-08-02-Sep.png" /></a></p>
-<p><a class="glightbox" href="https://i.ibb.co/Lph983f/U-22-56-13-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="sessions and cookies" src="https://i.ibb.co/Lph983f/U-22-56-13-02-Sep.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/KxCzf2g/U-23-19-08-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/KxCzf2g/U-23-19-08-02-Sep.png" /></a><figcaption>diff b/w session and tokens</figcaption>
+</figure>
+</p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/Lph983f/U-22-56-13-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/Lph983f/U-22-56-13-02-Sep.png" /></a><figcaption>sessions and cookies</figcaption>
+</figure>
+</p>
 <p>CSRF, not horizationally scalaable</p>
-<p><a class="glightbox" href="https://i.ibb.co/HFtWvLS/U-22-57-44-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="sessions handled on server, tokens on client device" src="https://i.ibb.co/HFtWvLS/U-22-57-44-02-Sep.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/HFtWvLS/U-22-57-44-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/HFtWvLS/U-22-57-44-02-Sep.png" /></a><figcaption>sessions handled on server, tokens on client device</figcaption>
+</figure>
+</p>
 <h3 id="stateful">stateful<a class="headerlink" href="#stateful" title="Permanent link">&para;</a></h3>
 <p>use session id and cookies (not very good)</p>
-<p><a class="glightbox" href="https://i.ibb.co/3hR3j50/U-23-18-21-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="session flow" src="https://i.ibb.co/3hR3j50/U-23-18-21-02-Sep.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/3hR3j50/U-23-18-21-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/3hR3j50/U-23-18-21-02-Sep.png" /></a><figcaption>session flow</figcaption>
+</figure>
+</p>
 <p>the server keeps track of the user’s session information in some form of storage (e.g., database, in-memory cache like Redis).</p>
 <p>problems:</p>
 <p><strong>scaling horizontally</strong> Managing session state on the server requires storage that can become complex</p>
@@ -5048,7 +5062,10 @@
 <li>when user logs out, token is cleared from client storage</li>
 </ul>
 <h3 id="stateless-jwt">stateless JWT<a class="headerlink" href="#stateless-jwt" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="https://i.ibb.co/2MhpPsR/U-23-18-49-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="jwt flow" src="https://i.ibb.co/2MhpPsR/U-23-18-49-02-Sep.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/2MhpPsR/U-23-18-49-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/2MhpPsR/U-23-18-49-02-Sep.png" /></a><figcaption>jwt flow</figcaption>
+</figure>
+</p>
 <p>problems:</p>
 <p>Once issued, a <strong>token remains valid until it expires</strong>, making it harder to invalidate sessions (e.g., if a token is compromised).</p>
 <p><strong>token size can become large</strong> slowing things down.</p>
@@ -5065,27 +5082,42 @@
 <p>for authorization b/w services</p>
 <p>the saviour (no sharing password, can revoke access, granular access to resources)</p>
 <p>main goal of oauth: allows third-party services to exchange tokens to access resources on behalf of a user without exposing the user's credentials</p>
-<p><a class="glightbox" href="https://i.ibb.co/gRKGbNP/U-21-05-26-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="oauth flow" src="https://i.ibb.co/gRKGbNP/U-21-05-26-02-Sep.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/gRKGbNP/U-21-05-26-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/gRKGbNP/U-21-05-26-02-Sep.png" /></a><figcaption>oauth flow</figcaption>
+</figure>
+</p>
 <ul>
 <li><strong>open id:</strong> standardizes oauth process, layer on top of OAuth 2.0 that adds authentication by issuing an ID token</li>
 </ul>
-<p><a class="glightbox" href="https://i.ibb.co/R2KnNHc/U-21-07-07-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="open id auth flow" src="https://i.ibb.co/R2KnNHc/U-21-07-07-02-Sep.png" /></a></p>
-<blockquote>
-<p>[!TIP]
-use specific access <strong>scopes</strong> instead of read, read/write, write --&gt; use read-tweets, write-post etc</p>
-</blockquote>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/R2KnNHc/U-21-07-07-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/R2KnNHc/U-21-07-07-02-Sep.png" /></a><figcaption>open id auth flow</figcaption>
+</figure>
+</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>use specific access <strong>scopes</strong> instead of read, read/write, write --&gt; use read-tweets, write-post etc</p>
+</div>
 <h2 id="jwt">JWT<a class="headerlink" href="#jwt" title="Permanent link">&para;</a></h2>
 <p>once authenticated JWT comes in for future access.</p>
 <p><strong>for ONLY authorization</strong>, transmitting information between parties securely. JWTs are often used as OAuth 2.0 access tokens. Both <strong>API tokens</strong> and JWTs can be used for authenticating requests to an API, but JWTs are more feature-rich</p>
-<p><a class="glightbox" href="https://www.youtube.com/watch?v=soGRyl9ztjI" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="JWT and the overall flow of authenication" src="https://www.youtube.com/watch?v=soGRyl9ztjI" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://www.youtube.com/watch?v=soGRyl9ztjI" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://www.youtube.com/watch?v=soGRyl9ztjI" /></a><figcaption>JWT and the overall flow of authenication</figcaption>
+</figure>
+</p>
 <p>authorization stratergies:</p>
 <ul>
 <li><strong>session token</strong>: once authenticated, server sends back session id, user saves it as cookie, on next request (session id + cookies) are sent to authorzize, problems are for modern web apps are not monolithic load balancing for each, becomes complicated</li>
 <li><strong>JWT</strong>: once authenticated, server hands user <strong>a signed JSON data</strong>, for every interaction user sends that <strong>data</strong> and server knows he's the person authorized to access their data on the server. there is not db needed for all this.</li>
 </ul>
 <p><strong>jwt structure</strong> header(algo + token type) + payload(data) + signature</p>
-<p><a class="glightbox" href="https://www.youtube.com/watch?v=_XbXkVdoG_0" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="jwt strucutre and more details on it" src="https://www.youtube.com/watch?v=_XbXkVdoG_0" /></a></p>
-<p><a class="glightbox" href="https://www.youtube.com/embed/LXb3EKWsInQ" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="type:video" src="https://www.youtube.com/embed/LXb3EKWsInQ" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://www.youtube.com/watch?v=_XbXkVdoG_0" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://www.youtube.com/watch?v=_XbXkVdoG_0" /></a><figcaption>jwt strucutre and more details on it</figcaption>
+</figure>
+</p>
+<p>
+<figure><a class="glightbox" href="https://www.youtube.com/embed/LXb3EKWsInQ" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://www.youtube.com/embed/LXb3EKWsInQ" /></a><figcaption>type:video</figcaption>
+</figure>
+</p>
 <div>
   <iframe width="640" height="360" src="https://www.youtube.com/embed/vZNyjuNLhIk" frameborder="0" allowfullscreen></iframe>
 </div>
@@ -5097,8 +5129,26 @@ use specific access <strong>scopes</strong> instead of read, read/write, write -
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -5165,6 +5215,8 @@ use specific access <strong>scopes</strong> instead of read, read/write, write -
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

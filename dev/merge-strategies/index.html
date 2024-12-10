@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -41,12 +41,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Funnel Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
       <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/open_in_new_tab.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -5002,7 +5004,10 @@
   <h1>Merge Strategies</h1>
 
 <h2 id="fast-forward-default">fast-forward - default<a class="headerlink" href="#fast-forward-default" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="https://media.geeksforgeeks.org/wp-content/uploads/20240624160022/Fast-Forward-Merge.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="https://media.geeksforgeeks.org/wp-content/uploads/20240624160022/Fast-Forward-Merge.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://media.geeksforgeeks.org/wp-content/uploads/20240624160022/Fast-Forward-Merge.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20240624160022/Fast-Forward-Merge.png" /></a><figcaption>image</figcaption>
+</figure>
+</p>
 <table>
 <thead>
 <tr>
@@ -5033,7 +5038,10 @@
 git<span class="w"> </span>merge<span class="w"> </span>feature/add-footer
 </code></pre></div>
 <h2 id="recursive-no-fast-forward">recursive - no fast-forward<a class="headerlink" href="#recursive-no-fast-forward" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="https://media.geeksforgeeks.org/wp-content/uploads/20240624160429/Recursive-Merge.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="https://media.geeksforgeeks.org/wp-content/uploads/20240624160429/Recursive-Merge.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://media.geeksforgeeks.org/wp-content/uploads/20240624160429/Recursive-Merge.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20240624160429/Recursive-Merge.png" /></a><figcaption>image</figcaption>
+</figure>
+</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>main<span class="w"> </span><span class="c1"># the parent</span>
 git<span class="w"> </span>merge<span class="w"> </span>--no-ff<span class="w"> </span>feature/add-footer
 </code></pre></div>
@@ -5053,8 +5061,14 @@ git<span class="w"> </span>checkout<span class="w"> </span>main
 git<span class="w"> </span>merge<span class="w"> </span>feature-branch
 </code></pre></div>
 <h2 id="octopus-merge">Octopus merge<a class="headerlink" href="#octopus-merge" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="https://media.geeksforgeeks.org/wp-content/uploads/20240624163410/Octopus-Merge-Strategy.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="https://media.geeksforgeeks.org/wp-content/uploads/20240624163410/Octopus-Merge-Strategy.png" /></a></p>
-<p><a class="glightbox" href="https://blog.mergify.com/content/images/size/w1000/2021/04/Git-Branches-merge-stragegies--4-.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="https://blog.mergify.com/content/images/size/w1000/2021/04/Git-Branches-merge-stragegies--4-.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://media.geeksforgeeks.org/wp-content/uploads/20240624163410/Octopus-Merge-Strategy.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20240624163410/Octopus-Merge-Strategy.png" /></a><figcaption>image</figcaption>
+</figure>
+</p>
+<p>
+<figure><a class="glightbox" href="https://blog.mergify.com/content/images/size/w1000/2021/04/Git-Branches-merge-stragegies--4-.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://blog.mergify.com/content/images/size/w1000/2021/04/Git-Branches-merge-stragegies--4-.png" /></a><figcaption>image</figcaption>
+</figure>
+</p>
 <p>Merging multiple branches for similar features into another branch.</p>
 <p>However, octopus merges refuse the attempted merge if any merge conflicts require manual resolution.</p>
 <p>used for merging more than two branches simultaneously. It’s less common and typically used for automated merges involving multiple feature branches.</p>
@@ -5077,8 +5091,26 @@ git<span class="w"> </span>merge<span class="w"> </span>-s<span class="w"> </spa
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -5145,6 +5177,8 @@ git<span class="w"> </span>merge<span class="w"> </span>-s<span class="w"> </spa
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

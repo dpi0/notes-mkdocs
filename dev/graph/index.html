@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -41,12 +41,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Funnel Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
       <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/open_in_new_tab.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -4984,33 +4986,33 @@
 <li>wheel graph <em>take a cycle graph, add a single vertex inside cycle, connect all vertices to that central point</em></li>
 <li>complement of a graph <em>combining them leads to a complete graph, so it's a part of complete graph</em></li>
 <li>cyclic and acyclic graph <em>at least one cycle &amp; no cycles</em></li>
-<li>bipartite and complete bipartite graph
-    <em>two sets of vertices on each side, some vertices connected to other set Km,n &amp; all vertices connected to other set</em></li>
+<li>bipartite and complete bipartite graph<br />
+<em>two sets of vertices on each side, some vertices connected to other set Km,n &amp; all vertices connected to other set</em></li>
 <li>star graph <em>take a complete bipartite graph, make set1 = 1 vertex only set2 = N vertices</em></li>
 <li>isomorphic graphs _two graphs are iso if, no. of edges and vertices are same in both &amp; edge connectivity is retained _</li>
 <li>homomorphic graphs ?? <em>two graphs are homo, if one graph can be made from another just by adding vertices onto edge(s)homomorphism maps adjacent vertices to adjacent vertices</em></li>
 <li>planar graphs <em>if graph can be drawn on a plane or a sphere so that no two edges cross each other</em></li>
 <li>polyhedral graph <em>degree of each vertex is ≥ 3</em></li>
-<li>regions- <em>area formed by enclosing edges</em>
-    degree of a region, deg(R) is <em>no. of edges/sides it took to form that area/region</em>
+<li>regions- <em>area formed by enclosing edges</em><br />
+    degree of a region, deg(R) is <em>no. of edges/sides it took to form that area/region</em><br />
     degree of an unbounded region i.e. region outside the graph is <em>no. of edges in the circumference</em></li>
 <li>SUM OF DEGREES OF REGIONS THEOREM <em>sum of degrees of all REGIONS = 2 x no. of edges</em></li>
-<li>EDGE VERTEX INEQUALITY <em>|E| &lt;= ( |V|^2 - |V| ) / 2no. of edges in a graph cannot be greater than the maximum no. of edges that can be formed b/w the vertices of the graph</em>
-    where <em>max no. of edges that can be formed b/w vertices is ( |V|^2 - |V| ) / 2</em>
-    it implies that...
-    <strong>there must exist at least two vertices in a graph with the same degreegraph with a small number of vertices cannot have too many edges</strong></li>
+<li>EDGE VERTEX INEQUALITY <em>|E| &lt;= ( |V|^2 - |V| ) / 2no. of edges in a graph cannot be greater than the maximum no. of edges that can be formed b/w the vertices of the graph</em><br />
+    where <em>max no. of edges that can be formed b/w vertices is ( |V|^2 - |V| ) / 2</em><br />
+    it implies that...<br />
+<strong>there must exist at least two vertices in a graph with the same degreegraph with a small number of vertices cannot have too many edges</strong></li>
 <li>EULER'S FORMULA <em>if graph is planar + connected then |V| - |E| + |R| = 2no. of vertices - no. of edges + no. of regions = 2</em></li>
 <li>KURATOWSKI'S THEOREM ?? <em>graph ‘G’ is non-planar if and only if ‘G’ has a subgraph which is homeomorphic to K5 or K3,3</em></li>
 </ol>
 <hr />
 <ol>
-<li>Euler's
+<li>Euler's<br />
    Euler's path- *continuous path/list having each edge EXACTLY once &amp; each vertex AT LEAST once<strong>*connected graph is said to be traversable if it contains an Euler’s path</strong></li>
 </ol>
 <p>Euler's circuit- <em>if an Euler’s path, has start vertex same as end</em></p>
 <p>Euler’s Circuit Theorem- <em>connected graph is traversable if and only if the no. of vertices with ODD DEGREE is exactly 0 or 2</em></p>
 <ol>
-<li>Hamiltonian graph <em>if there is a cycle which contains all the vertices, then that graph is called Hamiltonian graph
+<li>Hamiltonian graph <em>if there is a cycle which contains all the vertices, then that graph is called Hamiltonian graph<br />
    and that cycle is called Hamiltonian cycle</em></li>
 </ol>
 <p>Hamiltonian's path- <em>continuous path/list having each vertex EXACTLY once</em></p>
@@ -5033,30 +5035,30 @@
 </ol>
 <hr />
 <h3 id="coverings-matchings">COVERINGS &amp; MATCHINGS<a class="headerlink" href="#coverings-matchings" title="Permanent link">&para;</a></h3>
-<p>minimum- least amount possible
+<p>minimum- least amount possible<br />
 minimal- not necessarily least amount possible, can mean small amount too</p>
 <ol>
-<li>edge covering (minimal and minimum) <em>list(s) having edges where all elements/edges must include all verticesthere can be many such lists, having redundant elements too so...</em>
-   minimal edge covering- <em>a list(s) where no more edges can be deleted, i.e. remove all redundancies</em>
+<li>edge covering (minimal and minimum) <em>list(s) having edges where all elements/edges must include all verticesthere can be many such lists, having redundant elements too so...</em><br />
+   minimal edge covering- <em>a list(s) where no more edges can be deleted, i.e. remove all redundancies</em><br />
    minimum edge covering- <em>that minimal edge covering having fewest elements/edges</em></li>
-<li>vertex covering (minimal and minimum) <em>list(s) having vertices which connect to all edges</em>
-   minimal- <em>such list(s) where no redundancies are present</em>
+<li>vertex covering (minimal and minimum) <em>list(s) having vertices which connect to all edges</em><br />
+   minimal- <em>such list(s) where no redundancies are present</em><br />
    minimum- <em>minimal list having fewest elements</em></li>
-<li>matching of a graph (maximal, maximum and perfect)
-   <em>take a graph, can use all vertices or some vertices to make bunch of subgraphs where no edges are adjacent to each otherin the subgraph all vertices can of parent can be thereor if some vertices are there, then those which were left out are call unmatched vertices</em>
-   maximal- <em>subgraph(s) where no more edge can be added to maintain 0 adjacency</em>
-   maximum- <em>subgraph(s) having most no. of edges whilst still following the rule</em>
+<li>matching of a graph (maximal, maximum and perfect)<br />
+<em>take a graph, can use all vertices or some vertices to make bunch of subgraphs where no edges are adjacent to each otherin the subgraph all vertices can of parent can be thereor if some vertices are there, then those which were left out are call unmatched vertices</em><br />
+   maximal- <em>subgraph(s) where no more edge can be added to maintain 0 adjacency</em><br />
+   maximum- <em>subgraph(s) having most no. of edges whilst still following the rule</em><br />
    perfect matching- <em>subgraph(s) having all vertices of parent</em></li>
 </ol>
 <hr />
 <h3 id="independence-coloring">INDEPENDENCE &amp; COLORING<a class="headerlink" href="#independence-coloring" title="Permanent link">&para;</a></h3>
 <ol>
-<li>independent edge set (maximal and maximum) <em>list(s) of edges where each edge/element is not adjacent to other</em>
-   maximal- <em>list(s) where no more edge can be added to that list</em>
+<li>independent edge set (maximal and maximum) <em>list(s) of edges where each edge/element is not adjacent to other</em><br />
+   maximal- <em>list(s) where no more edge can be added to that list</em><br />
    maximum- <em>maximal list having max no. of elements/edges</em></li>
-<li>independent vertex set (maximal and maximum) <em>list(s) of vertices where each vertex is not adjacent any other vertex in that list</em>
+<li>independent vertex set (maximal and maximum) <em>list(s) of vertices where each vertex is not adjacent any other vertex in that list</em><br />
    maximal and maximum same concept</li>
-<li>vertex coloring <em>no two vertices of an edge in whole graph should be of the same color</em>
+<li>vertex coloring <em>no two vertices of an edge in whole graph should be of the same color</em><br />
    chromatic number- <em>minimum number of colors required for vertex coloring of whole graph</em></li>
 <li>region coloring <em>no two adjacent regions have the same color</em></li>
 </ol>
@@ -5069,8 +5071,26 @@ minimal- not necessarily least amount possible, can mean small amount too</p>
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -5137,6 +5157,8 @@ minimal- not necessarily least amount possible, can mean small amount too</p>
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

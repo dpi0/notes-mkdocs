@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -41,12 +41,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Funnel Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
       <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/open_in_new_tab.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -4872,9 +4874,15 @@
 <h2 id="rhel-flow">RHEL Flow<a class="headerlink" href="#rhel-flow" title="Permanent link">&para;</a></h2>
 <p><strong>BASICALLY</strong> earlier it was fedora --&gt; rhel --&gt; centos (community enterprise os). so centos was the downstream for rhel. so centos was the stable secure. but after the drama, they killed centos (dead after v8) and <strong>moved centos upstream</strong> and renamed to centos stream. so now the flow is fedora --&gt; centos stream --&gt; rhel.</p>
 <p>so centos <strong>was</strong> = RHEL but <strong>without the official support from the company.</strong></p>
-<p><a class="glightbox" href="https://i.ibb.co/TcDGqLQ/U-27-Sep-11-10-42.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="earlier" src="https://i.ibb.co/TcDGqLQ/U-27-Sep-11-10-42.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/TcDGqLQ/U-27-Sep-11-10-42.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/TcDGqLQ/U-27-Sep-11-10-42.png" /></a><figcaption>earlier</figcaption>
+</figure>
+</p>
 <p>reason of killing centos was probably, as red hat said people took the best of theirs e.g. centos and made forks and used that hardd work for free and didn't contibute back to the community. as red hat <strong>contributes a lot of the open source projects</strong>. so they killed the foss centos and replaced with closed souce and paid RHEL.</p>
-<p><a class="glightbox" href="https://i.ibb.co/6n9b3Qt/U-27-Sep-11-11-03.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="now" src="https://i.ibb.co/6n9b3Qt/U-27-Sep-11-11-03.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/6n9b3Qt/U-27-Sep-11-11-03.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/6n9b3Qt/U-27-Sep-11-11-03.png" /></a><figcaption>now</figcaption>
+</figure>
+</p>
 <p>Fedora (testing ground, new features) --&gt; CentOS Stream (rolling release, upstream for rhel) --&gt; RHEL (stable, secure, but now closed source after drama)</p>
 <p>led to the creation of alternatives like Rocky Linux and AlmaLinux, which aim to provide a stable, binary-compatible RHEL clone <strong>downstream</strong></p>
 <p>Rocky Linux and AlmaLinux fit into the flow as stable, community-driven alternatives to RHEL, filling the gap left by the shift of CentOS to CentOS Stream</p>
@@ -4889,8 +4897,26 @@
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -4957,6 +4983,8 @@
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

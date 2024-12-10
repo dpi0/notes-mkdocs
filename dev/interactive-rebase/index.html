@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -41,12 +41,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Funnel Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
       <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/open_in_new_tab.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -4996,14 +4998,14 @@ pick<span class="w"> </span>7ce1694<span class="w"> </span>Update<span class="w"
 <span class="c1">#</span>
 ---
 </code></pre></div>
-<blockquote>
-<p>[!NOTE]
-the order in which the commits are layed out, they are in reverse</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the order in which the commits are layed out, they are in reverse</p>
 <p>also note, # Rebase <strong>8b4420e</strong>..7ce1694 onto <strong>8b4420e</strong> (5 commands)</p>
 <p>it will use the n+1 commit from HEAD to rebase</p>
 <p>and then replay the HEAD~n changes from the <strong>8b4420e</strong>'th point, like these 5 changes from <strong>8b4420e</strong> commit point</p>
 <p>so the commit hashes of the ~n commits will <strong>change</strong>, like for these 5 commits</p>
-</blockquote>
+</div>
 <h2 id="squash"><code>squash</code><a class="headerlink" href="#squash" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>pick<span class="w"> </span>a11c013<span class="w"> </span>Add<span class="w"> </span>archive<span class="w"> </span>easyeffects
 s<span class="w"> </span>17c3434<span class="w"> </span>Update<span class="w"> </span>hypr<span class="w"> </span><span class="m">23</span>-07-2024<span class="w"> </span><span class="m">09</span>:47
@@ -5012,11 +5014,11 @@ pick<span class="w"> </span>8ef1aba<span class="w"> </span>Update<span class="w"
 pick<span class="w"> </span>7ce1694<span class="w"> </span>Update<span class="w"> </span>nvim<span class="w"> </span><span class="m">23</span>-07-2024<span class="w"> </span><span class="m">10</span>:25
 </code></pre></div>
 <p>this squashes <strong>17c3434</strong> and <strong>d4767f4</strong> into the one ABOVE IT!</p>
-<blockquote>
-<p>[!WARNING]
-there must a commit above the one marked with squash to "squash" into</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>there must a commit above the one marked with squash to "squash" into</p>
 <p>if not it'll give a error</p>
-</blockquote>
+</div>
 <p><strong>now edit the commit message for squash</strong></p>
 <div class="highlight"><pre><span></span><code>Squash<span class="w"> </span>archive<span class="w"> </span>easyeffects,<span class="w"> </span>hypr<span class="w"> </span><span class="m">23</span>-07-2024<span class="w"> </span><span class="m">09</span>:47,<span class="w"> </span>waybar<span class="w"> </span><span class="m">23</span>-07-2024<span class="w"> </span><span class="m">09</span>:47
 
@@ -5129,8 +5131,26 @@ git<span class="w"> </span>rebase<span class="w"> </span>-i<span class="w"> </sp
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -5197,6 +5217,8 @@ git<span class="w"> </span>rebase<span class="w"> </span>-i<span class="w"> </sp
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

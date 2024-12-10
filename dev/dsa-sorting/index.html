@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -41,12 +41,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Funnel Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
       <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/open_in_new_tab.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -4937,15 +4939,15 @@
 
 <h2 id="1-selection">1. selection<a class="headerlink" href="#1-selection" title="Permanent link">&para;</a></h2>
 <p>find the max/min element, then swap it with the 0th-&gt;1st-&gt;2nd and so on..</p>
-<p><strong>in place?</strong> (don't need extra mem space) = true
-<strong>stable?</strong> (order preserved) = false
-<strong>complexity</strong>? <em>time</em>= O(n2) (best, avg and worst) <em>space</em>= O(1)
+<p><strong>in place?</strong> (don't need extra mem space) = true<br />
+<strong>stable?</strong> (order preserved) = false<br />
+<strong>complexity</strong>? <em>time</em>= O(n2) (best, avg and worst) <em>space</em>= O(1)<br />
 <strong>adaptive?</strong> (take adv of fact, list may already be sorted) = false</p>
 <p><strong>adv</strong></p>
 <ol>
 <li>for small sets good &amp; eff</li>
 <li>space is less so less memory is used <em>main</em></li>
-<li>parallelism allows
+<li>parallelism allows<br />
 4.</li>
 </ol>
 <p>disadv</p>
@@ -4957,9 +4959,9 @@
 <h2 id="2-bubble">2. bubble<a class="headerlink" href="#2-bubble" title="Permanent link">&para;</a></h2>
 <h2 id="3-insertion">3. insertion<a class="headerlink" href="#3-insertion" title="Permanent link">&para;</a></h2>
 <h2 id="4-merge">4. merge<a class="headerlink" href="#4-merge" title="Permanent link">&para;</a></h2>
-<p><strong>in place?</strong> = false
-<strong>stable?</strong> (order preserved) = true
-<strong>complexity</strong>? <em>time</em>= O(n.logn) (best, avg and worst) <em>space</em>= O(n)
+<p><strong>in place?</strong> = false<br />
+<strong>stable?</strong> (order preserved) = true<br />
+<strong>complexity</strong>? <em>time</em>= O(n.logn) (best, avg and worst) <em>space</em>= O(n)<br />
 <strong>adaptive?</strong> (take adv of fact, list may already be sorted) = false</p>
 <h2 id="5-quick">5. quick<a class="headerlink" href="#5-quick" title="Permanent link">&para;</a></h2>
 
@@ -4970,8 +4972,26 @@
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -5038,6 +5058,8 @@
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

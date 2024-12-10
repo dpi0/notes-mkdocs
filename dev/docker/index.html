@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -41,12 +41,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Funnel Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
       <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/open_in_new_tab.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -5036,10 +5038,10 @@
 <li>restart all docker containers: <code>docker restart $(docker ps -q)</code></li>
 </ul>
 <h2 id="oci-open-container-initiative">OCI Open Container Initiative<a class="headerlink" href="#oci-open-container-initiative" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>[!NOTE]
-Docker is a specific implementation of the OCI standard</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Docker is a specific implementation of the OCI standard</p>
+</div>
 <p>create open standards for container formats. It was founded by companies like Docker, Google, VMware, Microsoft, Dell, IBM, and Oracle.</p>
 <ul>
 <li>Image Specification: Defines the image's metadata and format, including a serializable file system.</li>
@@ -5097,8 +5099,14 @@ Docker is a specific implementation of the OCI standard</p>
 </tr>
 </tbody>
 </table>
-<p><a class="glightbox" href="https://courses.devopsdirective.com/_next/image?url=%2Fdocker-beginner-to-pro%2F01-03-tradeoffs.jpg&amp;w=1080&amp;q=75" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="bare metal vs virtualization vs CONTAINERS" src="https://courses.devopsdirective.com/_next/image?url=%2Fdocker-beginner-to-pro%2F01-03-tradeoffs.jpg&amp;w=1080&amp;q=75" /></a></p>
-<p><a class="glightbox" href="https://i.ibb.co/THPBHC3/U-10-51-37-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="virtual machines + containers in them --&gt; managed by orchestrators (kuberenetes)" src="https://i.ibb.co/THPBHC3/U-10-51-37-02-Sep.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://courses.devopsdirective.com/_next/image?url=%2Fdocker-beginner-to-pro%2F01-03-tradeoffs.jpg&amp;w=1080&amp;q=75" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://courses.devopsdirective.com/_next/image?url=%2Fdocker-beginner-to-pro%2F01-03-tradeoffs.jpg&amp;w=1080&amp;q=75" /></a><figcaption>bare metal vs virtualization vs CONTAINERS</figcaption>
+</figure>
+</p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/THPBHC3/U-10-51-37-02-Sep.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/THPBHC3/U-10-51-37-02-Sep.png" /></a><figcaption>virtual machines + containers in them --&gt; managed by orchestrators (kuberenetes)</figcaption>
+</figure>
+</p>
 <h2 id="dockerfile">Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h2>
 <p><a href="https://courses.devopsdirective.com/docker-beginner-to-pro/lessons/06-building-container-images/05-general-dockerfile-tips">writing good Dockerfiles</a></p>
 <p>reference: https://docs.docker.com/reference/dockerfile/</p>
@@ -5108,11 +5116,11 @@ Docker is a specific implementation of the OCI standard</p>
 <li>Use <strong>CMD</strong> for setting default commands that can be overridden (by say docker run --something--). Use <strong>ENTRYPOINT</strong> ensures a specific command is always run. why use ENTRYPOINT? ENTRYPOINT <strong>cannot be overridden.</strong></li>
 <li>If you have multiple CMD instructions in your Dockerfile, only the last one is executed.</li>
 <li>If you have multiple ENTRYPOINT instructions in your Dockerfile, only the last one is executed.</li>
-<li><strong>USER</strong> sets the user ID (UID) or username that the container will run as. used to switch from the default root user to a non-root user *<em>for security</em>```
-  FROM ubuntu
-  WORKDIR /app
-  COPY . /app
-  USER myuser
+<li><strong>USER</strong> sets the user ID (UID) or username that the container will run as. used to switch from the default root user to a non-root user *<em>for security</em>```<br />
+  FROM ubuntu<br />
+  WORKDIR /app<br />
+  COPY . /app<br />
+  USER myuser<br />
   CMD ["python", "app.py"]</li>
 </ul>
 <div class="highlight"><pre><span></span><code>## useful `docker run` commands
@@ -5155,8 +5163,26 @@ password:<span class="w"> </span>the<span class="w"> </span>personal<span class=
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -5223,6 +5249,8 @@ password:<span class="w"> </span>the<span class="w"> </span>personal<span class=
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

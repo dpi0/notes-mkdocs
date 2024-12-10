@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -41,12 +41,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Funnel Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
       <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/open_in_new_tab.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -5111,31 +5113,33 @@
 
 <h3 id="format-label-and-name-external-drives">format, label and name external drives<a class="headerlink" href="#format-label-and-name-external-drives" title="Permanent link">&para;</a></h3>
 <p>refer: <a href="https://wiki.archlinux.org/title/File_systems">https://wiki.archlinux.org/title/File_systems</a></p>
-<blockquote>
-<p>[!NOTE]
-Choosing b/w file system for a <strong>USB Drive</strong>, it's <strong>NTFS vs exFAT</strong> (ext4, BTRFS ZFS NOT MEANT FOR EXTERNAL)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Choosing b/w file system for a <strong>USB Drive</strong>, it's <strong>NTFS vs exFAT</strong> (ext4, BTRFS ZFS NOT MEANT FOR EXTERNAL)</p>
 <p>If truly "cross-platform", <strong>exFAT</strong> (as mac can't write to NTFS). If it it's just Windows and Linux, NTFS is fine.</p>
 <p>choose <strong>exFAT</strong> only for simple file sharing <strong>not for backups</strong>. and only for SSD not HDD.</p>
 <p>Extended File Allocation Table, or exFAT, was also introduced by Microsoft. replacement for FAT32</p>
 <p>Linux has support for both exFAT and NTFS. The problem is that neither of those filesystems were designed for a UNIX-like system such as Linux.</p>
 <p>but exFAT is prone to corruption as no journaling. doesn't support UNIX file permissions. Designed for flash drives with unimportant temporary data and compatibility with embedded systems</p>
-<p>[!NOTE]
-for an <strong>external HDD</strong></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>for an <strong>external HDD</strong></p>
 <p>if plugging into a linux server OR primarily will be used with linux <strong>ext4</strong> (don't understand enough about BTRFS or XFS or ZFS for now so avoid)</p>
 <p>if need cross-compatibiliy then <strong>NTFS</strong> (read only mac). avoid exFAT for external drives especially HDD only designed for small solid storage devices.</p>
 <p>for an <strong>external SSD</strong></p>
 <p>same reasons for <strong>ext4</strong> and <strong>NTFS</strong></p>
-</blockquote>
+</div>
 <p><strong>TOOLS:</strong></p>
 <ul>
 <li><code>fdisk</code> designed primarily for MBR (limited GPT support) <strong>avoid</strong></li>
 <li><code>parted</code> general purpose, best for scripting, supports both MBR and GPT, lacks some GPT-specific features offered by gdisk.</li>
 <li><code>gdisk</code> only for GPT. <strong>use this when not scripting</strong></li>
 </ul>
-<blockquote>
-<p>[!NOTE]
-the file system overhead for ext4 is 5%. so for 931.5 GiB, about <strong>870G</strong> is actually available!</p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the file system overhead for ext4 is 5%. so for 931.5 GiB, about <strong>870G</strong> is actually available!</p>
+</div>
 <h4 id="tldr">TLDR;<a class="headerlink" href="#tldr" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>umount<span class="w"> </span>/dev/disk/by-label/LABEL
 
@@ -5246,12 +5250,12 @@ sudo<span class="w"> </span>ntfslabel<span class="w"> </span>/dev/sdXn<span clas
 </code></pre></div>
 <p><strong>file system</strong> defines how data is stored, organized, and accessed. manages file storage, directory structures, file metadata (like permissions and timestamps), and data integrity.</p>
 <h3 id="5-verify">5. verify<a class="headerlink" href="#5-verify" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p>[!CAUTION]
-please <strong>use /dev/disk/by-id/NAME_OF_THE_DRIVE</strong> and not LABEL when verifying integrity of partitions or checking partition table.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>please <strong>use /dev/disk/by-id/NAME_OF_THE_DRIVE</strong> and not LABEL when verifying integrity of partitions or checking partition table.</p>
 <p>as LABEL <strong>refers to PARTITIONS, NOT entire DRIVES</strong> on these tests on <code>parted</code> or <code>gdisk</code> causing confusion. like saying parition has a partition table of loop (when in reality partition table is not inside the label/partition BUT on the whole drive/by-id)</p>
 <p>when simply mounting/umounting, <strong>only then use LABELS</strong></p>
-</blockquote>
+</div>
 <div class="highlight"><pre><span></span><code><span class="c1"># check File System Integrity</span>
 sudo<span class="w"> </span>fsck.exfat<span class="w"> </span>/dev/disk/by-id/usb-TOSHIBA_MQ01ABD100_235678C218CA-0:0
 sudo<span class="w"> </span>fsck.ext4<span class="w"> </span>/dev/disk/by-id/NAME
@@ -5351,11 +5355,11 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
 <p>For HDDs that aren’t frequently disconnected, this option can be an effective balance of performance and data safety.</p>
 <p>However, for highly critical data, a shorter commit interval would be safer.</p>
 <h3 id="resize-existing-partitions-on-a-boot-drive">resize existing partitions on a boot drive<a class="headerlink" href="#resize-existing-partitions-on-a-boot-drive" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p>[!CAUTION]
-always umount partitions before resizing and take backups (restic or rsync)</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>always umount partitions before resizing and take backups (restic or rsync)</p>
 <p>best way for resizing is via the arch linux iso</p>
-</blockquote>
+</div>
 <ol>
 <li>use <code>cfdisk /dev/sda</code> then resize</li>
 <li>if expanded a partition, then have to fill up the space as well for that <code>e2fsck -f /dev/sdaX</code> then <code>resize2fs /dev/sdaX</code></li>
@@ -5399,8 +5403,26 @@ sudo cryptsetup close $DRIVE
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -5467,6 +5489,8 @@ sudo cryptsetup close $DRIVE
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

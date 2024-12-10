@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -41,12 +41,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Funnel Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
       <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/open_in_new_tab.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -5083,10 +5085,10 @@
 <li>balena etcher doesn't support windows drive creation</li>
 </ol>
 <h3 id="create-a-linux-drive-on-linux">create a <code>linux</code> drive on linux<a class="headerlink" href="#create-a-linux-drive-on-linux" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p>[!TIP]
-just balena etcher for this, but for some reason don't trust balena then <strong>use trusted dd command below</strong></p>
-</blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>just balena etcher for this, but for some reason don't trust balena then <strong>use trusted dd command below</strong></p>
+</div>
 <div class="highlight"><pre><span></span><code>shasum<span class="w"> </span>-a<span class="w"> </span><span class="m">256</span><span class="w"> </span>/home/dpi0/Desktop/ubuntu-24.04-live-server-amd64.iso
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;8762f7e74e4d64d72fceb5f70682e6b069932deedb4949c6975d0f0fe0a91be3 *ubuntu-24.04-live-server-amd64.iso&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>shasum<span class="w"> </span>-a<span class="w"> </span><span class="m">256</span><span class="w"> </span>--check
 
@@ -5105,14 +5107,16 @@ sudo<span class="w"> </span>dd<span class="w"> </span><span class="nv">bs</span>
 <h2 id="install-windows-first">install windows first<a class="headerlink" href="#install-windows-first" title="Permanent link">&para;</a></h2>
 <p>use win10, 11 is garbage</p>
 <p><a href="https://www.youtube.com/watch?v=vtxedkuUCas">https://www.youtube.com/watch?v=vtxedkuUCas</a></p>
-<blockquote>
-<p>[!CAUTION]
-never change the default region anywhere during installation!
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>never change the default region anywhere during installation!<br />
 you'll only have to change you local time to Asia/Kolkata once after installation, keep the region to US (and never choose India)</p>
-<p>[!CAUTION]
-continue till the first screen of installation right after "install now" to check if any errors in iso
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>continue till the first screen of installation right after "install now" to check if any errors in iso<br />
 if yes then stop 🛑🤚 use a different method of creating boot drive</p>
-</blockquote>
+</div>
 <h3 id="1-clear-up-exisiting-partitions">1. clear up exisiting partitions<a class="headerlink" href="#1-clear-up-exisiting-partitions" title="Permanent link">&para;</a></h3>
 <p><strong>boot in live cd, shift+f10</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">diskpart</span>
@@ -5161,11 +5165,11 @@ if yes then stop 🛑🤚 use a different method of creating boot drive</p>
 <span class="n">list</span> <span class="n">part</span>
 </code></pre></div>
 <h3 id="3-install-windows">3. install windows<a class="headerlink" href="#3-install-windows" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p>[!CAUTION]
-🖐️ after creating the partitions above you can simply continue through the GUI and install windows on the primary partition, and skip to OOBE
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>🖐️ after creating the partitions above you can simply continue through the GUI and install windows on the primary partition, and skip to OOBE<br />
 as <strong>DISM below sucks</strong> ass and doesn't often work, it only worked for me using ventoy and literally nothing else. also fewer tricky commands to type 😋</p>
-</blockquote>
+</div>
 <div class="highlight"><pre><span></span><code><span class="n">list</span> <span class="n">vol</span>
 <span class="n">exit</span>
 
@@ -5199,8 +5203,26 @@ as <strong>DISM below sucks</strong> ass and doesn't often work, it only worked 
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -5267,6 +5289,8 @@ as <strong>DISM below sucks</strong> ass and doesn't often work, it only worked 
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

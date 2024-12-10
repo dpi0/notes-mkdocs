@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -41,12 +41,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Funnel Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
       <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/open_in_new_tab.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -4906,9 +4908,15 @@
 <p>LXCs are lighter, faster, and easier than VMs, but can only run operating systems that use the same kernel as the host</p>
 <p>manages resource allocation using <strong>cgroups</strong>, ensuring that each container has access to the resourceso</p>
 <p><strong>Namespaces</strong> ensure that containers are kept isolated from each other, preventing processes in one container from interfering with those in another</p>
-<p><a class="glightbox" href="https://www.docker.com/wp-content/uploads/2024/06/lxc-vs-docker-container-diagram-980x653.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="lxc" src="https://www.docker.com/wp-content/uploads/2024/06/lxc-vs-docker-container-diagram-980x653.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://www.docker.com/wp-content/uploads/2024/06/lxc-vs-docker-container-diagram-980x653.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://www.docker.com/wp-content/uploads/2024/06/lxc-vs-docker-container-diagram-980x653.png" /></a><figcaption>lxc</figcaption>
+</figure>
+</p>
 <h2 id="ve-lxc-vs-vm">VE (lxc) vs VM<a class="headerlink" href="#ve-lxc-vs-vm" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="https://i.ibb.co/ByjXfbH/U-01-Oct-12-45-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="application vs system containers" src="https://i.ibb.co/ByjXfbH/U-01-Oct-12-45-13.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/ByjXfbH/U-01-Oct-12-45-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/ByjXfbH/U-01-Oct-12-45-13.png" /></a><figcaption>application vs system containers</figcaption>
+</figure>
+</p>
 <p>in a VE there is no preloaded emulation manager software</p>
 <p>In a VE, the application (or OS) is spawned in a container and runs with no added overhead (except for a usually minuscule VE initialization process)</p>
 <p>There is no hardware emulation</p>
@@ -4916,14 +4924,29 @@
 <p>VM, which packages the entire OS and machine setup, including hard drive, virtual processors and network interfaces</p>
 <p>problem with VE’s is that, up to now at least, they cannot be neatly packaged into ready-made and quickly deployable machines</p>
 <p>Think of LXC as supercharged chroot on Linux. It allows you to not only isolate applications, but even the entire OS</p>
-<p><a class="glightbox" href="https://earthly.dev/blog/assets/images/lxc-vs-docker/EUXeGou.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ve-vs-vm" src="https://earthly.dev/blog/assets/images/lxc-vs-docker/EUXeGou.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://earthly.dev/blog/assets/images/lxc-vs-docker/EUXeGou.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://earthly.dev/blog/assets/images/lxc-vs-docker/EUXeGou.png" /></a><figcaption>ve-vs-vm</figcaption>
+</figure>
+</p>
 <h2 id="vs-docker">vs docker<a class="headerlink" href="#vs-docker" title="Permanent link">&para;</a></h2>
 <p>Docker is developed in the Go language and utilizes LXC, cgroups, and the Linux kernel itself</p>
 <p>Since it’s based on LXC, a Docker container does not include a separate operating system; instead it relies on the operating system’s own functionality as provided by the underlying infrastructure</p>
-<p><a class="glightbox" href="https://i.ibb.co/VTzrT9R/U-01-Oct-12-48-38.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="similarities" src="https://i.ibb.co/VTzrT9R/U-01-Oct-12-48-38.png" /></a></p>
-<p><a class="glightbox" href="https://i.ibb.co/fkypQqF/U-01-Oct-12-50-29.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="points" src="https://i.ibb.co/fkypQqF/U-01-Oct-12-50-29.png" /></a></p>
-<p><a class="glightbox" href="https://www.docker.com/wp-content/uploads/2024/06/lxc-vs-docker-linux-docker-architecture-980x653.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="docker" src="https://www.docker.com/wp-content/uploads/2024/06/lxc-vs-docker-linux-docker-architecture-980x653.png" /></a></p>
-<p><a class="glightbox" href="https://i.ibb.co/xsZHPvh/U-01-Oct-10-21-53.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="differences" src="https://i.ibb.co/xsZHPvh/U-01-Oct-10-21-53.png" /></a></p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/VTzrT9R/U-01-Oct-12-48-38.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/VTzrT9R/U-01-Oct-12-48-38.png" /></a><figcaption>similarities</figcaption>
+</figure>
+</p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/fkypQqF/U-01-Oct-12-50-29.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/fkypQqF/U-01-Oct-12-50-29.png" /></a><figcaption>points</figcaption>
+</figure>
+</p>
+<p>
+<figure><a class="glightbox" href="https://www.docker.com/wp-content/uploads/2024/06/lxc-vs-docker-linux-docker-architecture-980x653.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://www.docker.com/wp-content/uploads/2024/06/lxc-vs-docker-linux-docker-architecture-980x653.png" /></a><figcaption>docker</figcaption>
+</figure>
+</p>
+<p>
+<figure><a class="glightbox" href="https://i.ibb.co/xsZHPvh/U-01-Oct-10-21-53.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://i.ibb.co/xsZHPvh/U-01-Oct-10-21-53.png" /></a><figcaption>differences</figcaption>
+</figure>
+</p>
 <h2 id="arch-setup">arch setup<a class="headerlink" href="#arch-setup" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>lxc<span class="w"> </span>lxd
 sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>lxd.socket<span class="w"> </span>lxd<span class="w"> </span>lxc
@@ -4951,8 +4974,26 @@ lxc<span class="w"> </span>list
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -5019,6 +5060,8 @@ lxc<span class="w"> </span>list
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

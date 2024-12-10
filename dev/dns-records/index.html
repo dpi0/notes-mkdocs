@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../_changes/icons/favicon-32x32.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -41,12 +41,14 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lexend:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Lexend";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Funnel+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Funnel Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
       <link rel="stylesheet" href="../../_changes/css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/open_in_new_tab.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -5116,7 +5118,7 @@ CAA<span class="w"> </span>dpi0.github.io.<span class="w"> </span>59m58s<span cl
 <h2 id="soa-start-of-authority-record">SOA (start of authority) record<a class="headerlink" href="#soa-start-of-authority-record" title="Permanent link">&para;</a></h2>
 <p>contains information about the DNS zone i.e., hierarchy of domains that makes up the Domain Name System</p>
 <p>SOA records are commonly seen when querying a domain that does not exist — even when the query is not asking for SOA records specifically.</p>
-<p>It contains the following fields, in order:
+<p>It contains the following fields, in order:<br />
 1, The <strong>name of the primary nameserver</strong> for this zone. 2. The <strong>e-mail address</strong> of the party responsible for the zone. 3. (This is encoded where the first “.” becomes an “@”.) 4. The <strong>internal serial number</strong> for this domain. 5. The duration <strong>after which the zone should be refreshed</strong>. 6. The duration before a failed refresh operation should be retried. 7. The duration <strong>after which this zone should no longer be considered</strong> authoritative. 8. The TTL for <strong>how long to cache the non-existence of domains inside this zone</strong>.</p>
 <div class="highlight"><pre><span></span><code>dog<span class="w"> </span>SOA<span class="w"> </span>google.com
 SOA<span class="w"> </span>google.com.<span class="w"> </span>55s<span class="w"> </span>A<span class="w"> </span><span class="s2">&quot;ns1.google.com.&quot;</span><span class="w"> </span><span class="s2">&quot;dns-admin.google.com.&quot;</span><span class="w"> </span><span class="m">639491960</span><span class="w"> </span>15m00s<span class="w"> </span>15m00s<span class="w"> </span>30m00s<span class="w"> </span>1m00s
@@ -5245,8 +5247,26 @@ TXT<span class="w"> </span>hostinger.com.<span class="w"> </span>1h00m00s<span c
 
 
   
+    
+  
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 10, 2024</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
 
 
 
@@ -5313,6 +5333,8 @@ TXT<span class="w"> </span>hostinger.com.<span class="w"> </span>1h00m00s<span c
     
     
       <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/open_in_new_tab.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
