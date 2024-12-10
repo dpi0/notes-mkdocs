@@ -9,7 +9,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/dpi0
 
-    - icon: fontawesome/solid/paper-plane
+    - icon: simple/protonmail
       link: mailto:dpi0.dev@proton.me
 
 theme:
@@ -75,18 +75,19 @@ markdown_extensions:
   - toc:
       permalink: true
       title: On this page
+  # linenums: true # global line numbering for code blocks
   # - pymdownx.highlight:
   # anchor_linenums: true
   # auto_title: true # add lang in the title for all
-  # linenums: true # global line numbering for code blocks
 
 plugins:
   - search
   - tags:
       tags_file: tags.md
-  - git-revision-date-localized
+  - git-revision-date-localized:
+      timezone: Asia/Kolkata
   - open-in-new-tab:
-      add_icon: true
+      add_icon: false
   - glightbox
   - callouts
   # - awesome-pages
