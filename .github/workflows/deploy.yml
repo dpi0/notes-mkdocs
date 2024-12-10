@@ -25,6 +25,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      # added for timvink/mkdocs-git-revision-date-localized-plugin
+      with:
+        fetch-depth: 0
     - name: Set up Python 3.x
       uses: actions/setup-python@v5
       with:
@@ -40,11 +43,13 @@ jobs:
         path: .cache
         restore-keys: |
           mkdocs-material-
-          
+
+    # checks out private notes repo
     - name: Checkout Private Notes Repository
       run: git clone https://${{ secrets.FINE_GRAINED_PAT_FOR_NOTES }}@github.com/dpi0/notes.git notes
-        
-    - name: Copy Private Notes to Content
+
+   # copies all notes to the docs/ dir
+    - name: Copy Private Notes to docs
       run: rsync -av --exclude='.git' notes/ docs/
       
     - name: Deploy Files
