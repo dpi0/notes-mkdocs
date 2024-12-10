@@ -50,7 +50,10 @@ jobs:
 
    # copies all notes to the docs/ dir
     - name: Copy Private Notes to docs
-      run: rsync -av --exclude='.git' notes/ docs/
+      # run: rsync -av --exclude='.git' notes/ docs/
+      # commented out .git for timvink/mkdocs-git-revision-date-localized-plugin to get the proper dates using git
+      run: rsync -av notes/ docs/
+      
       
     - name: Deploy Files
       run: |
