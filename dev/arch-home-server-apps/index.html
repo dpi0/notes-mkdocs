@@ -5825,7 +5825,7 @@ crontab<span class="w"> </span>-e
 <p>have to hardcode the password in the compose smh. used a nice sed command.</p>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<p class="admonition-title">Caution</p>
 <p>make sure to not change even the DB's compose service name ffs. just use the current compose file as it is.</p>
 </div>
 <div class="highlight"><pre><span></span><code><span class="nv">DB_PASSWORD</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>-base64<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-dc<span class="w"> </span><span class="s1">&#39;A-Za-z0-9^*&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-c<span class="w"> </span><span class="m">32</span><span class="k">)</span>

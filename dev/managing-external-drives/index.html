@@ -5249,7 +5249,7 @@ sudo<span class="w"> </span>ntfslabel<span class="w"> </span>/dev/sdXn<span clas
 <p><strong>file system</strong> defines how data is stored, organized, and accessed. manages file storage, directory structures, file metadata (like permissions and timestamps), and data integrity.</p>
 <h3 id="5-verify">5. verify<a class="headerlink" href="#5-verify" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<p class="admonition-title">Caution</p>
 <p>please <strong>use /dev/disk/by-id/NAME_OF_THE_DRIVE</strong> and not LABEL when verifying integrity of partitions or checking partition table.</p>
 <p>as LABEL <strong>refers to PARTITIONS, NOT entire DRIVES</strong> on these tests on <code>parted</code> or <code>gdisk</code> causing confusion. like saying parition has a partition table of loop (when in reality partition table is not inside the label/partition BUT on the whole drive/by-id)</p>
 <p>when simply mounting/umounting, <strong>only then use LABELS</strong></p>
@@ -5354,7 +5354,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
 <p>However, for highly critical data, a shorter commit interval would be safer.</p>
 <h3 id="resize-existing-partitions-on-a-boot-drive">resize existing partitions on a boot drive<a class="headerlink" href="#resize-existing-partitions-on-a-boot-drive" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<p class="admonition-title">Caution</p>
 <p>always umount partitions before resizing and take backups (restic or rsync)</p>
 <p>best way for resizing is via the arch linux iso</p>
 </div>
