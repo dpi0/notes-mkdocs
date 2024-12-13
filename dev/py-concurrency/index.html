@@ -1812,13 +1812,13 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/py-concurrency.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">142.</span> Py Concurrency</h1>
-<h2 id="concurrent-tasks"><span class="enumerate-headings-plugin enumerate-heading-plugin">142.1</span> Concurrent Tasks<a class="headerlink" href="#concurrent-tasks" title="Permanent link">¶</a></h2>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Py Concurrency</h1>
+<h2 id="concurrent-tasks"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> Concurrent Tasks<a class="headerlink" href="#concurrent-tasks" title="Permanent link">¶</a></h2>
 <p>Concurrent tasks refer to two or more tasks executed at the same time. These tasks are independent.</p>
-<h2 id="concurrency"><span class="enumerate-headings-plugin enumerate-heading-plugin">142.2</span> Concurrency<a class="headerlink" href="#concurrency" title="Permanent link">¶</a></h2>
+<h2 id="concurrency"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> Concurrency<a class="headerlink" href="#concurrency" title="Permanent link">¶</a></h2>
 <p>Concurrency is the capability of having more than one computation in progress at the same time. These computations may occur on separate cores or share a single core.</p>
 <p>Concurrency enables a computer to perform many different tasks seemingly simultaneously.</p>
-<h2 id="concurrency-patterns"><span class="enumerate-headings-plugin enumerate-heading-plugin">142.3</span> Concurrency Patterns<a class="headerlink" href="#concurrency-patterns" title="Permanent link">¶</a></h2>
+<h2 id="concurrency-patterns"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> Concurrency Patterns<a class="headerlink" href="#concurrency-patterns" title="Permanent link">¶</a></h2>
 <p>Concurrency patterns describe how data is shared between concurrent tasks:</p>
 <ul>
 <li><strong>Thread Pool</strong></li>
@@ -1826,20 +1826,20 @@
 <li><strong>Pipeline</strong></li>
 <li><strong>Channel</strong></li>
 </ul>
-<h2 id="common-errors-in-concurrent-programming"><span class="enumerate-headings-plugin enumerate-heading-plugin">142.4</span> Common Errors in Concurrent Programming<a class="headerlink" href="#common-errors-in-concurrent-programming" title="Permanent link">¶</a></h2>
+<h2 id="common-errors-in-concurrent-programming"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> Common Errors in Concurrent Programming<a class="headerlink" href="#common-errors-in-concurrent-programming" title="Permanent link">¶</a></h2>
 <p>Concurrency can lead to errors if not handled properly:</p>
 <ul>
 <li><strong>Race conditions</strong> can corrupt data or cause unexpected behavior.</li>
 <li><strong>Deadlocks</strong> can halt the program.</li>
 <li><strong>Livelocks</strong> can prevent tasks from progressing.</li>
 </ul>
-<h2 id="concurrency-vs-parallelism"><span class="enumerate-headings-plugin enumerate-heading-plugin">142.5</span> Concurrency vs. Parallelism<a class="headerlink" href="#concurrency-vs-parallelism" title="Permanent link">¶</a></h2>
+<h2 id="concurrency-vs-parallelism"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> Concurrency vs. Parallelism<a class="headerlink" href="#concurrency-vs-parallelism" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>Concurrency</strong> refers to tasks being in progress simultaneously, but not necessarily executing at the same time.</li>
 <li><strong>Parallelism</strong> means tasks are executed strictly at the same time.</li>
 </ul>
 <p>In summary, concurrency implies that multiple tasks are in process simultaneously, but it does not necessarily mean they are running together in parallel.</p>
-<h2 id="types-of-concurrency"><span class="enumerate-headings-plugin enumerate-heading-plugin">142.6</span> Types of Concurrency<a class="headerlink" href="#types-of-concurrency" title="Permanent link">¶</a></h2>
+<h2 id="types-of-concurrency"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> Types of Concurrency<a class="headerlink" href="#types-of-concurrency" title="Permanent link">¶</a></h2>
 <p>Concurrency is an umbrella term that includes:</p>
 <ul>
 <li><strong>Sequential:</strong> Complete task 1, then complete task 2.</li>
@@ -1847,10 +1847,10 @@
 <li><strong>Interleaved:</strong> Do a little of task 1, then task 2, then back to task 1, and so on.</li>
 <li><strong>Parallel:</strong> Perform task 1 and task 2 at the same time.</li>
 </ul>
-<h2 id="do-we-always-need-parallelism"><span class="enumerate-headings-plugin enumerate-heading-plugin">142.7</span> Do We Always Need Parallelism?<a class="headerlink" href="#do-we-always-need-parallelism" title="Permanent link">¶</a></h2>
+<h2 id="do-we-always-need-parallelism"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> Do We Always Need Parallelism?<a class="headerlink" href="#do-we-always-need-parallelism" title="Permanent link">¶</a></h2>
 <p>We don't always need parallelism. There are cases where we want concurrency without strict parallelism. For example, reading two files on one hard drive concurrently.</p>
-<h2 id="hierarchy-process-threads-coroutines"><span class="enumerate-headings-plugin enumerate-heading-plugin">142.8</span> Hierarchy: Process --&gt; Threads --&gt; Coroutines<a class="headerlink" href="#hierarchy-process-threads-coroutines" title="Permanent link">¶</a></h2>
-<h2 id="asynchronous-programming"><span class="enumerate-headings-plugin enumerate-heading-plugin">142.9</span> Asynchronous Programming<a class="headerlink" href="#asynchronous-programming" title="Permanent link">¶</a></h2>
+<h2 id="hierarchy-process-threads-coroutines"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8</span> Hierarchy: Process --&gt; Threads --&gt; Coroutines<a class="headerlink" href="#hierarchy-process-threads-coroutines" title="Permanent link">¶</a></h2>
+<h2 id="asynchronous-programming"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9</span> Asynchronous Programming<a class="headerlink" href="#asynchronous-programming" title="Permanent link">¶</a></h2>
 <p>Asynchronous programming is a paradigm that does not block.</p>
 <ul>
 <li><strong>Asynchronous</strong> means tasks are performed at different times. The action is requested but not performed immediately; it is performed later.</li>

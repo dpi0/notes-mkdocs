@@ -2201,8 +2201,8 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/arch-home-server-apps.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">57.</span> Arch Home Server Apps</h1>
-<h2 id="install-packages"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.1</span> install packages<a class="headerlink" href="#install-packages" title="Permanent link">¶</a></h2>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Arch Home Server Apps</h1>
+<h2 id="install-packages"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> install packages<a class="headerlink" href="#install-packages" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
 newgrp<span class="w"> </span>docker
 
@@ -2214,10 +2214,10 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w
 <p class="admonition-title">Note</p>
 <p>/root takes about 6-7G on fresh with all apps installed</p>
 </div>
-<h2 id="auth-gitgithub"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.2</span> auth git/github<a class="headerlink" href="#auth-gitgithub" title="Permanent link">¶</a></h2>
+<h2 id="auth-gitgithub"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> auth git/github<a class="headerlink" href="#auth-gitgithub" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>gh<span class="w"> </span>auth<span class="w"> </span>login
 </code></pre></div>
-<h2 id="hibernationsuspend-power-save"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.3</span> hibernation/suspend - power save<a class="headerlink" href="#hibernationsuspend-power-save" title="Permanent link">¶</a></h2>
+<h2 id="hibernationsuspend-power-save"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> hibernation/suspend - power save<a class="headerlink" href="#hibernationsuspend-power-save" title="Permanent link">¶</a></h2>
 <p><a href="https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Hibernation">https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Hibernation</a></p>
 <ul>
 <li><code>sudo systemctl suspend</code>: sleep will save the system state to RAM.</li>
@@ -2225,7 +2225,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w
 <li><code>sudo systemctl suspend-then-hibernate</code>: initially suspends the system to RAM as long as possible, then wakes it with an RTC alarm and hibernates. Saves the machine's state into swap space, but does not power off the machine. Instead, it invokes the default suspend. Therefore, if the battery is not depleted, the system can resume instantly.</li>
 <li><code>sudo systemctl hibernate</code>: Saves the machine's state into swap space and completely powers off the machine</li>
 </ul>
-<h3 id="create-swapfile"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.3.1</span> create swapfile<a class="headerlink" href="#create-swapfile" title="Permanent link">¶</a></h3>
+<h3 id="create-swapfile"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.1</span> create swapfile<a class="headerlink" href="#create-swapfile" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># atleast or more than the size of RAM</span>
 sudo<span class="w"> </span>mkswap<span class="w"> </span>-U<span class="w"> </span>clear<span class="w"> </span>--size<span class="w"> </span>4G<span class="w"> </span>--file<span class="w"> </span>/swapfile
 sudo<span class="w"> </span>swapon<span class="w"> </span>/swapfile
@@ -2245,7 +2245,7 @@ swapon<span class="w"> </span>--show
 
 cat<span class="w"> </span>/etc/fstab
 </code></pre></div>
-<h3 id="configure-initramfs"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.3.2</span> configure initramfs<a class="headerlink" href="#configure-initramfs" title="Permanent link">¶</a></h3>
+<h3 id="configure-initramfs"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.2</span> configure initramfs<a class="headerlink" href="#configure-initramfs" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>vim<span class="w"> </span>/etc/mkinitcpio.conf
 <span class="c1"># add "resume" to the HOOKS line</span>
 <span class="c1"># HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block filesystems resume fsck)</span>
@@ -2253,7 +2253,7 @@ cat<span class="w"> </span>/etc/fstab
 <span class="c1"># rebuild initramfs</span>
 sudo<span class="w"> </span>mkinitcpio<span class="w"> </span>-P
 </code></pre></div>
-<h3 id="for-a-swapfile-get-the-file-offset-and-configure-bootloader"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.3.3</span> for a swapfile, get the file offset and configure bootloader<a class="headerlink" href="#for-a-swapfile-get-the-file-offset-and-configure-bootloader" title="Permanent link">¶</a></h3>
+<h3 id="for-a-swapfile-get-the-file-offset-and-configure-bootloader"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.3</span> for a swapfile, get the file offset and configure bootloader<a class="headerlink" href="#for-a-swapfile-get-the-file-offset-and-configure-bootloader" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>filefrag<span class="w"> </span>-v<span class="w"> </span>/swapfile<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'$1=="0:" {print substr($4, 1, length($4)-2)}'</span>
 
 sudo<span class="w"> </span>vim<span class="w"> </span>/boot/loader/entries/arch.conf
@@ -2264,7 +2264,7 @@ options<span class="w"> </span><span class="nv">root</span><span class="o">=</sp
 ---
 </code></pre></div>
 <p>then try: <code>sudo systemctl hibernate</code> and see it resumes the state or not (haven't tested it on home-server as pointless)</p>
-<h2 id="cron"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.4</span> <code>cron</code><a class="headerlink" href="#cron" title="Permanent link">¶</a></h2>
+<h2 id="cron"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> <code>cron</code><a class="headerlink" href="#cron" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>cronie
 sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>cronie
 sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>cronie
@@ -2276,14 +2276,14 @@ sudo<span class="w"> </span><span class="nv">EDITOR</span><span class="o">=</spa
 <span class="m">15</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/sbin/shutdown<span class="w"> </span>-P<span class="w"> </span>now
 ---
 </code></pre></div>
-<h2 id="caddy"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.5</span> <code>caddy</code><a class="headerlink" href="#caddy" title="Permanent link">¶</a></h2>
+<h2 id="caddy"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> <code>caddy</code><a class="headerlink" href="#caddy" title="Permanent link">¶</a></h2>
 <ul>
 <li>if lose server data or API token expires, have to recreate the token on <a href="https://dash.cloudflare.com/profile/api-tokens">https://dash.cloudflare.com/profile/api-tokens</a></li>
 <li>this token is shown only once</li>
 <li>use the .env and var in it next to the compose file</li>
 <li>and with docker on server with nftables make sure forwarding is set to accept (as it is now)</li>
 </ul>
-<h2 id="cloudflared"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.6</span> <code>cloudflared</code><a class="headerlink" href="#cloudflared" title="Permanent link">¶</a></h2>
+<h2 id="cloudflared"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> <code>cloudflared</code><a class="headerlink" href="#cloudflared" title="Permanent link">¶</a></h2>
 <ul>
 <li>again if lose server data, have to recreate the tunnel head to <a href="https://one.dash.cloudflare.com">https://one.dash.cloudflare.com</a> Networks &gt; Tunnels</li>
 <li>Create a Tunnel, name "home-server"</li>
@@ -2295,14 +2295,14 @@ sudo<span class="w"> </span><span class="nv">EDITOR</span><span class="o">=</spa
 <figure><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://i.ibb.co/sqMp0bT/A-15-19-30-15-Aug.png"><img src="https://i.ibb.co/sqMp0bT/A-15-19-30-15-Aug.png"/></a><figcaption>image</figcaption>
 </figure>
 </p>
-<h2 id="filebrowser"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.7</span> <code>filebrowser</code><a class="headerlink" href="#filebrowser" title="Permanent link">¶</a></h2>
+<h2 id="filebrowser"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> <code>filebrowser</code><a class="headerlink" href="#filebrowser" title="Permanent link">¶</a></h2>
 <p>to mount multiple directories:</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">/home/user0/dir0:/srv/user0</span>
 <span class="l l-Scalar l-Scalar-Plain">/home/user1/dir1:/srv/user1</span>
 </code></pre></div>
 <p>then for the user's <code>scope</code> in filebrower's GUI <strong><code>/user0</code></strong> for <code>user0</code>'s access to dir0, similarly <strong><code>/user1</code></strong> for <code>user1</code>'s access to dir1</p>
-<h2 id="forgejo"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.8</span> <code>forgejo</code><a class="headerlink" href="#forgejo" title="Permanent link">¶</a></h2>
-<h3 id="binary"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.8.1</span> binary<a class="headerlink" href="#binary" title="Permanent link">¶</a></h3>
+<h2 id="forgejo"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8</span> <code>forgejo</code><a class="headerlink" href="#forgejo" title="Permanent link">¶</a></h2>
+<h3 id="binary"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8.1</span> binary<a class="headerlink" href="#binary" title="Permanent link">¶</a></h3>
 <p><a href="https://forgejo.org/docs/latest/admin/installation-binary/">https://forgejo.org/docs/latest/admin/installation-binary/</a></p>
 <div class="highlight"><pre><span></span><code>wget<span class="w"> </span>-O<span class="w"> </span><span class="nv">$HOME</span>/forgejo<span class="w"> </span>https://codeberg.org/forgejo/forgejo/releases/download/v9.0.2/forgejo-9.0.2-linux-amd64
 chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>forgejo
@@ -2354,7 +2354,7 @@ ssh<span class="w"> </span>-T<span class="w"> </span>-p<span class="w"> </span><
 <span class="c1"># for future shell sessions</span>
 <span class="nb">eval</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span>ssh-add<span class="w"> </span><span class="nv">$HOME</span>/.ssh/forgejo-home-server
 </code></pre></div>
-<h3 id="configure-hosts-git-to-use-a-credential-manager-like-pass-for-https"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.8.2</span> configure host's git to use a credential manager like <code>pass</code> for https<a class="headerlink" href="#configure-hosts-git-to-use-a-credential-manager-like-pass-for-https" title="Permanent link">¶</a></h3>
+<h3 id="configure-hosts-git-to-use-a-credential-manager-like-pass-for-https"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8.2</span> configure host's git to use a credential manager like <code>pass</code> for https<a class="headerlink" href="#configure-hosts-git-to-use-a-credential-manager-like-pass-for-https" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>credential.https://git.dpi0.cloud.helper<span class="w"> </span><span class="s1">'!pass git-credential'</span>
 pass<span class="w"> </span>insert<span class="w"> </span>git/git.dpi0.cloud/dpi0
 <span class="c1"># enter password</span>
@@ -2367,8 +2367,8 @@ pass<span class="w"> </span>insert<span class="w"> </span>git/git.dpi0.cloud/dpi
 <span class="c1"># then password will be filled in automatically for the host "https://git.dpi0.cloud" by pass</span>
 gopass<span class="w"> </span>ls
 </code></pre></div>
-<h2 id="woodpecker-ci"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.9</span> <code>woodpecker-ci</code><a class="headerlink" href="#woodpecker-ci" title="Permanent link">¶</a></h2>
-<h3 id="binary_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.9.1</span> binary<a class="headerlink" href="#binary_1" title="Permanent link">¶</a></h3>
+<h2 id="woodpecker-ci"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9</span> <code>woodpecker-ci</code><a class="headerlink" href="#woodpecker-ci" title="Permanent link">¶</a></h2>
+<h3 id="binary_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9.1</span> binary<a class="headerlink" href="#binary_1" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>woodpecker-agent<span class="w"> </span>woodpecker-cli<span class="w"> </span>woodpecker-server
 
 <span class="c1"># OR get direct binaries</span>
@@ -2376,7 +2376,7 @@ wget<span class="w"> </span>-O<span class="w"> </span><span class="nv">$HOME</sp
 wget<span class="w"> </span>-O<span class="w"> </span><span class="nv">$HOME</span>/woodpecker-agent<span class="w"> </span>https://github.com/woodpecker-ci/woodpecker/releases/download/v2.8.0/woodpecker-agent_linux_amd64.tar.gz
 wget<span class="w"> </span>-O<span class="w"> </span><span class="nv">$HOME</span>/woodpecker-cli<span class="w"> </span>https://github.com/woodpecker-ci/woodpecker/releases/download/v2.8.0/woodpecker-cli_linux_amd64.tar.gz
 </code></pre></div>
-<h2 id="gitea"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.10</span> <code>gitea</code><a class="headerlink" href="#gitea" title="Permanent link">¶</a></h2>
+<h2 id="gitea"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.10</span> <code>gitea</code><a class="headerlink" href="#gitea" title="Permanent link">¶</a></h2>
 <ul>
 <li>open port 2222 in nftables</li>
 <li>run container</li>
@@ -2409,7 +2409,7 @@ git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </sp
 <li><code>eval "$(ssh-agent -s)"; ssh-add ~/.ssh/gitea</code></li>
 <li><code>git push -u origin main</code> (-u sets upstream as well) then further on <code>git push origin main</code></li>
 </ul>
-<h4 id="configuring-ssh-keys-with-github"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.10.0.1</span> Configuring SSH Keys with GitHub<a class="headerlink" href="#configuring-ssh-keys-with-github" title="Permanent link">¶</a></h4>
+<h4 id="configuring-ssh-keys-with-github"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.10.0.1</span> Configuring SSH Keys with GitHub<a class="headerlink" href="#configuring-ssh-keys-with-github" title="Permanent link">¶</a></h4>
 <ol>
 <li>Create a key pair:<br/>
 <div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-f<span class="w"> </span>~/.ssh/github-key<span class="w"> </span>-C<span class="w"> </span><span class="s2">"ssh key for github"</span>
@@ -2457,7 +2457,7 @@ crontab<span class="w"> </span>-e
 
 */30<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ssh-add<span class="w"> </span>~/.ssh/github-aws<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>/aws-server/notes<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
 </code></pre></div>
-<h2 id="qbittorent"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.11</span> <code>qBittorent</code><a class="headerlink" href="#qbittorent" title="Permanent link">¶</a></h2>
+<h2 id="qbittorent"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11</span> <code>qBittorent</code><a class="headerlink" href="#qbittorent" title="Permanent link">¶</a></h2>
 <p>add this to <code>run external program</code> section: <code>/bin/bash /scripts/notify.sh "%N" "%L"</code></p>
 <p>make sure the <code>/scripts</code> is mounted properly and <code>notify.sh</code> is present there.</p>
 <p>then for the <code>add_subs.sh</code> script to work, add <code>fd</code> and <code>ffmpeg</code> inside the qb container by building a custom image,</p>
@@ -2471,7 +2471,7 @@ crontab<span class="w"> </span>-e
 </code></pre></div>
 <p>just for reference but add this in <code>notify.sh</code>: <code>/bin/bash /films/Private/subs.sh --dir-name "$TORRENT_NAME" --dir-search-path "/films" --auto-find-sub --only-rarbg-vxt</code><br/>
 `</p>
-<h2 id="immich"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.12</span> <code>immich</code><a class="headerlink" href="#immich" title="Permanent link">¶</a></h2>
+<h2 id="immich"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.12</span> <code>immich</code><a class="headerlink" href="#immich" title="Permanent link">¶</a></h2>
 <ul>
 <li>download the .env file from here <a href="https://immich.app/docs/install/docker-compose">https://immich.app/docs/install/docker-compose</a></li>
 <li>in it change, upload location to <code>/hdd/Immich/upload</code> and database <code>immich_db</code></li>
@@ -2484,7 +2484,7 @@ crontab<span class="w"> </span>-e
 <div class="highlight"><pre><span></span><code>DB_DATA_LOCATION=/hdd/Immich/postgres
 </code></pre></div>
 <p>won't work. as immich fsr needs to set <code>999:root</code> for this directory, as ntfs-3g is unable to set <code>999</code></p>
-<h2 id="dendrite-matrix"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.13</span> <code>dendrite</code> matrix<a class="headerlink" href="#dendrite-matrix" title="Permanent link">¶</a></h2>
+<h2 id="dendrite-matrix"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.13</span> <code>dendrite</code> matrix<a class="headerlink" href="#dendrite-matrix" title="Permanent link">¶</a></h2>
 <p><a href="https://matrix-org.github.io/dendrite/installation/docker/install">https://matrix-org.github.io/dendrite/installation/docker/install</a></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2523,7 +2523,7 @@ sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">"s/POSTGRE
 
 docker<span class="w"> </span>compose<span class="w"> </span>down<span class="p">;</span><span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
 </code></pre></div>
-<h4 id="create-admin-account"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.13.0.1</span> create admin account<a class="headerlink" href="#create-admin-account" title="Permanent link">¶</a></h4>
+<h4 id="create-admin-account"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.13.0.1</span> create admin account<a class="headerlink" href="#create-admin-account" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>vim<span class="w"> </span><span class="nv">$VOLUMES</span>/dendrite/config/dendrite.yaml
 ---
 <span class="s1">'client_api.registration_shared_secret'</span><span class="w"> </span>to<span class="w"> </span><span class="o">(</span>openssl<span class="w"> </span>rand<span class="w"> </span>-base64<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-dc<span class="w"> </span><span class="s1">'A-Za-z0-9'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-c<span class="w"> </span><span class="m">32</span><span class="o">)</span>
@@ -2542,7 +2542,7 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 <p>in order to use mobile clients you have to set this up on a public VPS, it won't work as clients can't access the home network (tailscale is too incov here)</p>
 <p>web clients work just fine tho (for not nice on mobile)</p>
 </div>
-<h4 id="to-allow-open-registration"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.13.0.2</span> to allow open registration<a class="headerlink" href="#to-allow-open-registration" title="Permanent link">¶</a></h4>
+<h4 id="to-allow-open-registration"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.13.0.2</span> to allow open registration<a class="headerlink" href="#to-allow-open-registration" title="Permanent link">¶</a></h4>
 <p><a href="https://matrix-org.github.io/dendrite/administration/registration">https://matrix-org.github.io/dendrite/administration/registration</a></p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>vim<span class="w"> </span><span class="nv">$VOLUMES</span>/dendrite/config/dendrite.yaml
 ---
@@ -2550,8 +2550,8 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 <span class="s1">'client_api.registration_shared_secret'</span><span class="w"> </span>to<span class="w"> </span>openssl<span class="w"> </span>rand<span class="w"> </span>-base64<span class="w"> </span><span class="m">32</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-dc<span class="w"> </span><span class="s1">'A-Za-z0-9'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-c<span class="w"> </span><span class="m">32</span>
 ---
 </code></pre></div>
-<h2 id="filestash"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.14</span> <code>filestash</code><a class="headerlink" href="#filestash" title="Permanent link">¶</a></h2>
-<h3 id="using-sftp-probably-the-easiest"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.14.1</span> using sftp (probably the easiest)<a class="headerlink" href="#using-sftp-probably-the-easiest" title="Permanent link">¶</a></h3>
+<h2 id="filestash"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.14</span> <code>filestash</code><a class="headerlink" href="#filestash" title="Permanent link">¶</a></h2>
+<h3 id="using-sftp-probably-the-easiest"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.14.1</span> using sftp (probably the easiest)<a class="headerlink" href="#using-sftp-probably-the-easiest" title="Permanent link">¶</a></h3>
 <ul>
 <li>create a user <code>sudo useradd -m filestash_sftp</code></li>
 <li>add a strong password: <code>sudo passwd filestash_sftp</code></li>
@@ -2583,7 +2583,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 </ul>
 </li>
 </ul>
-<h2 id="manage-docker-named-volumes"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.15</span> manage <code>docker</code> named volumes<a class="headerlink" href="#manage-docker-named-volumes" title="Permanent link">¶</a></h2>
+<h2 id="manage-docker-named-volumes"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.15</span> manage <code>docker</code> named volumes<a class="headerlink" href="#manage-docker-named-volumes" title="Permanent link">¶</a></h2>
 <p><a href="https://osmosys.co/blog/backup-and-restore-of-docker-volumes-a-step-by-step-guide/">https://osmosys.co/blog/backup-and-restore-of-docker-volumes-a-step-by-step-guide/</a></p>
 <p><strong>a simple command to backup named volume to a destination using tar.gz</strong></p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>volume<span class="w"> </span>ls
@@ -2679,16 +2679,16 @@ docker<span class="w"> </span>volume<span class="w"> </span>ls<span class="w"> <
 <span class="k">done</span>
 </code></pre></div>
 </div>
-<h2 id="cockpit"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.16</span> <code>cockpit</code><a class="headerlink" href="#cockpit" title="Permanent link">¶</a></h2>
+<h2 id="cockpit"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.16</span> <code>cockpit</code><a class="headerlink" href="#cockpit" title="Permanent link">¶</a></h2>
 <p><a href="https://cockpit-project.org/">https://cockpit-project.org/</a></p>
 <p>GUI for system administration</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>cockpit
 sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>cockpit.socket
 </code></pre></div>
-<h2 id="samba"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.17</span> <code>samba</code><a class="headerlink" href="#samba" title="Permanent link">¶</a></h2>
+<h2 id="samba"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.17</span> <code>samba</code><a class="headerlink" href="#samba" title="Permanent link">¶</a></h2>
 <p><a href="https://wiki.archlinux.org/title/Samba#Basic_configuration">https://wiki.archlinux.org/title/Samba#Basic_configuration</a></p>
 <p><a href="https://aws.amazon.com/compare/the-difference-between-nfs-smb/">https://aws.amazon.com/compare/the-difference-between-nfs-smb/</a></p>
-<h3 id="server"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.17.1</span> server<a class="headerlink" href="#server" title="Permanent link">¶</a></h3>
+<h3 id="server"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.17.1</span> server<a class="headerlink" href="#server" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>samba
 sudo<span class="w"> </span>vim<span class="w"> </span>/etc/samba/smb.conf
 
@@ -2734,12 +2734,12 @@ sudo<span class="w"> </span>smbpasswd<span class="w"> </span>-a<span class="w"> 
 
 sudo<span class="w"> </span>pdbedit<span class="w"> </span>-L<span class="w"> </span>-v
 </code></pre></div>
-<h3 id="client"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.17.2</span> client<a class="headerlink" href="#client" title="Permanent link">¶</a></h3>
+<h3 id="client"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.17.2</span> client<a class="headerlink" href="#client" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>gvfs-smb
 </code></pre></div>
-<h2 id="nfs"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.18</span> <code>nfs</code><a class="headerlink" href="#nfs" title="Permanent link">¶</a></h2>
+<h2 id="nfs"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.18</span> <code>nfs</code><a class="headerlink" href="#nfs" title="Permanent link">¶</a></h2>
 <p><a href="https://wiki.archlinux.org/title/NFS#Server_configuration">https://wiki.archlinux.org/title/NFS#Server_configuration</a></p>
-<h3 id="server_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.18.1</span> server<a class="headerlink" href="#server_1" title="Permanent link">¶</a></h3>
+<h3 id="server_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.18.1</span> server<a class="headerlink" href="#server_1" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>nfs-utils
 sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>systemd-timesyncd
 sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>systemd-timesyncd
@@ -2759,7 +2759,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="
 sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nfsv4-server
 sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>nfsv4-server
 </code></pre></div>
-<h3 id="client_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">57.18.2</span> client<a class="headerlink" href="#client_1" title="Permanent link">¶</a></h3>
+<h3 id="client_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.18.2</span> client<a class="headerlink" href="#client_1" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>nfs-utils
 sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>systemd-timesyncd
 sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>systemd-timesyncd

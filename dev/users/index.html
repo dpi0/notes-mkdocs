@@ -1874,8 +1874,8 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/users.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">165.</span> Users</h1>
-<h2 id="info"><span class="enumerate-headings-plugin enumerate-heading-plugin">165.1</span> info<a class="headerlink" href="#info" title="Permanent link">¶</a></h2>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Users</h1>
+<h2 id="info"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> info<a class="headerlink" href="#info" title="Permanent link">¶</a></h2>
 <ul>
 <li>name current user: <code>whoami</code></li>
 <li>get id's of current user: <code>id</code> or <code>id bruh</code></li>
@@ -1898,7 +1898,7 @@ getent<span class="w"> </span>group<span class="w"> </span>musicguys
 musicguys:x:1007:alice,bob
 ---
 </code></pre></div>
-<h3 id="logging-in"><span class="enumerate-headings-plugin enumerate-heading-plugin">165.1.1</span> logging in<a class="headerlink" href="#logging-in" title="Permanent link">¶</a></h3>
+<h3 id="logging-in"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.1</span> logging in<a class="headerlink" href="#logging-in" title="Permanent link">¶</a></h3>
 <p>use the <code>su</code> switch user command for this</p>
 <ul>
 <li>login as another user: <code>su - bruh</code> switch user to bruh <strong>COMMPLETELY</strong> as if bruh directly logged in. don't retain any of the prev user's config or anything.</li>
@@ -1914,10 +1914,10 @@ musicguys:x:1007:alice,bob
 <li>groupadd, addgroup</li>
 <li>groupdel, delgroup</li>
 </ul>
-<h2 id="add"><span class="enumerate-headings-plugin enumerate-heading-plugin">165.2</span> add<a class="headerlink" href="#add" title="Permanent link">¶</a></h2>
+<h2 id="add"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> add<a class="headerlink" href="#add" title="Permanent link">¶</a></h2>
 <p><strong>useradd vs adduser</strong></p>
 <p><strong>adduser</strong> is again friendlier, for a quick and simple user creation, <strong>useradd</strong> is lower level if you have specific requirements for user account creation want to script and automate things</p>
-<h3 id="useradd"><span class="enumerate-headings-plugin enumerate-heading-plugin">165.2.1</span> useradd<a class="headerlink" href="#useradd" title="Permanent link">¶</a></h3>
+<h3 id="useradd"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.1</span> useradd<a class="headerlink" href="#useradd" title="Permanent link">¶</a></h3>
 <ul>
 <li>give user a home directory /home/bruh: <code>sudo useradd -m bruh</code> use -M to NOT give him a home dir</li>
 <li>don't give the user their own group of same name: <code>sudo useradd -N john</code></li>
@@ -1935,7 +1935,7 @@ musicguys:x:1007:alice,bob
 <p>so a good useradd could be:</p>
 <div class="highlight"><pre><span></span><code>sudo useradd -m -s /bin/zsh bruh
 </code></pre></div>
-<h3 id="adduser"><span class="enumerate-headings-plugin enumerate-heading-plugin">165.2.2</span> adduser<a class="headerlink" href="#adduser" title="Permanent link">¶</a></h3>
+<h3 id="adduser"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.2</span> adduser<a class="headerlink" href="#adduser" title="Permanent link">¶</a></h3>
 <p>adduser for mostly DEBIAN based, useradd available everywhere</p>
 <ul>
 <li>--home DIR: Specifies the home directory for the new user. Default is /home/username.</li>
@@ -1948,10 +1948,10 @@ musicguys:x:1007:alice,bob
 <li>--system: Creates a system user. This option does not create a home directory and sets the UID below the normal range (e.g., starting at 100).</li>
 <li>--group: Creates a new group instead of a user.</li>
 </ul>
-<h2 id="delete"><span class="enumerate-headings-plugin enumerate-heading-plugin">165.3</span> delete<a class="headerlink" href="#delete" title="Permanent link">¶</a></h2>
+<h2 id="delete"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> delete<a class="headerlink" href="#delete" title="Permanent link">¶</a></h2>
 <p><strong>userdel vs deluser</strong></p>
 <p>deluser is friendlier and recommended for DEBIAN based systems, imo better than userdel</p>
-<h3 id="deluser"><span class="enumerate-headings-plugin enumerate-heading-plugin">165.3.1</span> deluser<a class="headerlink" href="#deluser" title="Permanent link">¶</a></h3>
+<h3 id="deluser"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.1</span> deluser<a class="headerlink" href="#deluser" title="Permanent link">¶</a></h3>
 <ul>
 <li><code>sudo deluser --remove-home john</code></li>
 <li>remove all files owned by him: <code>sudo deluser --remove-all-files john</code></li>
@@ -1961,15 +1961,15 @@ musicguys:x:1007:alice,bob
 </ul>
 <p>clean up all leftover files</p>
 <p><code>sudo fd / -user john</code></p>
-<h3 id="userdel"><span class="enumerate-headings-plugin enumerate-heading-plugin">165.3.2</span> userdel<a class="headerlink" href="#userdel" title="Permanent link">¶</a></h3>
+<h3 id="userdel"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.2</span> userdel<a class="headerlink" href="#userdel" title="Permanent link">¶</a></h3>
 <ul>
 <li>delete only the user: <code>sudo userdel byebruh</code></li>
 <li>delete user and their home dir: <code>sudo userdel -r byebruh</code></li>
 <li>if this user is logged in somwhere: <code>sudo killall -u byebruh</code></li>
 <li>to forcefull remove: <code>sudo userdel -f foffbruh</code></li>
 </ul>
-<h2 id="usermod"><span class="enumerate-headings-plugin enumerate-heading-plugin">165.4</span> usermod<a class="headerlink" href="#usermod" title="Permanent link">¶</a></h2>
-<h3 id="update"><span class="enumerate-headings-plugin enumerate-heading-plugin">165.4.1</span> update<a class="headerlink" href="#update" title="Permanent link">¶</a></h3>
+<h2 id="usermod"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> usermod<a class="headerlink" href="#usermod" title="Permanent link">¶</a></h2>
+<h3 id="update"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.1</span> update<a class="headerlink" href="#update" title="Permanent link">¶</a></h3>
 <ul>
 <li>change current user's password: <code>passwd</code></li>
 <li>
@@ -1984,7 +1984,7 @@ musicguys:x:1007:alice,bob
 <li>change username: <code>sudo usermod -l bruh_new bruh</code></li>
 <li>change user's home dir: <code>sudo usermod -d /home/bruh_new_dir bruh</code></li>
 </ul>
-<h3 id="lockunlock"><span class="enumerate-headings-plugin enumerate-heading-plugin">165.4.2</span> lock/unlock<a class="headerlink" href="#lockunlock" title="Permanent link">¶</a></h3>
+<h3 id="lockunlock"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.2</span> lock/unlock<a class="headerlink" href="#lockunlock" title="Permanent link">¶</a></h3>
 <ul>
 <li>Lock: <code>sudo usermod -L bruh</code></li>
 <li>Unlock: <code>sudo usermod -U bruh</code></li>

@@ -1796,9 +1796,9 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/restic-backup.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">146.</span> Restic Backup</h1>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Restic Backup</h1>
 <p><a href="https://restic.readthedocs.io/en/latest/040_backup.html#environment-variables">https://restic.readthedocs.io/en/latest/040_backup.html#environment-variables</a></p>
-<h3 id="local"><span class="enumerate-headings-plugin enumerate-heading-plugin">146.0.1</span> local<a class="headerlink" href="#local" title="Permanent link">¶</a></h3>
+<h3 id="local"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.1</span> local<a class="headerlink" href="#local" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>&lt;<span class="w"> </span>/dev/urandom<span class="w"> </span>tr<span class="w"> </span>-dc<span class="w"> </span><span class="s1">'A-Za-z0-9'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-c32<span class="w"> </span>&gt;<span class="w"> </span>~/.password_restic
 chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>~/.password_restic
 
@@ -1859,7 +1859,7 @@ restic<span class="w"> </span>check
 <p>in my testing, REST is about 20-25% faster than SFTP on a 14G (~15,000 files) transfer (54 sftp vs 42 min on https)</p>
 <p>although it takes a second to setup, REST is clearly better (maybe without the HTTPS overhead it could be faster)</p>
 </div>
-<h3 id="using-sftp"><span class="enumerate-headings-plugin enumerate-heading-plugin">146.0.2</span> using SFTP<a class="headerlink" href="#using-sftp" title="Permanent link">¶</a></h3>
+<h3 id="using-sftp"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.2</span> using SFTP<a class="headerlink" href="#using-sftp" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>vim<span class="w"> </span>~/.ssh/config
 ---
 Host<span class="w"> </span>backup_server
@@ -1877,10 +1877,10 @@ restic<span class="w"> </span>init<span class="w"> </span>-r<span class="w"> </s
 restic<span class="w"> </span>--skip-if-unchanged<span class="w"> </span>--tag<span class="o">=</span>server<span class="w"> </span>--tag<span class="o">=</span>dev-go<span class="w"> </span>-vv<span class="w"> </span>backup<span class="w"> </span><span class="nv">$HOME</span>/dev/go
 restic<span class="w"> </span>snapshots
 </code></pre></div>
-<h3 id="using-rclone"><span class="enumerate-headings-plugin enumerate-heading-plugin">146.0.3</span> using rclone<a class="headerlink" href="#using-rclone" title="Permanent link">¶</a></h3>
+<h3 id="using-rclone"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.3</span> using rclone<a class="headerlink" href="#using-rclone" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>restic<span class="w"> </span>-r<span class="w"> </span>rclone:remote_name:dir_path<span class="w"> </span>init
 </code></pre></div>
-<h3 id="using-rest-server"><span class="enumerate-headings-plugin enumerate-heading-plugin">146.0.4</span> using REST server<a class="headerlink" href="#using-rest-server" title="Permanent link">¶</a></h3>
+<h3 id="using-rest-server"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.4</span> using REST server<a class="headerlink" href="#using-rest-server" title="Permanent link">¶</a></h3>
 <ul>
 <li>setup the server using the compose file (NOTE the syntax for the environment var, key: value. the key=value syntax doesn't work here fsr)</li>
 <li>also the flags used in compose are <code>--tls --append-only</code> where <code>tls</code> enables TLS and <code>append-only</code> allows creation of new backups but prevents deletion and modification of existing backups. This can be useful when backing up systems that have a potential of being hacked.</li>
@@ -1976,7 +1976,7 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 remove_variable_from_history<span class="w"> </span>ADMIN_PASSWORD
 </code></pre></div>
 </div>
-<h2 id="backrest"><span class="enumerate-headings-plugin enumerate-heading-plugin">146.1</span> Backrest<a class="headerlink" href="#backrest" title="Permanent link">¶</a></h2>
+<h2 id="backrest"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> Backrest<a class="headerlink" href="#backrest" title="Permanent link">¶</a></h2>
 <ul>
 <li>whatever device contains the source files to be backed up, needs to run the backrest container.</li>
 <li>you can then specify the repo location in the backrest gui, either local or rest or sftp or s3 etc</li>
@@ -1995,7 +1995,7 @@ docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w"
 docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>backrest<span class="w"> </span>cat<span class="w"> </span>/root/.config/rclone/rclone.conf
 </code></pre></div>
 <p>then in the backrest GUI, repo name should be <code>rclone:remote0:testman</code></p>
-<h3 id="forget-and-prune-policy"><span class="enumerate-headings-plugin enumerate-heading-plugin">146.1.1</span> Forget and Prune Policy<a class="headerlink" href="#forget-and-prune-policy" title="Permanent link">¶</a></h3>
+<h3 id="forget-and-prune-policy"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.1</span> Forget and Prune Policy<a class="headerlink" href="#forget-and-prune-policy" title="Permanent link">¶</a></h3>
 <p>say i backup every 2 days. my forget/prune policy</p>
 <ul>
 <li>Keep hourly for 8 hours</li>
@@ -2063,7 +2063,7 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 <li>(Optional): Keep yearly for 2 years</li>
 </ul>
 <p>And run this policy every week.</p>
-<h2 id="windows"><span class="enumerate-headings-plugin enumerate-heading-plugin">146.2</span> Windows<a class="headerlink" href="#windows" title="Permanent link">¶</a></h2>
+<h2 id="windows"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> Windows<a class="headerlink" href="#windows" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">restic_0</span><span class="p">.</span><span class="n">17</span><span class="p">.</span><span class="n">0_windows_amd64</span><span class="p">.</span><span class="n">exe</span> <span class="n">init</span> <span class="p">-</span><span class="n">-repo</span> <span class="n">O</span><span class="p">:</span><span class="err"></span><span class="n">ackup_S</span>
 
 <span class="nv">$env:RESTIC_REPOSITORY</span> <span class="p">=</span> <span class="s2">"O:ackup_S"</span>

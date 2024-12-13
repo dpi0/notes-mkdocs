@@ -1814,7 +1814,7 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/go.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">109.</span> Go</h1>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Go</h1>
 <ul>
 <li>standard library: <a href="https://pkg.go.dev/std">https://pkg.go.dev/std</a></li>
 <li>fmt <a href="https://pkg.go.dev/fmt">https://pkg.go.dev/fmt</a></li>
@@ -1828,11 +1828,11 @@
 <p><a href="https://i.ibb.co/pnbrBFc/U-14-59-03-23-Aug.png">blank package identifier</a></p>
 </li>
 </ul>
-<h2 id="style-guidenaming-conventions"><span class="enumerate-headings-plugin enumerate-heading-plugin">109.1</span> style guide/naming conventions<a class="headerlink" href="#style-guidenaming-conventions" title="Permanent link">¶</a></h2>
+<h2 id="style-guidenaming-conventions"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> style guide/naming conventions<a class="headerlink" href="#style-guidenaming-conventions" title="Permanent link">¶</a></h2>
 <p><a href="https://google.github.io/styleguide/go/best-practices.html">https://google.github.io/styleguide/go/best-practices.html</a></p>
-<h2 id="go-cli"><span class="enumerate-headings-plugin enumerate-heading-plugin">109.2</span> <code>go</code> cli<a class="headerlink" href="#go-cli" title="Permanent link">¶</a></h2>
+<h2 id="go-cli"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> <code>go</code> cli<a class="headerlink" href="#go-cli" title="Permanent link">¶</a></h2>
 <p><a href="https://pkg.go.dev/cmd/go">https://pkg.go.dev/cmd/go</a></p>
-<h2 id="go-get"><span class="enumerate-headings-plugin enumerate-heading-plugin">109.3</span> <code>go get</code><a class="headerlink" href="#go-get" title="Permanent link">¶</a></h2>
+<h2 id="go-get"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> <code>go get</code><a class="headerlink" href="#go-get" title="Permanent link">¶</a></h2>
 <ul>
 <li>The -t flag instructs get to consider modules needed to build tests of packages specified on the command line.</li>
 <li>The -u flag instructs get to update modules providing dependencies of packages named on the command line to use newer minor or patch releases when available.</li>
@@ -1840,7 +1840,7 @@
 <li>When the -t and -u flags are used together, get will update test dependencies as well.</li>
 <li>The -x flag prints commands as they are executed. This is useful for debugging version control commands when a module is downloaded directly from a repository.</li>
 </ul>
-<h3 id="vs-go-install"><span class="enumerate-headings-plugin enumerate-heading-plugin">109.3.1</span> vs <code>go install</code><a class="headerlink" href="#vs-go-install" title="Permanent link">¶</a></h3>
+<h3 id="vs-go-install"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.1</span> vs <code>go install</code><a class="headerlink" href="#vs-go-install" title="Permanent link">¶</a></h3>
 <p>Use go get for:</p>
 <ul>
 <li>Downloading packages without building them</li>
@@ -1853,7 +1853,7 @@
 <li>Compiling packages with custom flags or settings</li>
 <li>Installing packages with specific versions or commits</li>
 </ul>
-<h2 id="module-and-packages"><span class="enumerate-headings-plugin enumerate-heading-plugin">109.4</span> module and packages<a class="headerlink" href="#module-and-packages" title="Permanent link">¶</a></h2>
+<h2 id="module-and-packages"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> module and packages<a class="headerlink" href="#module-and-packages" title="Permanent link">¶</a></h2>
 <ul>
 <li>"module" is the project which contains "packages"</li>
 <li>usually, a go project = 1 go module (with many packages)</li>
@@ -1902,7 +1902,7 @@ func<span class="w"> </span>main<span class="o">()</span><span class="w"> </span
 
 go<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span><span class="c1"># or go run main.go</span>
 </code></pre></div>
-<h3 id="using-external-dependencies"><span class="enumerate-headings-plugin enumerate-heading-plugin">109.4.1</span> using external dependencies<a class="headerlink" href="#using-external-dependencies" title="Permanent link">¶</a></h3>
+<h3 id="using-external-dependencies"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.1</span> using external dependencies<a class="headerlink" href="#using-external-dependencies" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>go<span class="w"> </span>get<span class="w"> </span>github.com/google/uuid
 ---
 module<span class="w"> </span>practice_module
@@ -1918,7 +1918,7 @@ import<span class="w"> </span><span class="o">(</span>
 <span class="o">)</span>
 ---
 </code></pre></div>
-<h2 id="typical-project-structures"><span class="enumerate-headings-plugin enumerate-heading-plugin">109.5</span> typical project structures<a class="headerlink" href="#typical-project-structures" title="Permanent link">¶</a></h2>
+<h2 id="typical-project-structures"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> typical project structures<a class="headerlink" href="#typical-project-structures" title="Permanent link">¶</a></h2>
 <p><a href="https://github.com/golang-standards/project-layout">https://github.com/golang-standards/project-layout</a></p>
 <p><a href="https://gist.github.com/ayoubzulfiqar/9f1a34049332711fddd4d4b2bfd46096">https://gist.github.com/ayoubzulfiqar/9f1a34049332711fddd4d4b2bfd46096</a></p>
 <div class="highlight"><pre><span></span><code>project-root/
@@ -1972,7 +1972,7 @@ import<span class="w"> </span><span class="o">(</span>
 ├──<span class="w"> </span>Makefile
 └──<span class="w"> </span>README.md
 </code></pre></div>
-<h2 id="testing"><span class="enumerate-headings-plugin enumerate-heading-plugin">109.6</span> testing<a class="headerlink" href="#testing" title="Permanent link">¶</a></h2>
+<h2 id="testing"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> testing<a class="headerlink" href="#testing" title="Permanent link">¶</a></h2>
 <p>best resource: https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/hello-world</p>
 <aside class="md-source-file">
 <span class="md-source-file__fact">

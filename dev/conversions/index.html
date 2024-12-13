@@ -1912,14 +1912,14 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/conversions.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">66.</span> File Conversions</h1>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> File Conversions</h1>
 <p>for some reason links to: <a href="../age-encryption-flow/">age-encryption-flow</a></p>
-<h3 id="pdf-to-texthtml"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.1</span> PDF to Text/HTML<a class="headerlink" href="#pdf-to-texthtml" title="Permanent link">¶</a></h3>
+<h3 id="pdf-to-texthtml"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.1</span> PDF to Text/HTML<a class="headerlink" href="#pdf-to-texthtml" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>pdftotext<span class="w"> </span>input.pdf<span class="w"> </span>output.txt
 
 pdftohtml<span class="w"> </span>input.pdf<span class="w"> </span>output.html
 </code></pre></div>
-<h3 id="pdf-to-image"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.2</span> PDF to Image<a class="headerlink" href="#pdf-to-image" title="Permanent link">¶</a></h3>
+<h3 id="pdf-to-image"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.2</span> PDF to Image<a class="headerlink" href="#pdf-to-image" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>poppler-utils
 
 <span class="c1"># jpg</span>
@@ -1931,30 +1931,30 @@ pdftoppm<span class="w"> </span>-png<span class="w"> </span>input.pdf<span class
 <span class="c1"># only the first page</span>
 pdftoppm<span class="w"> </span>-png<span class="w"> </span>-singlefile<span class="w"> </span>input.pdf<span class="w"> </span>output.png
 </code></pre></div>
-<h3 id="image-to-pdf"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.3</span> Image to PDF<a class="headerlink" href="#image-to-pdf" title="Permanent link">¶</a></h3>
+<h3 id="image-to-pdf"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.3</span> Image to PDF<a class="headerlink" href="#image-to-pdf" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>convert<span class="w"> </span>image1.png<span class="w"> </span>image2.jpg<span class="w"> </span>output.pdf
 </code></pre></div>
-<h3 id="extract-text-from-pdf"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.4</span> Extract text from PDF<a class="headerlink" href="#extract-text-from-pdf" title="Permanent link">¶</a></h3>
+<h3 id="extract-text-from-pdf"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.4</span> Extract text from PDF<a class="headerlink" href="#extract-text-from-pdf" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>pdftotext<span class="w"> </span>input.pdf<span class="w"> </span>output.txt
 
 pdftohtml<span class="w"> </span>input.pdf<span class="w"> </span>output.html
 </code></pre></div>
-<h3 id="audio-conversion"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.5</span> Audio conversion<a class="headerlink" href="#audio-conversion" title="Permanent link">¶</a></h3>
+<h3 id="audio-conversion"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.5</span> Audio conversion<a class="headerlink" href="#audio-conversion" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.wav<span class="w"> </span>output.mp3
 </code></pre></div>
-<h3 id="image-conversion"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.6</span> Image conversion<a class="headerlink" href="#image-conversion" title="Permanent link">¶</a></h3>
+<h3 id="image-conversion"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.6</span> Image conversion<a class="headerlink" href="#image-conversion" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>convert<span class="w"> </span>input.png<span class="w"> </span>output.jpg
 </code></pre></div>
-<h3 id="svg-to-rastor-image"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.7</span> SVG to Rastor Image<a class="headerlink" href="#svg-to-rastor-image" title="Permanent link">¶</a></h3>
+<h3 id="svg-to-rastor-image"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.7</span> SVG to Rastor Image<a class="headerlink" href="#svg-to-rastor-image" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>rsvg-convert<span class="w"> </span>-o<span class="w"> </span>output.png<span class="w"> </span>input.svg
 
 <span class="c1"># to pdf</span>
 rsvg-convert<span class="w"> </span>-f<span class="w"> </span>pdf<span class="w"> </span>-o<span class="w"> </span>output.pdf<span class="w"> </span>input.svg
 </code></pre></div>
-<h3 id="extract-audio-from-video"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.8</span> Extract audio from video<a class="headerlink" href="#extract-audio-from-video" title="Permanent link">¶</a></h3>
+<h3 id="extract-audio-from-video"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.8</span> Extract audio from video<a class="headerlink" href="#extract-audio-from-video" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-q:a<span class="w"> </span><span class="m">0</span><span class="w"> </span>-map<span class="w"> </span>a<span class="w"> </span>output.mp3
 </code></pre></div>
-<h3 id="video-conversion"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.9</span> Video conversion<a class="headerlink" href="#video-conversion" title="Permanent link">¶</a></h3>
+<h3 id="video-conversion"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.9</span> Video conversion<a class="headerlink" href="#video-conversion" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># mp4 to gif</span>
 ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-vf<span class="w"> </span><span class="s2">"fps=10,scale=320:-1:flags=lanczos"</span><span class="w"> </span>output.gif
 
@@ -1964,25 +1964,25 @@ ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.avi<span class="w"
 <span class="c1"># mp4 to webm</span>
 ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp4<span class="w"> </span>-c:v<span class="w"> </span>libvpx<span class="w"> </span>-crf<span class="w"> </span><span class="m">10</span><span class="w"> </span>-b:v<span class="w"> </span>1M<span class="w"> </span>-c:a<span class="w"> </span>libvorbis<span class="w"> </span>output.webm
 </code></pre></div>
-<h3 id="text-to-speech"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.10</span> Text to speech<a class="headerlink" href="#text-to-speech" title="Permanent link">¶</a></h3>
+<h3 id="text-to-speech"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.10</span> Text to speech<a class="headerlink" href="#text-to-speech" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>espeak<span class="w"> </span>-f<span class="w"> </span>input.txt<span class="w"> </span>-w<span class="w"> </span>output.wav
 </code></pre></div>
-<h3 id="epub-to-pdf"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.11</span> EPUB to PDF<a class="headerlink" href="#epub-to-pdf" title="Permanent link">¶</a></h3>
+<h3 id="epub-to-pdf"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.11</span> EPUB to PDF<a class="headerlink" href="#epub-to-pdf" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>ebook-convert<span class="w"> </span>input.epub<span class="w"> </span>output.pdf
 </code></pre></div>
-<h3 id="docx-to-pdf"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.12</span> DOCX to PDF<a class="headerlink" href="#docx-to-pdf" title="Permanent link">¶</a></h3>
+<h3 id="docx-to-pdf"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.12</span> DOCX to PDF<a class="headerlink" href="#docx-to-pdf" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>unoconv<span class="w"> </span>-f<span class="w"> </span>pdf<span class="w"> </span>input.docx
 </code></pre></div>
-<h3 id="csv-to-excel"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.13</span> CSV to Excel<a class="headerlink" href="#csv-to-excel" title="Permanent link">¶</a></h3>
+<h3 id="csv-to-excel"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.13</span> CSV to Excel<a class="headerlink" href="#csv-to-excel" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>ssconvert<span class="w"> </span>input.csv<span class="w"> </span>output.xlsx
 </code></pre></div>
-<h3 id="json-to-csv"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.14</span> JSON to CSV<a class="headerlink" href="#json-to-csv" title="Permanent link">¶</a></h3>
+<h3 id="json-to-csv"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.14</span> JSON to CSV<a class="headerlink" href="#json-to-csv" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'(.[0] | keys_unsorted) as $keys | $keys, map([.[ $keys[] ]])[] | @csv'</span><span class="w"> </span>input.json<span class="w"> </span>&gt;<span class="w"> </span>output.csv
 </code></pre></div>
-<h3 id="markdown-to-html"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.15</span> Markdown to HTML<a class="headerlink" href="#markdown-to-html" title="Permanent link">¶</a></h3>
+<h3 id="markdown-to-html"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.15</span> Markdown to HTML<a class="headerlink" href="#markdown-to-html" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>pandoc<span class="w"> </span>input.md<span class="w"> </span>-o<span class="w"> </span>output.html
 </code></pre></div>
-<h3 id="text-to-pdf"><span class="enumerate-headings-plugin enumerate-heading-plugin">66.0.16</span> Text to PDF<a class="headerlink" href="#text-to-pdf" title="Permanent link">¶</a></h3>
+<h3 id="text-to-pdf"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.16</span> Text to PDF<a class="headerlink" href="#text-to-pdf" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>enscript<span class="w"> </span>-p<span class="w"> </span>output.ps<span class="w"> </span>input.txt
 ps2pdf<span class="w"> </span>output.ps<span class="w"> </span>output.pdf
 

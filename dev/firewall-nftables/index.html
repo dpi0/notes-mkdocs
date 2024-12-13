@@ -2380,19 +2380,19 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/firewall-nftables.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">83.</span> Firewall Nftables</h1>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Firewall Nftables</h1>
 <p>Firewalls use a set of rules to control traffic flow:</p>
 <ul>
 <li><strong>Rules:</strong> Define what traffic is allowed or denied. IP addresses, port numbers, protocols, or application types.</li>
 <li><strong>Policies:</strong> collections of rules that define the overall behavior. "deny all" or "allow all." etc</li>
 </ul>
-<h2 id="functions-of-a-firewall"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.1</span> functions of a firewall<a class="headerlink" href="#functions-of-a-firewall" title="Permanent link">¶</a></h2>
+<h2 id="functions-of-a-firewall"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> functions of a firewall<a class="headerlink" href="#functions-of-a-firewall" title="Permanent link">¶</a></h2>
 <ul>
 <li>monitors and controls incoming and outgoing network traffic based on predetermined security rules</li>
 <li>acts as a barrier between a trusted internal network and untrusted external networks, such as the internet</li>
 <li>examines all network traffic and permits or blocks data packets based on a set of security rules</li>
 </ul>
-<h2 id="types-of-firewall"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.2</span> types of firewall<a class="headerlink" href="#types-of-firewall" title="Permanent link">¶</a></h2>
+<h2 id="types-of-firewall"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> types of firewall<a class="headerlink" href="#types-of-firewall" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>Packet-Filtering Firewalls:</strong> inspect packets at a low level, and make decisions based on predefined rules. source, destination IP addresses, ports, and protocols. simple fast. Limited in-depth inspection capabilities; cannot understand the context or content of the packets.</li>
 <li><strong>Stateful Inspection Firewalls:</strong> tracks active connections and makes decisions based on the context of the traffic (whether the packet is part of an existing connection or a new one). More secure than packet-filtering firewalls as they maintain the state of connections. resource intensive.</li>
@@ -2400,7 +2400,7 @@
 <li><strong>Proxy Firewalls:</strong> intermediaries between the user and the internet. latency. Can hide the internal network structure, provide anonymity</li>
 <li><strong>e. Next-Generation Firewalls (NGFWs):</strong> traditional + intrusion prevention, application awareness, and deep packet inspection.</li>
 </ul>
-<h2 id="popular-firewalls"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.3</span> popular firewalls<a class="headerlink" href="#popular-firewalls" title="Permanent link">¶</a></h2>
+<h2 id="popular-firewalls"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> popular firewalls<a class="headerlink" href="#popular-firewalls" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>UFW</strong> (Uncomplicated Firewall) is a front-end for nftables (and iptables)</li>
 <li><strong>iptables</strong> is outdated (part of the netfilter project)</li>
@@ -2411,7 +2411,7 @@
 <p class="admonition-title">Tip</p>
 <p>so know about these two <strong>nftables</strong> first and then <strong>firewalld</strong> then later if needed for compatibility iftables.</p>
 </div>
-<h2 id="nftables"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.4</span> nftables<a class="headerlink" href="#nftables" title="Permanent link">¶</a></h2>
+<h2 id="nftables"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> nftables<a class="headerlink" href="#nftables" title="Permanent link">¶</a></h2>
 <p><strong>most importantly nftables is the ULTIMATE AUTHORITY on linux</strong> for firewall rules.</p>
 <p><strong>so the docker port situation is under control</strong> as you can "open" any port on docker <strong>BUT nftables will be the one to actually provide access</strong></p>
 <ul>
@@ -2420,7 +2420,7 @@
 <li>future of firewalls on linux</li>
 <li>iptables (IPv4), ip6tables (IPv6), arptables (ARP packets), and ebtables (Ethernet frames) command-line tools. Nftables <strong>replaces all four</strong> with a single command-line tool named <strong>nft</strong></li>
 </ul>
-<h3 id="vs-iptables"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.4.1</span> vs. iptables<a class="headerlink" href="#vs-iptables" title="Permanent link">¶</a></h3>
+<h3 id="vs-iptables"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.1</span> vs. iptables<a class="headerlink" href="#vs-iptables" title="Permanent link">¶</a></h3>
 <ul>
 <li>nftables do not have predefined tables or chains, which goes toward improving performance.</li>
 <li>rules can take multiple actions, as opposed to iptables’ limitation to a single action per rule.</li>
@@ -2430,7 +2430,7 @@
 </ul>
 <p>to use exclusively nftables on arch/debian first disable iptables, ip6tables, arptables, ebtables AND ufw. nftables is meant to replace them all. so you don't need to touch anything else except this. <strong>nftables is the ultimate authority for firewalls on arch/debian</strong></p>
 <p>nftables uses <code>/etc/nftables.conf</code> for all configurations. The nftables.service will load rules from that file when started or enabled.</p>
-<h3 id="configure-the-firewall"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.4.2</span> configure the firewall<a class="headerlink" href="#configure-the-firewall" title="Permanent link">¶</a></h3>
+<h3 id="configure-the-firewall"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.2</span> configure the firewall<a class="headerlink" href="#configure-the-firewall" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>--now<span class="w"> </span>ufw
 sudo<span class="w"> </span>ufw<span class="w"> </span>disable
 sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>--now<span class="w"> </span>iptables
@@ -2478,7 +2478,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <p>Both iptables and nftables use the <strong>netfilter</strong> components in the Linux kernel.</p>
 <p><strong>Rules</strong> are stored in <strong>chains</strong>, which in turn are stored in <strong>tables</strong></p>
 <p>chain config is decided by <strong>hooks</strong></p>
-<h2 id="the-ip-family"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5</span> the IP family<a class="headerlink" href="#the-ip-family" title="Permanent link">¶</a></h2>
+<h2 id="the-ip-family"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> the IP family<a class="headerlink" href="#the-ip-family" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>graph TD
     A[INGRESS] --&gt; B[PREROUTING]
     B --&gt; C[ROUTING]
@@ -2509,7 +2509,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <figure><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://people.netfilter.org/pablo/nf-hooks.png"><img src="https://people.netfilter.org/pablo/nf-hooks.png"/></a><figcaption>image</figcaption>
 </figure>
 </p>
-<h3 id="prerouting"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.1</span> PREROUTING<a class="headerlink" href="#prerouting" title="Permanent link">¶</a></h3>
+<h3 id="prerouting"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.1</span> PREROUTING<a class="headerlink" href="#prerouting" title="Permanent link">¶</a></h3>
 <p>
 <figure><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://i.ibb.co/n1FV7bZ/ec2-snat-dnat-drawio-3.png"><img src="https://i.ibb.co/n1FV7bZ/ec2-snat-dnat-drawio-3.png"/></a><figcaption>image</figcaption>
 </figure>
@@ -2517,7 +2517,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <p>prerouting happens after ingress, when packet first arrives at NIC (network interface) it hits the PREROUTING chain</p>
 <p>PREROUTING can be used to modify packet headers, such as changing the destination address (DNAT).</p>
 <p>After PREROUTING, the system makes routing decisions based on the potentially modified packet headers.</p>
-<h4 id="using-prerouting-for-a-simple-dnat"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.1.1</span> using prerouting for a simple DNAT<a class="headerlink" href="#using-prerouting-for-a-simple-dnat" title="Permanent link">¶</a></h4>
+<h4 id="using-prerouting-for-a-simple-dnat"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.1.1</span> using prerouting for a simple DNAT<a class="headerlink" href="#using-prerouting-for-a-simple-dnat" title="Permanent link">¶</a></h4>
 <p>so here i can configure my "router" i.e home server to route packets headed to it on port :4040 by say my phone to a another device connected to it on say port :8080 hosting something.</p>
 <div class="highlight"><pre><span></span><code>table<span class="w"> </span>ip<span class="w"> </span>NAT<span class="w"> </span><span class="o">{</span>
 <span class="w">    </span>chain<span class="w"> </span>PREROUTING<span class="w"> </span><span class="o">{</span>
@@ -2540,7 +2540,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <li><strong>network redirection:</strong> Redirect traffic from one network to another. <code>nft add rule ip nat prerouting ip daddr 192.168.2.0/24 dnat to 192.168.3.0/24</code></li>
 <li><strong>port translation:</strong> Translate ports for incoming traffic. Example: Translate incoming SSH traffic to a different port on the internal server. <code>nft add rule ip nat prerouting tcp dport 2222 dnat to 192.168.1.100:22</code></li>
 </ul>
-<h3 id="postrouting"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.2</span> POSTROUTING<a class="headerlink" href="#postrouting" title="Permanent link">¶</a></h3>
+<h3 id="postrouting"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.2</span> POSTROUTING<a class="headerlink" href="#postrouting" title="Permanent link">¶</a></h3>
 <p>It processes packets after the routing decision has been made but before the packet leaves the network interface</p>
 <p>typically used for Source NAT (SNAT) and Masquerading.</p>
 <p>after postrouting egress is hit.</p>
@@ -2587,7 +2587,7 @@ table<span class="w"> </span>ip<span class="w"> </span>nat<span class="w"> </spa
 <li><strong>Load Balancing:</strong> Modify the source address to ensure return packets go through the correct path, useful in multi-homed networks. Example: Apply SNAT to distribute outgoing traffic across multiple IP addresses. <code>nft add rule ip nat postrouting oifname "eth0" snat to 203.0.113.2-203.0.113.4</code></li>
 <li><strong>Overlapping Networks:</strong> Resolve issues with overlapping IP ranges by modifying source addresses. Example: Change source IP for packets leaving to an overlapping network. <code>nft add rule ip nat postrouting oifname "eth1" snat to 10.0.0.1</code></li>
 </ul>
-<h4 id="creating-a-simple-router-prerouting-and-postrouting"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.2.1</span> creating a simple router, prerouting and postrouting<a class="headerlink" href="#creating-a-simple-router-prerouting-and-postrouting" title="Permanent link">¶</a></h4>
+<h4 id="creating-a-simple-router-prerouting-and-postrouting"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.2.1</span> creating a simple router, prerouting and postrouting<a class="headerlink" href="#creating-a-simple-router-prerouting-and-postrouting" title="Permanent link">¶</a></h4>
 <p><strong>first enable ipv4 packet forwarding on the device</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">"net.ipv4.ip_forward=1"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/sysctl.conf
 sudo<span class="w"> </span>sysctl<span class="w"> </span>-p
@@ -2604,7 +2604,7 @@ sudo<span class="w"> </span>sysctl<span class="w"> </span>-p
 <span class="w">    </span><span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<h3 id="input"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.3</span> INPUT<a class="headerlink" href="#input" title="Permanent link">¶</a></h3>
+<h3 id="input"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.3</span> INPUT<a class="headerlink" href="#input" title="Permanent link">¶</a></h3>
 <p>handles packets destined for the local system itself</p>
 <p>used to control how incoming packets are processed <strong>before they are delivered to local applications or services.</strong></p>
 <p>When a packet arrives at a network interface, it is first processed by the PREROUTING chain (if any NAT rules are to be applied). If the packet is destined for the local machine, it then goes to the INPUT chain</p>
@@ -2620,7 +2620,7 @@ sudo<span class="w"> </span>sysctl<span class="w"> </span>-p
 <div class="highlight"><pre><span></span><code>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>ip<span class="w"> </span>filter<span class="w"> </span>input<span class="w"> </span>tcp<span class="w"> </span>dport<span class="w"> </span><span class="m">22</span><span class="w"> </span>ct<span class="w"> </span>state<span class="w"> </span>new<span class="w"> </span>limit<span class="w"> </span>rate<span class="w"> </span><span class="m">10</span>/minute<span class="w"> </span>burst<span class="w"> </span><span class="m">15</span><span class="w"> </span>packets<span class="w"> </span>accept
 nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>ip<span class="w"> </span>filter<span class="w"> </span>input<span class="w"> </span>tcp<span class="w"> </span>dport<span class="w"> </span><span class="m">22</span><span class="w"> </span>drop
 </code></pre></div>
-<h3 id="forward"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.4</span> FORWARD<a class="headerlink" href="#forward" title="Permanent link">¶</a></h3>
+<h3 id="forward"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.4</span> FORWARD<a class="headerlink" href="#forward" title="Permanent link">¶</a></h3>
 <p>handles packets that are routed through the system <strong>from one network interface to another</strong></p>
 <p><strong>packets are not destined for the local machine but are simply passing through it.</strong></p>
 <p><strong>FORWARD chain is critical for systems acting as routers or gateways, as it allows you to control and filter transit traffic</strong></p>
@@ -2648,7 +2648,7 @@ nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </spa
 nft<span class="w"> </span>add<span class="w"> </span>chain<span class="w"> </span>ip<span class="w"> </span>nat<span class="w"> </span>postrouting<span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="nb">type</span><span class="w"> </span>nat<span class="w"> </span>hook<span class="w"> </span>postrouting<span class="w"> </span>priority<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span><span class="o">}</span>
 nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>ip<span class="w"> </span>nat<span class="w"> </span>postrouting<span class="w"> </span>oifname<span class="w"> </span><span class="s2">"eth0"</span><span class="w"> </span>masquerade
 </code></pre></div>
-<h3 id="output"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.5</span> OUTPUT<a class="headerlink" href="#output" title="Permanent link">¶</a></h3>
+<h3 id="output"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.5</span> OUTPUT<a class="headerlink" href="#output" title="Permanent link">¶</a></h3>
 <p>handles packets that originate from the local system and are sent out to the network</p>
 <p>chain processes outbound traffic generated by local applications or services before it is transmitted over a network interface.</p>
 <p>When a packet is created by a local process, it is first processed by the OUTPUT chain before being sent to the appropriate network interface.</p>
@@ -2677,7 +2677,7 @@ nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </spa
 <div class="highlight"><pre><span></span><code>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>ip<span class="w"> </span>filter<span class="w"> </span>output<span class="w"> </span>tcp<span class="w"> </span>dport<span class="w"> </span><span class="m">80</span><span class="w"> </span>limit<span class="w"> </span>rate<span class="w"> </span><span class="m">20</span>/minute<span class="w"> </span>burst<span class="w"> </span><span class="m">30</span><span class="w"> </span>packets<span class="w"> </span>accept
 nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>ip<span class="w"> </span>filter<span class="w"> </span>output<span class="w"> </span>tcp<span class="w"> </span>dport<span class="w"> </span><span class="m">80</span><span class="w"> </span>drop
 </code></pre></div>
-<h3 id="tables"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.6</span> tables<a class="headerlink" href="#tables" title="Permanent link">¶</a></h3>
+<h3 id="tables"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.6</span> tables<a class="headerlink" href="#tables" title="Permanent link">¶</a></h3>
 <p>Tables hold Chains. Unlike tables in iptables, there are no built-in tables in nftables.</p>
 <p>each table only has one address family and only applies to packets of this family.</p>
 <table>
@@ -2733,7 +2733,7 @@ table<span class="w"> </span>ip6<span class="w"> </span>nat
 <li><strong>delete table</strong> <code>sudo nft delete table family_type table_name</code> this will also remove all chains in that table</li>
 <li><strong>clear/flush all rules from table</strong> <code>sudo nft flush table family_type table_name</code></li>
 </ul>
-<h3 id="chains"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.7</span> chains<a class="headerlink" href="#chains" title="Permanent link">¶</a></h3>
+<h3 id="chains"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.7</span> chains<a class="headerlink" href="#chains" title="Permanent link">¶</a></h3>
 <p>purpose of chains is to hold Rules. Unlike chains in iptables, there are no built-in chains in nftables.</p>
 <p>Chains have two types:</p>
 <ul>
@@ -2821,8 +2821,8 @@ table<span class="w"> </span>ip6<span class="w"> </span>nat
 </tr>
 </tbody>
 </table>
-<h3 id="hooks"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.8</span> hooks<a class="headerlink" href="#hooks" title="Permanent link">¶</a></h3>
-<h4 id="ipv4ipv6inet-address-families-handle-ipv4-ipv6-or-both-types-of-packets"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.8.1</span> IPv4/IPv6/Inet address families handle IPv4, IPv6 or both types of packets<a class="headerlink" href="#ipv4ipv6inet-address-families-handle-ipv4-ipv6-or-both-types-of-packets" title="Permanent link">¶</a></h4>
+<h3 id="hooks"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.8</span> hooks<a class="headerlink" href="#hooks" title="Permanent link">¶</a></h3>
+<h4 id="ipv4ipv6inet-address-families-handle-ipv4-ipv6-or-both-types-of-packets"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.8.1</span> IPv4/IPv6/Inet address families handle IPv4, IPv6 or both types of packets<a class="headerlink" href="#ipv4ipv6inet-address-families-handle-ipv4-ipv6-or-both-types-of-packets" title="Permanent link">¶</a></h4>
 <table>
 <thead>
 <tr>
@@ -2857,7 +2857,7 @@ table<span class="w"> </span>ip6<span class="w"> </span>nat
 </tr>
 </tbody>
 </table>
-<h4 id="arp-address-family"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.8.2</span> ARP address family<a class="headerlink" href="#arp-address-family" title="Permanent link">¶</a></h4>
+<h4 id="arp-address-family"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.8.2</span> ARP address family<a class="headerlink" href="#arp-address-family" title="Permanent link">¶</a></h4>
 <p>handles ARP packets received and sent by the system</p>
 <table>
 <thead>
@@ -2877,10 +2877,10 @@ table<span class="w"> </span>ip6<span class="w"> </span>nat
 </tr>
 </tbody>
 </table>
-<h4 id="bridge-address-family"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.8.3</span> bridge address family<a class="headerlink" href="#bridge-address-family" title="Permanent link">¶</a></h4>
+<h4 id="bridge-address-family"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.8.3</span> bridge address family<a class="headerlink" href="#bridge-address-family" title="Permanent link">¶</a></h4>
 <p>handles Ethernet packets traversing bridge devices</p>
 <p>hooks are identical to IPv4/IPv6/Inet address families above</p>
-<h4 id="netdev-address-family"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.8.4</span> Netdev address family<a class="headerlink" href="#netdev-address-family" title="Permanent link">¶</a></h4>
+<h4 id="netdev-address-family"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.8.4</span> Netdev address family<a class="headerlink" href="#netdev-address-family" title="Permanent link">¶</a></h4>
 <p>handles packets from the device ingress and egress path.</p>
 <p>allows you to filter packets of any ethertype such as ARP, VLAN 802.1q, VLAN 802.1ad (Q-in-Q) as well as IPv4 and IPv6 packets.</p>
 <table>
@@ -2902,7 +2902,7 @@ table<span class="w"> </span>ip6<span class="w"> </span>nat
 </tbody>
 </table>
 <p>order of netfilter and tc is mirrored on ingress versus egress. This ensures symmetry for NAT and other packet mangling.</p>
-<h4 id="all-hook-priorities-and-their-aliases"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.8.5</span> all hook priorities and their aliases<a class="headerlink" href="#all-hook-priorities-and-their-aliases" title="Permanent link">¶</a></h4>
+<h4 id="all-hook-priorities-and-their-aliases"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.8.5</span> all hook priorities and their aliases<a class="headerlink" href="#all-hook-priorities-and-their-aliases" title="Permanent link">¶</a></h4>
 <table>
 <thead>
 <tr>
@@ -3027,7 +3027,7 @@ table<span class="w"> </span>ip6<span class="w"> </span>nat
 | bridge | output | out | 100 | NF_BR_PRI_NAT_DST_OTHER | Destination NAT for non-bridged traffic |<br/>
 | bridge | | 200 | NF_BR_PRI_FILTER_OTHER | Filter operations for non-bridged traffic |<br/>
 | bridge | postrouting | srcnat | 300 | NF_BR_PRI_NAT_SRC | Source NAT for bridge traffic |</p>
-<h3 id="rules"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.9</span> rules<a class="headerlink" href="#rules" title="Permanent link">¶</a></h3>
+<h3 id="rules"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.9</span> rules<a class="headerlink" href="#rules" title="Permanent link">¶</a></h3>
 <p>Rules are either constructed from expressions or statements and are contained within chains.</p>
 <p>Internally, rule locations are always identified by handle and the translation from index happens in userspace</p>
 <p>A comment is a single word or a double-quoted (") multi-word string which can be used to make notes regarding the actual rule.</p>
@@ -3065,7 +3065,7 @@ table<span class="w"> </span>ip6<span class="w"> </span>nat
 </tr>
 </tbody>
 </table>
-<h4 id="add-a-rule-to-a-chain"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.9.1</span> add a rule to a chain<a class="headerlink" href="#add-a-rule-to-a-chain" title="Permanent link">¶</a></h4>
+<h4 id="add-a-rule-to-a-chain"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.9.1</span> add a rule to a chain<a class="headerlink" href="#add-a-rule-to-a-chain" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>family_type<span class="w"> </span>table_name<span class="w"> </span>chain_name<span class="w"> </span>handle<span class="w"> </span>handle_value<span class="w"> </span>statement
 
 sudo<span class="w"> </span>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>filter<span class="w"> </span>output<span class="w"> </span>ip<span class="w"> </span>daddr<span class="w"> </span><span class="m">192</span>.168.0.0/24<span class="w"> </span>accept<span class="w"> </span><span class="c1"># 'ip filter' is assumed</span>
@@ -3075,7 +3075,7 @@ sudo<span class="w"> </span>nft<span class="w"> </span>add<span class="w"> </spa
 <p class="admonition-title">Note</p>
 <p>here the rule is appended at handle_value, which is optional. If not specified, the rule is appended to the end of the chain.</p>
 </div>
-<h5 id="the-handle-switch"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.5.9.1.1</span> The --handle switch<a class="headerlink" href="#the-handle-switch" title="Permanent link">¶</a></h5>
+<h5 id="the-handle-switch"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.9.1.1</span> The --handle switch<a class="headerlink" href="#the-handle-switch" title="Permanent link">¶</a></h5>
 <p>can be added to any valid list command, must be used to determine a rule handle.</p>
 <p>This switch tells nft to list the handles in its output</p>
 <div class="highlight"><pre><span></span><code>table<span class="w"> </span>inet<span class="w"> </span>my_table<span class="w"> </span><span class="o">{</span>
@@ -3092,7 +3092,7 @@ sudo<span class="w"> </span>nft<span class="w"> </span>add<span class="w"> </spa
 <li>If <code>handle_value</code> is not specified, the rule is <strong>prepended</strong> to the chain.</li>
 </ul>
 </div>
-<h2 id="deleting-a-rule-from-a-chain"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.6</span> Deleting a rule from a chain<a class="headerlink" href="#deleting-a-rule-from-a-chain" title="Permanent link">¶</a></h2>
+<h2 id="deleting-a-rule-from-a-chain"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> Deleting a rule from a chain<a class="headerlink" href="#deleting-a-rule-from-a-chain" title="Permanent link">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <ul>
@@ -3115,7 +3115,7 @@ table<span class="w"> </span>inet<span class="w"> </span>my_table<span class="w"
 
 sudo<span class="w"> </span>nft<span class="w"> </span>delete<span class="w"> </span>rule<span class="w"> </span>inet<span class="w"> </span>my_table<span class="w"> </span>my_input<span class="w"> </span>handle<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
-<h3 id="sets"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.6.1</span> sets<a class="headerlink" href="#sets" title="Permanent link">¶</a></h3>
+<h3 id="sets"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6.1</span> sets<a class="headerlink" href="#sets" title="Permanent link">¶</a></h3>
 <p>nftables offers two kinds of set concepts:</p>
 <ul>
 <li><strong>Anonymous sets</strong> are sets that have no specific name. The set members are enclosed in curly braces, with commas to separate elements when creating the rule the set is used in. <code>{ 10.0.0.0/8, 192.168.0.0/16 }</code> Once that rule is removed, the set is removed as well. They cannot be updated, i.e. once an anonymous set is declared it cannot be changed anymore except by removing/altering the rule that uses the anonymous set.</li>
@@ -3218,15 +3218,15 @@ sudo<span class="w"> </span>nft<span class="w"> </span>delete<span class="w"> </
 </tr>
 </tbody>
 </table>
-<h2 id="arp-family"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.7</span> ARP Family<a class="headerlink" href="#arp-family" title="Permanent link">¶</a></h2>
-<h3 id="what-is-arp"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.7.1</span> what is ARP?<a class="headerlink" href="#what-is-arp" title="Permanent link">¶</a></h3>
+<h2 id="arp-family"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> ARP Family<a class="headerlink" href="#arp-family" title="Permanent link">¶</a></h2>
+<h3 id="what-is-arp"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.1</span> what is ARP?<a class="headerlink" href="#what-is-arp" title="Permanent link">¶</a></h3>
 <p>ARP, or Address Resolution Protocol, is a communication protocol used to map IP addresses to MAC addresses within a local network segment</p>
 <p>operates at the data link layer (Layer 2)</p>
 <p>used for comms b/w devices on the same network</p>
 <p><strong>primary purpose of ARP is to discover the MAC address of a device, on the same subnet when only its IP address is known</strong></p>
-<h4 id="how-arp-works"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.7.1.1</span> How ARP Works?<a class="headerlink" href="#how-arp-works" title="Permanent link">¶</a></h4>
+<h4 id="how-arp-works"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.1.1</span> How ARP Works?<a class="headerlink" href="#how-arp-works" title="Permanent link">¶</a></h4>
 <p>ARP operates using two main messages: ARP Request and ARP Reply.</p>
-<h5 id="arp-request"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.7.1.1.1</span> ARP Request:<a class="headerlink" href="#arp-request" title="Permanent link">¶</a></h5>
+<h5 id="arp-request"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.1.1.1</span> ARP Request:<a class="headerlink" href="#arp-request" title="Permanent link">¶</a></h5>
 <p>When a device needs to send data to another device on the same subnet but only knows its IP address, it broadcasts an ARP request packet.</p>
 <p>The ARP request packet contains:</p>
 <ul>
@@ -3234,7 +3234,7 @@ sudo<span class="w"> </span>nft<span class="w"> </span>delete<span class="w"> </
 <li>Sender's IP address</li>
 <li>Target IP address (the IP address for which the sender needs the MAC address)</li>
 </ul>
-<h5 id="arp-reply"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.7.1.1.2</span> ARP Reply:<a class="headerlink" href="#arp-reply" title="Permanent link">¶</a></h5>
+<h5 id="arp-reply"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.1.1.2</span> ARP Reply:<a class="headerlink" href="#arp-reply" title="Permanent link">¶</a></h5>
 <p>The device that has the requested IP address responds with an ARP reply packet.</p>
 <p>The ARP reply packet contains:</p>
 <ul>
@@ -3246,12 +3246,12 @@ sudo<span class="w"> </span>nft<span class="w"> </span>delete<span class="w"> </
 <figure><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://media.geeksforgeeks.org/wp-content/uploads/20240212121108/How-Address-Resolution-Protocol-ARP-works---gif-opt-(1).gif"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20240212121108/How-Address-Resolution-Protocol-ARP-works---gif-opt-(1).gif"/></a><figcaption>gif</figcaption>
 </figure>
 </p>
-<h4 id="scenario"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.7.1.2</span> Scenario<a class="headerlink" href="#scenario" title="Permanent link">¶</a></h4>
+<h4 id="scenario"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.1.2</span> Scenario<a class="headerlink" href="#scenario" title="Permanent link">¶</a></h4>
 <ul>
 <li>Device A wants to communicate with Device B on the same local network.</li>
 <li>Device A knows Device B's IP address but not its MAC address.</li>
 </ul>
-<h4 id="steps"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.7.1.3</span> Steps<a class="headerlink" href="#steps" title="Permanent link">¶</a></h4>
+<h4 id="steps"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.1.3</span> Steps<a class="headerlink" href="#steps" title="Permanent link">¶</a></h4>
 <ol>
 <li><strong>ARP Request</strong>: Device A broadcasts an ARP request asking "Who has IP address X.X.X.X?" to all devices on the local network.</li>
 <li><strong>ARP Reply</strong>: Device B responds directly to Device A with its MAC address.</li>
@@ -3269,20 +3269,20 @@ phone<span class="w">                    </span>ether<span class="w">   </span><
 server<span class="w">                   </span>ether<span class="w">   </span><span class="m">50</span>:b7:c3:df:a2:51<span class="w">   </span>C<span class="w">                     </span>wlp3s0
 ---
 </code></pre></div>
-<h3 id="arp-table"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.7.2</span> ARP Table<a class="headerlink" href="#arp-table" title="Permanent link">¶</a></h3>
-<h4 id="allow-arp-requests-from-ip"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.7.2.1</span> allow arp requests from ip<a class="headerlink" href="#allow-arp-requests-from-ip" title="Permanent link">¶</a></h4>
+<h3 id="arp-table"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.2</span> ARP Table<a class="headerlink" href="#arp-table" title="Permanent link">¶</a></h3>
+<h4 id="allow-arp-requests-from-ip"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.2.1</span> allow arp requests from ip<a class="headerlink" href="#allow-arp-requests-from-ip" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>ip<span class="w"> </span>filter<span class="w"> </span>input<span class="w"> </span>meta<span class="w"> </span>protocol<span class="w"> </span>arp<span class="w"> </span>arp<span class="w"> </span>saddr<span class="w"> </span><span class="m">192</span>.168.1.100<span class="w"> </span>accept
 </code></pre></div>
 <p>This rule allows ARP requests originating from IP address 192.168.1.100 to pass through the input chain of the filter table.</p>
-<h4 id="block-arp-replies"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.7.2.2</span> block arp replies<a class="headerlink" href="#block-arp-replies" title="Permanent link">¶</a></h4>
+<h4 id="block-arp-replies"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.2.2</span> block arp replies<a class="headerlink" href="#block-arp-replies" title="Permanent link">¶</a></h4>
 <p><strong>to prevent arp spoofing</strong></p>
 <div class="highlight"><pre><span></span><code>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>ip<span class="w"> </span>filter<span class="w"> </span>input<span class="w"> </span>meta<span class="w"> </span>protocol<span class="w"> </span>arp<span class="w"> </span>arp<span class="w"> </span>op<span class="w"> </span>reply<span class="w"> </span>drop
 </code></pre></div>
-<h4 id="allow-icmp-echo-requests-from-know-mac-only"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.7.2.3</span> allow ICMP echo requests from know MAC only<a class="headerlink" href="#allow-icmp-echo-requests-from-know-mac-only" title="Permanent link">¶</a></h4>
+<h4 id="allow-icmp-echo-requests-from-know-mac-only"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.2.3</span> allow ICMP echo requests from know MAC only<a class="headerlink" href="#allow-icmp-echo-requests-from-know-mac-only" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>ip<span class="w"> </span>filter<span class="w"> </span>input<span class="w"> </span>meta<span class="w"> </span>protocol<span class="w"> </span>arp<span class="w"> </span>arp<span class="w"> </span>saddr<span class="w"> </span><span class="m">192</span>.168.1.100<span class="w"> </span>accept
 nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>ip<span class="w"> </span>filter<span class="w"> </span>input<span class="w"> </span>ip<span class="w"> </span>protocol<span class="w"> </span>icmp<span class="w"> </span>icmp<span class="w"> </span><span class="nb">type</span><span class="w"> </span>echo-request<span class="w"> </span>meta<span class="w"> </span>arp<span class="w"> </span>valid<span class="w"> </span>accept
 </code></pre></div>
-<h4 id="log-arp-requests"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.7.2.4</span> log ARP requests<a class="headerlink" href="#log-arp-requests" title="Permanent link">¶</a></h4>
+<h4 id="log-arp-requests"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.2.4</span> log ARP requests<a class="headerlink" href="#log-arp-requests" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>ip<span class="w"> </span>filter<span class="w"> </span>input<span class="w"> </span>meta<span class="w"> </span>protocol<span class="w"> </span>arp<span class="w"> </span>log<span class="w"> </span>prefix<span class="w"> </span><span class="s2">"ARP Request: "</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>flush<span class="w"> </span>ruleset
@@ -3323,7 +3323,7 @@ table<span class="w"> </span>inet<span class="w"> </span>filter<span class="w"> 
 <span class="w">    </span><span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<h2 id="iptables"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.8</span> iptables<a class="headerlink" href="#iptables" title="Permanent link">¶</a></h2>
+<h2 id="iptables"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8</span> iptables<a class="headerlink" href="#iptables" title="Permanent link">¶</a></h2>
 <p>has 4 <strong>tables</strong> and all tables have n <strong>chains</strong> within them &amp; you can have 7 targets on a packet <strong>accept, drop, reject, masquerade, log, dnat and snat</strong></p>
 <ul>
 <li><strong>filter table:</strong> this is the firewall and the default table, has 3 chains input, forward and output</li>
@@ -3340,7 +3340,7 @@ table<span class="w"> </span>inet<span class="w"> </span>filter<span class="w"> 
 <li>flush/remove all pre-existing rules: <code>sudo iptables -F -t nat</code> (by default it uses the filter table)</li>
 <li><strong>NOTE:</strong> iptable rules are volatile so they go away on reboot, to save the current rules to a file and restore it later: <code>sudo iptables-save &gt; /etc/iptables/iptables.rules</code> &amp; <code>sudo iptables-restore &lt; /etc/iptables/iptables.rules</code></li>
 </ul>
-<h3 id="adding-rules-to-tables"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.8.1</span> adding rules to tables<a class="headerlink" href="#adding-rules-to-tables" title="Permanent link">¶</a></h3>
+<h3 id="adding-rules-to-tables"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8.1</span> adding rules to tables<a class="headerlink" href="#adding-rules-to-tables" title="Permanent link">¶</a></h3>
 <ul>
 <li>iptables rules are read from the top down</li>
 <li>two ways to add <code>-A</code> append or <code>-I</code> insert. use append only 1 time per system and for all LATER rules use INSERT</li>
@@ -3349,7 +3349,7 @@ table<span class="w"> </span>inet<span class="w"> </span>filter<span class="w"> 
 <li>to allow ssh connections from all ips in /24 subnet: <code>sudo iptables -I INPUT -p tcp --dport 22 -s 192.168.1.0/24 -j ACCEPT</code> here -t = filter by default, -A is append to chain INPUT, -p protocol tcp, -dport destination port 22, -s source my ip, -j target ACCEPT</li>
 <li>as i set the deny all to the bottom of my INPUT chain, <strong>any source who doesn't have my ip</strong> WILL BE BLOCKED!</li>
 </ul>
-<h3 id="deleting-rules"><span class="enumerate-headings-plugin enumerate-heading-plugin">83.8.2</span> deleting rules<a class="headerlink" href="#deleting-rules" title="Permanent link">¶</a></h3>
+<h3 id="deleting-rules"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8.2</span> deleting rules<a class="headerlink" href="#deleting-rules" title="Permanent link">¶</a></h3>
 <ul>
 <li>list all rules and delete 2nd rule: <code>sudo iptables -D INPUT 2</code></li>
 </ul>

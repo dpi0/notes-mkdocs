@@ -1869,9 +1869,9 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/dns-records.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">70.</span> DNS Records</h1>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> DNS Records</h1>
 <p>DNS protocol can contain multiple pieces of data about a domain, each called <strong>records</strong></p>
-<h2 id="a-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">70.1</span> A record<a class="headerlink" href="#a-record" title="Permanent link">¶</a></h2>
+<h2 id="a-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> A record<a class="headerlink" href="#a-record" title="Permanent link">¶</a></h2>
 <p>hold IPv4 addresses <code>dog A google.com</code> --&gt; <code>A google.com. 2m31s   142.250.194.46</code></p>
 <div class="highlight"><pre><span></span><code>dog<span class="w"> </span>A<span class="w"> </span>dpi0.github.io
 A<span class="w"> </span>dpi0.github.io.<span class="w"> </span>1h00m00s<span class="w">   </span><span class="m">185</span>.199.111.153
@@ -1879,7 +1879,7 @@ A<span class="w"> </span>dpi0.github.io.<span class="w"> </span>1h00m00s<span cl
 A<span class="w"> </span>dpi0.github.io.<span class="w"> </span>1h00m00s<span class="w">   </span><span class="m">185</span>.199.108.153
 A<span class="w"> </span>dpi0.github.io.<span class="w"> </span>1h00m00s<span class="w">   </span><span class="m">185</span>.199.109.153
 </code></pre></div>
-<h2 id="aaaa-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">70.2</span> AAAA record<a class="headerlink" href="#aaaa-record" title="Permanent link">¶</a></h2>
+<h2 id="aaaa-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> AAAA record<a class="headerlink" href="#aaaa-record" title="Permanent link">¶</a></h2>
 <p>hold IPv6 addresses <code>dog AAAA google.com</code> --&gt; <code>AAAA google.com. 2m08s   2404:6800:4002:821::200e</code></p>
 <p><strong>CAA record</strong> certification authority authorisation record is used to limit the Certificate Authorities that are allowed to generate certificates for a given domain.</p>
 <div class="highlight"><pre><span></span><code>dog<span class="w"> </span>CAA<span class="w"> </span>google.com
@@ -1898,7 +1898,7 @@ CAA<span class="w"> </span>dpi0.github.io.<span class="w"> </span>59m58s<span cl
 CAA<span class="w"> </span>dpi0.github.io.<span class="w"> </span>59m58s<span class="w">   </span><span class="s2">"issue"</span><span class="w"> </span><span class="s2">"sectigo.com"</span><span class="w"> </span><span class="o">(</span>non-critical<span class="o">)</span>
 CAA<span class="w"> </span>dpi0.github.io.<span class="w"> </span>59m58s<span class="w">   </span><span class="s2">"issue"</span><span class="w"> </span><span class="s2">"digicert.com"</span><span class="w"> </span><span class="o">(</span>non-critical<span class="o">)</span>
 </code></pre></div>
-<h2 id="soa-start-of-authority-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">70.3</span> SOA (start of authority) record<a class="headerlink" href="#soa-start-of-authority-record" title="Permanent link">¶</a></h2>
+<h2 id="soa-start-of-authority-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> SOA (start of authority) record<a class="headerlink" href="#soa-start-of-authority-record" title="Permanent link">¶</a></h2>
 <p>contains information about the DNS zone i.e., hierarchy of domains that makes up the Domain Name System</p>
 <p>SOA records are commonly seen when querying a domain that does not exist — even when the query is not asking for SOA records specifically.</p>
 <p>It contains the following fields, in order:<br/>
@@ -1906,15 +1906,15 @@ CAA<span class="w"> </span>dpi0.github.io.<span class="w"> </span>59m58s<span cl
 <div class="highlight"><pre><span></span><code>dog<span class="w"> </span>SOA<span class="w"> </span>google.com
 SOA<span class="w"> </span>google.com.<span class="w"> </span>55s<span class="w"> </span>A<span class="w"> </span><span class="s2">"ns1.google.com."</span><span class="w"> </span><span class="s2">"dns-admin.google.com."</span><span class="w"> </span><span class="m">639491960</span><span class="w"> </span>15m00s<span class="w"> </span>15m00s<span class="w"> </span>30m00s<span class="w"> </span>1m00s
 </code></pre></div>
-<h2 id="sig-signature-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">70.4</span> SIG (Signature) record<a class="headerlink" href="#sig-signature-record" title="Permanent link">¶</a></h2>
+<h2 id="sig-signature-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> SIG (Signature) record<a class="headerlink" href="#sig-signature-record" title="Permanent link">¶</a></h2>
 <p>used in encryption protocols.</p>
-<h2 id="srv-service-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">70.5</span> SRV (service) record<a class="headerlink" href="#srv-service-record" title="Permanent link">¶</a></h2>
+<h2 id="srv-service-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> SRV (service) record<a class="headerlink" href="#srv-service-record" title="Permanent link">¶</a></h2>
 <p>enhancement of the A and AAAA records, used to return not just addresses, but address–port combinations, again everyone gave SOA</p>
 <div class="highlight"><pre><span></span><code>dog<span class="w"> </span>SRV<span class="w"> </span>srv-example.lookup.dog
 SRV<span class="w"> </span>srv-example.lookup.dog.<span class="w"> </span>1h00m00s<span class="w">   </span><span class="m">10</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="s2">"dns.lookup.dog."</span>:5000
 <span class="w">  </span>A<span class="w"> </span>dns.lookup.dog.<span class="w">           </span>53m49s<span class="w"> </span>+<span class="w"> </span><span class="m">138</span>.68.117.94
 </code></pre></div>
-<h2 id="cname-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">70.6</span> CNAME record<a class="headerlink" href="#cname-record" title="Permanent link">¶</a></h2>
+<h2 id="cname-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> CNAME record<a class="headerlink" href="#cname-record" title="Permanent link">¶</a></h2>
 <p>canonical name it aliases one record to another, works at the domain-name level, rather than the website level if hosted at “example.com”, and you want to also make it available at “example.net”, you could CNAME one domain to another. but if “example.com/mysite”, then you cannot make the alias — there’s no way to add the “/mysite” path.</p>
 <div class="highlight"><pre><span></span><code>dog<span class="w"> </span>CNAME<span class="w"> </span>google.com
 SOA<span class="w"> </span>google.com.<span class="w"> </span>52s<span class="w"> </span>A<span class="w"> </span><span class="s2">"ns1.google.com."</span><span class="w"> </span><span class="s2">"dns-admin.google.com."</span><span class="w"> </span><span class="m">639491960</span><span class="w"> </span>15m00s<span class="w"> </span>15m00s<span class="w"> </span>30m00s<span class="w"> </span>1m00s
@@ -1922,7 +1922,7 @@ SOA<span class="w"> </span>google.com.<span class="w"> </span>52s<span class="w"
 dog<span class="w"> </span>CNAME<span class="w"> </span>dpi0.github.io
 SOA<span class="w"> </span>github.io.<span class="w"> </span>15m00s<span class="w"> </span>A<span class="w"> </span><span class="s2">"ns-1622.awsdns-10.co.uk."</span><span class="w"> </span><span class="s2">"awsdns-hostmaster.amazon.com."</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>2h00m00s<span class="w"> </span>15m00s<span class="w"> </span>14d0h00m00s<span class="w"> </span>1d0h00m00s
 </code></pre></div>
-<h2 id="hinfo-host-information-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">70.7</span> HINFO (host information) record<a class="headerlink" href="#hinfo-host-information-record" title="Permanent link">¶</a></h2>
+<h2 id="hinfo-host-information-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> HINFO (host information) record<a class="headerlink" href="#hinfo-host-information-record" title="Permanent link">¶</a></h2>
 <p>contains the CPU and operating system descriptions, containing the CPU field, and the second containing the OS field</p>
 <div class="highlight"><pre><span></span><code>dog<span class="w"> </span>HINFO<span class="w"> </span>google.com
 SOA<span class="w"> </span>google.com.<span class="w"> </span>35s<span class="w"> </span>A<span class="w"> </span><span class="s2">"ns1.google.com."</span><span class="w"> </span><span class="s2">"dns-admin.google.com."</span><span class="w"> </span><span class="m">639491960</span><span class="w"> </span>15m00s<span class="w"> </span>15m00s<span class="w"> </span>30m00s<span class="w"> </span>1m00s
@@ -1933,12 +1933,12 @@ SOA<span class="w"> </span>lookup.dog.<span class="w"> </span>5m00s<span class="
 dog<span class="w"> </span>HINFO<span class="w"> </span>dpi0.github.io
 SOA<span class="w"> </span>github.io.<span class="w"> </span>15m00s<span class="w"> </span>A<span class="w"> </span><span class="s2">"ns-1622.awsdns-10.co.uk."</span><span class="w"> </span><span class="s2">"awsdns-hostmaster.amazon.com."</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>2h00m00s<span class="w"> </span>15m00s<span class="w"> </span>14d0h00m00s<span class="w"> </span>1d0h00m00s
 </code></pre></div>
-<h2 id="loc-location-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">70.8</span> LOC (location) record<a class="headerlink" href="#loc-location-record" title="Permanent link">¶</a></h2>
+<h2 id="loc-location-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8</span> LOC (location) record<a class="headerlink" href="#loc-location-record" title="Permanent link">¶</a></h2>
 <p>of the ???, google.com and dpi0.github.io again returned an SOA</p>
 <div class="highlight"><pre><span></span><code>dog<span class="w"> </span>LOC<span class="w"> </span>SW1A1AA.find.me.uk
 LOC<span class="w"> </span>SW1A1AA.find.me.uk.<span class="w"> </span>12h00m00s<span class="w">   </span>0e0<span class="w"> </span><span class="o">(</span><span class="m">0</span>,<span class="w"> </span><span class="m">0</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="m">51</span>°30′3.637″<span class="w"> </span>N,<span class="w"> </span><span class="m">0</span>°8′29.624″<span class="w"> </span>W,<span class="w"> </span>0m<span class="o">)</span>
 </code></pre></div>
-<h2 id="mx-mail-exchange-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">70.9</span> MX (mail exchange) record<a class="headerlink" href="#mx-mail-exchange-record" title="Permanent link">¶</a></h2>
+<h2 id="mx-mail-exchange-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9</span> MX (mail exchange) record<a class="headerlink" href="#mx-mail-exchange-record" title="Permanent link">¶</a></h2>
 <p>name of the mail server responsible for the domain.</p>
 <div class="highlight"><pre><span></span><code>dog<span class="w"> </span>MX<span class="w"> </span>google.com
 MX<span class="w"> </span>google.com.<span class="w"> </span>4m47s<span class="w">   </span><span class="m">10</span><span class="w"> </span><span class="s2">"smtp.google.com."</span>
@@ -1952,7 +1952,7 @@ MX<span class="w"> </span>hostinger.com.<span class="w"> </span>4h00m00s<span cl
 
 dpi0.github.io<span class="w"> </span>has<span class="w"> </span>no<span class="w"> </span>mail<span class="w"> </span>server<span class="w"> </span>so<span class="w"> </span>again<span class="w"> </span>gave<span class="w"> </span>a<span class="w"> </span>SOA
 </code></pre></div>
-<h2 id="ns-nameserver-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">70.10</span> NS (nameserver) record<a class="headerlink" href="#ns-nameserver-record" title="Permanent link">¶</a></h2>
+<h2 id="ns-nameserver-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.10</span> NS (nameserver) record<a class="headerlink" href="#ns-nameserver-record" title="Permanent link">¶</a></h2>
 <p>nameservers responsible for the subdomain</p>
 <div class="highlight"><pre><span></span><code>dog<span class="w"> </span>NS<span class="w"> </span>hostinger.com
 NS<span class="w"> </span>hostinger.com.<span class="w"> </span>5h39m22s<span class="w">   </span><span class="s2">"any1.hostinger.com."</span>
@@ -1968,7 +1968,7 @@ dog<span class="w"> </span>NS<span class="w"> </span>fuck.com
 NS<span class="w"> </span>fuck.com.<span class="w"> </span>12h00m00s<span class="w">   </span><span class="s2">"justin.ns.cloudflare.com."</span>
 NS<span class="w"> </span>fuck.com.<span class="w"> </span>12h00m00s<span class="w">   </span><span class="s2">"nola.ns.cloudflare.com."</span>
 </code></pre></div>
-<h2 id="opt-options-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">70.11</span> OPT (options) record<a class="headerlink" href="#opt-options-record" title="Permanent link">¶</a></h2>
+<h2 id="opt-options-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11</span> OPT (options) record<a class="headerlink" href="#opt-options-record" title="Permanent link">¶</a></h2>
 <p>contains extra fields that were added to DNS later</p>
 <div class="highlight"><pre><span></span><code>dog<span class="w"> </span>google.com<span class="w"> </span>--edns<span class="w"> </span>show
 <span class="w">  </span>A<span class="w"> </span>google.com.<span class="w"> </span>2m18s<span class="w">   </span><span class="m">142</span>.250.194.46
@@ -1979,13 +1979,13 @@ dog<span class="w"> </span>hostinger.com<span class="w"> </span>--edns<span clas
 <span class="w">  </span>A<span class="w"> </span>hostinger.com.<span class="w"> </span>3m30s<span class="w">   </span><span class="m">104</span>.16.147.108
 OPT<span class="w">                      </span>+<span class="w"> </span><span class="m">512</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">[]</span>
 </code></pre></div>
-<h2 id="ptr-pointer-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">70.12</span> PTR (pointer) record<a class="headerlink" href="#ptr-pointer-record" title="Permanent link">¶</a></h2>
+<h2 id="ptr-pointer-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.12</span> PTR (pointer) record<a class="headerlink" href="#ptr-pointer-record" title="Permanent link">¶</a></h2>
 <p>holds a pointer to a canonical name. This is most often used for reverse DNS lookups. everyone i tested gave SOA</p>
 <div class="highlight"><pre><span></span><code>dog<span class="w"> </span>PTR<span class="w"> </span><span class="m">1</span>.0.0.127.in-addr.arpa
 PTR<span class="w"> </span><span class="m">1</span>.0.0.127.in-addr.arpa.<span class="w"> </span>0s<span class="w">   </span><span class="s2">"localhost."</span>
 </code></pre></div>
 <p>instead of finding the IP for a domain name, <strong>we are asking for the hostname of an IP</strong> — in this case, the IP address “127.0.0.1” i.e <strong>localhost</strong></p>
-<h2 id="txt-text-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">70.13</span> TXT (text) record<a class="headerlink" href="#txt-text-record" title="Permanent link">¶</a></h2>
+<h2 id="txt-text-record"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.13</span> TXT (text) record<a class="headerlink" href="#txt-text-record" title="Permanent link">¶</a></h2>
 <p>holds arbitrary ASCII text, Internet’s infrastructure, TXT records are used by applications that run atop it, as a way to make short pieces of data available to the public</p>
 <p>use case is to prove that a domain belongs to a particular party, as only somebody in control of the domain can set records on it</p>
 <div class="highlight"><pre><span></span><code>dog<span class="w"> </span>TXT<span class="w"> </span>google.com

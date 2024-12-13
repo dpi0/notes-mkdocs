@@ -2197,7 +2197,7 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/KVM.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">49.</span> KVM</h1>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> KVM</h1>
 <p>Kernel-based Virtual Machine, is a hypervisor built into the Linux kernel</p>
 <p>
 <figure><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://i.ibb.co/7VP0b22/kvm.png"><img src="https://i.ibb.co/7VP0b22/kvm.png"/></a><figcaption>image</figcaption>
@@ -2208,7 +2208,7 @@
 <p>ensure that your kernel includes KVM modules. The module is only available if it is set to y or m. If both steps are successful, proceed with the installation of KVM.</p>
 <p>for arch: <code>zgrep CONFIG_KVM /proc/config.gz</code></p>
 <p>for other distros: <code>zgrep CONFIG_KVM /boot/config-$(uname -r)</code></p>
-<h2 id="kvm-setup"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.1</span> KVM setup<a class="headerlink" href="#kvm-setup" title="Permanent link">¶</a></h2>
+<h2 id="kvm-setup"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> KVM setup<a class="headerlink" href="#kvm-setup" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">"net.ipv4.ip_forward=1"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/sysctl.conf<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>sysctl<span class="w"> </span>-p
 
 sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>qemu-full<span class="w"> </span><span class="se">\</span>
@@ -2225,7 +2225,7 @@ sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> <
 sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>libvirtd
 sudo<span class="w"> </span>virsh<span class="w"> </span>net-start<span class="w"> </span>default
 </code></pre></div>
-<h4 id="intialize-variables"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.1.0.1</span> intialize variables<a class="headerlink" href="#intialize-variables" title="Permanent link">¶</a></h4>
+<h4 id="intialize-variables"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.0.1</span> intialize variables<a class="headerlink" href="#intialize-variables" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nv">VM_NAME</span><span class="o">=</span><span class="s2">"archlinux0"</span>
 
 <span class="nv">VM_ISO</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/Downloads/archlinux-2024.09.01-x86_64.iso"</span>
@@ -2248,13 +2248,13 @@ sudo<span class="w"> </span>virsh<span class="w"> </span>net-start<span class="w
 
 <span class="nv">VM_DISKSIZE</span><span class="o">=</span><span class="m">5</span>
 </code></pre></div>
-<h5 id="setup-disk-space-qcow2-copy-on-write"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.1.0.1.1</span> setup disk space .qcow2 (copy-on-write)<a class="headerlink" href="#setup-disk-space-qcow2-copy-on-write" title="Permanent link">¶</a></h5>
+<h5 id="setup-disk-space-qcow2-copy-on-write"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.0.1.1</span> setup disk space .qcow2 (copy-on-write)<a class="headerlink" href="#setup-disk-space-qcow2-copy-on-write" title="Permanent link">¶</a></h5>
 <div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>dirname<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">VM_DISKIMG</span><span class="si">}</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
 qemu-img<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>qcow2<span class="w"> </span>-o<span class="w"> </span><span class="nv">preallocation</span><span class="o">=</span>metadata<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">VM_DISKIMG</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="si">${</span><span class="nv">VM_DISKSIZE</span><span class="si">}</span>G
 sudo<span class="w"> </span>chown<span class="w"> </span>libvirt-qemu:kvm<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">VM_DISKIMG</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">660</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">VM_DISKIMG</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <p><a href="https://www.reddit.com/r/qemu_kvm/comments/14eeaom/comment/jozfa1o/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button">https://www.reddit.com/r/qemu_kvm/comments/14eeaom/comment/jozfa1o/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button</a></p>
-<h4 id="create-the-vm"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.1.0.2</span> create the vm<a class="headerlink" href="#create-the-vm" title="Permanent link">¶</a></h4>
+<h4 id="create-the-vm"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.0.2</span> create the vm<a class="headerlink" href="#create-the-vm" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>virt-install<span class="w"> </span><span class="se">\</span>
 --name<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">VM_NAME</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 --cdrom<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">VM_ISO</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
@@ -2276,7 +2276,7 @@ sudo<span class="w"> </span>chown<span class="w"> </span>libvirt-qemu:kvm<span c
 --cpu<span class="w"> </span>host-passthrough<span class="w"> </span><span class="se">\</span>
 --boot<span class="w"> </span><span class="nv">loader</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">VM_UEFI_FW</span><span class="si">}</span><span class="s2">"</span>,loader.readonly<span class="o">=</span>yes,loader.type<span class="o">=</span>pflash
 </code></pre></div>
-<h4 id="then-go-into-the-vm-gui"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.1.0.3</span> then go into the vm GUI<a class="headerlink" href="#then-go-into-the-vm-gui" title="Permanent link">¶</a></h4>
+<h4 id="then-go-into-the-vm-gui"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.0.3</span> then go into the vm GUI<a class="headerlink" href="#then-go-into-the-vm-gui" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code>virt-manager<span class="w"> </span>--connect<span class="w"> </span>qemu:///system<span class="w"> </span>--show-domain-console<span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">VM_NAME</span><span class="si">}</span><span class="s2">"</span>
 
 ip<span class="w"> </span>-c<span class="w"> </span>a
@@ -2288,13 +2288,13 @@ passwd
 <p><strong>debian</strong></p>
 <p>just use the GUI installer</p>
 <p>and install the <strong>ssh</strong> &amp; <strong>standard system utilities</strong></p>
-<h4 id="then-in-your-terminal"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.1.0.4</span> then in your terminal<a class="headerlink" href="#then-in-your-terminal" title="Permanent link">¶</a></h4>
+<h4 id="then-in-your-terminal"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.0.4</span> then in your terminal<a class="headerlink" href="#then-in-your-terminal" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code>virsh<span class="w"> </span>net-dhcp-leases<span class="w"> </span>default
 ssh<span class="w"> </span>root@ip.of.the.vm
 curl<span class="w"> </span>-s<span class="w"> </span>https://bin.dpi0.cloud/kvm<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s1">'</span>
 <span class="s1">'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
 </code></pre></div>
-<h4 id="finally-after-the-installation"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.1.0.5</span> finally after the installation<a class="headerlink" href="#finally-after-the-installation" title="Permanent link">¶</a></h4>
+<h4 id="finally-after-the-installation"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.0.5</span> finally after the installation<a class="headerlink" href="#finally-after-the-installation" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code>virsh<span class="w"> </span>net-dhcp-leases<span class="w"> </span>default
 </code></pre></div>
 <p><strong>debian</strong></p>
@@ -2320,7 +2320,7 @@ curl<span class="w"> </span>-s<span class="w"> </span>bin.dpi0.cloud/zsh<span cl
 <p>debian mini takes about 2.3G</p>
 <p>debian standard takes about 4-4.5G</p>
 </div>
-<h4 id="to-manage-vms-using-virsh"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.1.0.6</span> to manage vms using virsh<a class="headerlink" href="#to-manage-vms-using-virsh" title="Permanent link">¶</a></h4>
+<h4 id="to-manage-vms-using-virsh"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.0.6</span> to manage vms using virsh<a class="headerlink" href="#to-manage-vms-using-virsh" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code>virsh<span class="w"> </span>list<span class="w"> </span>--all
 virsh<span class="w"> </span>start<span class="w"> </span>&lt;vm_name&gt;
 virsh<span class="w"> </span>shutdown<span class="w"> </span>&lt;vm_name&gt;
@@ -2355,7 +2355,7 @@ virsh<span class="w"> </span>net-undefine<span class="w"> </span>&lt;network_nam
 <p class="admonition-title">Tip</p>
 <p>as these VMs are on the same network named "default" and IPs "192.168.122.xyz" they can comm with each other</p>
 </div>
-<h3 id="clone-vm-manually"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.1.1</span> clone vm manually<a class="headerlink" href="#clone-vm-manually" title="Permanent link">¶</a></h3>
+<h3 id="clone-vm-manually"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.1</span> clone vm manually<a class="headerlink" href="#clone-vm-manually" title="Permanent link">¶</a></h3>
 <p>make sure to have a fresh vm with no unnecessary configurations</p>
 <div class="highlight"><pre><span></span><code><span class="nv">BASE_VM</span><span class="o">=</span><span class="s2">"archlinux-base-fresh"</span>
 <span class="nv">NEW_VM</span><span class="o">=</span><span class="s2">"archlinux-new"</span>
@@ -2378,12 +2378,12 @@ virsh<span class="w"> </span>list<span class="w"> </span>--all
 virsh<span class="w"> </span>start<span class="w"> </span><span class="si">${</span><span class="nv">NEW_VM</span><span class="si">}</span>
 virt-manager<span class="w"> </span>--connect<span class="w"> </span>qemu:///system<span class="w"> </span>--show-domain-console<span class="w"> </span><span class="si">${</span><span class="nv">VM_NAME</span><span class="si">}</span>
 </code></pre></div>
-<h2 id="to-backup-vm"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.2</span> to backup VM<a class="headerlink" href="#to-backup-vm" title="Permanent link">¶</a></h2>
+<h2 id="to-backup-vm"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> to backup VM<a class="headerlink" href="#to-backup-vm" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>virsh<span class="w"> </span>list<span class="w"> </span>--all
 virsh<span class="w"> </span>dumpxml<span class="w"> </span>&lt;vm-name&gt;<span class="w"> </span>&gt;<span class="w"> </span>&lt;vm-name&gt;.xml
 cp<span class="w"> </span>/data/VMs/archlinux.qcow2<span class="w"> </span>/path/to/backup/&lt;vm-disk&gt;.qcow2
 </code></pre></div>
-<h2 id="to-restore-a-vm"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.3</span> to restore a VM<a class="headerlink" href="#to-restore-a-vm" title="Permanent link">¶</a></h2>
+<h2 id="to-restore-a-vm"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> to restore a VM<a class="headerlink" href="#to-restore-a-vm" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>virsh<span class="w"> </span>define<span class="w"> </span>/path/to/backup/&lt;vm-name&gt;.xml
 sudo<span class="w"> </span>chown<span class="w"> </span>libvirt-qemu:kvm<span class="w"> </span>/path/to/backup/&lt;vm-disk&gt;.qcow2
 sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">660</span><span class="w"> </span>/path/to/backup/&lt;vm-disk&gt;.qcow2
@@ -2392,12 +2392,12 @@ virsh<span class="w"> </span>list<span class="w"> </span>--ALL
 virt-viewer<span class="w"> </span>&lt;vm-name&gt;
 </code></pre></div>
 <hr/>
-<h2 id="theory"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.4</span> Theory<a class="headerlink" href="#theory" title="Permanent link">¶</a></h2>
-<h2 id="install-virtio-drivers-for-windows-guests"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.5</span> Install VirtIO Drivers for Windows Guests<a class="headerlink" href="#install-virtio-drivers-for-windows-guests" title="Permanent link">¶</a></h2>
+<h2 id="theory"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> Theory<a class="headerlink" href="#theory" title="Permanent link">¶</a></h2>
+<h2 id="install-virtio-drivers-for-windows-guests"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> Install VirtIO Drivers for Windows Guests<a class="headerlink" href="#install-virtio-drivers-for-windows-guests" title="Permanent link">¶</a></h2>
 <p>VirtIO drivers are para-virtualized drivers for KVM guests. Unfortunately, Microsoft does not provide VirtIO drivers. If you want to create a Microsoft Windows virtual machine, you need to download the virtio-win.iso image, which contains the VirtIO drivers for the Windows operating system.</p>
-<h2 id="virt-install"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.6</span> virt-install<a class="headerlink" href="#virt-install" title="Permanent link">¶</a></h2>
+<h2 id="virt-install"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> virt-install<a class="headerlink" href="#virt-install" title="Permanent link">¶</a></h2>
 <p>virt-install is a command line tool that simplifies the process of creating a virtual machine.</p>
-<h2 id="virt-manager"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.7</span> virt-manager<a class="headerlink" href="#virt-manager" title="Permanent link">¶</a></h2>
+<h2 id="virt-manager"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> virt-manager<a class="headerlink" href="#virt-manager" title="Permanent link">¶</a></h2>
 <p>virt-manager is a GUI that can be used to create, destroy, stop, start and edit virtual machines and configure the virtual environment (such as virtual networks etc).</p>
 <ul>
 <li>is the graphical user interface for libvirt</li>
@@ -2407,9 +2407,9 @@ virt-viewer<span class="w"> </span>&lt;vm-name&gt;
 <li>there's's really no reason to work with bare qemu, it is nice to have Libvirt on top of it</li>
 <li>It can also use other virtualizers than QEMU, like Xen for example. It has an API, a scripting interface, a command line interface, a network connection interface, and...</li>
 </ul>
-<h2 id="libvirt"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.8</span> libvirt<a class="headerlink" href="#libvirt" title="Permanent link">¶</a></h2>
+<h2 id="libvirt"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8</span> libvirt<a class="headerlink" href="#libvirt" title="Permanent link">¶</a></h2>
 <p>is "glue" layer/library that arranges and manages QEMU sessions, its disks, the networks, and so on.</p>
-<h2 id="qemu"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.9</span> QEMU<a class="headerlink" href="#qemu" title="Permanent link">¶</a></h2>
+<h2 id="qemu"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9</span> QEMU<a class="headerlink" href="#qemu" title="Permanent link">¶</a></h2>
 <ul>
 <li>QEMU = software emulation, KVM = Hardware emulation</li>
 <li>QEMU uses emulation; KVM uses processor extensions (HVM) for virtualization.</li>
@@ -2422,7 +2422,7 @@ virt-viewer<span class="w"> </span>&lt;vm-name&gt;
 <li>QEMU is an CLI and userspace program to manage emulation and virtualization and can use KVM when it creates vitual machines.</li>
 <li>QEMU can use other hypervisors like Xen or KVM to use CPU extensions (HVM) for virtualization</li>
 </ul>
-<h2 id="kvm-vs-wsl"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.10</span> kvm vs wsl<a class="headerlink" href="#kvm-vs-wsl" title="Permanent link">¶</a></h2>
+<h2 id="kvm-vs-wsl"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.10</span> kvm vs wsl<a class="headerlink" href="#kvm-vs-wsl" title="Permanent link">¶</a></h2>
 <ul>
 <li>WSL is unique in its approach and doesn't fit neatly into the Type 1 or Type 2 hypervisor classifications</li>
 <li>WSL 2 introduces a full Linux kernel running in a lightweight VM. WSL 1 was just a compatibliity layer for running programs and had no virtualization.</li>
@@ -2432,23 +2432,23 @@ virt-viewer<span class="w"> </span>&lt;vm-name&gt;
 <li>KVM: Near-native performance with hardware-assisted virtualization but with higher resource overhead. WSL</li>
 <li>You can think of WSL2 as a miniVM with features turned off and features striped away, but has better integration with Windows</li>
 </ul>
-<h2 id="hypervisors"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.11</span> Hypervisors<a class="headerlink" href="#hypervisors" title="Permanent link">¶</a></h2>
+<h2 id="hypervisors"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11</span> Hypervisors<a class="headerlink" href="#hypervisors" title="Permanent link">¶</a></h2>
 <p>hypervisor, also known as a Virtual Machine Monitor (VMM), creates and runs virtual machines. abstracts the physical hardware from the VMs and executes their procecesses</p>
-<h3 id="type-1-bare-metal-hypervisors"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.11.1</span> Type 1 (Bare-Metal) Hypervisors<a class="headerlink" href="#type-1-bare-metal-hypervisors" title="Permanent link">¶</a></h3>
+<h3 id="type-1-bare-metal-hypervisors"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11.1</span> Type 1 (Bare-Metal) Hypervisors<a class="headerlink" href="#type-1-bare-metal-hypervisors" title="Permanent link">¶</a></h3>
 <p>run directly on the host's hardware to control the hardware Microsoft Hyper-V, Xen and ### KVM + QEMU<br/>
 . Xen is open source and is used by Amazon EC2. Better performance, efficiency, security and stability due to less layers b/w hardware. useful for Enterprise data centers, cloud service providers where performance and security is key</p>
-<h3 id="type-2-hosted-hypervisors"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.11.2</span> Type 2 (Hosted) Hypervisors<a class="headerlink" href="#type-2-hosted-hypervisors" title="Permanent link">¶</a></h3>
+<h3 id="type-2-hosted-hypervisors"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11.2</span> Type 2 (Hosted) Hypervisors<a class="headerlink" href="#type-2-hosted-hypervisors" title="Permanent link">¶</a></h3>
 <p>rely on the host OS for device support and management VMware Workstation, VirtualBox, suitable for desktop and development environments</p>
-<h3 id="core-components-of-hypervisors"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.11.3</span> core components of hypervisors<a class="headerlink" href="#core-components-of-hypervisors" title="Permanent link">¶</a></h3>
-<h4 id="hypervisor-kernel"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.11.3.1</span> Hypervisor Kernel<a class="headerlink" href="#hypervisor-kernel" title="Permanent link">¶</a></h4>
+<h3 id="core-components-of-hypervisors"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11.3</span> core components of hypervisors<a class="headerlink" href="#core-components-of-hypervisors" title="Permanent link">¶</a></h3>
+<h4 id="hypervisor-kernel"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11.3.1</span> Hypervisor Kernel<a class="headerlink" href="#hypervisor-kernel" title="Permanent link">¶</a></h4>
 <p>The core component that directly interacts with the hardware, managing CPU, memory, and I/O resources.</p>
-<h4 id="virtual-machine-manager"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.11.3.2</span> Virtual Machine Manager<a class="headerlink" href="#virtual-machine-manager" title="Permanent link">¶</a></h4>
+<h4 id="virtual-machine-manager"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11.3.2</span> Virtual Machine Manager<a class="headerlink" href="#virtual-machine-manager" title="Permanent link">¶</a></h4>
 <p>Manages the creation, execution, and deletion of VMs, handling resource allocation and scheduling</p>
-<h4 id="device-emulation"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.11.3.3</span> Device Emulation<a class="headerlink" href="#device-emulation" title="Permanent link">¶</a></h4>
+<h4 id="device-emulation"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11.3.3</span> Device Emulation<a class="headerlink" href="#device-emulation" title="Permanent link">¶</a></h4>
 <p>Provides virtualized hardware devices to the guest VMs, including virtual disks, network interfaces, and graphic adapters.</p>
-<h4 id="vm-monitor-vmm"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.11.3.4</span> VM Monitor (VMM)<a class="headerlink" href="#vm-monitor-vmm" title="Permanent link">¶</a></h4>
+<h4 id="vm-monitor-vmm"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11.3.4</span> VM Monitor (VMM)<a class="headerlink" href="#vm-monitor-vmm" title="Permanent link">¶</a></h4>
 <p>Ensures the isolation and security of VMs, managing their execution state and context switching between VMs.</p>
-<h3 id="how-hypervisor-worky"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.11.4</span> how hypervisor worky?<a class="headerlink" href="#how-hypervisor-worky" title="Permanent link">¶</a></h3>
+<h3 id="how-hypervisor-worky"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11.4</span> how hypervisor worky?<a class="headerlink" href="#how-hypervisor-worky" title="Permanent link">¶</a></h3>
 <ul>
 <li>hypervisor allocates physical resources (CPU, memory, I/O) to each VM based on policies and configurations</li>
 <li>ensures that VMs do not interfere with each other</li>
@@ -2458,9 +2458,9 @@ virt-viewer<span class="w"> </span>&lt;vm-name&gt;
 <li>emulation allows VMs to interact with virtual devices, which the hypervisor maps to the physical hardware.</li>
 </ul>
 <p><a href="https://www.linux-kvm.org/page/FAQ#General_KVM_information">https://www.linux-kvm.org/page/FAQ#General_KVM_information</a></p>
-<h3 id="list-of-supported-oses-in-kvm"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.11.5</span> list of supported OSes in KVM:<a class="headerlink" href="#list-of-supported-oses-in-kvm" title="Permanent link">¶</a></h3>
+<h3 id="list-of-supported-oses-in-kvm"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11.5</span> list of supported OSes in KVM:<a class="headerlink" href="#list-of-supported-oses-in-kvm" title="Permanent link">¶</a></h3>
 <p><a href="https://www.linux-kvm.org/page/FAQ#General_KVM_information">https://www.linux-kvm.org/page/FAQ#General_KVM_information</a></p>
-<h2 id="kvm-vs-xen"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.12</span> kvm vs xen<a class="headerlink" href="#kvm-vs-xen" title="Permanent link">¶</a></h2>
+<h2 id="kvm-vs-xen"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.12</span> kvm vs xen<a class="headerlink" href="#kvm-vs-xen" title="Permanent link">¶</a></h2>
 <ul>
 <li>Xen is an external hypervisor; it assumes control of the machine and divides resources among guests. On the other hand, KVM is part of Linux and uses the regular Linux scheduler and memory management</li>
 <li>KVM is much smaller and simpler</li>
@@ -2468,7 +2468,7 @@ virt-viewer<span class="w"> </span>&lt;vm-name&gt;
 <li>Xen also allows running modified operating systems on non-hvm x86 processors using a technique called paravirtualization</li>
 <li>KVM does not support paravirtualization for CPU but may provide for device drivers</li>
 </ul>
-<h2 id="setup-kvm-network-nftables-config-otherwise-just-use-ufw"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.13</span> Setup KVM network (nftables) config - otherwise just use UFW<a class="headerlink" href="#setup-kvm-network-nftables-config-otherwise-just-use-ufw" title="Permanent link">¶</a></h2>
+<h2 id="setup-kvm-network-nftables-config-otherwise-just-use-ufw"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.13</span> Setup KVM network (nftables) config - otherwise just use UFW<a class="headerlink" href="#setup-kvm-network-nftables-config-otherwise-just-use-ufw" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>ufw
 
 sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
@@ -2485,7 +2485,7 @@ sudo<span class="w"> </span>ufw<span class="w"> </span>route<span class="w"> </s
 sudo<span class="w"> </span>ufw<span class="w"> </span>status<span class="w"> </span>verbose
 sudo<span class="w"> </span>ufw<span class="w"> </span>reload
 </code></pre></div>
-<h3 id="when-using-kvm-in-nat-network-mode"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.13.1</span> when using KVM in <code>NAT</code> network mode<a class="headerlink" href="#when-using-kvm-in-nat-network-mode" title="Permanent link">¶</a></h3>
+<h3 id="when-using-kvm-in-nat-network-mode"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.13.1</span> when using KVM in <code>NAT</code> network mode<a class="headerlink" href="#when-using-kvm-in-nat-network-mode" title="Permanent link">¶</a></h3>
 <p>essentially i need to allow myself to <strong>route</strong> the traffic b/w kvm and the router.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">"net.ipv4.ip_forward=1"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/sysctl.conf
 sudo<span class="w"> </span>sysctl<span class="w"> </span>-p
@@ -2579,13 +2579,13 @@ table<span class="w"> </span>ip<span class="w"> </span>NAT_KVM<span class="w"> <
 │                                                                   │
 └───────────────────────────────────────────────────────────────────┘
 </code></pre></div>
-<h3 id="route-traffic-from-lan-devices-to-kvm"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.13.2</span> Route traffic from LAN devices to KVM<a class="headerlink" href="#route-traffic-from-lan-devices-to-kvm" title="Permanent link">¶</a></h3>
+<h3 id="route-traffic-from-lan-devices-to-kvm"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.13.2</span> Route traffic from LAN devices to KVM<a class="headerlink" href="#route-traffic-from-lan-devices-to-kvm" title="Permanent link">¶</a></h3>
 <p>there are two ways of achieving this:</p>
 <ol>
 <li>configure the host to act as router, open a port in KVM, DNAT host port to KVM port and SNAT masquerade via host's public interface</li>
 <li>create a custom bridge (wireless --&gt; ethernet OR ethernet --&gt; ethernet) to bring KVM to my LAN subnet</li>
 </ol>
-<h4 id="configure-the-host-to-act-as-a-router"><span class="enumerate-headings-plugin enumerate-heading-plugin">49.13.2.1</span> configure the host to act as a router<a class="headerlink" href="#configure-the-host-to-act-as-a-router" title="Permanent link">¶</a></h4>
+<h4 id="configure-the-host-to-act-as-a-router"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.13.2.1</span> configure the host to act as a router<a class="headerlink" href="#configure-the-host-to-act-as-a-router" title="Permanent link">¶</a></h4>
 <p>in the previously created nftables config add this</p>
 <div class="highlight"><pre><span></span><code>table<span class="w"> </span>ip<span class="w"> </span>HOST_FILTER<span class="w"> </span><span class="o">{</span>
 <span class="w">        </span><span class="c1"># open port 8010 for either all devices or for a single one</span>

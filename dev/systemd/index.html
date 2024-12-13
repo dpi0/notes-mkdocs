@@ -1817,7 +1817,7 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/systemd.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">154.</span> Systemd</h1>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Systemd</h1>
 <p><a href="https://wiki.archlinux.org/title/Systemd#Using_units">https://wiki.archlinux.org/title/Systemd#Using_units</a></p>
 <p>this is the first process that starts up all services. <strong>PID 1</strong></p>
 <p>used to bootstrap the user space and manage system processes after booting.</p>
@@ -1837,7 +1837,7 @@
 <li>(.timer): Schedules tasks to run at specific times or intervals.</li>
 <li>(.socket): Manages socket-based activation for services.</li>
 </ul>
-<h2 id="why"><span class="enumerate-headings-plugin enumerate-heading-plugin">154.1</span> why?<a class="headerlink" href="#why" title="Permanent link">¶</a></h2>
+<h2 id="why"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> why?<a class="headerlink" href="#why" title="Permanent link">¶</a></h2>
 <ol>
 <li>paralleziation: Systemd starts services in parallel, reducing boot times by utilizing more efficient dependency handling and service management</li>
 <li>Uses dependencies to control the order in which services start and stop. Units can specify Requires=, After=, Before=, etc., to manage these dependencies.</li>
@@ -1845,14 +1845,14 @@
 <li>Automatically restarts crashed services and monitors service status, ensuring higher system reliability.</li>
 <li>Captures and restores the current state of the system, facilitating state management and recovery.</li>
 </ol>
-<h2 id="but"><span class="enumerate-headings-plugin enumerate-heading-plugin">154.2</span> but!<a class="headerlink" href="#but" title="Permanent link">¶</a></h2>
+<h2 id="but"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> but!<a class="headerlink" href="#but" title="Permanent link">¶</a></h2>
 <ol>
 <li>Complexity: Can be difficult to understand for new users.</li>
 <li>Controversial: Some in the Linux community prefer simpler init systems.</li>
 <li>restricts user choice</li>
 <li>kinda goes against unix philosophy, do one thing good</li>
 </ol>
-<h2 id="key-components"><span class="enumerate-headings-plugin enumerate-heading-plugin">154.3</span> Key Components<a class="headerlink" href="#key-components" title="Permanent link">¶</a></h2>
+<h2 id="key-components"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> Key Components<a class="headerlink" href="#key-components" title="Permanent link">¶</a></h2>
 <ul>
 <li>systemd: The main daemon that manages services and other units.</li>
 <li>systemctl: The command-line utility to interact with systemd.</li>
@@ -1863,8 +1863,8 @@
 <li>localed: Manages locale settings.</li>
 <li>hostnamed: Manages the system hostname.</li>
 </ul>
-<h2 id="core-concepts"><span class="enumerate-headings-plugin enumerate-heading-plugin">154.4</span> Core Concepts<a class="headerlink" href="#core-concepts" title="Permanent link">¶</a></h2>
-<h3 id="1-units"><span class="enumerate-headings-plugin enumerate-heading-plugin">154.4.1</span> 1. Units<a class="headerlink" href="#1-units" title="Permanent link">¶</a></h3>
+<h2 id="core-concepts"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> Core Concepts<a class="headerlink" href="#core-concepts" title="Permanent link">¶</a></h2>
+<h3 id="1-units"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.1</span> 1. Units<a class="headerlink" href="#1-units" title="Permanent link">¶</a></h3>
 <p>units are the resources that systemd manages</p>
 <p>units can be anything service, target, timers, mounts etc.</p>
 <ul>
@@ -1880,7 +1880,7 @@
 <li>Slice Units: Organize system processes into hierarchical groups (e.g., user.slice).</li>
 <li>Scope Units: Group externally created processes (e.g., myscope.scope).</li>
 </ul>
-<h3 id="2-unit-files"><span class="enumerate-headings-plugin enumerate-heading-plugin">154.4.2</span> 2. Unit Files<a class="headerlink" href="#2-unit-files" title="Permanent link">¶</a></h3>
+<h3 id="2-unit-files"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.2</span> 2. Unit Files<a class="headerlink" href="#2-unit-files" title="Permanent link">¶</a></h3>
 <p><a href="https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files">https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files</a></p>
 <p><a href="https://wiki.archlinux.org/title/Systemd#Writing_unit_files">https://wiki.archlinux.org/title/Systemd#Writing_unit_files</a></p>
 <p>present in <code>/etc/systemd/system/</code><br/>
@@ -1891,7 +1891,7 @@ Systemd starts and stops services using service units. A service unit file typic
 
 .<span class="w"> </span>.<span class="w"> </span>.
 </code></pre></div>
-<h4 id="unit-section-directives"><span class="enumerate-headings-plugin enumerate-heading-plugin">154.4.2.1</span> [Unit] Section Directives<a class="headerlink" href="#unit-section-directives" title="Permanent link">¶</a></h4>
+<h4 id="unit-section-directives"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.2.1</span> [Unit] Section Directives<a class="headerlink" href="#unit-section-directives" title="Permanent link">¶</a></h4>
 <ul>
 <li>
 <p>Description=: This directive can be used to describe the name and basic functionality of the unit. It is returned by various systemd tools, so it is good to set this to something short, specific, and informative.</p>
@@ -1924,7 +1924,7 @@ Systemd starts and stops services using service units. A service unit file typic
 <p>Assert...=: Similar to the directives that start with Condition, these directives check for different aspects of the running environment to decide whether the unit should activate. However, unlike the Condition directives, a negative result causes a failure with this directive.</p>
 </li>
 </ul>
-<h4 id="install-section-directives"><span class="enumerate-headings-plugin enumerate-heading-plugin">154.4.2.2</span> [Install] Section directives<a class="headerlink" href="#install-section-directives" title="Permanent link">¶</a></h4>
+<h4 id="install-section-directives"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.2.2</span> [Install] Section directives<a class="headerlink" href="#install-section-directives" title="Permanent link">¶</a></h4>
 <ul>
 <li>
 <p>WantedBy=: The WantedBy= directive is the most common way to specify how a unit should be enabled. This directive allows you to specify a dependency relationship in a similar way to the Wants= directive does in the [Unit] section. The difference is that this directive is included in the ancillary unit allowing the primary unit listed to remain relatively clean. When a unit with this directive is enabled, a directory will be created within /etc/systemd/system named after the specified unit with .wants appended to the end. Within this, a symbolic link to the current unit will be created, creating the dependency. For instance, if the current unit has WantedBy=multi-user.target, a directory called multi-user.target.wants will be created within /etc/systemd/system (if not already available) and a symbolic link to the current unit will be placed within. Disabling this unit removes the link and removes the dependency relationship.</p>

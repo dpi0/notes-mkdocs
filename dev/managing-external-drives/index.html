@@ -1885,8 +1885,8 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/managing-external-drives.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">127.</span> Managing External Drives</h1>
-<h3 id="format-label-and-name-external-drives"><span class="enumerate-headings-plugin enumerate-heading-plugin">127.0.1</span> format, label and name external drives<a class="headerlink" href="#format-label-and-name-external-drives" title="Permanent link">¶</a></h3>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Managing External Drives</h1>
+<h3 id="format-label-and-name-external-drives"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.1</span> format, label and name external drives<a class="headerlink" href="#format-label-and-name-external-drives" title="Permanent link">¶</a></h3>
 <p>refer: <a href="https://wiki.archlinux.org/title/File_systems">https://wiki.archlinux.org/title/File_systems</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1915,7 +1915,7 @@
 <p class="admonition-title">Note</p>
 <p>the file system overhead for ext4 is 5%. so for 931.5 GiB, about <strong>870G</strong> is actually available!</p>
 </div>
-<h4 id="tldr"><span class="enumerate-headings-plugin enumerate-heading-plugin">127.0.1.1</span> TLDR;<a class="headerlink" href="#tldr" title="Permanent link">¶</a></h4>
+<h4 id="tldr"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.1.1</span> TLDR;<a class="headerlink" href="#tldr" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>umount<span class="w"> </span>/dev/disk/by-label/LABEL
 
 <span class="nb">export</span><span class="w"> </span><span class="nv">DRIVE</span><span class="o">=</span>/dev/disk/by-id/NAME
@@ -1940,7 +1940,7 @@ sudo<span class="w"> </span>ntfsfix<span class="w"> </span><span class="nv">$DRI
 sudo<span class="w"> </span>parted<span class="w"> </span><span class="nv">$DRIVE</span><span class="w"> </span>print
 sudo<span class="w"> </span>fdisk<span class="w"> </span>-l<span class="w"> </span><span class="nv">$DRIVE</span>
 </code></pre></div>
-<h4 id="1-completely-clear-the-drive"><span class="enumerate-headings-plugin enumerate-heading-plugin">127.0.1.2</span> 1. completely clear the drive<a class="headerlink" href="#1-completely-clear-the-drive" title="Permanent link">¶</a></h4>
+<h4 id="1-completely-clear-the-drive"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.1.2</span> 1. completely clear the drive<a class="headerlink" href="#1-completely-clear-the-drive" title="Permanent link">¶</a></h4>
 <p><a href="https://wiki.archlinux.org/title/Securely_wipe_disk">https://wiki.archlinux.org/title/Securely_wipe_disk</a></p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>umount<span class="w"> </span>/dev/disk/by-label/LABEL
 
@@ -1968,7 +1968,7 @@ shred<span class="w"> </span>--verbose<span class="w"> </span>--random-source<sp
 sudo<span class="w"> </span>fdisk<span class="w"> </span>-l<span class="w"> </span>/dev/disk/by-id/NAME
 </code></pre></div>
 <p><strong>Do not overwrite an SSD with random data if you plan to use TRIM</strong></p>
-<h4 id="2-add-the-partition-table-gpt-or-mbr"><span class="enumerate-headings-plugin enumerate-heading-plugin">127.0.1.3</span> 2. add the partition table (GPT or MBR)<a class="headerlink" href="#2-add-the-partition-table-gpt-or-mbr" title="Permanent link">¶</a></h4>
+<h4 id="2-add-the-partition-table-gpt-or-mbr"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.1.3</span> 2. add the partition table (GPT or MBR)<a class="headerlink" href="#2-add-the-partition-table-gpt-or-mbr" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>umount<span class="w"> </span>/dev/disk/by-id/NAME_OF_THE_DRIVE
 
 sudo<span class="w"> </span>gdisk<span class="w"> </span>/dev/disk/by-id/NAME
@@ -1981,7 +1981,7 @@ sudo<span class="w"> </span>gdisk<span class="w"> </span>/dev/disk/by-id/NAME
 <p>does not have redundancy built into its structure, which means that if the MBR is corrupted, the entire partitioning scheme may be compromised.</p>
 <p>lacks advanced features offered by GPT, such as partition alignment, larger partition sizes, and partition type GUIDs.</p>
 <p><strong>use GPT</strong> for boot drives or when redundancy and data integrity are essential, large disks over 2 TB, requiring many partitions (more than four), better performance on SSDs due to partition alignmentm.</p>
-<h4 id="3-add-partitions"><span class="enumerate-headings-plugin enumerate-heading-plugin">127.0.1.4</span> 3. add partitions<a class="headerlink" href="#3-add-partitions" title="Permanent link">¶</a></h4>
+<h4 id="3-add-partitions"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.1.4</span> 3. add partitions<a class="headerlink" href="#3-add-partitions" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># here i will have 1 partition for the entire drive</span>
 sudo<span class="w"> </span>gdisk<span class="w"> </span>/dev/disk/by-id/NAME
 <span class="c1"># n (create a new partition)</span>
@@ -1996,7 +1996,7 @@ sudo<span class="w"> </span>gdisk<span class="w"> </span>/dev/disk/by-id/NAME
 </code></pre></div>
 <p><strong>partitions</strong> are logical division within a storage device. treated as a separate "drive" by operating systems.</p>
 <p>Each partition can then be <strong>formatted with a file system and mounted separately</strong>.</p>
-<h4 id="4-add-a-filesystem-to-single-partition-at-a-time-not-the-whole-disk"><span class="enumerate-headings-plugin enumerate-heading-plugin">127.0.1.5</span> 4. add a filesystem to single partition at a time (NOT THE WHOLE DISK!)<a class="headerlink" href="#4-add-a-filesystem-to-single-partition-at-a-time-not-the-whole-disk" title="Permanent link">¶</a></h4>
+<h4 id="4-add-a-filesystem-to-single-partition-at-a-time-not-the-whole-disk"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.1.5</span> 4. add a filesystem to single partition at a time (NOT THE WHOLE DISK!)<a class="headerlink" href="#4-add-a-filesystem-to-single-partition-at-a-time-not-the-whole-disk" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code>lsblk<span class="w"> </span>-f
 <span class="c1"># YOU ABSOLUTE DUMBASS</span>
 <span class="c1"># you were using the /dev/disk/by-id WRONG when adding filesystems on the partition</span>
@@ -2024,7 +2024,7 @@ sudo<span class="w"> </span>fatlabel<span class="w"> </span>/dev/sdXn<span class
 sudo<span class="w"> </span>ntfslabel<span class="w"> </span>/dev/sdXn<span class="w"> </span><span class="s2">"NTFSDrive"</span>
 </code></pre></div>
 <p><strong>file system</strong> defines how data is stored, organized, and accessed. manages file storage, directory structures, file metadata (like permissions and timestamps), and data integrity.</p>
-<h3 id="5-verify"><span class="enumerate-headings-plugin enumerate-heading-plugin">127.0.2</span> 5. verify<a class="headerlink" href="#5-verify" title="Permanent link">¶</a></h3>
+<h3 id="5-verify"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.2</span> 5. verify<a class="headerlink" href="#5-verify" title="Permanent link">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Caution</p>
 <p>please <strong>use /dev/disk/by-id/NAME_OF_THE_DRIVE</strong> and not LABEL when verifying integrity of partitions or checking partition table.</p>
@@ -2045,7 +2045,7 @@ sudo<span class="w"> </span>fdisk<span class="w"> </span>-l<span class="w"> </sp
 sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/32G
 sudo<span class="w"> </span>mount<span class="w"> </span>/dev/disk/by-label/32G<span class="w"> </span>/mnt/32G
 </code></pre></div>
-<h3 id="check-drive-health"><span class="enumerate-headings-plugin enumerate-heading-plugin">127.0.3</span> check drive health<a class="headerlink" href="#check-drive-health" title="Permanent link">¶</a></h3>
+<h3 id="check-drive-health"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.3</span> check drive health<a class="headerlink" href="#check-drive-health" title="Permanent link">¶</a></h3>
 <p><strong>SMART</strong> Self-Monitoring, Analysis, and Reporting Technology</p>
 <p><a href="https://wiki.archlinux.org/title/S.M.A.R.T.#View_test_results">https://wiki.archlinux.org/title/S.M.A.R.T.#View_test_results</a></p>
 <p><a href="https://ioflood.com/blog/smartctl-linux-command/">https://ioflood.com/blog/smartctl-linux-command/</a></p>
@@ -2064,14 +2064,14 @@ sudo<span class="w"> </span>smartctl<span class="w"> </span>-t<span class="w"> <
 
 sudo<span class="w"> </span>badblocks<span class="w"> </span>-v<span class="w"> </span>/dev/disk/by-id
 </code></pre></div>
-<h3 id="auto-mount-drivespartitions-on-boot"><span class="enumerate-headings-plugin enumerate-heading-plugin">127.0.4</span> auto mount drives/partitions on boot<a class="headerlink" href="#auto-mount-drivespartitions-on-boot" title="Permanent link">¶</a></h3>
+<h3 id="auto-mount-drivespartitions-on-boot"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.4</span> auto mount drives/partitions on boot<a class="headerlink" href="#auto-mount-drivespartitions-on-boot" title="Permanent link">¶</a></h3>
 <p><a href="https://wiki.archlinux.org/title/Fstab">https://wiki.archlinux.org/title/Fstab</a></p>
 <div class="highlight"><pre><span></span><code>UUID=abc /     ext4   defaults  0      1
 UUID=xyz /home ext4   defaults  0      2
 </code></pre></div>
 <p><dump> is checked by the dump(8) utility. This field is usually set to 0, which disables the check.</dump></p>
 <p><fsck> sets the order for file system checks at boot time; see fsck(8). <strong>For the root device it should be 1</strong>. For other partitions it should be <strong>2, or 0 to disable checking.</strong></fsck></p>
-<h4 id="external-devices"><span class="enumerate-headings-plugin enumerate-heading-plugin">127.0.4.1</span> external devices<a class="headerlink" href="#external-devices" title="Permanent link">¶</a></h4>
+<h4 id="external-devices"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.4.1</span> external devices<a class="headerlink" href="#external-devices" title="Permanent link">¶</a></h4>
 <p><a href="https://wiki.archlinux.org/title/Fstab#External_devices">https://wiki.archlinux.org/title/Fstab#External_devices</a></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># get the UUID</span>
 lsblk<span class="w"> </span>-f
@@ -2087,7 +2087,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
 <p><code>x-systemd.device-timeout=5</code> is a systemd-specific option that sets a timeout for <strong>how long systemd should wait</strong> for the device to become available <strong>before giving up.</strong></p>
 <p>The <code>nofail</code> option is best combined with the <code>x-systemd.device-timeout</code> option. This is because the <strong>default device timeout is 90 seconds</strong>, so a disconnected external device with only nofail will make your boot take 90 seconds longer, unless you reconfigure the timeout as shown.</p>
 <p>Make sure not to set the timeout to 0, as this translates to infinite timeout.</p>
-<h4 id="recommended-mount-options-by-bad3r"><span class="enumerate-headings-plugin enumerate-heading-plugin">127.0.4.2</span> recommended mount options by <code>Bad3r</code><a class="headerlink" href="#recommended-mount-options-by-bad3r" title="Permanent link">¶</a></h4>
+<h4 id="recommended-mount-options-by-bad3r"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.4.2</span> recommended mount options by <code>Bad3r</code><a class="headerlink" href="#recommended-mount-options-by-bad3r" title="Permanent link">¶</a></h4>
 <p><a href="https://github.com/Bad3r/Optimal-Storage-Mount-Options/blob/main/README.md#recommended-mount-flags-ext4">https://github.com/Bad3r/Optimal-Storage-Mount-Options/blob/main/README.md#recommended-mount-flags-ext4</a></p>
 <p><a href="https://reddit.dpi0.cloud/r/sysadmin/comments/1fjamf0/recommended_mount_flags_for_storage_devices_on/">https://reddit.dpi0.cloud/r/sysadmin/comments/1fjamf0/recommended_mount_flags_for_storage_devices_on/</a></p>
 <div class="highlight"><pre><span></span><code>defaults,relatime,barrier<span class="o">=</span><span class="m">1</span>,data<span class="o">=</span>ordered,errors<span class="o">=</span>remount-ro,commit<span class="o">=</span><span class="m">60</span>
@@ -2129,7 +2129,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
 <p>this comes with a risk: any power loss or disconnection means up to 1 minute of unsaved data may be lost.</p>
 <p>For HDDs that aren’t frequently disconnected, this option can be an effective balance of performance and data safety.</p>
 <p>However, for highly critical data, a shorter commit interval would be safer.</p>
-<h3 id="resize-existing-partitions-on-a-boot-drive"><span class="enumerate-headings-plugin enumerate-heading-plugin">127.0.5</span> resize existing partitions on a boot drive<a class="headerlink" href="#resize-existing-partitions-on-a-boot-drive" title="Permanent link">¶</a></h3>
+<h3 id="resize-existing-partitions-on-a-boot-drive"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.5</span> resize existing partitions on a boot drive<a class="headerlink" href="#resize-existing-partitions-on-a-boot-drive" title="Permanent link">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Caution</p>
 <p>always umount partitions before resizing and take backups (restic or rsync)</p>
@@ -2139,7 +2139,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
 <li>use <code>cfdisk /dev/sda</code> then resize</li>
 <li>if expanded a partition, then have to fill up the space as well for that <code>e2fsck -f /dev/sdaX</code> then <code>resize2fs /dev/sdaX</code></li>
 </ol>
-<h3 id="luks-encryption-on-an-external-drive"><span class="enumerate-headings-plugin enumerate-heading-plugin">127.0.6</span> LUKS Encryption on an external drive<a class="headerlink" href="#luks-encryption-on-an-external-drive" title="Permanent link">¶</a></h3>
+<h3 id="luks-encryption-on-an-external-drive"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.6</span> LUKS Encryption on an external drive<a class="headerlink" href="#luks-encryption-on-an-external-drive" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/zero<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/disk/by-id/NAME<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1M<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress
 
 sudo<span class="w"> </span>gdisk<span class="w"> </span>/dev/disk/by-id/NAME

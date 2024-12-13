@@ -1889,21 +1889,21 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/file-encryption.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">80.</span> File Encryption</h1>
-<h2 id="advice"><span class="enumerate-headings-plugin enumerate-heading-plugin">80.1</span> advice<a class="headerlink" href="#advice" title="Permanent link">¶</a></h2>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> File Encryption</h1>
+<h2 id="advice"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> advice<a class="headerlink" href="#advice" title="Permanent link">¶</a></h2>
 <ul>
 <li>use <strong>LUKS</strong> to protect against someone stealing your shut down computer</li>
 <li>use gpg for sensitive files you do not change often</li>
 <li>DON'T use 7-zip with password for serious security as not the best protection</li>
 </ul>
-<h2 id="hashing"><span class="enumerate-headings-plugin enumerate-heading-plugin">80.2</span> hashing<a class="headerlink" href="#hashing" title="Permanent link">¶</a></h2>
+<h2 id="hashing"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> hashing<a class="headerlink" href="#hashing" title="Permanent link">¶</a></h2>
 <ul>
 <li>MD-5 old don't use</li>
 <li><strong>SHA</strong>: Secure Hash Algorithm, SHA2 family most used SHA-256 SHA-512, SHA3 came in 2009</li>
 <li><strong>Whirlpool</strong>: 512 bit derived from Advanced Encryption Standard (AES)</li>
 </ul>
-<h3 id="salt-and-pepper"><span class="enumerate-headings-plugin enumerate-heading-plugin">80.2.1</span> salt and pepper<a class="headerlink" href="#salt-and-pepper" title="Permanent link">¶</a></h3>
-<h4 id="salts"><span class="enumerate-headings-plugin enumerate-heading-plugin">80.2.1.1</span> salts<a class="headerlink" href="#salts" title="Permanent link">¶</a></h4>
+<h3 id="salt-and-pepper"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.1</span> salt and pepper<a class="headerlink" href="#salt-and-pepper" title="Permanent link">¶</a></h3>
+<h4 id="salts"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.1.1</span> salts<a class="headerlink" href="#salts" title="Permanent link">¶</a></h4>
 <ul>
 <li>are a set of characters that are automatically added to – or included in a user´s password before it is hashed, resulting in a completely different hashed output <em>store along with the db</em></li>
 <li>salt are often called slow hash functions: Argon2id, bcrypt, scrypt</li>
@@ -1913,14 +1913,14 @@
 <li>Scrypt requires a decent amount of memory to calculate. In addition to all of this memory, and largely as a result of needing so much memory, scrypt requires a lot of computational time compared to SHA.</li>
 <li>SHA is for quickly hashing passwords. "BCRYPT" and "ARGON2I" are made for storing passwords</li>
 </ul>
-<h4 id="pepper"><span class="enumerate-headings-plugin enumerate-heading-plugin">80.2.1.2</span> pepper<a class="headerlink" href="#pepper" title="Permanent link">¶</a></h4>
+<h4 id="pepper"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.1.2</span> pepper<a class="headerlink" href="#pepper" title="Permanent link">¶</a></h4>
 <ul>
 <li>is similar to salting but involves adding an <strong>additional secret key</strong>, known as a "pepper," to the password before hashing. the static secret <em>stored separately from the password database</em></li>
 <li>Unlike salt, pepper doesn’t change</li>
 <li>with peppers, even if attackers manage to exploit vulnerabilities in the database, they won't have access to the peppered passwords.</li>
 <li>problem with real life peppers: https://stackoverflow.com/questions/16891729/best-practices-salting-peppering-passwords</li>
 </ul>
-<h2 id="https-tls"><span class="enumerate-headings-plugin enumerate-heading-plugin">80.3</span> HTTPS TLS<a class="headerlink" href="#https-tls" title="Permanent link">¶</a></h2>
+<h2 id="https-tls"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> HTTPS TLS<a class="headerlink" href="#https-tls" title="Permanent link">¶</a></h2>
 <ul>
 <li>SSL old was till 1996, after TLS 1.1 1.2 1.3 <strong>latest</strong></li>
 </ul>
@@ -1951,25 +1951,25 @@
 <li>after this SSL Handshake, symmetric keys are created for the session</li>
 </ol>
 <p>to explain the whole communication process with pub/priv: https://youtu.be/_zyKvPvh808</p>
-<h2 id="comparing-encryption-algorithms"><span class="enumerate-headings-plugin enumerate-heading-plugin">80.4</span> comparing encryption algorithms<a class="headerlink" href="#comparing-encryption-algorithms" title="Permanent link">¶</a></h2>
+<h2 id="comparing-encryption-algorithms"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> comparing encryption algorithms<a class="headerlink" href="#comparing-encryption-algorithms" title="Permanent link">¶</a></h2>
 <p>
 <figure><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://i.imgur.com/Cy3b8Xe.png"><img src="https://i.imgur.com/Cy3b8Xe.png"/></a><figcaption>image</figcaption>
 </figure>
 </p>
-<h3 id="symmetric"><span class="enumerate-headings-plugin enumerate-heading-plugin">80.4.1</span> symmetric<a class="headerlink" href="#symmetric" title="Permanent link">¶</a></h3>
+<h3 id="symmetric"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.1</span> symmetric<a class="headerlink" href="#symmetric" title="Permanent link">¶</a></h3>
 <ul>
 <li>faster used for bulk data but weaker</li>
 <li><strong>AES:</strong> Advanced Encryption Standard</li>
 <li><strong>ChaCha20:</strong> losely comparable to the more established AES, slightly better than AES but these are negligible enough</li>
 <li>Block Cipher and Stream Cipher use block cipher for security, <strong>block cipher</strong> converts the plain text into cipher text by taking plain text’s block at a time. While <strong>stream cipher</strong> Converts the plain text into cipher text by taking 1 byte of plain text at a time.</li>
 </ul>
-<h3 id="asymmetric"><span class="enumerate-headings-plugin enumerate-heading-plugin">80.4.2</span> asymmetric<a class="headerlink" href="#asymmetric" title="Permanent link">¶</a></h3>
+<h3 id="asymmetric"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.2</span> asymmetric<a class="headerlink" href="#asymmetric" title="Permanent link">¶</a></h3>
 <ul>
 <li>slower stronger private key never leaves device only PUB KEY MOVES/COPIED TO FRO, used for limited data</li>
 <li><strong>RSA:</strong> pub/priv asymmetric popular RSA-2048 4096</li>
 <li><strong>ECC (Elliptic Curve Cryptography)</strong>: offers greater security, faster performance, Shorter keys require less networking load but many server software and control panels haven’t yet added support for ECC SSL/TLS certificates</li>
 </ul>
-<h2 id="luks"><span class="enumerate-headings-plugin enumerate-heading-plugin">80.5</span> LUKS<a class="headerlink" href="#luks" title="Permanent link">¶</a></h2>
+<h2 id="luks"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> LUKS<a class="headerlink" href="#luks" title="Permanent link">¶</a></h2>
 <ul>
 <li>Linux Unified Key Setup</li>
 <li>uses symmetric-key cryptography, AES (Advanced Encryption Standard), Twofish, and Serpent.</li>
@@ -1979,14 +1979,14 @@
 <li>The tl;dr conclusion remains: in the best case scenario (all mitigations disabled and SRSO off), LUKS minimum performance impact is 50%.</li>
 <li>can take a hit from ~3 GB/s to ~1 GB/s on system.</li>
 </ul>
-<h2 id="filedir-encryption"><span class="enumerate-headings-plugin enumerate-heading-plugin">80.6</span> file/dir encryption<a class="headerlink" href="#filedir-encryption" title="Permanent link">¶</a></h2>
+<h2 id="filedir-encryption"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> file/dir encryption<a class="headerlink" href="#filedir-encryption" title="Permanent link">¶</a></h2>
 <ul>
 <li>encfs</li>
 <li>ecryptfs</li>
 <li><strong>gnupg:</strong> most popular and respected one</li>
 <li><strong>veracrypt:</strong> best gui</li>
 </ul>
-<h3 id="gnupg"><span class="enumerate-headings-plugin enumerate-heading-plugin">80.6.1</span> gnupg<a class="headerlink" href="#gnupg" title="Permanent link">¶</a></h3>
+<h3 id="gnupg"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6.1</span> gnupg<a class="headerlink" href="#gnupg" title="Permanent link">¶</a></h3>
 <p>https://dev.to/nerdynene/extensive-guide-to-gnu-privacy-guard-gpg-2a11</p>
 <p>https://gist.github.com/johnfedoruk/7f156d844af54cc91324dff4f54b11ce</p>
 <ul>

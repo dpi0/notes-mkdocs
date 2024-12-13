@@ -1929,8 +1929,8 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/file-hierarchy.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">81.</span> File Hierarchy</h1>
-<h2 id="bin-sbin-usrsbin-usrbin"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.1</span> <code>/bin = /sbin = /usr/sbin --&gt; /usr/bin</code><a class="headerlink" href="#bin-sbin-usrsbin-usrbin" title="Permanent link">¶</a></h2>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> File Hierarchy</h1>
+<h2 id="bin-sbin-usrsbin-usrbin"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> <code>/bin = /sbin = /usr/sbin --&gt; /usr/bin</code><a class="headerlink" href="#bin-sbin-usrsbin-usrbin" title="Permanent link">¶</a></h2>
 <ul>
 <li>this is peculiar in arch also many modern systems are adopting it like ubuntu<br/>
   and others</li>
@@ -1940,45 +1940,45 @@
 <li><em>/usr/bin</em> non-essential binaries, in the terms that not really needed for system booting or repairing the system <code>scp, diff</code></li>
 <li><em>/usr/sbin</em> again the same non essential for core functions but neded for sys admins and root users <code>sshd, chown</code></li>
 </ul>
-<h2 id="lib-lib64-usrlib"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.2</span> <code>/lib = /lib64 --&gt; /usr/lib</code><a class="headerlink" href="#lib-lib64-usrlib" title="Permanent link">¶</a></h2>
+<h2 id="lib-lib64-usrlib"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> <code>/lib = /lib64 --&gt; /usr/lib</code><a class="headerlink" href="#lib-lib64-usrlib" title="Permanent link">¶</a></h2>
 <ul>
 <li>libraries also simplified</li>
 </ul>
-<h2 id="usr"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.3</span> <code>/usr</code><a class="headerlink" href="#usr" title="Permanent link">¶</a></h2>
+<h2 id="usr"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> <code>/usr</code><a class="headerlink" href="#usr" title="Permanent link">¶</a></h2>
 <p>unix syetem resources not 'user'</p>
-<h3 id="usrshare"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.3.1</span> <code>/usr/share</code><a class="headerlink" href="#usrshare" title="Permanent link">¶</a></h3>
+<h3 id="usrshare"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.1</span> <code>/usr/share</code><a class="headerlink" href="#usrshare" title="Permanent link">¶</a></h3>
 <ul>
 <li>architecture-independent data files that are shared across different systems or users for /usr/bin</li>
 <li>documentation, examples, locale data, icon themes, system-wide configuration files, and other architecture-independent resources</li>
 </ul>
-<h3 id="usrlocalbin"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.3.2</span> <code>usr/local/bin</code><a class="headerlink" href="#usrlocalbin" title="Permanent link">¶</a></h3>
+<h3 id="usrlocalbin"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.2</span> <code>usr/local/bin</code><a class="headerlink" href="#usrlocalbin" title="Permanent link">¶</a></h3>
 <p><strong>/usr/local, local here means installed by the user and not installed by package manager or by the OS</strong></p>
 <ul>
 <li>meant for locally installed software</li>
 <li>not managed by system's package manager</li>
 <li>currently <code>starship</code> is installed there like <code>nginx, docker, node</code> can also be there</li>
 </ul>
-<h3 id="usrlocalshare"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.3.3</span> <code>/usr/local/share</code><a class="headerlink" href="#usrlocalshare" title="Permanent link">¶</a></h3>
+<h3 id="usrlocalshare"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.3</span> <code>/usr/local/share</code><a class="headerlink" href="#usrlocalshare" title="Permanent link">¶</a></h3>
 <ul>
 <li>same are /usr/share but for the data files for the /usr/local/bin</li>
 </ul>
-<h2 id="home"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.4</span> <code>/home</code><a class="headerlink" href="#home" title="Permanent link">¶</a></h2>
-<h3 id="homedpi0localbin"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.4.1</span> <code>/home/dpi0/.local/bin</code><a class="headerlink" href="#homedpi0localbin" title="Permanent link">¶</a></h3>
+<h2 id="home"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> <code>/home</code><a class="headerlink" href="#home" title="Permanent link">¶</a></h2>
+<h3 id="homedpi0localbin"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.1</span> <code>/home/dpi0/.local/bin</code><a class="headerlink" href="#homedpi0localbin" title="Permanent link">¶</a></h3>
 <p><strong>.local here means that it's for the current user only NOT system wide</strong></p>
 <ul>
 <li>binaries for current user</li>
 </ul>
-<h3 id="homedpi0localshare"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.4.2</span> <code>/home/dpi0/.local/share</code><a class="headerlink" href="#homedpi0localshare" title="Permanent link">¶</a></h3>
+<h3 id="homedpi0localshare"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.2</span> <code>/home/dpi0/.local/share</code><a class="headerlink" href="#homedpi0localshare" title="Permanent link">¶</a></h3>
 <ul>
 <li>data files for current user's /home/dpi0/.local/bin</li>
 </ul>
-<h2 id="opt"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.5</span> <code>/opt</code><a class="headerlink" href="#opt" title="Permanent link">¶</a></h2>
+<h2 id="opt"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> <code>/opt</code><a class="headerlink" href="#opt" title="Permanent link">¶</a></h2>
 <ul>
 <li>stands for "optional" and is meant to provide a location for installing optional or add-on software packages that are not part of the base operating system</li>
 <li>provided by "3rd party vendors"</li>
 <li>like currently it holds <code>gitkraken, insomnium, localsend, visual-studio-code-bin</code></li>
 </ul>
-<h2 id="dev"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.6</span> <code>/dev</code><a class="headerlink" href="#dev" title="Permanent link">¶</a></h2>
+<h2 id="dev"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> <code>/dev</code><a class="headerlink" href="#dev" title="Permanent link">¶</a></h2>
 <ul>
 <li>represent devices that are attached to the local system</li>
 <li>physical or virtual devices such as hard drives, terminals, printers</li>
@@ -1987,29 +1987,29 @@
 <li>character files: comms byte by byte with a driver like for sound cards or serial ports</li>
 <li>block files: comms block by block like for ssd or usb <code>/dev/sda1 /dev/sda2</code></li>
 </ul>
-<h2 id="run"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.7</span> <code>/run</code><a class="headerlink" href="#run" title="Permanent link">¶</a></h2>
+<h2 id="run"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> <code>/run</code><a class="headerlink" href="#run" title="Permanent link">¶</a></h2>
 <ul>
 <li>ram based fs</li>
 <li>temporary directories used by running processes to store runtime data, such as process-specific information, communication sockets, and other runtime artifacts</li>
 <li>resource is currently being accessed or modified by a process</li>
 </ul>
-<h2 id="tmp"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.8</span> <code>/tmp</code><a class="headerlink" href="#tmp" title="Permanent link">¶</a></h2>
+<h2 id="tmp"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8</span> <code>/tmp</code><a class="headerlink" href="#tmp" title="Permanent link">¶</a></h2>
 <ul>
 <li>Unlike /run, which may contain system-specific runtime data</li>
 <li>/tmp is more commonly used for user-specific temporary files, such as those created during program execution, file downloads, or data processing</li>
 <li>still not clear to me</li>
 </ul>
-<h2 id="srv"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.9</span> <code>/srv</code><a class="headerlink" href="#srv" title="Permanent link">¶</a></h2>
+<h2 id="srv"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9</span> <code>/srv</code><a class="headerlink" href="#srv" title="Permanent link">¶</a></h2>
 <ul>
 <li>services</li>
 <li>store data for services provided by the system</li>
 <li>websites, FTP servers, version control repositories, and other services</li>
 </ul>
-<h2 id="proc"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.10</span> <code>/proc</code><a class="headerlink" href="#proc" title="Permanent link">¶</a></h2>
+<h2 id="proc"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.10</span> <code>/proc</code><a class="headerlink" href="#proc" title="Permanent link">¶</a></h2>
 <ul>
 <li>all the processes running rep as dirs with files inside containing app files needed for the program to run.</li>
 </ul>
-<h2 id="var"><span class="enumerate-headings-plugin enumerate-heading-plugin">81.11</span> <code>/var</code><a class="headerlink" href="#var" title="Permanent link">¶</a></h2>
+<h2 id="var"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11</span> <code>/var</code><a class="headerlink" href="#var" title="Permanent link">¶</a></h2>
 <ul>
 <li>"variable" and is used for storing variable data files that are expected to change during normal system operation.</li>
 <li>logs, spool files (e.g., mail queues and print queues), databases, temporary files, and other variable data generated by system processes and users.</li>

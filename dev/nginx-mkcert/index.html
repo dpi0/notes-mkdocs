@@ -1701,12 +1701,12 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/nginx-mkcert.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">133.</span> Nginx Mkcert</h1>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Nginx Mkcert</h1>
 <p>certificate authority - gives out certs domain.crt and domain.key, the cert they issue is trusted by browsers.</p>
 <p>most popular CAs are lets encrypt and</p>
 <p>mkcert generates certs which are trusted by the browsers as <code>mkcert -install</code> sets up some stuff with the browsers. so <code>mkcert outline.local</code> works without giving warnings.</p>
 <p>generates own certificates without mkcert leads to a warning with the browsers, as they don't recognize/trust these certs. <code>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout outline.local.key -out outline.local.crt</code></p>
-<h4 id="generate-a-self-signed-ssl-certificate"><span class="enumerate-headings-plugin enumerate-heading-plugin">133.0.0.1</span> generate a self-signed SSL certificate<a class="headerlink" href="#generate-a-self-signed-ssl-certificate" title="Permanent link">¶</a></h4>
+<h4 id="generate-a-self-signed-ssl-certificate"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.0.1</span> generate a self-signed SSL certificate<a class="headerlink" href="#generate-a-self-signed-ssl-certificate" title="Permanent link">¶</a></h4>
 <p><a href="https://linuxconfig.org/how-to-generate-a-self-signed-ssl-certificate-on-linux">https://linuxconfig.org/how-to-generate-a-self-signed-ssl-certificate-on-linux</a></p>
 <p>If we intend to expose our restic REST server to the internet, we need to use a valid third-party certificate for our domain. We can easily obtain one from Let’s Encrypt, using certbot. [^1]</p>
 <p>If we just want to perform some tests, or we plan to use our server exclusively in our own network, however, it is enough to generate a self-signed certificate.</p>

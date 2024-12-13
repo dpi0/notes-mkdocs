@@ -1800,16 +1800,16 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/netcat.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">132.</span> Netcat</h1>
-<h3 id="listening-for-connections-on-port-1234"><span class="enumerate-headings-plugin enumerate-heading-plugin">132.0.1</span> listening for connections on port :1234<a class="headerlink" href="#listening-for-connections-on-port-1234" title="Permanent link">¶</a></h3>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Netcat</h1>
+<h3 id="listening-for-connections-on-port-1234"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.1</span> listening for connections on port :1234<a class="headerlink" href="#listening-for-connections-on-port-1234" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>nc<span class="w"> </span>-l<span class="w"> </span>-p<span class="w"> </span><span class="m">1234</span>
 </code></pre></div>
-<h3 id="send-message-to-1234"><span class="enumerate-headings-plugin enumerate-heading-plugin">132.0.2</span> send message to :1234<a class="headerlink" href="#send-message-to-1234" title="Permanent link">¶</a></h3>
+<h3 id="send-message-to-1234"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.2</span> send message to :1234<a class="headerlink" href="#send-message-to-1234" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s1">'hello from server'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span><span class="m">192</span>.168.1.80<span class="w"> </span><span class="m">1234</span>
 
 <span class="nb">echo</span><span class="w"> </span><span class="s1">'hello from localhost'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>localhost<span class="w"> </span><span class="m">1234</span>
 </code></pre></div>
-<h3 id="options"><span class="enumerate-headings-plugin enumerate-heading-plugin">132.0.3</span> options<a class="headerlink" href="#options" title="Permanent link">¶</a></h3>
+<h3 id="options"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.3</span> options<a class="headerlink" href="#options" title="Permanent link">¶</a></h3>
 <table>
 <thead>
 <tr>
@@ -1906,27 +1906,27 @@
 </tr>
 </tbody>
 </table>
-<h3 id="scan-ports"><span class="enumerate-headings-plugin enumerate-heading-plugin">132.0.4</span> Scan ports<a class="headerlink" href="#scan-ports" title="Permanent link">¶</a></h3>
+<h3 id="scan-ports"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.4</span> Scan ports<a class="headerlink" href="#scan-ports" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>nc<span class="w"> </span>-w<span class="w"> </span><span class="m">1</span><span class="w"> </span>-zvv<span class="w"> </span>-4<span class="w"> </span>target_host<span class="w"> </span><span class="m">1</span>-100
 
 nc<span class="w"> </span>-w<span class="w"> </span><span class="m">1</span><span class="w"> </span>-zvv<span class="w"> </span>-4<span class="w"> </span>target_host<span class="w"> </span><span class="m">69</span>
 
 nc<span class="w"> </span>-u<span class="w"> </span>-w<span class="w"> </span><span class="m">1</span><span class="w"> </span>-zvv<span class="w"> </span>-4<span class="w"> </span>target_host<span class="w"> </span>port
 </code></pre></div>
-<h3 id="port-forwarding"><span class="enumerate-headings-plugin enumerate-heading-plugin">132.0.5</span> port forwarding<a class="headerlink" href="#port-forwarding" title="Permanent link">¶</a></h3>
+<h3 id="port-forwarding"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.5</span> port forwarding<a class="headerlink" href="#port-forwarding" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>nc<span class="w"> </span>-l<span class="w"> </span>-p<span class="w"> </span><span class="m">12345</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>nc<span class="w"> </span>target_host<span class="w"> </span><span class="m">80</span>
 </code></pre></div>
-<h3 id="simple-chat"><span class="enumerate-headings-plugin enumerate-heading-plugin">132.0.6</span> simple chat<a class="headerlink" href="#simple-chat" title="Permanent link">¶</a></h3>
+<h3 id="simple-chat"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.6</span> simple chat<a class="headerlink" href="#simple-chat" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>nc<span class="w"> </span>-l<span class="w"> </span>-p<span class="w"> </span><span class="m">12345</span>
 
 nc<span class="w"> </span>server_host<span class="w"> </span><span class="m">12345</span>
 </code></pre></div>
-<h3 id="simple-file-transfer"><span class="enumerate-headings-plugin enumerate-heading-plugin">132.0.7</span> simple file transfer<a class="headerlink" href="#simple-file-transfer" title="Permanent link">¶</a></h3>
+<h3 id="simple-file-transfer"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.7</span> simple file transfer<a class="headerlink" href="#simple-file-transfer" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>nc<span class="w"> </span>-l<span class="w"> </span>-p<span class="w"> </span><span class="m">12345</span><span class="w"> </span>&gt;<span class="w"> </span>received_file
 
 nc<span class="w"> </span>receiver_host<span class="w"> </span><span class="m">12345</span><span class="w"> </span>&lt;<span class="w"> </span>file_to_send
 </code></pre></div>
-<h3 id="remote-shell"><span class="enumerate-headings-plugin enumerate-heading-plugin">132.0.8</span> remote shell<a class="headerlink" href="#remote-shell" title="Permanent link">¶</a></h3>
+<h3 id="remote-shell"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.8</span> remote shell<a class="headerlink" href="#remote-shell" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>nc<span class="w"> </span>-l<span class="w"> </span>-p<span class="w"> </span><span class="m">12345</span><span class="w"> </span>-e<span class="w"> </span>/bin/bash
 
 nc<span class="w"> </span>target_host<span class="w"> </span><span class="m">12345</span>

@@ -2030,8 +2030,8 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/regex.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">145.</span> Regex</h1>
-<h2 id="flags"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.1</span> Flags<a class="headerlink" href="#flags" title="Permanent link">¶</a></h2>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Regex</h1>
+<h2 id="flags"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> Flags<a class="headerlink" href="#flags" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>g</strong>: "Global" - Select all matches.</li>
 <li><strong>m</strong>: "Multi-line" - <code>^</code> and <code>$</code> match start/end of each line.</li>
@@ -2041,16 +2041,16 @@
 <li><strong>u</strong>: "Unicode" - Use full Unicode matching.</li>
 <li><strong>a</strong>: "ASCII" - Use ASCII matching.</li>
 </ul>
-<h3 id="escape-metacharacters"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.1.1</span> Escape Metacharacters<a class="headerlink" href="#escape-metacharacters" title="Permanent link">¶</a></h3>
+<h3 id="escape-metacharacters"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.1</span> Escape Metacharacters<a class="headerlink" href="#escape-metacharacters" title="Permanent link">¶</a></h3>
 <ul>
 <li>Use <code>\</code> to escape special characters.</li>
 <li>Example: <code>\+</code> matches the literal <code>+</code> character.</li>
 </ul>
-<h3 id="inclusive-ranges"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.1.2</span> Inclusive Ranges<a class="headerlink" href="#inclusive-ranges" title="Permanent link">¶</a></h3>
+<h3 id="inclusive-ranges"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.2</span> Inclusive Ranges<a class="headerlink" href="#inclusive-ranges" title="Permanent link">¶</a></h3>
 <ul>
 <li><code>[a-z]</code> includes both <code>a</code> and <code>z</code>.</li>
 </ul>
-<h2 id="basic-symbols"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.2</span> Basic Symbols<a class="headerlink" href="#basic-symbols" title="Permanent link">¶</a></h2>
+<h2 id="basic-symbols"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> Basic Symbols<a class="headerlink" href="#basic-symbols" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
@@ -2121,7 +2121,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="quantifiers"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.3</span> Quantifiers<a class="headerlink" href="#quantifiers" title="Permanent link">¶</a></h2>
+<h2 id="quantifiers"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> Quantifiers<a class="headerlink" href="#quantifiers" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
@@ -2156,14 +2156,14 @@
 </tr>
 </tbody>
 </table>
-<h2 id="character-sets-groups"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.4</span> Character Sets &amp; Groups<a class="headerlink" href="#character-sets-groups" title="Permanent link">¶</a></h2>
+<h2 id="character-sets-groups"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> Character Sets &amp; Groups<a class="headerlink" href="#character-sets-groups" title="Permanent link">¶</a></h2>
 <ul>
 <li><code>[abc]</code> - Matches any one of <code>a</code>, <code>b</code>, or <code>c</code>.</li>
 <li><code>[a-z]</code> - Matches any character from <code>a</code> to <code>z</code>.</li>
 <li><code>[^abc]</code> - Matches any character except <code>a</code>, <code>b</code>, or <code>c</code>.</li>
 <li><code>(abc)</code> - Matches the exact sequence <code>abc</code>.</li>
 </ul>
-<h2 id="special-characters"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.5</span> Special Characters<a class="headerlink" href="#special-characters" title="Permanent link">¶</a></h2>
+<h2 id="special-characters"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> Special Characters<a class="headerlink" href="#special-characters" title="Permanent link">¶</a></h2>
 <ul>
 <li><code>|</code> - Logical OR.</li>
 <li><code>?</code> - Makes preceding item optional.</li>
@@ -2172,7 +2172,7 @@
 <li><code>.</code> - Matches any character except a newline.</li>
 <li><code>.*</code> - Matches any character 0 or more times.</li>
 </ul>
-<h2 id="anchors"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.6</span> Anchors<a class="headerlink" href="#anchors" title="Permanent link">¶</a></h2>
+<h2 id="anchors"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> Anchors<a class="headerlink" href="#anchors" title="Permanent link">¶</a></h2>
 <ul>
 <li><code>^</code> - Start of string or line.</li>
 <li><code>$</code> - End of string or line.</li>
@@ -2181,69 +2181,69 @@
 <li><code>\&lt;</code> - Start of word.</li>
 <li><code>\&gt;</code> - End of word.</li>
 </ul>
-<h2 id="assertions"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.7</span> Assertions<a class="headerlink" href="#assertions" title="Permanent link">¶</a></h2>
+<h2 id="assertions"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> Assertions<a class="headerlink" href="#assertions" title="Permanent link">¶</a></h2>
 <ul>
 <li><code>?#</code> - Comment.</li>
 <li><code>?()</code> - Conditional (if-then).</li>
 <li><code>()?|</code> - Conditional (if-then-else).</li>
 </ul>
-<h2 id="sample-regex"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.8</span> Sample Regex<a class="headerlink" href="#sample-regex" title="Permanent link">¶</a></h2>
+<h2 id="sample-regex"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8</span> Sample Regex<a class="headerlink" href="#sample-regex" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+
 </code></pre></div>
-<h2 id="digits"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.9</span> Digits<a class="headerlink" href="#digits" title="Permanent link">¶</a></h2>
+<h2 id="digits"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9</span> Digits<a class="headerlink" href="#digits" title="Permanent link">¶</a></h2>
 <p><code>\d</code> matches any digit (0-9):</p>
 <ul>
 <li>Examples: <code>\d{3}</code> = 327, <code>\d{2,5}</code> = 97430, <code>\d{2,}</code> matches at least 2 digits.</li>
 </ul>
-<h2 id="non-digits"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.10</span> Non-Digits<a class="headerlink" href="#non-digits" title="Permanent link">¶</a></h2>
+<h2 id="non-digits"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.10</span> Non-Digits<a class="headerlink" href="#non-digits" title="Permanent link">¶</a></h2>
 <p><code>\D</code> matches any non-digit.</p>
-<h2 id="alphanumeric"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.11</span> Alphanumeric<a class="headerlink" href="#alphanumeric" title="Permanent link">¶</a></h2>
+<h2 id="alphanumeric"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11</span> Alphanumeric<a class="headerlink" href="#alphanumeric" title="Permanent link">¶</a></h2>
 <p><code>\w</code> matches any alphanumeric character (letters a-z, A-Z, numbers 0-9, and <code>_</code>):</p>
 <ul>
 <li>Examples: <code>\w{3}</code> = dog, <code>\w{2,4}</code> = word with 2 to 4 characters.</li>
 </ul>
-<h2 id="non-alphanumeric"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.12</span> Non-Alphanumeric<a class="headerlink" href="#non-alphanumeric" title="Permanent link">¶</a></h2>
+<h2 id="non-alphanumeric"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.12</span> Non-Alphanumeric<a class="headerlink" href="#non-alphanumeric" title="Permanent link">¶</a></h2>
 <p><code>\W</code> matches any non-word character:</p>
 <ul>
 <li>Examples: <code>\W\W</code> = <code>@#</code>.</li>
 </ul>
-<h2 id="character-set"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.13</span> Character Set<a class="headerlink" href="#character-set" title="Permanent link">¶</a></h2>
+<h2 id="character-set"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.13</span> Character Set<a class="headerlink" href="#character-set" title="Permanent link">¶</a></h2>
 <p><code>[abc]</code> or <code>[0123]</code> matches any one character from the set:</p>
 <ul>
 <li>Examples: <code>pand[ora]</code> = panda or pando.</li>
 </ul>
 <p><code>[^abc]</code> matches any character except <code>a</code>, <code>b</code>, or <code>c</code>.</p>
-<h2 id="character-range"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.14</span> Character Range<a class="headerlink" href="#character-range" title="Permanent link">¶</a></h2>
+<h2 id="character-range"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.14</span> Character Range<a class="headerlink" href="#character-range" title="Permanent link">¶</a></h2>
 <p><code>[a-z]</code> or <code>[0-9]</code> matches any one character in the range:</p>
 <ul>
 <li>Example: <code>[^b-f]</code> matches any character not in <code>b-f</code>.</li>
 </ul>
-<h2 id="character-group"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.15</span> Character Group<a class="headerlink" href="#character-group" title="Permanent link">¶</a></h2>
+<h2 id="character-group"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.15</span> Character Group<a class="headerlink" href="#character-group" title="Permanent link">¶</a></h2>
 <p><code>(abc)</code> or <code>(123)</code> matches the group exactly:</p>
 <ul>
 <li>Example: <code>pand(ora){2}</code> = pandoraora.</li>
 </ul>
-<h2 id="or-operator"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.16</span> OR Operator<a class="headerlink" href="#or-operator" title="Permanent link">¶</a></h2>
+<h2 id="or-operator"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.16</span> OR Operator<a class="headerlink" href="#or-operator" title="Permanent link">¶</a></h2>
 <p><code>|</code> acts as an OR operator:</p>
 <ul>
 <li>Example: <code>pand(abc|123)</code> = pandabc or pand123.</li>
 </ul>
-<h2 id="optional"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.17</span> Optional<a class="headerlink" href="#optional" title="Permanent link">¶</a></h2>
+<h2 id="optional"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.17</span> Optional<a class="headerlink" href="#optional" title="Permanent link">¶</a></h2>
 <p><code>?</code> matches 0 or 1 time:</p>
 <ul>
 <li>Example: <code>colou?r</code> = color or colour.</li>
 </ul>
-<h2 id="zero-or-more"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.18</span> Zero or More<a class="headerlink" href="#zero-or-more" title="Permanent link">¶</a></h2>
+<h2 id="zero-or-more"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.18</span> Zero or More<a class="headerlink" href="#zero-or-more" title="Permanent link">¶</a></h2>
 <p><code>*</code> matches 0 or more times:</p>
 <ul>
 <li>Example: <code>tre*</code> = tr or tree.</li>
 </ul>
-<h2 id="one-or-more"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.19</span> One or More<a class="headerlink" href="#one-or-more" title="Permanent link">¶</a></h2>
+<h2 id="one-or-more"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.19</span> One or More<a class="headerlink" href="#one-or-more" title="Permanent link">¶</a></h2>
 <p><code>+</code> matches 1 or more times:</p>
 <ul>
 <li>Example: <code>tre+</code> = tre or tree.</li>
 </ul>
-<h2 id="any-character"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.20</span> Any Character<a class="headerlink" href="#any-character" title="Permanent link">¶</a></h2>
+<h2 id="any-character"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.20</span> Any Character<a class="headerlink" href="#any-character" title="Permanent link">¶</a></h2>
 <p><code>.</code> matches any 1 character:</p>
 <ul>
 <li>Examples: <code>ton.</code> = tone or ton4.</li>
@@ -2252,10 +2252,10 @@
 <ul>
 <li>Example: <code>tr.*</code> = tree or treadmill.</li>
 </ul>
-<h2 id="anchors_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.21</span> Anchors<a class="headerlink" href="#anchors_1" title="Permanent link">¶</a></h2>
+<h2 id="anchors_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.21</span> Anchors<a class="headerlink" href="#anchors_1" title="Permanent link">¶</a></h2>
 <p><code>^</code> marks the start of the string.</p>
 <p><code>$</code> marks the end of the string.</p>
-<h2 id="assertions_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">145.22</span> Assertions<a class="headerlink" href="#assertions_1" title="Permanent link">¶</a></h2>
+<h2 id="assertions_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.22</span> Assertions<a class="headerlink" href="#assertions_1" title="Permanent link">¶</a></h2>
 <p><code>?#</code> adds a comment.</p>
 <p><code>?()</code> is a conditional (if-then).</p>
 <aside class="md-source-file">

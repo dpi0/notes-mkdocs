@@ -2099,7 +2099,7 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/arch-server-manual-install.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">60.</span> Arch Server Manual Install</h1>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Arch Server Manual Install</h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>if installing via KVM</p>
@@ -2130,7 +2130,7 @@ cfdisk<span class="w"> </span>/dev/sdX<span class="w"> </span>or<span class="w">
 <li><strong>/</strong> Linux root (x86-64) <strong>ext4</strong> = 65-75G (on servers images and volumes take up a lot of space, and this wiil also house swapfile 4G)</li>
 <li><strong>/home</strong> Linux home <strong>ext4</strong> = rest of it</li>
 </ul>
-<h2 id="partitioning"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.1</span> partitioning<a class="headerlink" href="#partitioning" title="Permanent link">¶</a></h2>
+<h2 id="partitioning"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> partitioning<a class="headerlink" href="#partitioning" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>mkfs.fat<span class="w"> </span>-F32<span class="w"> </span>/dev/sdX-efi
 
 mkfs.fat<span class="w"> </span>-F32<span class="w"> </span>/dev/sdX-boot
@@ -2143,7 +2143,7 @@ mount<span class="w"> </span>/dev/sdX-efi<span class="w"> </span>/mnt/efi
 mount<span class="w"> </span>/dev/sdX-boot<span class="w"> </span>/mnt/boot
 mount<span class="w"> </span>/dev/sdX-home<span class="w"> </span>/mnt/home
 </code></pre></div>
-<h2 id="install-system-and-kernel"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.2</span> install system and kernel<a class="headerlink" href="#install-system-and-kernel" title="Permanent link">¶</a></h2>
+<h2 id="install-system-and-kernel"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> install system and kernel<a class="headerlink" href="#install-system-and-kernel" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>cp<span class="w"> </span>/etc/pacman.d/mirrorlist<span class="w"> </span>/etc/pacman.d/mirrorlist.bak
 reflector<span class="w"> </span>--verbose<span class="w"> </span>-c<span class="w"> </span>India<span class="w"> </span>-l<span class="w"> </span><span class="m">20</span><span class="w"> </span>-p<span class="w"> </span>https<span class="w"> </span>--sort<span class="w"> </span>rate<span class="w"> </span>--save<span class="w"> </span>/etc/pacman.d/mirrorlist
 
@@ -2151,7 +2151,7 @@ pacstrap<span class="w"> </span>/mnt<span class="w"> </span>base<span class="w">
 
 genfstab<span class="w"> </span>-U<span class="w"> </span>/mnt<span class="w"> </span>&gt;&gt;<span class="w"> </span>/mnt/etc/fstab
 </code></pre></div>
-<h2 id="enter-the-installed-arch-system"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.3</span> enter the installed ARCH system<a class="headerlink" href="#enter-the-installed-arch-system" title="Permanent link">¶</a></h2>
+<h2 id="enter-the-installed-arch-system"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> enter the installed ARCH system<a class="headerlink" href="#enter-the-installed-arch-system" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>arch-chroot<span class="w"> </span>/mnt
 
 ln<span class="w"> </span>-sf<span class="w"> </span>/usr/share/zoneinfo/Asia/Kolkata<span class="w"> </span>/etc/localtime
@@ -2168,7 +2168,7 @@ useradd<span class="w"> </span>-mG<span class="w"> </span>wheel<span class="w"> 
 passwd<span class="w"> </span>dpi0
 <span class="nb">echo</span><span class="w"> </span><span class="s2">"%wheel ALL=(ALL:ALL) ALL"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sudoers
 </code></pre></div>
-<h2 id="install-necessary-packages"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.4</span> install necessary packages<a class="headerlink" href="#install-necessary-packages" title="Permanent link">¶</a></h2>
+<h2 id="install-necessary-packages"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> install necessary packages<a class="headerlink" href="#install-necessary-packages" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'s/^#Color/Color/'</span><span class="w"> </span>/etc/pacman.conf
 sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'s/^#ParallelDownloads/ParallelDownloads/'</span><span class="w"> </span>/etc/pacman.conf
 sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'/^Color/a ILoveCandy'</span><span class="w"> </span>/etc/pacman.conf
@@ -2177,7 +2177,7 @@ pacman<span class="w"> </span>-S<span class="w"> </span>git<span class="w"> </sp
 pacman<span class="w"> </span>-S<span class="w"> </span>efibootmgr<span class="w"> </span>ntfs-3g<span class="w"> </span>ctop<span class="w"> </span>ufw<span class="w"> </span>wpa_supplicant<span class="w"> </span>zsh
 systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>fstrim.timer<span class="w"> </span>paccache.timer<span class="w"> </span>systemd-timesyncd<span class="w"> </span>systemd-networkd<span class="w"> </span>systemd-resolved<span class="w"> </span>sshd<span class="w"> </span>wpa_supplicant
 </code></pre></div>
-<h2 id="setup-systemd-boot"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.5</span> setup systemd-boot<a class="headerlink" href="#setup-systemd-boot" title="Permanent link">¶</a></h2>
+<h2 id="setup-systemd-boot"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> setup systemd-boot<a class="headerlink" href="#setup-systemd-boot" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>bootctl<span class="w"> </span>--esp-path<span class="o">=</span>/efi<span class="w"> </span>--boot-path<span class="o">=</span>/boot<span class="w"> </span>install
 
 sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/efi/loader/loader.conf<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
@@ -2203,7 +2203,7 @@ bootctl<span class="w"> </span>status
 umount<span class="w"> </span>-R<span class="w"> </span>/mnt
 reboot
 </code></pre></div>
-<h2 id="post-install-configure-internet-wifi"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.6</span> post install - configure internet (wifi)<a class="headerlink" href="#post-install-configure-internet-wifi" title="Permanent link">¶</a></h2>
+<h2 id="post-install-configure-internet-wifi"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> post install - configure internet (wifi)<a class="headerlink" href="#post-install-configure-internet-wifi" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>ip<span class="w"> </span>-c<span class="w"> </span>a
 
 sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/wpa_supplicant/wpa_supplicant-wlp2s0.conf<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
@@ -2250,7 +2250,7 @@ namesserver<span class="w"> </span><span class="m">9</span>.9.9.9
 sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>systemd-resolved
 resolvectl<span class="w"> </span>status
 </code></pre></div>
-<h2 id="configure-internet-ethernet"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.7</span> configure internet (ethernet)<a class="headerlink" href="#configure-internet-ethernet" title="Permanent link">¶</a></h2>
+<h2 id="configure-internet-ethernet"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> configure internet (ethernet)<a class="headerlink" href="#configure-internet-ethernet" title="Permanent link">¶</a></h2>
 <p><a href="https://wiki.archlinux.org/title/Network_configuration#Network_managers">https://wiki.archlinux.org/title/Network_configuration#Network_managers</a></p>
 <div class="highlight"><pre><span></span><code>ip<span class="w"> </span>-c<span class="w"> </span>l
 ip<span class="w"> </span>-c<span class="w"> </span>a
@@ -2290,13 +2290,13 @@ namesserver<span class="w"> </span><span class="m">9</span>.9.9.9
 sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>systemd-resolved
 resolvectl<span class="w"> </span>status
 </code></pre></div>
-<h2 id="managing-systemd-networkd"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.8</span> managing systemd-networkd<a class="headerlink" href="#managing-systemd-networkd" title="Permanent link">¶</a></h2>
+<h2 id="managing-systemd-networkd"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8</span> managing systemd-networkd<a class="headerlink" href="#managing-systemd-networkd" title="Permanent link">¶</a></h2>
 <p><a href="https://man.archlinux.org/man/networkctl.1">https://man.archlinux.org/man/networkctl.1</a></p>
 <p><a href="https://wiki.archlinux.org/title/systemd-networkd#Configuration_files">https://wiki.archlinux.org/title/systemd-networkd#Configuration_files</a></p>
 <div class="highlight"><pre><span></span><code>networkctl<span class="w"> </span>list
 networkctl<span class="w"> </span>status<span class="w"> </span>enp1s0
 </code></pre></div>
-<h2 id="setup-zram"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.9</span> setup zram<a class="headerlink" href="#setup-zram" title="Permanent link">¶</a></h2>
+<h2 id="setup-zram"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9</span> setup zram<a class="headerlink" href="#setup-zram" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>zram-generator
 
 sudo<span class="w"> </span>vim<span class="w"> </span>/etc/systemd/zram-generator.conf
@@ -2315,7 +2315,7 @@ swapon<span class="w"> </span>--show
 free<span class="w"> </span>-h
 vmstat<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="c1"># get a real time view of swap</span>
 </code></pre></div>
-<h3 id="further-recommendations-for-boosting-perf-on-low-ram"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.9.1</span> further recommendations for boosting perf on low ram<a class="headerlink" href="#further-recommendations-for-boosting-perf-on-low-ram" title="Permanent link">¶</a></h3>
+<h3 id="further-recommendations-for-boosting-perf-on-low-ram"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9.1</span> further recommendations for boosting perf on low ram<a class="headerlink" href="#further-recommendations-for-boosting-perf-on-low-ram" title="Permanent link">¶</a></h3>
 <p><a href="https://wiki.archlinux.org/title/Zram#Optimizing_swap_on_zram">https://wiki.archlinux.org/title/Zram#Optimizing_swap_on_zram</a></p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/sysctl.d/99-vm-zram-parameters.conf<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
 <span class="s">vm.swappiness = 180</span>
@@ -2332,14 +2332,14 @@ sudo<span class="w"> </span>sysctl<span class="w"> </span>--system
 <li>vm.watermark_scale_factor = 125: This increases the watermarks by a factor of 1.25, helping to manage memory more aggressively.</li>
 <li>vm.page-cluster = 0: This setting determines the number of pages the kernel will read or write in a single swap operation. Setting it to 0 optimizes the system for the smaller and faster swap operations that zram can handle.</li>
 </ul>
-<h2 id="harden-ssh"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.10</span> harden <code>ssh</code><a class="headerlink" href="#harden-ssh" title="Permanent link">¶</a></h2>
-<h3 id="first-setup-ssh-keys-on-host"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.10.1</span> first setup ssh keys - on host<a class="headerlink" href="#first-setup-ssh-keys-on-host" title="Permanent link">¶</a></h3>
+<h2 id="harden-ssh"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.10</span> harden <code>ssh</code><a class="headerlink" href="#harden-ssh" title="Permanent link">¶</a></h2>
+<h3 id="first-setup-ssh-keys-on-host"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.10.1</span> first setup ssh keys - on host<a class="headerlink" href="#first-setup-ssh-keys-on-host" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-f<span class="w"> </span>~/.ssh/home-server<span class="w"> </span>-C<span class="w"> </span><span class="s2">"home server"</span>
 sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>~/.ssh/home-server
 
 ssh-copy-id<span class="w"> </span>-i<span class="w"> </span>~/.ssh/home-server.pub<span class="w"> </span>dpi0@server
 </code></pre></div>
-<h3 id="now-on-server"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.10.2</span> now on server<a class="headerlink" href="#now-on-server" title="Permanent link">¶</a></h3>
+<h3 id="now-on-server"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.10.2</span> now on server<a class="headerlink" href="#now-on-server" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/ssh/sshd_config<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
 <span class="s">AuthorizedKeysFile      .ssh/authorized_keys</span>
 
@@ -2375,7 +2375,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 
 ssh<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span><span class="w"> </span>-i<span class="w"> </span>~/.ssh/home-server<span class="w"> </span>dpi0@server<span class="w"> </span><span class="o">(</span>only<span class="w"> </span>pubkey<span class="w"> </span><span class="k">for</span><span class="w"> </span>dpi0<span class="o">)</span>
 </code></pre></div>
-<h2 id="change-default-shell"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.11</span> change default shell<a class="headerlink" href="#change-default-shell" title="Permanent link">¶</a></h2>
+<h2 id="change-default-shell"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11</span> change default shell<a class="headerlink" href="#change-default-shell" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>zsh
 
 rg<span class="w"> </span>dpi0<span class="w"> </span>/etc/passwd
@@ -2383,21 +2383,21 @@ cat<span class="w"> </span>/etc/shells
 
 sudo<span class="w"> </span>usermod<span class="w"> </span>-s<span class="w"> </span>/usr/bin/zsh<span class="w"> </span>dpi0
 </code></pre></div>
-<h2 id="auto-mount-drivespartitions-on-boot"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.12</span> auto mount drives/partitions on boot<a class="headerlink" href="#auto-mount-drivespartitions-on-boot" title="Permanent link">¶</a></h2>
+<h2 id="auto-mount-drivespartitions-on-boot"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.12</span> auto mount drives/partitions on boot<a class="headerlink" href="#auto-mount-drivespartitions-on-boot" title="Permanent link">¶</a></h2>
 <p><a href="https://wiki.archlinux.org/title/Fstab">https://wiki.archlinux.org/title/Fstab</a></p>
 <div class="highlight"><pre><span></span><code>UUID=abc /     ext4   defaults  0      1
 UUID=xyz /home ext4   defaults  0      2
 </code></pre></div>
 <p><dump> is checked by the dump(8) utility. This field is usually set to 0, which disables the check.</dump></p>
 <p><fsck> sets the order for file system checks at boot time; see fsck(8). <strong>For the root device it should be 1</strong>. For other partitions it should be <strong>2, or 0 to disable checking.</strong></fsck></p>
-<h2 id="external-devices"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.13</span> external devices<a class="headerlink" href="#external-devices" title="Permanent link">¶</a></h2>
+<h2 id="external-devices"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.13</span> external devices<a class="headerlink" href="#external-devices" title="Permanent link">¶</a></h2>
 <p><a href="../managing-external-drives/#external-devices">managing-external-drives</a></p>
-<h2 id="if-on-a-bad-headless-install-fix-efibootmgr"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.14</span> if on a bad headless install - fix efibootmgr<a class="headerlink" href="#if-on-a-bad-headless-install-fix-efibootmgr" title="Permanent link">¶</a></h2>
+<h2 id="if-on-a-bad-headless-install-fix-efibootmgr"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.14</span> if on a bad headless install - fix efibootmgr<a class="headerlink" href="#if-on-a-bad-headless-install-fix-efibootmgr" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>efibootmgr
 sudo<span class="w"> </span>efibootmgr<span class="w"> </span>-c<span class="w"> </span>-d<span class="w"> </span>/dev/sda1<span class="w"> </span>-p<span class="w"> </span><span class="m">1</span><span class="w"> </span>--loader<span class="w"> </span>/EFI/BOOT/BOOTX64.efi<span class="w"> </span>--label<span class="w"> </span><span class="s2">"Arch Server"</span>
 </code></pre></div>
-<h2 id="configure-firewall"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.15</span> configure <code>firewall</code><a class="headerlink" href="#configure-firewall" title="Permanent link">¶</a></h2>
-<h3 id="just-chicken-out-and-use-ufw-for-sanity-sake"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.15.1</span> just chicken out and use ufw for sanity sake<a class="headerlink" href="#just-chicken-out-and-use-ufw-for-sanity-sake" title="Permanent link">¶</a></h3>
+<h2 id="configure-firewall"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.15</span> configure <code>firewall</code><a class="headerlink" href="#configure-firewall" title="Permanent link">¶</a></h2>
+<h3 id="just-chicken-out-and-use-ufw-for-sanity-sake"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.15.1</span> just chicken out and use ufw for sanity sake<a class="headerlink" href="#just-chicken-out-and-use-ufw-for-sanity-sake" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>ufw
 
 sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
@@ -2416,7 +2416,7 @@ sudo<span class="w"> </span>ufw<span class="w"> </span>reload
 sudo<span class="w"> </span>ufw<span class="w"> </span>status<span class="w"> </span>numbered
 sudo<span class="w"> </span>ufw<span class="w"> </span>delete<span class="w"> </span>&lt;number&gt;
 </code></pre></div>
-<h3 id="so-now-optional-nftables-remove-all-pre-existing-firewalls-and-use-nftables"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.15.2</span> so now optional nftables - remove all pre existing firewalls and use nftables<a class="headerlink" href="#so-now-optional-nftables-remove-all-pre-existing-firewalls-and-use-nftables" title="Permanent link">¶</a></h3>
+<h3 id="so-now-optional-nftables-remove-all-pre-existing-firewalls-and-use-nftables"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.15.2</span> so now optional nftables - remove all pre existing firewalls and use nftables<a class="headerlink" href="#so-now-optional-nftables-remove-all-pre-existing-firewalls-and-use-nftables" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>--now<span class="w"> </span>ufw
 sudo<span class="w"> </span>ufw<span class="w"> </span>disable
 sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>--now<span class="w"> </span>iptables
@@ -2489,20 +2489,20 @@ table<span class="w"> </span>ip<span class="w"> </span>FILTER<span class="w"> </
 <span class="w">    </span><span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<h2 id="sync-device-and-hardware-clock"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.16</span> sync device and hardware clock<a class="headerlink" href="#sync-device-and-hardware-clock" title="Permanent link">¶</a></h2>
+<h2 id="sync-device-and-hardware-clock"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.16</span> sync device and hardware clock<a class="headerlink" href="#sync-device-and-hardware-clock" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>timedatectl<span class="w"> </span>set-timezone<span class="w"> </span><span class="s2">"Asia/Kolkata"</span>
 timedatectl<span class="w"> </span>status
 
 sudo<span class="w"> </span>hwclock<span class="w"> </span>-w
 sudo<span class="w"> </span>hwclock<span class="w"> </span>-r
 </code></pre></div>
-<h2 id="power-key-and-lid"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.17</span> power key and lid<a class="headerlink" href="#power-key-and-lid" title="Permanent link">¶</a></h2>
+<h2 id="power-key-and-lid"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.17</span> power key and lid<a class="headerlink" href="#power-key-and-lid" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/systemd/logind.conf<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
 <span class="s">HandleLidSwitch=ignore</span>
 <span class="s">HandleLidSwitchExternalPower=ignore</span>
 <span class="s">EOF</span>
 </code></pre></div>
-<h2 id="turn-off-screen-on-startup"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.18</span> turn off screen on startup<a class="headerlink" href="#turn-off-screen-on-startup" title="Permanent link">¶</a></h2>
+<h2 id="turn-off-screen-on-startup"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.18</span> turn off screen on startup<a class="headerlink" href="#turn-off-screen-on-startup" title="Permanent link">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>cron doesn't work (tried all of it's variations)</p>
@@ -2523,13 +2523,13 @@ sudo<span class="w"> </span>hwclock<span class="w"> </span>-r
 
 sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>screen-off.service
 </code></pre></div>
-<h2 id="add-hosts"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.19</span> add hosts<a class="headerlink" href="#add-hosts" title="Permanent link">¶</a></h2>
+<h2 id="add-hosts"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.19</span> add hosts<a class="headerlink" href="#add-hosts" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/hosts<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
 <span class="s">192.168.1.80 arch</span>
 <span class="s">192.168.1.60 phone</span>
 <span class="s">EOF</span>
 </code></pre></div>
-<h2 id="connect-two-linux-pcs-with-only-ethernet"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.20</span> connect two linux PCs with only ethernet<a class="headerlink" href="#connect-two-linux-pcs-with-only-ethernet" title="Permanent link">¶</a></h2>
+<h2 id="connect-two-linux-pcs-with-only-ethernet"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.20</span> connect two linux PCs with only ethernet<a class="headerlink" href="#connect-two-linux-pcs-with-only-ethernet" title="Permanent link">¶</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Clean those filthy ethernet ports carefully!</p>
@@ -2539,7 +2539,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 </ol>
 <p>Failing to do so might result in connection drops for no apparent reason!</p>
 </div>
-<h3 id="server"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.20.1</span> server<a class="headerlink" href="#server" title="Permanent link">¶</a></h3>
+<h3 id="server"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.20.1</span> server<a class="headerlink" href="#server" title="Permanent link">¶</a></h3>
 <p><strong>currently uses systemd-networkd/networkctl</strong></p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>vim<span class="w"> </span>/etc/systemd/network/20-wired.network
 ---
@@ -2562,7 +2562,7 @@ IDX<span class="w"> </span>LINK<span class="w">            </span>TYPE<span clas
 <span class="w">  </span><span class="m">3</span><span class="w"> </span>wlp2s0<span class="w">          </span>wlan<span class="w">     </span>routable<span class="w">    </span>configured
 ---
 </code></pre></div>
-<h3 id="client"><span class="enumerate-headings-plugin enumerate-heading-plugin">60.20.2</span> client<a class="headerlink" href="#client" title="Permanent link">¶</a></h3>
+<h3 id="client"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.20.2</span> client<a class="headerlink" href="#client" title="Permanent link">¶</a></h3>
 <p><strong>currently uses networkmanger/nmcli</strong></p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>nmcli<span class="w"> </span>device<span class="w"> </span><span class="nb">set</span><span class="w"> </span>enp2s0<span class="w"> </span>managed<span class="w"> </span>yes
 nmcli<span class="w"> </span>con<span class="w"> </span>add<span class="w"> </span><span class="nb">type</span><span class="w"> </span>ethernet<span class="w"> </span>ifname<span class="w"> </span>enp2s0<span class="w"> </span>ip4<span class="w"> </span><span class="m">10</span>.0.0.2/24

@@ -1950,26 +1950,26 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/arr-stack-home-server.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">61.</span> Arr Stack Home Server</h1>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Arr Stack Home Server</h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>follow order</p>
 </div>
-<h2 id="1-radarr"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.1</span> 1. <code>radarr</code><a class="headerlink" href="#1-radarr" title="Permanent link">¶</a></h2>
+<h2 id="1-radarr"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> 1. <code>radarr</code><a class="headerlink" href="#1-radarr" title="Permanent link">¶</a></h2>
 <ul>
 <li>films (gets stuff done with prowlarr and bazarr)</li>
 <li>use the compose file to spin up</li>
 <li><a href="https://films.dpi0.cloud">https://films.dpi0.cloud</a> settings &gt; media management &gt; root folders. add /movies (no refresh needed)</li>
 <li>settings &gt; general &gt; security &gt; API Key. copy that key (for jellyseerr)</li>
 </ul>
-<h2 id="2-sonarr"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.2</span> 2. <code>sonarr</code><a class="headerlink" href="#2-sonarr" title="Permanent link">¶</a></h2>
+<h2 id="2-sonarr"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> 2. <code>sonarr</code><a class="headerlink" href="#2-sonarr" title="Permanent link">¶</a></h2>
 <ul>
 <li>tv (gets stuff done with prowlarr and bazarr)</li>
 <li>use the compose file to spin up</li>
 <li><a href="https://tv.dpi0.cloud">https://tv.dpi0.cloud</a> settings &gt; media management &gt; root folders. add /tv (no refresh needed)</li>
 <li>settings &gt; general &gt; security &gt; API Key. copy that key (for jellyseerr)</li>
 </ul>
-<h4 id="radarr-rename-files-and-directories"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.2.0.1</span> radarr rename files and directories<a class="headerlink" href="#radarr-rename-files-and-directories" title="Permanent link">¶</a></h4>
+<h4 id="radarr-rename-files-and-directories"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.0.1</span> radarr rename files and directories<a class="headerlink" href="#radarr-rename-files-and-directories" title="Permanent link">¶</a></h4>
 <p>first set the movie rename formats <a href="https://trash-guides.info/Radarr/Radarr-recommended-naming-scheme/#standard-folder">https://trash-guides.info/Radarr/Radarr-recommended-naming-scheme/#standard-folder</a></p>
 <p>movie</p>
 <div class="highlight"><pre><span></span><code>{Movie CleanTitle} {(Release Year)} - {Edition Tags }{[Custom Formats]}{[Quality Full]}{[MediaInfo 3D]}{[MediaInfo VideoDynamicRangeType]}{[Mediainfo AudioCodec}{ Mediainfo AudioChannels]}{[Mediainfo VideoCodec]}{-Release Group}
@@ -1977,24 +1977,24 @@
 <p>folder</p>
 <div class="highlight"><pre><span></span><code>{Movie CleanTitle} ({Release Year})
 </code></pre></div>
-<h4 id="first-import-dirslibrary-containg-movies-directly-under-root-dir"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.2.0.2</span> first import dirs/library containg movies directly under root dir<a class="headerlink" href="#first-import-dirslibrary-containg-movies-directly-under-root-dir" title="Permanent link">¶</a></h4>
+<h4 id="first-import-dirslibrary-containg-movies-directly-under-root-dir"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.0.2</span> first import dirs/library containg movies directly under root dir<a class="headerlink" href="#first-import-dirslibrary-containg-movies-directly-under-root-dir" title="Permanent link">¶</a></h4>
 <ul>
 <li>go to movies tab</li>
 <li>import root dir containing movies</li>
 </ul>
-<h4 id="rename-dir-names"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.2.0.3</span> rename dir names<a class="headerlink" href="#rename-dir-names" title="Permanent link">¶</a></h4>
+<h4 id="rename-dir-names"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.0.3</span> rename dir names<a class="headerlink" href="#rename-dir-names" title="Permanent link">¶</a></h4>
 <ul>
 <li>go to movies tab</li>
 <li>navbar -&gt; edit movies -&gt; <strong>select only the movies/dirs from the single library</strong></li>
 <li>footer -&gt; edit -&gt; root folder -&gt; <strong>SELECT ONLY THE DIR FROM WHICH THE CURRENT MOVIES ARE SELECTED (otherwise the move will mess things up bad)</strong></li>
 </ul>
-<h4 id="rename-movie-video-file-names"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.2.0.4</span> rename movie video file names<a class="headerlink" href="#rename-movie-video-file-names" title="Permanent link">¶</a></h4>
+<h4 id="rename-movie-video-file-names"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.0.4</span> rename movie video file names<a class="headerlink" href="#rename-movie-video-file-names" title="Permanent link">¶</a></h4>
 <ul>
 <li>go to movies tab</li>
 <li>navbar -&gt; edit movies -&gt; select only the movies/dirs from the single library</li>
 <li>footer -&gt; rename files -&gt; organize</li>
 </ul>
-<h2 id="3-jellyseerr"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.3</span> 3. <code>jellyseerr</code><a class="headerlink" href="#3-jellyseerr" title="Permanent link">¶</a></h2>
+<h2 id="3-jellyseerr"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> 3. <code>jellyseerr</code><a class="headerlink" href="#3-jellyseerr" title="Permanent link">¶</a></h2>
 <ul>
 <li>request movies/tv (sends requests to radarr/sonarr)</li>
 <li>use the compose file to spin up</li>
@@ -2014,13 +2014,13 @@
 <figure><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://i.ibb.co/zhmJ49G/A-19-59-26-13-Aug.png"><img src="https://i.ibb.co/zhmJ49G/A-19-59-26-13-Aug.png"/></a><figcaption>image</figcaption>
 </figure>
 </p>
-<h2 id="4-flaresolverr"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.4</span> 4. <code>flaresolverr</code><a class="headerlink" href="#4-flaresolverr" title="Permanent link">¶</a></h2>
+<h2 id="4-flaresolverr"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> 4. <code>flaresolverr</code><a class="headerlink" href="#4-flaresolverr" title="Permanent link">¶</a></h2>
 <ul>
 <li>solves captchas (for tracking sites)</li>
 <li>use the compose file to spin up</li>
 <li>done don't have to configure anything on this (to basically solve cloudflare captcha's on public sites like 1337x)</li>
 </ul>
-<h2 id="5-prowlarr"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.5</span> 5. <code>prowlarr</code><a class="headerlink" href="#5-prowlarr" title="Permanent link">¶</a></h2>
+<h2 id="5-prowlarr"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> 5. <code>prowlarr</code><a class="headerlink" href="#5-prowlarr" title="Permanent link">¶</a></h2>
 <ul>
 <li>indexer (works with public/private trackers)</li>
 <li>use the compose file to spin up</li>
@@ -2035,20 +2035,20 @@
 <figure><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://i.ibb.co/pwcSkHL/A-22-06-47-13-Aug.png"><img src="https://i.ibb.co/pwcSkHL/A-22-06-47-13-Aug.png"/></a><figcaption>image</figcaption>
 </figure>
 </p>
-<h3 id="back-to-radarr"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.5.1</span> back to radarr...<a class="headerlink" href="#back-to-radarr" title="Permanent link">¶</a></h3>
+<h3 id="back-to-radarr"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.1</span> back to radarr...<a class="headerlink" href="#back-to-radarr" title="Permanent link">¶</a></h3>
 <ul>
 <li>now add a download client. settings &gt; download clients. add qb. host "qb" (the container name). port "8090" (internally exposed port). username and password of qb. test and move on.</li>
 <li>delete that "dogville" as even refreshing doesn't work. start a new.</li>
 <li>go back to jellyseerr. (delete that dogville request) and pick a new movie and request it! volla jellyseerr --&gt; radarr --&gt; qb (it adds to qb automatically <a href="https://qb.dpi0.cloud">https://qb.dpi0.cloud</a>)</li>
 </ul>
 <p><strong>same for sonarr, setup download client</strong></p>
-<h2 id="6-bazarr"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.6</span> 6. <code>bazarr</code><a class="headerlink" href="#6-bazarr" title="Permanent link">¶</a></h2>
+<h2 id="6-bazarr"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> 6. <code>bazarr</code><a class="headerlink" href="#6-bazarr" title="Permanent link">¶</a></h2>
 <ul>
 <li>subtitles</li>
 <li>use the compose file to spin up</li>
 <li><a href="https://sub.dpi0.cloud">https://sub.dpi0.cloud</a> and follow the <a href="https://wiki.bazarr.media/Getting-Started/Setup-Guide/">https://wiki.bazarr.media/Getting-Started/Setup-Guide/</a></li>
 </ul>
-<h2 id="final-settings"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.7</span> final settings<a class="headerlink" href="#final-settings" title="Permanent link">¶</a></h2>
+<h2 id="final-settings"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> final settings<a class="headerlink" href="#final-settings" title="Permanent link">¶</a></h2>
 <p>
 <figure><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://i.ibb.co/TLNLpQC/A-18-11-46-15-Aug.png"><img src="https://i.ibb.co/TLNLpQC/A-18-11-46-15-Aug.png"/></a><figcaption>image</figcaption>
 </figure>
@@ -2075,13 +2075,13 @@
 <li>add the movie/tv to jellyseer</li>
 </ol>
 <p>not the other way round! (easily possible but leads to confusion on edge cases)</p>
-<h4 id="jellyseer"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.7.0.1</span> jellyseer<a class="headerlink" href="#jellyseer" title="Permanent link">¶</a></h4>
+<h4 id="jellyseer"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.0.1</span> jellyseer<a class="headerlink" href="#jellyseer" title="Permanent link">¶</a></h4>
 <p>all requests go to a single public directory in /hdd/Media/Films/Public or /hdd/Media/TV/Public</p>
 <p>there's no around this of achieving user privacy of directing movies to seperate directories. not without using multiple instances of the entire stack!</p>
-<h4 id="radarr"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.7.0.2</span> radarr<a class="headerlink" href="#radarr" title="Permanent link">¶</a></h4>
+<h4 id="radarr"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.0.2</span> radarr<a class="headerlink" href="#radarr" title="Permanent link">¶</a></h4>
 <p>radarr receives requests from jellyseer, adds them to library. if an indexer is configured it uses that for the movie. if not then waits for a manual movie addition by qb.</p>
 <p>radarr only cares about the tags present on the download clients. if the tags match, the movie will show up.</p>
-<h4 id="qbitorrent"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.7.0.3</span> qbitorrent<a class="headerlink" href="#qbitorrent" title="Permanent link">¶</a></h4>
+<h4 id="qbitorrent"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.0.3</span> qbitorrent<a class="headerlink" href="#qbitorrent" title="Permanent link">¶</a></h4>
 <p>there is no way to have multiple users on the same qb instance. so to achieve basic privacy when adding manually, using seperate instances.</p>
 <p>you can achieve seperate downloads for manual imports, using tags. but again no way to achieve privacy on the Media directory. not without using seperate instances of the arr stack.</p>
 <p><a href="https://trash-guides.info/Downloaders/qBittorrent/Basic-Setup/">https://trash-guides.info/Downloaders/qBittorrent/Basic-Setup/</a></p>
@@ -2098,7 +2098,7 @@
 <li>For a home connection that you use with others it's best practice to set the upload/download rate to about 70-80% of your maximum upload/download speed</li>
 <li>set seed limit to 3 (personal preference)</li>
 </ul>
-<h4 id="radarr_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.7.0.4</span> radarr<a class="headerlink" href="#radarr_1" title="Permanent link">¶</a></h4>
+<h4 id="radarr_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.0.4</span> radarr<a class="headerlink" href="#radarr_1" title="Permanent link">¶</a></h4>
 <p><a href="https://trash-guides.info/File-and-Folder-Structure/Examples/">https://trash-guides.info/File-and-Folder-Structure/Examples/</a></p>
 <ul>
 <li>
@@ -2108,7 +2108,7 @@
 <p>add download client: host=qb, port=8090, username, password, add tag=radarr</p>
 </li>
 </ul>
-<h4 id="jellyseer_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">61.7.0.5</span> jellyseer<a class="headerlink" href="#jellyseer_1" title="Permanent link">¶</a></h4>
+<h4 id="jellyseer_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.0.5</span> jellyseer<a class="headerlink" href="#jellyseer_1" title="Permanent link">¶</a></h4>
 <ul>
 <li>make sure you set the tag to radarr</li>
 </ul>

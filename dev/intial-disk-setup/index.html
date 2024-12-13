@@ -1844,16 +1844,16 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/intial-disk-setup.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">119.</span> Intial Disk Setup</h1>
-<h2 id="create-bootable-drive-on-windows"><span class="enumerate-headings-plugin enumerate-heading-plugin">119.1</span> create bootable drive on windows<a class="headerlink" href="#create-bootable-drive-on-windows" title="Permanent link">¶</a></h2>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Intial Disk Setup</h1>
+<h2 id="create-bootable-drive-on-windows"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> create bootable drive on windows<a class="headerlink" href="#create-bootable-drive-on-windows" title="Permanent link">¶</a></h2>
 <p><a href="https://www.microsoft.com/en-in/software-download">https://www.microsoft.com/en-in/software-download</a></p>
 <p>use <a href="https://github.com/pbatard/rufus/releases">https://github.com/pbatard/rufus/releases</a></p>
 <p>make sure parition table is <strong>GPT</strong> and target system is <strong>UEFI</strong></p>
-<h2 id="create-bootable-drive-on-linux"><span class="enumerate-headings-plugin enumerate-heading-plugin">119.2</span> create bootable drive on linux<a class="headerlink" href="#create-bootable-drive-on-linux" title="Permanent link">¶</a></h2>
+<h2 id="create-bootable-drive-on-linux"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> create bootable drive on linux<a class="headerlink" href="#create-bootable-drive-on-linux" title="Permanent link">¶</a></h2>
 <p><a href="https://archlinux.org/releng/releases">https://archlinux.org/releng/releases</a></p>
 <p><a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a></p>
 <p><a href="https://cdimage.debian.org/cdimage">https://cdimage.debian.org/cdimage</a> AND <a href="https://github.com/slowpeek/debian-iso-guide">https://github.com/slowpeek/debian-iso-guide</a></p>
-<h3 id="create-windows-drive-on-linux"><span class="enumerate-headings-plugin enumerate-heading-plugin">119.2.1</span> create <code>windows</code> drive on linux<a class="headerlink" href="#create-windows-drive-on-linux" title="Permanent link">¶</a></h3>
+<h3 id="create-windows-drive-on-linux"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.1</span> create <code>windows</code> drive on linux<a class="headerlink" href="#create-windows-drive-on-linux" title="Permanent link">¶</a></h3>
 <ol>
 <li>use ventoy and create a bootable drive from it</li>
 <li>install windows normally and then use the official media creation tool to create a proper drive. honestly fuck windows 🖕 as nothing except hacky ventoy works!</li>
@@ -1866,7 +1866,7 @@
 <li>don't use woeusb-ng, killed my 16G drive</li>
 <li>balena etcher doesn't support windows drive creation</li>
 </ol>
-<h3 id="create-a-linux-drive-on-linux"><span class="enumerate-headings-plugin enumerate-heading-plugin">119.2.2</span> create a <code>linux</code> drive on linux<a class="headerlink" href="#create-a-linux-drive-on-linux" title="Permanent link">¶</a></h3>
+<h3 id="create-a-linux-drive-on-linux"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.2</span> create a <code>linux</code> drive on linux<a class="headerlink" href="#create-a-linux-drive-on-linux" title="Permanent link">¶</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>just balena etcher for this, but for some reason don't trust balena then <strong>use trusted dd command below</strong></p>
@@ -1886,7 +1886,7 @@ sudo<span class="w"> </span>mkfs.exfat<span class="w"> </span>-L<span class="w">
 
 sudo<span class="w"> </span>dd<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>4M<span class="w"> </span><span class="nv">conv</span><span class="o">=</span>fsync<span class="w"> </span><span class="nv">oflag</span><span class="o">=</span>direct<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress<span class="w"> </span><span class="k">if</span><span class="o">=</span>/home/dpi0/Downloads/archlinux-2024.10.01-x86_64.iso<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/disk/by-id/usb-SanDisk_Ultra_4C531001630824104422-0:0
 </code></pre></div>
-<h2 id="install-windows-first"><span class="enumerate-headings-plugin enumerate-heading-plugin">119.3</span> install windows first<a class="headerlink" href="#install-windows-first" title="Permanent link">¶</a></h2>
+<h2 id="install-windows-first"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> install windows first<a class="headerlink" href="#install-windows-first" title="Permanent link">¶</a></h2>
 <p>use win10, 11 is garbage</p>
 <p><a href="https://www.youtube.com/watch?v=vtxedkuUCas">https://www.youtube.com/watch?v=vtxedkuUCas</a></p>
 <div class="admonition warning">
@@ -1899,7 +1899,7 @@ you'll only have to change you local time to Asia/Kolkata once after installatio
 <p>continue till the first screen of installation right after "install now" to check if any errors in iso<br/>
 if yes then stop 🛑🤚 use a different method of creating boot drive</p>
 </div>
-<h3 id="1-clear-up-exisiting-partitions"><span class="enumerate-headings-plugin enumerate-heading-plugin">119.3.1</span> 1. clear up exisiting partitions<a class="headerlink" href="#1-clear-up-exisiting-partitions" title="Permanent link">¶</a></h3>
+<h3 id="1-clear-up-exisiting-partitions"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.1</span> 1. clear up exisiting partitions<a class="headerlink" href="#1-clear-up-exisiting-partitions" title="Permanent link">¶</a></h3>
 <p><strong>boot in live cd, shift+f10</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">diskpart</span>
 <span class="n">list</span> <span class="n">disk</span>
@@ -1913,7 +1913,7 @@ if yes then stop 🛑🤚 use a different method of creating boot drive</p>
 <span class="n">sel</span> <span class="n">disk</span> <span class="n">0</span>
 <span class="n">clean</span>
 </code></pre></div>
-<h3 id="2-create-partitions"><span class="enumerate-headings-plugin enumerate-heading-plugin">119.3.2</span> 2. create partitions<a class="headerlink" href="#2-create-partitions" title="Permanent link">¶</a></h3>
+<h3 id="2-create-partitions"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.2</span> 2. create partitions<a class="headerlink" href="#2-create-partitions" title="Permanent link">¶</a></h3>
 <p><strong>efi</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">convert</span> <span class="n">gpt</span>
 
@@ -1946,7 +1946,7 @@ if yes then stop 🛑🤚 use a different method of creating boot drive</p>
 <span class="n">list</span> <span class="n">disk</span>
 <span class="n">list</span> <span class="n">part</span>
 </code></pre></div>
-<h3 id="3-install-windows"><span class="enumerate-headings-plugin enumerate-heading-plugin">119.3.3</span> 3. install windows<a class="headerlink" href="#3-install-windows" title="Permanent link">¶</a></h3>
+<h3 id="3-install-windows"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.3</span> 3. install windows<a class="headerlink" href="#3-install-windows" title="Permanent link">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Caution</p>
 <p>🖐️ after creating the partitions above you can simply continue through the GUI and install windows on the primary partition, and skip to OOBE<br/>
@@ -1966,7 +1966,7 @@ as <strong>DISM below sucks</strong> ass and doesn't often work, it only worked 
 <span class="n">bcdboot</span> <span class="n">c</span><span class="p">:\</span><span class="n">windows</span> <span class="p">/</span><span class="n">s</span> <span class="n">g</span><span class="p">:</span> <span class="p">/</span><span class="n">f</span> <span class="n">all</span>
 </code></pre></div>
 <p>close terminal, close the windows live cd and reboot, will take you to the oobe in 2-3 mins</p>
-<h3 id="4-oobe"><span class="enumerate-headings-plugin enumerate-heading-plugin">119.3.4</span> 4. OOBE<a class="headerlink" href="#4-oobe" title="Permanent link">¶</a></h3>
+<h3 id="4-oobe"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.4</span> 4. OOBE<a class="headerlink" href="#4-oobe" title="Permanent link">¶</a></h3>
 <ul>
 <li>select country: US, basically use the defaults and ONLY AFTER INSALLATION, CHANGE YOUR LOCAL TIME to Asia/Kolkata</li>
 <li>and if stuck with the network/account thingy: <code>oobeypassnro</code> and it will reboot</li>
@@ -1975,7 +1975,7 @@ as <strong>DISM below sucks</strong> ass and doesn't often work, it only worked 
 <li>never opt into any windows services</li>
 </ul>
 <p><strong>done!</strong></p>
-<h2 id="in-windows-shrink-volume-for-arch"><span class="enumerate-headings-plugin enumerate-heading-plugin">119.4</span> in windows, shrink volume for arch:<a class="headerlink" href="#in-windows-shrink-volume-for-arch" title="Permanent link">¶</a></h2>
+<h2 id="in-windows-shrink-volume-for-arch"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> in windows, shrink volume for arch:<a class="headerlink" href="#in-windows-shrink-volume-for-arch" title="Permanent link">¶</a></h2>
 <p>if need 120G unallocated for arch, then enter into shrink volume: 120*1024 = <strong>122880M</strong></p>
 <aside class="md-source-file">
 <span class="md-source-file__fact">

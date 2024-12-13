@@ -1773,8 +1773,8 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/file-compression-decompression.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">79.</span> File Compression Decompression</h1>
-<h2 id="tar"><span class="enumerate-headings-plugin enumerate-heading-plugin">79.1</span> tar<a class="headerlink" href="#tar" title="Permanent link">¶</a></h2>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> File Compression Decompression</h1>
+<h2 id="tar"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> tar<a class="headerlink" href="#tar" title="Permanent link">¶</a></h2>
 <ul>
 <li>Tape Archive, archiving files and directories into a single file, often called a "tarball."</li>
 <li>simply an <strong>ARCHIVING TOOL</strong> that creates a single file it <strong>does NOT compress anything</strong></li>
@@ -1789,14 +1789,14 @@
 <li>add files to an existing tarball: <code>tar -rf archive.tar file3 file4</code></li>
 <li>remove files from an existing tarball: <code>tar --delete -f archive.tar file1</code></li>
 </ul>
-<h2 id="compression-standards"><span class="enumerate-headings-plugin enumerate-heading-plugin">79.2</span> compression standards<a class="headerlink" href="#compression-standards" title="Permanent link">¶</a></h2>
+<h2 id="compression-standards"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> compression standards<a class="headerlink" href="#compression-standards" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>gzip .gz</strong>: <code>gzip filename</code> <code>gunzip filename.gz</code></li>
 <li><strong>bzip2 .bz2</strong>: <code>bzip2 filename</code> <code>bunzip2 filename.bz2</code></li>
 <li><strong>xz .xz</strong>: <code>xz filename</code> <code>unxz filename.xz</code></li>
 <li><strong>zip .zip</strong>: <code>zip archive.zip file1 file2 file3</code> <code>unzip archive.zip</code></li>
 </ul>
-<h2 id="comparing-compression-standards"><span class="enumerate-headings-plugin enumerate-heading-plugin">79.3</span> comparing compression standards<a class="headerlink" href="#comparing-compression-standards" title="Permanent link">¶</a></h2>
+<h2 id="comparing-compression-standards"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> comparing compression standards<a class="headerlink" href="#comparing-compression-standards" title="Permanent link">¶</a></h2>
 <ul>
 <li><code>.gz</code> moderate ratio, fast speed, very basic <strong>use this only for speed</strong></li>
 <li><code>.bz2</code> high ratio, moderate speed, text files, source codes</li>
@@ -1811,7 +1811,7 @@
 <li>create gz <code>z</code>: <code>tar -czvf archive.tar.gz file1 file2 directory1</code> (last should be f, and first c/x/r rest order don't matter)</li>
 <li>extract gz: <code>tar -xzvf archive.tar.gz -C /path/to/directory</code></li>
 </ul>
-<h2 id="xz"><span class="enumerate-headings-plugin enumerate-heading-plugin">79.4</span> xz<a class="headerlink" href="#xz" title="Permanent link">¶</a></h2>
+<h2 id="xz"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> xz<a class="headerlink" href="#xz" title="Permanent link">¶</a></h2>
 <ul>
 <li>create with xz <code>J</code>: <code>tar -cJvf archive.tar.xz file1 file2 directory1</code></li>
 <li>view contents xz: <code>tar -tJvf archive.tar.xz</code></li>
@@ -1819,7 +1819,7 @@
 <li>there is no way to directory add/delete files from .tar.xz have to extract and recompress in two/three steps</li>
 <li>for bz2 if needed <code>j</code></li>
 </ul>
-<h2 id="7z"><span class="enumerate-headings-plugin enumerate-heading-plugin">79.5</span> 7z<a class="headerlink" href="#7z" title="Permanent link">¶</a></h2>
+<h2 id="7z"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> 7z<a class="headerlink" href="#7z" title="Permanent link">¶</a></h2>
 <p>p7zip-full not updated since 2016 :( so directly use the latest binary https://www.7-zip.org/download.html</p>
 <ul>
 <li>can't tar+7z in single command, as 7z is not native to linux so first tar <code>tar -cvf archive.tar file1 file2</code> then,</li>
@@ -1829,7 +1829,7 @@
 <li>better command i found: <code>7z a -m0=lzma2 -mx=9 -mfb=64 -md=256m -ms=on archive.7z archive.tar</code> LZMA2 is an improved version, Sets the compression level to maximum (level 9), mfb Sets the number of fast bytes for LZMA2 compression, md Sets the dictionary size to 256 MB bigger dict better compression takes more RAM, ms=on Enables solid compression</li>
 <li><strong>add password:</strong> <code>7z a -p"pa$$word @|" archive.7z files_to_compress</code> then <code>7z x -p"pa$$word @|" archive.7z</code></li>
 </ul>
-<h2 id="compress-password-with-zip"><span class="enumerate-headings-plugin enumerate-heading-plugin">79.6</span> compress + password with .zip<a class="headerlink" href="#compress-password-with-zip" title="Permanent link">¶</a></h2>
+<h2 id="compress-password-with-zip"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> compress + password with .zip<a class="headerlink" href="#compress-password-with-zip" title="Permanent link">¶</a></h2>
 <p>you can install 7z for the best one but by default use this:</p>
 <ul>
 <li><code>tar -cvf files.tar file1 file2 directory1</code> (can't directly tar+compress encrypted, have to do in two steps)</li>

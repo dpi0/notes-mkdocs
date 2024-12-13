@@ -1752,7 +1752,7 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/interactive-rebase.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">118.</span> Interactive Rebase</h1>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Interactive Rebase</h1>
 <p>it always rewrites history i.e., changes hashes. so don't do this on public commits.</p>
 <ol>
 <li><strong><code>pick</code></strong>: Keep the commit as is.</li>
@@ -1765,7 +1765,7 @@
 <li><strong><code>label</code></strong>: Add a label to the commit for reference.</li>
 <li><strong><code>reset</code></strong>: Reset a commit to be like the previous one.</li>
 </ol>
-<h2 id="for-any-interactive-rebase"><span class="enumerate-headings-plugin enumerate-heading-plugin">118.1</span> for any interactive rebase<a class="headerlink" href="#for-any-interactive-rebase" title="Permanent link">¶</a></h2>
+<h2 id="for-any-interactive-rebase"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> for any interactive rebase<a class="headerlink" href="#for-any-interactive-rebase" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>glog
 ---
 *<span class="w"> </span>7ce1694<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>main<span class="o">)</span><span class="w"> </span>Update<span class="w"> </span>nvim<span class="w"> </span><span class="m">23</span>-07-2024<span class="w"> </span><span class="m">10</span>:25
@@ -1816,7 +1816,7 @@ pick<span class="w"> </span>7ce1694<span class="w"> </span>Update<span class="w"
 <p>and then replay the HEAD~n changes from the <strong>8b4420e</strong>'th point, like these 5 changes from <strong>8b4420e</strong> commit point</p>
 <p>so the commit hashes of the ~n commits will <strong>change</strong>, like for these 5 commits</p>
 </div>
-<h2 id="squash"><span class="enumerate-headings-plugin enumerate-heading-plugin">118.2</span> <code>squash</code><a class="headerlink" href="#squash" title="Permanent link">¶</a></h2>
+<h2 id="squash"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> <code>squash</code><a class="headerlink" href="#squash" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>pick<span class="w"> </span>a11c013<span class="w"> </span>Add<span class="w"> </span>archive<span class="w"> </span>easyeffects
 s<span class="w"> </span>17c3434<span class="w"> </span>Update<span class="w"> </span>hypr<span class="w"> </span><span class="m">23</span>-07-2024<span class="w"> </span><span class="m">09</span>:47
 s<span class="w"> </span>d4767f4<span class="w"> </span>Update<span class="w"> </span>waybar<span class="w"> </span><span class="m">23</span>-07-2024<span class="w"> </span><span class="m">09</span>:47
@@ -1901,11 +1901,11 @@ s<span class="w"> </span>70a198f<span class="w"> </span>squash<span class="w"> <
 pick<span class="w"> </span>bfd655d<span class="w"> </span>Update<span class="w"> </span>nvim<span class="w"> </span><span class="m">23</span>-07-2024<span class="w"> </span><span class="m">10</span>:25
 </code></pre></div>
 <p>this will squash <strong>70a198f</strong> into <strong>4a79d34</strong></p>
-<h3 id="decent-ways-to-squash-the-last-n-commits-together"><span class="enumerate-headings-plugin enumerate-heading-plugin">118.2.1</span> decent ways to squash the last N commits together<a class="headerlink" href="#decent-ways-to-squash-the-last-n-commits-together" title="Permanent link">¶</a></h3>
+<h3 id="decent-ways-to-squash-the-last-n-commits-together"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.1</span> decent ways to squash the last N commits together<a class="headerlink" href="#decent-ways-to-squash-the-last-n-commits-together" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>HEAD~N
 git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"new commit message"</span>
 </code></pre></div>
-<h2 id="for-a-long-commit-history-start-from-root"><span class="enumerate-headings-plugin enumerate-heading-plugin">118.3</span> for a long commit history - start from root<a class="headerlink" href="#for-a-long-commit-history-start-from-root" title="Permanent link">¶</a></h2>
+<h2 id="for-a-long-commit-history-start-from-root"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> for a long commit history - start from root<a class="headerlink" href="#for-a-long-commit-history-start-from-root" title="Permanent link">¶</a></h2>
 <p>like want to rebase from HEAD to ..... the 3rd commit from root. and have 200 commits in b/w so can't practically do this HEAD~X</p>
 <p><strong>first the simplest and honestly the cleanest way</strong></p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l

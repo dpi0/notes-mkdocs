@@ -1894,8 +1894,8 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/more-notes.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">131.</span> More Notes</h1>
-<h2 id="efi-vs-esp-vs-bootloaders-vs-firmware"><span class="enumerate-headings-plugin enumerate-heading-plugin">131.1</span> efi vs esp vs bootloaders vs firmware<a class="headerlink" href="#efi-vs-esp-vs-bootloaders-vs-firmware" title="Permanent link">¶</a></h2>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> More Notes</h1>
+<h2 id="efi-vs-esp-vs-bootloaders-vs-firmware"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> efi vs esp vs bootloaders vs firmware<a class="headerlink" href="#efi-vs-esp-vs-bootloaders-vs-firmware" title="Permanent link">¶</a></h2>
 <p><a href="https://www.rodsbooks.com/efi-bootloaders/principles.html">https://www.rodsbooks.com/efi-bootloaders/principles.html</a></p>
 <p>Power on -&gt; UEFI initializes hardware -&gt; POST --&gt; UEFI firmware loaded from ROM on mb --&gt; UEFI scans ESP -&gt; Finds bootx64.efi/grubx64.efi -&gt; Loads GRUB via /boot/grub/grub.cfg -&gt; GRUB loads kernel -&gt; Kernel initializes system (more after this below)</p>
 <ul>
@@ -1904,7 +1904,7 @@
 <li><strong>esp:</strong> the partition containing .efi files, necessary for the firmware to boot the operating system.</li>
 <li><strong>bootloaders:</strong> GRUB, systemd-boot, rEFInd etc. load the operating system kernel and initialize the OS. providing options to select different kernels or OSes.</li>
 </ul>
-<h2 id="linux-kernel"><span class="enumerate-headings-plugin enumerate-heading-plugin">131.2</span> Linux Kernel<a class="headerlink" href="#linux-kernel" title="Permanent link">¶</a></h2>
+<h2 id="linux-kernel"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> Linux Kernel<a class="headerlink" href="#linux-kernel" title="Permanent link">¶</a></h2>
 <p>core component of the Linux operating system</p>
 <p>main components are:</p>
 <ul>
@@ -1915,7 +1915,7 @@
 <li>Networking</li>
 <li><strong>Security:</strong> user permissions, SELinux, and other access controls.</li>
 </ul>
-<h3 id="initramfs"><span class="enumerate-headings-plugin enumerate-heading-plugin">131.2.1</span> initramfs<a class="headerlink" href="#initramfs" title="Permanent link">¶</a></h3>
+<h3 id="initramfs"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.1</span> initramfs<a class="headerlink" href="#initramfs" title="Permanent link">¶</a></h3>
 <p><a href="https://wiki.archlinux.org/title/Arch_boot_process#initramfs">https://wiki.archlinux.org/title/Arch_boot_process#initramfs</a></p>
 <p>temporary root file system loaded into memory during the boot process.</p>
 <p>provides the necessary drivers and tools to mount the actual root file system</p>
@@ -1973,7 +1973,7 @@ options<span class="w"> </span><span class="nv">root</span><span class="o">=</sp
 <li>The kernel then looks for the <strong>init</strong> process (usually /sbin/init or <strong>/usr/lib/systemd/systemd</strong>)</li>
 <li>The init process is responsible for <strong>starting all other processes.</strong></li>
 </ul>
-<h2 id="gpt-vs-mbr"><span class="enumerate-headings-plugin enumerate-heading-plugin">131.3</span> GPT vs MBR<a class="headerlink" href="#gpt-vs-mbr" title="Permanent link">¶</a></h2>
+<h2 id="gpt-vs-mbr"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> GPT vs MBR<a class="headerlink" href="#gpt-vs-mbr" title="Permanent link">¶</a></h2>
 <p><strong>GPT</strong></p>
 <ul>
 <li>modern partitioning scheme introduced as part of the UEFI standard.</li>
@@ -1988,13 +1988,13 @@ options<span class="w"> </span><span class="nv">root</span><span class="o">=</sp
 <li>up to 4 primary partitions, each up to 2 TB.</li>
 <li>BIOS reads the MBR, which contains the bootloader. and works ONLY with BIOS firmware.</li>
 </ul>
-<h2 id="swap"><span class="enumerate-headings-plugin enumerate-heading-plugin">131.4</span> Swap<a class="headerlink" href="#swap" title="Permanent link">¶</a></h2>
+<h2 id="swap"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> Swap<a class="headerlink" href="#swap" title="Permanent link">¶</a></h2>
 <ul>
 <li>Modern systems show minimal performance difference between swap files and swap partitions.</li>
 <li>Swap files offer greater flexibility and are easier to manage than partitions.</li>
 </ul>
 <p><strong>with hiberation:</strong> keep swap 1x to 1.5x of RAM</p>
-<h2 id="suspend-to-ram-s3-vs-suspend-to-idle-s0"><span class="enumerate-headings-plugin enumerate-heading-plugin">131.5</span> Suspend to RAM (S3) vs. Suspend to Idle (S0)<a class="headerlink" href="#suspend-to-ram-s3-vs-suspend-to-idle-s0" title="Permanent link">¶</a></h2>
+<h2 id="suspend-to-ram-s3-vs-suspend-to-idle-s0"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> Suspend to RAM (S3) vs. Suspend to Idle (S0)<a class="headerlink" href="#suspend-to-ram-s3-vs-suspend-to-idle-s0" title="Permanent link">¶</a></h2>
 <p><strong>S0 is the modern nightmare/devil</strong></p>
 <ul>
 <li>Low power idle state, system remains semi-active.</li>
@@ -2005,7 +2005,7 @@ options<span class="w"> </span><span class="nv">root</span><span class="o">=</sp
 <li>Low power state, saving system context to RAM.</li>
 <li>Very low power consumption, longer wake-up time.</li>
 </ul>
-<h2 id="firmware"><span class="enumerate-headings-plugin enumerate-heading-plugin">131.6</span> Firmware<a class="headerlink" href="#firmware" title="Permanent link">¶</a></h2>
+<h2 id="firmware"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> Firmware<a class="headerlink" href="#firmware" title="Permanent link">¶</a></h2>
 <p>It's firm, because it sits between soft and hard 🤯</p>
 <p>It's not usually an entire operating system, but a single program that can do things like see if the rest of the computer is okay and look through other devices to find the next program to run.</p>
 <p>There's typically no "process" as there is either no kernel (no need for anything else to run) or a very minimal one as it directly controls the hardware.</p>
@@ -2026,7 +2026,7 @@ options<span class="w"> </span><span class="nv">root</span><span class="o">=</sp
 <li><strong>Embedded Controller (EC) Firmware:</strong> Manages power functions, keyboard input, battery charging, and other low-level tasks.</li>
 <li><strong>Peripheral Firmware:</strong> Firmware for integrated devices like network interfaces, audio controllers, and storage controllers.</li>
 </ul>
-<h3 id="efibootmgr"><span class="enumerate-headings-plugin enumerate-heading-plugin">131.6.1</span> <code>efibootmgr</code><a class="headerlink" href="#efibootmgr" title="Permanent link">¶</a></h3>
+<h3 id="efibootmgr"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6.1</span> <code>efibootmgr</code><a class="headerlink" href="#efibootmgr" title="Permanent link">¶</a></h3>
 <p>manages UEFI boot menu from OS 🤯</p>
 <div class="highlight"><pre><span></span><code>efibootmgr
 
@@ -2055,7 +2055,7 @@ sudo<span class="w"> </span>efibootmgr<span class="w"> </span>-b<span class="w">
 
 sudo<span class="w"> </span>efibootmgr<span class="w"> </span>-b<span class="w"> </span>&lt;bootnum&gt;<span class="w"> </span>-A
 </code></pre></div>
-<h3 id="uefi-vs-bios"><span class="enumerate-headings-plugin enumerate-heading-plugin">131.6.2</span> UEFI vs BIOS<a class="headerlink" href="#uefi-vs-bios" title="Permanent link">¶</a></h3>
+<h3 id="uefi-vs-bios"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6.2</span> UEFI vs BIOS<a class="headerlink" href="#uefi-vs-bios" title="Permanent link">¶</a></h3>
 <p>coolest article on this: <a href="https://www.happyassassin.net/posts/2014/01/25/uefi-boot-how-does-that-actually-work-then/">https://www.happyassassin.net/posts/2014/01/25/uefi-boot-how-does-that-actually-work-then/</a></p>
 <p><strong>UEFI</strong></p>
 <ul>
@@ -2074,7 +2074,7 @@ sudo<span class="w"> </span>efibootmgr<span class="w"> </span>-b<span class="w">
 <li>Many users and manufacturers still refer to UEFI as "BIOS" due to historical reasons and familiarity.</li>
 <li>The setup utility of UEFI firmware is often called "BIOS setup" in documentation and on-screen prompts. for no fucking reason. This led to confusion as users had to understand both systems during the transition period.</li>
 </ul>
-<h2 id="modern-linux-physical-security-measures"><span class="enumerate-headings-plugin enumerate-heading-plugin">131.7</span> Modern Linux Physical Security Measures<a class="headerlink" href="#modern-linux-physical-security-measures" title="Permanent link">¶</a></h2>
+<h2 id="modern-linux-physical-security-measures"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> Modern Linux Physical Security Measures<a class="headerlink" href="#modern-linux-physical-security-measures" title="Permanent link">¶</a></h2>
 <p>first checkout <a href="https://wiki.archlinux.org/title/Security">https://wiki.archlinux.org/title/Security</a></p>
 <ul>
 <li>you could lock down UEFI with a password, but that can be easily mitigated by resetting the CMOS battery</li>
@@ -2084,7 +2084,7 @@ sudo<span class="w"> </span>efibootmgr<span class="w"> </span>-b<span class="w">
 <li>use a strong user password, and prevent brute force via <code>passwd</code> and PAM OR just use <code>fail2ban</code></li>
 </ul>
 <hr/>
-<h2 id="for-windows"><span class="enumerate-headings-plugin enumerate-heading-plugin">131.8</span> for Windows<a class="headerlink" href="#for-windows" title="Permanent link">¶</a></h2>
+<h2 id="for-windows"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8</span> for Windows<a class="headerlink" href="#for-windows" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">diskpart</span>
 <span class="n">sel</span> <span class="n">disk</span> <span class="n">N</span>
 <span class="n">list</span> <span class="n">part</span>
@@ -2103,13 +2103,13 @@ sudo<span class="w"> </span>efibootmgr<span class="w"> </span>-b<span class="w">
 <p>finally, unmount the B: vol</p>
 <div class="highlight"><pre><span></span><code><span class="n">mountvol</span> <span class="n">b</span><span class="p">:</span> <span class="p">/</span><span class="n">d</span>
 </code></pre></div>
-<h3 id="opening-cmd-or-powershell-as-admin"><span class="enumerate-headings-plugin enumerate-heading-plugin">131.8.1</span> Opening CMD or PowerShell as Admin<a class="headerlink" href="#opening-cmd-or-powershell-as-admin" title="Permanent link">¶</a></h3>
+<h3 id="opening-cmd-or-powershell-as-admin"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8.1</span> Opening CMD or PowerShell as Admin<a class="headerlink" href="#opening-cmd-or-powershell-as-admin" title="Permanent link">¶</a></h3>
 <ol>
 <li>Press <strong>Win + R</strong> to open the Run dialog.</li>
 <li>Type <code>cmd</code> for Command Prompt or <code>powershell</code> for PowerShell.</li>
 <li>Instead of pressing Enter, press <strong>Ctrl + Shift + Enter</strong> to open as Administrator.</li>
 </ol>
-<h3 id="checking-admin-privileges"><span class="enumerate-headings-plugin enumerate-heading-plugin">131.8.2</span> Checking Admin Privileges<a class="headerlink" href="#checking-admin-privileges" title="Permanent link">¶</a></h3>
+<h3 id="checking-admin-privileges"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8.2</span> Checking Admin Privileges<a class="headerlink" href="#checking-admin-privileges" title="Permanent link">¶</a></h3>
 <p>To verify if Command Prompt or PowerShell is running with Administrator privileges, use the following command:</p>
 <div class="highlight"><pre><span></span><code><span class="n">net</span> <span class="n">session</span>
 </code></pre></div>

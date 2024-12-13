@@ -1969,32 +1969,32 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/arch-installation.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">59.</span> Arch Installation</h1>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Arch Installation</h1>
 <p>the holy grail: <a href="https://wiki.archlinux.org/title/installation_guide">https://wiki.archlinux.org/title/installation_guide</a></p>
-<h2 id="download-iso-and-verify"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.1</span> download ISO and verify<a class="headerlink" href="#download-iso-and-verify" title="Permanent link">¶</a></h2>
+<h2 id="download-iso-and-verify"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> download ISO and verify<a class="headerlink" href="#download-iso-and-verify" title="Permanent link">¶</a></h2>
 <p>always download the latest iso: <a href="https://archlinux.org/download/">https://archlinux.org/download/</a></p>
 <p>and the PGP signature: <a href="https://archlinux.org/download/#checksums">https://archlinux.org/download/#checksums</a></p>
 <p>ensure both the <code>.iso</code> and <code>.sig</code> are in the same directory then</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman-key<span class="w"> </span>-v<span class="w"> </span>archlinux-version-x86_64.iso.sig
 </code></pre></div>
-<h2 id="optional-verify-uefi-boot"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.2</span> optional - verify UEFI boot<a class="headerlink" href="#optional-verify-uefi-boot" title="Permanent link">¶</a></h2>
+<h2 id="optional-verify-uefi-boot"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> optional - verify UEFI boot<a class="headerlink" href="#optional-verify-uefi-boot" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/sys/firmware/efi/fw_platform_size
 </code></pre></div>
-<h2 id="setup-font-and-keymaps"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.3</span> setup font and keymaps<a class="headerlink" href="#setup-font-and-keymaps" title="Permanent link">¶</a></h2>
+<h2 id="setup-font-and-keymaps"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> setup font and keymaps<a class="headerlink" href="#setup-font-and-keymaps" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>setfont<span class="w"> </span>ter-132n
 
 loadkeys<span class="w"> </span>us
 </code></pre></div>
-<h2 id="setup-internet"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.4</span> setup internet<a class="headerlink" href="#setup-internet" title="Permanent link">¶</a></h2>
+<h2 id="setup-internet"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> setup internet<a class="headerlink" href="#setup-internet" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>iwctl<span class="w"> </span>-P<span class="w"> </span><span class="s2">"password"</span><span class="w"> </span>station<span class="w"> </span>wlan0<span class="w"> </span>connect<span class="w"> </span><span class="s2">"SSID"</span>
 ping<span class="w"> </span>archlinux.org
 </code></pre></div>
-<h2 id="update-system-clock"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.5</span> update system clock<a class="headerlink" href="#update-system-clock" title="Permanent link">¶</a></h2>
+<h2 id="update-system-clock"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> update system clock<a class="headerlink" href="#update-system-clock" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>timedatectl<span class="w"> </span>set-timezone<span class="w"> </span>Asia/Kolkata
 timedatectl<span class="w"> </span>set-ntp<span class="w"> </span><span class="nb">true</span>
 timedatectl
 </code></pre></div>
-<h2 id="create-format-and-mount-partitions"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.6</span> create, format and mount partitions<a class="headerlink" href="#create-format-and-mount-partitions" title="Permanent link">¶</a></h2>
+<h2 id="create-format-and-mount-partitions"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> create, format and mount partitions<a class="headerlink" href="#create-format-and-mount-partitions" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>lsblk<span class="w"> </span>-f
 cfdisk<span class="w"> </span>/dev/sdX
 </code></pre></div>
@@ -2025,25 +2025,25 @@ mount<span class="w"> </span>/dev/sdX-boot<span class="w"> </span>/mnt/boot
 mount<span class="w"> </span>/dev/sdX-home<span class="w"> </span>/mnt/home
 mount<span class="w"> </span>/dev/sdX-data<span class="w"> </span>/mnt/data
 </code></pre></div>
-<h2 id="optional-configure-mirrorlist"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.7</span> optional - configure mirrorlist<a class="headerlink" href="#optional-configure-mirrorlist" title="Permanent link">¶</a></h2>
+<h2 id="optional-configure-mirrorlist"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> optional - configure mirrorlist<a class="headerlink" href="#optional-configure-mirrorlist" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>cp<span class="w"> </span>/etc/pacman.d/mirrorlist<span class="w"> </span>/etc/pacman.d/mirrorlist.bak
 reflector<span class="w"> </span>--verbose<span class="w"> </span>-c<span class="w"> </span>India<span class="w"> </span>-l<span class="w"> </span><span class="m">20</span><span class="w"> </span>-p<span class="w"> </span>https<span class="w"> </span>--sort<span class="w"> </span>rate<span class="w"> </span>--save<span class="w"> </span>/etc/pacman.d/mirrorlist
 </code></pre></div>
-<h2 id="install-system-and-kernel"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.8</span> install system and kernel<a class="headerlink" href="#install-system-and-kernel" title="Permanent link">¶</a></h2>
+<h2 id="install-system-and-kernel"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8</span> install system and kernel<a class="headerlink" href="#install-system-and-kernel" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>pacstrap<span class="w"> </span>/mnt<span class="w"> </span>base<span class="w"> </span>linux<span class="w"> </span>linux-firmware<span class="w"> </span>vim<span class="w"> </span>sudo<span class="w"> </span>less<span class="w"> </span>intel-ucode
 </code></pre></div>
-<h2 id="generate-the-file-system-table"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.9</span> generate the file system table<a class="headerlink" href="#generate-the-file-system-table" title="Permanent link">¶</a></h2>
+<h2 id="generate-the-file-system-table"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9</span> generate the file system table<a class="headerlink" href="#generate-the-file-system-table" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>genfstab<span class="w"> </span>-U<span class="w"> </span>/mnt<span class="w"> </span>&gt;&gt;<span class="w"> </span>/mnt/etc/fstab
 </code></pre></div>
-<h2 id="enter-the-installed-arch-system"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.10</span> enter the installed ARCH system<a class="headerlink" href="#enter-the-installed-arch-system" title="Permanent link">¶</a></h2>
+<h2 id="enter-the-installed-arch-system"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.10</span> enter the installed ARCH system<a class="headerlink" href="#enter-the-installed-arch-system" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>arch-chroot<span class="w"> </span>/mnt
 </code></pre></div>
-<h2 id="set-up-timezone-and-sync-hardware-clock"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.11</span> set up timezone and sync hardware clock<a class="headerlink" href="#set-up-timezone-and-sync-hardware-clock" title="Permanent link">¶</a></h2>
+<h2 id="set-up-timezone-and-sync-hardware-clock"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11</span> set up timezone and sync hardware clock<a class="headerlink" href="#set-up-timezone-and-sync-hardware-clock" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>ln<span class="w"> </span>-sf<span class="w"> </span>/usr/share/zoneinfo/Asia/Kolkata<span class="w"> </span>/etc/localtime
 
 hwclock<span class="w"> </span>-w
 </code></pre></div>
-<h2 id="setup-locales"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.12</span> setup locales<a class="headerlink" href="#setup-locales" title="Permanent link">¶</a></h2>
+<h2 id="setup-locales"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.12</span> setup locales<a class="headerlink" href="#setup-locales" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>en_US.UTF-8<span class="w"> </span>UTF-8<span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/locale.gen
 
 locale-gen
@@ -2051,15 +2051,15 @@ locale-gen
 <span class="nb">echo</span><span class="w"> </span><span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8<span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/locale.conf
 <span class="nb">echo</span><span class="w"> </span><span class="nv">KEYMAP</span><span class="o">=</span>us<span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/vconsole.conf
 </code></pre></div>
-<h2 id="set-hostname"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.13</span> set hostname<a class="headerlink" href="#set-hostname" title="Permanent link">¶</a></h2>
+<h2 id="set-hostname"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.13</span> set hostname<a class="headerlink" href="#set-hostname" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>arch<span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/hostname
 </code></pre></div>
-<h2 id="create-user-account"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.14</span> create user account<a class="headerlink" href="#create-user-account" title="Permanent link">¶</a></h2>
+<h2 id="create-user-account"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.14</span> create user account<a class="headerlink" href="#create-user-account" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>useradd<span class="w"> </span>-mG<span class="w"> </span>wheel<span class="w"> </span>dpi0
 passwd<span class="w"> </span>dpi0
 <span class="nb">echo</span><span class="w"> </span><span class="s2">"%wheel ALL=(ALL:ALL) ALL"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sudoers
 </code></pre></div>
-<h2 id="install-packages"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.15</span> install packages<a class="headerlink" href="#install-packages" title="Permanent link">¶</a></h2>
+<h2 id="install-packages"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.15</span> install packages<a class="headerlink" href="#install-packages" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/pacman.conf
 ---
 ---
@@ -2068,7 +2068,7 @@ pacman<span class="w"> </span>-S<span class="w"> </span>git<span class="w"> </sp
 
 systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>fstrim.timer<span class="w"> </span>paccache.timer<span class="w"> </span>NetworkManager
 </code></pre></div>
-<h2 id="systemd-boot"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.16</span> systemd-boot<a class="headerlink" href="#systemd-boot" title="Permanent link">¶</a></h2>
+<h2 id="systemd-boot"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.16</span> systemd-boot<a class="headerlink" href="#systemd-boot" title="Permanent link">¶</a></h2>
 <p><a href="https://wiki.archlinux.org/title/systemd-boot#Installing_the_UEFI_boot_manager">https://wiki.archlinux.org/title/systemd-boot#Installing_the_UEFI_boot_manager</a></p>
 <div class="highlight"><pre><span></span><code>bootctl<span class="w"> </span>--esp-path<span class="o">=</span>/efi<span class="w"> </span>--boot-path<span class="o">=</span>/boot<span class="w"> </span>install
 
@@ -2094,7 +2094,7 @@ umount<span class="w"> </span>-R<span class="w"> </span>/mnt
 reboot
 </code></pre></div>
 <hr/>
-<h2 id="post-install-setup-internet"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.17</span> post install - setup internet<a class="headerlink" href="#post-install-setup-internet" title="Permanent link">¶</a></h2>
+<h2 id="post-install-setup-internet"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.17</span> post install - setup internet<a class="headerlink" href="#post-install-setup-internet" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>nmcli<span class="w"> </span>d<span class="w"> </span>wifi<span class="w"> </span>list
 nmcli<span class="w"> </span>d<span class="w"> </span>wifi<span class="w"> </span>connect<span class="w"> </span><span class="s2">"SSID"</span><span class="w"> </span>password<span class="w"> </span><span class="s2">"lion9ns\!123"</span>
 nmcli<span class="w"> </span>c<span class="w"> </span>show
@@ -2103,18 +2103,18 @@ OR
 
 nmtui
 </code></pre></div>
-<h2 id="disable-root-user"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.18</span> disable root user<a class="headerlink" href="#disable-root-user" title="Permanent link">¶</a></h2>
+<h2 id="disable-root-user"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.18</span> disable root user<a class="headerlink" href="#disable-root-user" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>passwd<span class="w"> </span>-l<span class="w"> </span>root
 
 
 sudo<span class="w"> </span>su<span class="w"> </span>-
 </code></pre></div>
-<h2 id="add-hosts"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.19</span> add hosts<a class="headerlink" href="#add-hosts" title="Permanent link">¶</a></h2>
+<h2 id="add-hosts"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.19</span> add hosts<a class="headerlink" href="#add-hosts" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/hosts<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
 <span class="s">192.168.1.100 server</span>
 <span class="s">EOF</span>
 </code></pre></div>
-<h2 id="setup-desktop-environment-and-display-manager"><span class="enumerate-headings-plugin enumerate-heading-plugin">59.20</span> setup desktop environment and display manager<a class="headerlink" href="#setup-desktop-environment-and-display-manager" title="Permanent link">¶</a></h2>
+<h2 id="setup-desktop-environment-and-display-manager"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.20</span> setup desktop environment and display manager<a class="headerlink" href="#setup-desktop-environment-and-display-manager" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>hyprland<span class="w"> </span>firefox<span class="w"> </span>alacritty<span class="w"> </span>zsh<span class="w"> </span>kitty<span class="w"> </span>github-cli<span class="w"> </span>ly
 sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>ly
 reboot

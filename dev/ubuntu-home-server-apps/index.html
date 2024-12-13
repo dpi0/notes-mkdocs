@@ -2200,8 +2200,8 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/ubuntu-home-server-apps.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">159.</span> Ubuntu Home Server Apps</h1>
-<h2 id="docker"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.1</span> <code>docker</code><a class="headerlink" href="#docker" title="Permanent link">¶</a></h2>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Ubuntu Home Server Apps</h1>
+<h2 id="docker"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> <code>docker</code><a class="headerlink" href="#docker" title="Permanent link">¶</a></h2>
 <p><a href="https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository">https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository</a></p>
 <p><code>sudo pacman -S docker docker-compose</code></p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
@@ -2211,7 +2211,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>containerd.service
 sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker.service
 </code></pre></div>
-<h2 id="adguard"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.2</span> <code>adguard</code><a class="headerlink" href="#adguard" title="Permanent link">¶</a></h2>
+<h2 id="adguard"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> <code>adguard</code><a class="headerlink" href="#adguard" title="Permanent link">¶</a></h2>
 <p><a href="https://github.com/AdguardTeam/AdGuardHome?tab=readme-ov-file#automated-install-linuxunixmacosfreebsdopenbsd">https://github.com/AdguardTeam/AdGuardHome?tab=readme-ov-file#automated-install-linuxunixmacosfreebsdopenbsd</a></p>
 <p><a href="https://adguard-dns.io/kb/adguard-home/getting-started/#first-time">https://adguard-dns.io/kb/adguard-home/getting-started/#first-time</a></p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>-S<span class="w"> </span>-L<span class="w"> </span>&lt;https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh<span class="w"> </span>-s<span class="w"> </span>--<span class="w"> </span>-v
@@ -2239,7 +2239,7 @@ sudo<span class="w"> </span>netplan<span class="w"> </span>apply
 <p>and finally access adguard at server:6969</p>
 <p>and change the router DNS to server</p>
 </div>
-<h3 id="best-settings"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.2.1</span> best settings<a class="headerlink" href="#best-settings" title="Permanent link">¶</a></h3>
+<h3 id="best-settings"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.1</span> best settings<a class="headerlink" href="#best-settings" title="Permanent link">¶</a></h3>
 <ul>
 <li>settings &gt; general - stats 30 days</li>
 <li>settings &gt; DNS<br/>
@@ -2254,7 +2254,7 @@ https://cloudflare-dns.com/dns-query
 <li>filters &gt; blocklists - use only steven black, one is enough</li>
 <li>filters &gt; rewrites - add *.home 192.168.1.333 or more</li>
 </ul>
-<h3 id="dns-configuration"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.2.2</span> DNS Configuration<a class="headerlink" href="#dns-configuration" title="Permanent link">¶</a></h3>
+<h3 id="dns-configuration"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.2</span> DNS Configuration<a class="headerlink" href="#dns-configuration" title="Permanent link">¶</a></h3>
 <p>More info: <a href="https://github.com/AdguardTeam/AdGuardHome/wiki/FAQ#why-am-i-getting-bind-address-already-in-use-error-when-trying-to-install-on-ubuntu">AdGuardHome FAQ</a></p>
 <ul>
 <li>By default, port <code>:53</code> is occupied by <code>systemd-resolved</code> (<code>sudo lsof -i :53</code>).</li>
@@ -2266,7 +2266,7 @@ https://cloudflare-dns.com/dns-query
 <li><code>systemd-resolved</code> provides DNS resolution and caching, listening on <code>127.0.0.53</code> and forwarding to upstream DNS servers.</li>
 <li>Changing AdGuard to port <code>66</code> requires setting <code>127.0.0.1:66</code> in <code>resolv.conf</code> and router configuration. It's easier to disable <code>resolved</code> and use port <code>53</code> with AdGuard.</li>
 </ul>
-<h3 id="configuring-redirect-from-home-to-xxxxxduckdnsorg"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.2.3</span> Configuring Redirect from <code>*.home</code> to <code>*.xxxxx.duckdns.org</code><a class="headerlink" href="#configuring-redirect-from-home-to-xxxxxduckdnsorg" title="Permanent link">¶</a></h3>
+<h3 id="configuring-redirect-from-home-to-xxxxxduckdnsorg"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.3</span> Configuring Redirect from <code>*.home</code> to <code>*.xxxxx.duckdns.org</code><a class="headerlink" href="#configuring-redirect-from-home-to-xxxxxduckdnsorg" title="Permanent link">¶</a></h3>
 <ul>
 <li>In filters &gt; DNS rewrites, add rule <code>*.home</code> -&gt; <code>server</code>.</li>
 <li>Verify DNS records with <code>dig files.home</code> (should point to <code>server</code> in its A record).</li>
@@ -2276,7 +2276,7 @@ https://cloudflare-dns.com/dns-query
 <li>Alternatively, use a self-signed certificate installed on each device for <code>*.home</code>.</li>
 <li>or better just use cloudflare tunnels</li>
 </ul>
-<h2 id="caddy"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.3</span> <code>caddy</code><a class="headerlink" href="#caddy" title="Permanent link">¶</a></h2>
+<h2 id="caddy"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> <code>caddy</code><a class="headerlink" href="#caddy" title="Permanent link">¶</a></h2>
 <p><strong>use docker and a custom executable loaded with the DNS plugin</strong></p>
 <p><a href="https://caddyserver.com/download">https://caddyserver.com/download</a> select the caddy-dns/duckdns OR cloudflare plugin and copy the download link</p>
 <div class="highlight"><pre><span></span><code>wget -O caddycloudflare "https://caddyserver.com/api/download?os=linux&amp;arch=amd64&amp;p=github.com%2Fcaddy-dns%2Fcloudflare&amp;idempotency=22159548060430"
@@ -2284,7 +2284,7 @@ https://cloudflare-dns.com/dns-query
 chmod +x caddycloudflare
 </code></pre></div>
 <p>then use the <code>caddycloudflare</code> in compose</p>
-<h2 id="rsync"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.4</span> <code>rsync</code><a class="headerlink" href="#rsync" title="Permanent link">¶</a></h2>
+<h2 id="rsync"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> <code>rsync</code><a class="headerlink" href="#rsync" title="Permanent link">¶</a></h2>
 <ul>
 <li><code>scp</code> is outdated/has issues since 2019.</li>
 </ul>
@@ -2292,7 +2292,7 @@ chmod +x caddycloudflare
 <div class="highlight"><pre><span></span><code>rsync<span class="w"> </span>-havz<span class="w"> </span>--progress<span class="w"> </span>/path/to/source/<span class="w"> </span>/path/to/destination/
 rsync<span class="w"> </span>-r<span class="w"> </span>-havz<span class="w"> </span>--progress<span class="w"> </span>/path/to/source/<span class="w"> </span>/path/to/destination/
 </code></pre></div>
-<h3 id="common-rsync-options"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.4.1</span> Common <code>rsync</code> Options<a class="headerlink" href="#common-rsync-options" title="Permanent link">¶</a></h3>
+<h3 id="common-rsync-options"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.1</span> Common <code>rsync</code> Options<a class="headerlink" href="#common-rsync-options" title="Permanent link">¶</a></h3>
 <ul>
 <li><code>-a</code>: archive (preserve permissions, links, attributes)</li>
 <li><code>-z</code>: compress</li>
@@ -2301,34 +2301,34 @@ rsync<span class="w"> </span>-r<span class="w"> </span>-havz<span class="w"> </s
 <li><code>-h</code>: human-readable units</li>
 <li><code>-e</code>: use SSH</li>
 </ul>
-<h3 id="setup-ssh-agent"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.4.2</span> Setup SSH Agent<a class="headerlink" href="#setup-ssh-agent" title="Permanent link">¶</a></h3>
+<h3 id="setup-ssh-agent"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.2</span> Setup SSH Agent<a class="headerlink" href="#setup-ssh-agent" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nb">eval</span><span class="w"> </span><span class="s2">"</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">"</span>
 ssh-add<span class="w"> </span>~/.ssh/ubuntu-server
 </code></pre></div>
-<h3 id="send-files-to-remote"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.4.3</span> send files --&gt; to remote<a class="headerlink" href="#send-files-to-remote" title="Permanent link">¶</a></h3>
+<h3 id="send-files-to-remote"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.3</span> send files --&gt; to remote<a class="headerlink" href="#send-files-to-remote" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>rsync<span class="w"> </span>-havz<span class="w"> </span>--progress<span class="w"> </span>-e<span class="w"> </span><span class="s2">"ssh -p 3333 -i ~/.ssh/private-key"</span><span class="w"> </span>file1<span class="w"> </span>file2<span class="w"> </span>dpi0@server.home:/home/dpi0/folder/
 </code></pre></div>
-<h3 id="send-dirs-to-remote"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.4.4</span> send dirs --&gt; to remote<a class="headerlink" href="#send-dirs-to-remote" title="Permanent link">¶</a></h3>
+<h3 id="send-dirs-to-remote"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.4</span> send dirs --&gt; to remote<a class="headerlink" href="#send-dirs-to-remote" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>rsync<span class="w"> </span>-r<span class="w"> </span>-havz<span class="w"> </span>--progress<span class="w"> </span>-e<span class="w"> </span><span class="s2">"ssh -p 3333 -i ~/.ssh/private-key"</span><span class="w"> </span>dir1<span class="w"> </span>dir2<span class="w"> </span>dpi0@server.home:/home/dpi0/apps/
 </code></pre></div>
-<h3 id="send-all-files-in-a-dir-to-remote"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.4.5</span> send all files in a dir --&gt; to remote<a class="headerlink" href="#send-all-files-in-a-dir-to-remote" title="Permanent link">¶</a></h3>
+<h3 id="send-all-files-in-a-dir-to-remote"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4.5</span> send all files in a dir --&gt; to remote<a class="headerlink" href="#send-all-files-in-a-dir-to-remote" title="Permanent link">¶</a></h3>
 <p>Change dir1 to dir1/ to send all files in the directory.</p>
-<h2 id="sftp"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.5</span> <code>sftp</code><a class="headerlink" href="#sftp" title="Permanent link">¶</a></h2>
+<h2 id="sftp"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> <code>sftp</code><a class="headerlink" href="#sftp" title="Permanent link">¶</a></h2>
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server">SFTP Guide</a></p>
 <ul>
 <li><strong>Transfer Speed</strong>: Around 8-9 MB/s.</li>
 <li><strong>Advantages</strong>: SFTP provides a proper shell for advanced use cases and is equally secure as rsync/scp, as it uses SSH.</li>
 </ul>
-<h3 id="connecting-to-remote-server-via-sftp"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.5.1</span> Connecting to Remote Server via SFTP<a class="headerlink" href="#connecting-to-remote-server-via-sftp" title="Permanent link">¶</a></h3>
+<h3 id="connecting-to-remote-server-via-sftp"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.1</span> Connecting to Remote Server via SFTP<a class="headerlink" href="#connecting-to-remote-server-via-sftp" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sftp<span class="w"> </span>-P<span class="w"> </span><span class="m">3333</span><span class="w"> </span>-i<span class="w"> </span>~/.ssh/ubuntu-server<span class="w"> </span>dpi0@dpi0.cloud
 </code></pre></div>
-<h3 id="host-remote"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.5.2</span> host --&gt; remote<a class="headerlink" href="#host-remote" title="Permanent link">¶</a></h3>
+<h3 id="host-remote"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.2</span> host --&gt; remote<a class="headerlink" href="#host-remote" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/path/to/save/the/folder-or-file
 put<span class="w"> </span>-r<span class="w"> </span>/mnt/films/<span class="s2">"movie-folder with space"</span>
 
 put<span class="w"> </span>/mnt/films/<span class="s2">"movie-name with spaces.mkv"</span><span class="w"> </span>/data/media/videos/films
 </code></pre></div>
-<h3 id="remote-host"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.5.3</span> remote --&gt; host<a class="headerlink" href="#remote-host" title="Permanent link">¶</a></h3>
+<h3 id="remote-host"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5.3</span> remote --&gt; host<a class="headerlink" href="#remote-host" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>get<span class="w"> </span>-r<span class="w"> </span>TV<span class="w"> </span>/home/dpi0/bruh/<span class="w"> </span><span class="c1"># Save TV directory inside bruh directory</span>
 
 get<span class="w"> </span>file-on-remote<span class="w"> </span><span class="c1"># Retrieve file-on-remote to current directory</span>
@@ -2337,7 +2337,7 @@ get<span class="w"> </span>file-on-remote<span class="w"> </span>/home/dpi0/bruh
 
 get<span class="w"> </span>file-on-remote.txt<span class="w"> </span>/home/dpi0/file-on-host.txt<span class="w"> </span><span class="c1"># Rename the file during transfer</span>
 </code></pre></div>
-<h2 id="samba"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.6</span> <code>samba</code><a class="headerlink" href="#samba" title="Permanent link">¶</a></h2>
+<h2 id="samba"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> <code>samba</code><a class="headerlink" href="#samba" title="Permanent link">¶</a></h2>
 <p>run this natively</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>samba
@@ -2392,7 +2392,7 @@ dolphin<span class="w"> </span>smb://username@server/backup-folder
 <span class="c1">## android</span>
 smb://192.168.1.9/folder-name
 </code></pre></div>
-<h2 id="nfs"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.7</span> <code>NFS</code><a class="headerlink" href="#nfs" title="Permanent link">¶</a></h2>
+<h2 id="nfs"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> <code>NFS</code><a class="headerlink" href="#nfs" title="Permanent link">¶</a></h2>
 <p><a href="https://youtu.be/Na_jKeVWzrc">Video Guide</a></p>
 <p><strong>NFS</strong> Near-native speed/performance, primarily Linux-to-Linux <strong>SAMBA</strong> Default encryption, multi-user support, cross-platform.</p>
 <ul>
@@ -2403,7 +2403,7 @@ smb://192.168.1.9/folder-name
 <li>Lower latency compared to SAMBA.</li>
 <li>With <code>autofs</code>, no need for manual mount/umount, but mainly for desktops.</li>
 </ul>
-<h3 id="on-the-server"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.7.1</span> on the server<a class="headerlink" href="#on-the-server" title="Permanent link">¶</a></h3>
+<h3 id="on-the-server"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.1</span> on the server<a class="headerlink" href="#on-the-server" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nfs-kernel-server<span class="w"> </span>-y
 
@@ -2421,12 +2421,12 @@ sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span
 sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nfs-kernel-server
 sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>nfs-kernel-server
 </code></pre></div>
-<h3 id="on-the-client"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.7.2</span> on the client<a class="headerlink" href="#on-the-client" title="Permanent link">¶</a></h3>
-<h4 id="ubuntu"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.7.2.1</span> ubuntu<a class="headerlink" href="#ubuntu" title="Permanent link">¶</a></h4>
+<h3 id="on-the-client"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.2</span> on the client<a class="headerlink" href="#on-the-client" title="Permanent link">¶</a></h3>
+<h4 id="ubuntu"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.2.1</span> ubuntu<a class="headerlink" href="#ubuntu" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nfs-common
 </code></pre></div>
-<h4 id="arch"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.7.2.2</span> arch<a class="headerlink" href="#arch" title="Permanent link">¶</a></h4>
+<h4 id="arch"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.2.2</span> arch<a class="headerlink" href="#arch" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>nfs-utils
 
 sudo<span class="w"> </span>mount<span class="w"> </span>server:/data/files/nfs/documents<span class="w"> </span>/data/nfs/documents
@@ -2446,17 +2446,17 @@ sudo<span class="w"> </span>reboot
 <li>x-systemd.automount: Tells systemd to <strong>automatically mount</strong> this file system <strong>on access.</strong></li>
 <li>x-systemd.idle-timeout=10min: <strong>Unmounts the file system after being idle for 10 minutes</strong>. Adjust the timeout as needed.</li>
 </ul>
-<h2 id="syncthing"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.8</span> <code>syncthing</code><a class="headerlink" href="#syncthing" title="Permanent link">¶</a></h2>
+<h2 id="syncthing"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.8</span> <code>syncthing</code><a class="headerlink" href="#syncthing" title="Permanent link">¶</a></h2>
 <p><strong>on the client running syncthing as a service natively and not using docker</strong></p>
 <p>create a user's systemd service: <a href="https://docs.syncthing.net/users/autostart.html#how-to-set-up-a-user-service">https://docs.syncthing.net/users/autostart.html#how-to-set-up-a-user-service</a></p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>https://raw.githubusercontent.com/syncthing/syncthing/main/etc/linux-systemd/user/syncthing.service<span class="w"> </span>&gt;<span class="w"> </span>~/.config/systemd/user/syncthing.service<span class="sb">`</span>
 
 systemctl<span class="w"> </span>--user<span class="w"> </span>start<span class="w"> </span>syncthing.service
 </code></pre></div>
-<h2 id="iperf"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.9</span> <code>iperf</code><a class="headerlink" href="#iperf" title="Permanent link">¶</a></h2>
+<h2 id="iperf"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9</span> <code>iperf</code><a class="headerlink" href="#iperf" title="Permanent link">¶</a></h2>
 <p>test network speed b/w two points</p>
 <p><a href="https://github.com/scc365/guide-network-testing/blob/main/iperf/IPERF.md">https://github.com/scc365/guide-network-testing/blob/main/iperf/IPERF.md</a></p>
-<h3 id="on-server"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.9.1</span> on server<a class="headerlink" href="#on-server" title="Permanent link">¶</a></h3>
+<h3 id="on-server"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9.1</span> on server<a class="headerlink" href="#on-server" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>iperf3
 
@@ -2468,7 +2468,7 @@ iperf3<span class="w"> </span>-s<span class="w"> </span>-p<span class="w"> </spa
 <span class="c1">## UDP</span>
 iperf3<span class="w"> </span>-s<span class="w"> </span>-u<span class="w"> </span>-p<span class="w"> </span><span class="m">7777</span>
 </code></pre></div>
-<h3 id="on-client-arch"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.9.2</span> on client - arch<a class="headerlink" href="#on-client-arch" title="Permanent link">¶</a></h3>
+<h3 id="on-client-arch"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.9.2</span> on client - arch<a class="headerlink" href="#on-client-arch" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>iperf3
 
 <span class="c1">## connect to port via TCP</span>
@@ -2477,11 +2477,11 @@ iperf3<span class="w"> </span>-p<span class="w"> </span><span class="m">7777</sp
 <span class="c1">## connect to port via TCP</span>
 iperf3<span class="w"> </span>-p<span class="w"> </span><span class="m">7777</span><span class="w"> </span>-u<span class="w"> </span>-c<span class="w"> </span>dpi0.cloud
 </code></pre></div>
-<h2 id="gitea"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.10</span> <code>gitea</code><a class="headerlink" href="#gitea" title="Permanent link">¶</a></h2>
+<h2 id="gitea"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.10</span> <code>gitea</code><a class="headerlink" href="#gitea" title="Permanent link">¶</a></h2>
 <p><a href="https://docs.gitea.com/next/installation/install-from-binary">Install from Binary</a><br/>
 <a href="https://docs.gitea.com/next/installation/linux-service">Linux Service Setup</a></p>
 <p>Takes 160-180 MB.</p>
-<h3 id="using-binary-rn"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.10.1</span> Using Binary rn<a class="headerlink" href="#using-binary-rn" title="Permanent link">¶</a></h3>
+<h3 id="using-binary-rn"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.10.1</span> Using Binary rn<a class="headerlink" href="#using-binary-rn" title="Permanent link">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">&gt; <strong>docker compose method is the easier one and documented in <a href="../arch-home-server-apps/#gitea">arch-home-server-apps</a></strong></p>
 </div>
@@ -2513,7 +2513,7 @@ systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> 
 
 <span class="nb">exit</span>
 </code></pre></div>
-<h3 id="setup"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.10.2</span> setup<a class="headerlink" href="#setup" title="Permanent link">¶</a></h3>
+<h3 id="setup"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.10.2</span> setup<a class="headerlink" href="#setup" title="Permanent link">¶</a></h3>
 <ul>
 <li>choose sqlite3, note the default location for backup: <code>/var/lib/gitea/data/gitea.db</code></li>
 <li>repo root path: <code>/var/lib/gitea/data/gitea-repositories</code></li>
@@ -2557,7 +2557,7 @@ git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span
 <li>add this under [repository] ENABLE_PUSH_CREATE_USER=true</li>
 <li><code>sudo systemctl restart gitea</code></li>
 </ul>
-<h2 id="unbound"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.11</span> <code>unbound</code><a class="headerlink" href="#unbound" title="Permanent link">¶</a></h2>
+<h2 id="unbound"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.11</span> <code>unbound</code><a class="headerlink" href="#unbound" title="Permanent link">¶</a></h2>
 <p><a href="https://docs.pi-hole.net/guides/dns/unbound/#pi-hole-as-all-around-dns-solution">https://docs.pi-hole.net/guides/dns/unbound/#pi-hole-as-all-around-dns-solution</a></p>
 <p><a href="https://t.ly/TO4Re **best technical discussion on ubound vs quad9** ">https://t.ly/TO4Re **best technical discussion on ubound vs quad9** </a></p>
 <p><a href="https://t.ly/RNFu6">https://t.ly/RNFu6</a></p>
@@ -2579,7 +2579,7 @@ git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span
 <li>Advanced DNS setups make IP and behavior fingerprinting harder but don't provide anonymity. For true anonymity, use TOR, despite its flaws.</li>
 </ul>
 <hr/>
-<h2 id="port-forwarding"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.12</span> Port Forwarding<a class="headerlink" href="#port-forwarding" title="Permanent link">¶</a></h2>
+<h2 id="port-forwarding"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.12</span> Port Forwarding<a class="headerlink" href="#port-forwarding" title="Permanent link">¶</a></h2>
 <p>Port forwarding allows a device on <strong>your network</strong> (e.g., a server) to be accessible <strong>from the internet</strong>.</p>
 <ul>
 <li><strong>Requirement</strong>: Your router must have a public IP address.</li>
@@ -2587,7 +2587,7 @@ git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span
 <li><strong>US</strong>: Most ISPs do not use CGNAT.</li>
 <li>Without a public IP, accessing internal services like Caddy/NGINX from outside the network isn't possible.</li>
 </ul>
-<h3 id="solutions"><span class="enumerate-headings-plugin enumerate-heading-plugin">159.12.1</span> Solutions<a class="headerlink" href="#solutions" title="Permanent link">¶</a></h3>
+<h3 id="solutions"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.12.1</span> Solutions<a class="headerlink" href="#solutions" title="Permanent link">¶</a></h3>
 <ol>
 <li><strong>Static IP</strong>: Obtain from your ISP, usually expensive.</li>
 <li><strong>WireGuard</strong>: Host on a cloud VPS and route traffic back to your network.</li>

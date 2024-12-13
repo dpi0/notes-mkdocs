@@ -1786,26 +1786,26 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/hardwarde-inspection.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">114.</span> Hardwarde Inspection</h1>
-<h3 id="usb-devices-lsusb"><span class="enumerate-headings-plugin enumerate-heading-plugin">114.0.1</span> USB devices <code>lsusb</code><a class="headerlink" href="#usb-devices-lsusb" title="Permanent link">¶</a></h3>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Hardwarde Inspection</h1>
+<h3 id="usb-devices-lsusb"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.1</span> USB devices <code>lsusb</code><a class="headerlink" href="#usb-devices-lsusb" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>lsusb
 </code></pre></div>
-<h3 id="detailed-hardware-info-lshw"><span class="enumerate-headings-plugin enumerate-heading-plugin">114.0.2</span> Detailed Hardware Info lshw<a class="headerlink" href="#detailed-hardware-info-lshw" title="Permanent link">¶</a></h3>
+<h3 id="detailed-hardware-info-lshw"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.2</span> Detailed Hardware Info lshw<a class="headerlink" href="#detailed-hardware-info-lshw" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>lshw<span class="w"> </span>-html<span class="w"> </span>&gt;<span class="w"> </span>harware-info.html
 firefox<span class="w"> </span>hardware-info.html
 </code></pre></div>
-<h3 id="cpu-lscpu-and-proccpuinfo"><span class="enumerate-headings-plugin enumerate-heading-plugin">114.0.3</span> CPU <code>lscpu</code> and <code>/proc/cpuinfo</code><a class="headerlink" href="#cpu-lscpu-and-proccpuinfo" title="Permanent link">¶</a></h3>
+<h3 id="cpu-lscpu-and-proccpuinfo"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.3</span> CPU <code>lscpu</code> and <code>/proc/cpuinfo</code><a class="headerlink" href="#cpu-lscpu-and-proccpuinfo" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>lscpu
 
 sudo<span class="w"> </span>cat<span class="w"> </span>/proc/cpuinfo
 </code></pre></div>
-<h3 id="memory-free-and-procmeminfo"><span class="enumerate-headings-plugin enumerate-heading-plugin">114.0.4</span> memory <code>free</code> and <code>/proc/meminfo</code><a class="headerlink" href="#memory-free-and-procmeminfo" title="Permanent link">¶</a></h3>
+<h3 id="memory-free-and-procmeminfo"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.4</span> memory <code>free</code> and <code>/proc/meminfo</code><a class="headerlink" href="#memory-free-and-procmeminfo" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>free<span class="w"> </span>-h
 
 
 sudo<span class="w"> </span>cat<span class="w"> </span>/proc/meminfo
 </code></pre></div>
-<h3 id="storage-lsblk-df-fdiskcfdisk-blkid"><span class="enumerate-headings-plugin enumerate-heading-plugin">114.0.5</span> storage <code>lsblk</code> <code>df</code> <code>fdisk/cfdisk</code> <code>blkid</code><a class="headerlink" href="#storage-lsblk-df-fdiskcfdisk-blkid" title="Permanent link">¶</a></h3>
+<h3 id="storage-lsblk-df-fdiskcfdisk-blkid"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.5</span> storage <code>lsblk</code> <code>df</code> <code>fdisk/cfdisk</code> <code>blkid</code><a class="headerlink" href="#storage-lsblk-df-fdiskcfdisk-blkid" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>df<span class="w"> </span>-h
 
 sudo<span class="w"> </span>lsblk
@@ -1814,8 +1814,8 @@ sudo<span class="w"> </span>fdisk<span class="w"> </span>/dev/&lt;device-name&gt
 
 sudo<span class="w"> </span>blkid
 </code></pre></div>
-<h3 id="pci-devices-lspci"><span class="enumerate-headings-plugin enumerate-heading-plugin">114.0.6</span> PCI devices <code>lspci</code><a class="headerlink" href="#pci-devices-lspci" title="Permanent link">¶</a></h3>
-<h3 id="temperature-and-fan-speed-sensors"><span class="enumerate-headings-plugin enumerate-heading-plugin">114.0.7</span> Temperature and Fan Speed <code>sensors</code><a class="headerlink" href="#temperature-and-fan-speed-sensors" title="Permanent link">¶</a></h3>
+<h3 id="pci-devices-lspci"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.6</span> PCI devices <code>lspci</code><a class="headerlink" href="#pci-devices-lspci" title="Permanent link">¶</a></h3>
+<h3 id="temperature-and-fan-speed-sensors"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.0.7</span> Temperature and Fan Speed <code>sensors</code><a class="headerlink" href="#temperature-and-fan-speed-sensors" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>sensors
 </code></pre></div>
 <aside class="md-source-file">

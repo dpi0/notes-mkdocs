@@ -1828,12 +1828,12 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/docker.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">73.</span> Docker</h1>
-<h2 id="tips"><span class="enumerate-headings-plugin enumerate-heading-plugin">73.1</span> tips<a class="headerlink" href="#tips" title="Permanent link">¶</a></h2>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Docker</h1>
+<h2 id="tips"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> tips<a class="headerlink" href="#tips" title="Permanent link">¶</a></h2>
 <ul>
 <li>restart all docker containers: <code>docker restart $(docker ps -q)</code></li>
 </ul>
-<h2 id="oci-open-container-initiative"><span class="enumerate-headings-plugin enumerate-heading-plugin">73.2</span> OCI Open Container Initiative<a class="headerlink" href="#oci-open-container-initiative" title="Permanent link">¶</a></h2>
+<h2 id="oci-open-container-initiative"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> OCI Open Container Initiative<a class="headerlink" href="#oci-open-container-initiative" title="Permanent link">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Docker is a specific implementation of the OCI standard</p>
@@ -1844,8 +1844,8 @@
 <li>Runtime Specification: Describes how to run a container using an image adhering to the Image Specification.</li>
 <li>Distribution Specification: Outlines how images should be distributed, such as through registries, pushing, and pulling images.</li>
 </ul>
-<h2 id="history"><span class="enumerate-headings-plugin enumerate-heading-plugin">73.3</span> History<a class="headerlink" href="#history" title="Permanent link">¶</a></h2>
-<h3 id="bare-metal-vs-virtualization-vs-containers"><span class="enumerate-headings-plugin enumerate-heading-plugin">73.3.1</span> bare metal vs virtualization vs CONTAINERS<a class="headerlink" href="#bare-metal-vs-virtualization-vs-containers" title="Permanent link">¶</a></h3>
+<h2 id="history"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> History<a class="headerlink" href="#history" title="Permanent link">¶</a></h2>
+<h3 id="bare-metal-vs-virtualization-vs-containers"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3.1</span> bare metal vs virtualization vs CONTAINERS<a class="headerlink" href="#bare-metal-vs-virtualization-vs-containers" title="Permanent link">¶</a></h3>
 <p><a href="https://courses.devopsdirective.com/docker-beginner-to-pro/lessons/01-history-and-motivation/03-history-of-virtualization">history-of-virtualization</a></p>
 <table>
 <thead>
@@ -1903,7 +1903,7 @@
 <figure><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://i.ibb.co/THPBHC3/U-10-51-37-02-Sep.png"><img src="https://i.ibb.co/THPBHC3/U-10-51-37-02-Sep.png"/></a><figcaption>virtual machines + containers in them --&gt; managed by orchestrators (kuberenetes)</figcaption>
 </figure>
 </p>
-<h2 id="dockerfile"><span class="enumerate-headings-plugin enumerate-heading-plugin">73.4</span> Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">¶</a></h2>
+<h2 id="dockerfile"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">¶</a></h2>
 <p><a href="https://courses.devopsdirective.com/docker-beginner-to-pro/lessons/06-building-container-images/05-general-dockerfile-tips">writing good Dockerfiles</a></p>
 <p>reference: https://docs.docker.com/reference/dockerfile/</p>
 <ul>
@@ -1938,13 +1938,13 @@ docker run -d \
   --restart unless-stopped \
   api-golang
 </code></pre></div>
-<h2 id="docker-compose"><span class="enumerate-headings-plugin enumerate-heading-plugin">73.5</span> <code>docker compose</code><a class="headerlink" href="#docker-compose" title="Permanent link">¶</a></h2>
+<h2 id="docker-compose"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> <code>docker compose</code><a class="headerlink" href="#docker-compose" title="Permanent link">¶</a></h2>
 <p>use <strong>service name</strong> use using <code>docker compose</code> command instead of container_name <code>docker compose stop</code> <code>docker compose down</code> <code>docker compose inspect</code></p>
 <p>use using the simple <code>docker</code> command then use container_name like <code>docker logs</code> <code>docker inspect</code> <code>docker stop</code> <code>docker rm</code> etc.</p>
-<h2 id="images-best-security-practices"><span class="enumerate-headings-plugin enumerate-heading-plugin">73.6</span> Images - Best security practices<a class="headerlink" href="#images-best-security-practices" title="Permanent link">¶</a></h2>
+<h2 id="images-best-security-practices"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> Images - Best security practices<a class="headerlink" href="#images-best-security-practices" title="Permanent link">¶</a></h2>
 <p><a href="https://courses.devopsdirective.com/docker-beginner-to-pro/lessons/09-container-security/01-main">best practices</a></p>
-<h2 id="docker-login"><span class="enumerate-headings-plugin enumerate-heading-plugin">73.7</span> <code>docker login</code><a class="headerlink" href="#docker-login" title="Permanent link">¶</a></h2>
-<h3 id="to-pull-a-private-ghcr-image"><span class="enumerate-headings-plugin enumerate-heading-plugin">73.7.1</span> to pull a private ghcr image<a class="headerlink" href="#to-pull-a-private-ghcr-image" title="Permanent link">¶</a></h3>
+<h2 id="docker-login"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> <code>docker login</code><a class="headerlink" href="#docker-login" title="Permanent link">¶</a></h2>
+<h3 id="to-pull-a-private-ghcr-image"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7.1</span> to pull a private ghcr image<a class="headerlink" href="#to-pull-a-private-ghcr-image" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">logout</span><span class="w"> </span>ghcr.io<span class="w"> </span><span class="c1"># if logged in</span>
 docker<span class="w"> </span>login<span class="w"> </span>ghcr.io
 ---

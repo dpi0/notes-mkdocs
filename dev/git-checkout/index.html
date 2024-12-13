@@ -1738,10 +1738,10 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/git-checkout.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">87.</span> Git Checkout</h1>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Git Checkout</h1>
 <p>switching between different versions of a target entity.</p>
 <p>operates upon three distinct entities: <strong>files, commits, and branches</strong></p>
-<h2 id="git-checkout-branches"><span class="enumerate-headings-plugin enumerate-heading-plugin">87.1</span> <code>git checkout - branches</code><a class="headerlink" href="#git-checkout-branches" title="Permanent link">¶</a></h2>
+<h2 id="git-checkout-branches"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> <code>git checkout - branches</code><a class="headerlink" href="#git-checkout-branches" title="Permanent link">¶</a></h2>
 <p>git checkout command simply updates the <code>HEAD</code> to point to either the specified branch or commit.</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>feature/add-cream-sauce
 git<span class="w"> </span>switch<span class="w"> </span>feature/add-cream-sauce
@@ -1760,7 +1760,7 @@ git<span class="w"> </span>checkout<span class="w"> </span>&lt;remote-branch&gt;
 git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>mybranch<span class="w"> </span>origin/branch
 git<span class="w"> </span>checkout<span class="w"> </span>--track<span class="w"> </span>origin/branch
 </code></pre></div>
-<h2 id="git-checkout-commits"><span class="enumerate-headings-plugin enumerate-heading-plugin">87.2</span> <code>git checkout - commits</code><a class="headerlink" href="#git-checkout-commits" title="Permanent link">¶</a></h2>
+<h2 id="git-checkout-commits"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> <code>git checkout - commits</code><a class="headerlink" href="#git-checkout-commits" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>a1b2c3d
 git<span class="w"> </span>switch<span class="w"> </span>-
 
@@ -1770,7 +1770,7 @@ git<span class="w"> </span>switch<span class="w"> </span>-
 git<span class="w"> </span>checkout<span class="w"> </span>a1b2c3d<span class="w"> </span>.
 git<span class="w"> </span>switch<span class="w"> </span>-
 </code></pre></div>
-<h3 id="detached-head-state"><span class="enumerate-headings-plugin enumerate-heading-plugin">87.2.1</span> detached head state<a class="headerlink" href="#detached-head-state" title="Permanent link">¶</a></h3>
+<h3 id="detached-head-state"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2.1</span> detached head state<a class="headerlink" href="#detached-head-state" title="Permanent link">¶</a></h3>
 <p>whenver you checkout a single commit, you are in this state</p>
 <p>
 <figure><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://wac-cdn.atlassian.com/dam/jcr:d93bca4e-11ed-4cd6-a690-e97444755429/01-02%20Detached%20HEADS.svg?cdnVersion=1881"><img src="https://wac-cdn.atlassian.com/dam/jcr:d93bca4e-11ed-4cd6-a690-e97444755429/01-02%20Detached%20HEADS.svg?cdnVersion=1881"/></a><figcaption>detached</figcaption>

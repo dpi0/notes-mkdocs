@@ -1814,13 +1814,13 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/api.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">55.</span> API</h1>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> API</h1>
 <ul>
 <li><strong>authentication</strong>: verify who you are</li>
 <li><strong>authorzation</strong>: once logged in what user can/can't access "What are you allowed to do?"</li>
 </ul>
-<h2 id="authentication"><span class="enumerate-headings-plugin enumerate-heading-plugin">55.1</span> Authentication<a class="headerlink" href="#authentication" title="Permanent link">¶</a></h2>
-<h3 id="sessioncookies-vs-tokens"><span class="enumerate-headings-plugin enumerate-heading-plugin">55.1.1</span> session/cookies vs tokens<a class="headerlink" href="#sessioncookies-vs-tokens" title="Permanent link">¶</a></h3>
+<h2 id="authentication"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> Authentication<a class="headerlink" href="#authentication" title="Permanent link">¶</a></h2>
+<h3 id="sessioncookies-vs-tokens"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.1</span> session/cookies vs tokens<a class="headerlink" href="#sessioncookies-vs-tokens" title="Permanent link">¶</a></h3>
 <p>
 <figure><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://i.ibb.co/KxCzf2g/U-23-19-08-02-Sep.png"><img src="https://i.ibb.co/KxCzf2g/U-23-19-08-02-Sep.png"/></a><figcaption>diff b/w session and tokens</figcaption>
 </figure>
@@ -1834,7 +1834,7 @@
 <figure><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://i.ibb.co/HFtWvLS/U-22-57-44-02-Sep.png"><img src="https://i.ibb.co/HFtWvLS/U-22-57-44-02-Sep.png"/></a><figcaption>sessions handled on server, tokens on client device</figcaption>
 </figure>
 </p>
-<h3 id="stateful"><span class="enumerate-headings-plugin enumerate-heading-plugin">55.1.2</span> stateful<a class="headerlink" href="#stateful" title="Permanent link">¶</a></h3>
+<h3 id="stateful"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.2</span> stateful<a class="headerlink" href="#stateful" title="Permanent link">¶</a></h3>
 <p>use session id and cookies (not very good)</p>
 <p>
 <figure><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://i.ibb.co/3hR3j50/U-23-18-21-02-Sep.png"><img src="https://i.ibb.co/3hR3j50/U-23-18-21-02-Sep.png"/></a><figcaption>session flow</figcaption>
@@ -1850,7 +1850,7 @@
 <li>Security Concerns: If you are highly concerned about security and need tighter control</li>
 <li>You Need Granular Session Management: log users out, invalidate sessions, or manage long-running sessions</li>
 </ul>
-<h4 id="flow"><span class="enumerate-headings-plugin enumerate-heading-plugin">55.1.2.1</span> Flow<a class="headerlink" href="#flow" title="Permanent link">¶</a></h4>
+<h4 id="flow"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.2.1</span> Flow<a class="headerlink" href="#flow" title="Permanent link">¶</a></h4>
 <ul>
 <li>user submits login <em>credentials</em>, e.g. email &amp; password</li>
 <li>server verifies the credentials against the DB</li>
@@ -1861,7 +1861,7 @@
 <li>server verifies the token &amp; grants access</li>
 <li>when user logs out, token is cleared from client storage</li>
 </ul>
-<h3 id="stateless-jwt"><span class="enumerate-headings-plugin enumerate-heading-plugin">55.1.3</span> stateless JWT<a class="headerlink" href="#stateless-jwt" title="Permanent link">¶</a></h3>
+<h3 id="stateless-jwt"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1.3</span> stateless JWT<a class="headerlink" href="#stateless-jwt" title="Permanent link">¶</a></h3>
 <p>
 <figure><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="https://i.ibb.co/2MhpPsR/U-23-18-49-02-Sep.png"><img src="https://i.ibb.co/2MhpPsR/U-23-18-49-02-Sep.png"/></a><figcaption>jwt flow</figcaption>
 </figure>
@@ -1874,10 +1874,10 @@
 <li>large-scale, distributed, or needs to handle a high number of users, stateless authentication</li>
 <li>Scalability is a Priority: If you need to scale your application horizontally</li>
 <li>
-<h2 id="microservices-architecture-each-service-might-need-to-authenticate-the-user-without-relying-on-shared-session-state"><span class="enumerate-headings-plugin enumerate-heading-plugin">55.2</span> Microservices Architecture: each service might need to authenticate the user without relying on shared session state.<a class="headerlink" href="#microservices-architecture-each-service-might-need-to-authenticate-the-user-without-relying-on-shared-session-state" title="Permanent link">¶</a></h2>
+<h2 id="microservices-architecture-each-service-might-need-to-authenticate-the-user-without-relying-on-shared-session-state"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> Microservices Architecture: each service might need to authenticate the user without relying on shared session state.<a class="headerlink" href="#microservices-architecture-each-service-might-need-to-authenticate-the-user-without-relying-on-shared-session-state" title="Permanent link">¶</a></h2>
 </li>
 </ul>
-<h2 id="oauthoauth-20"><span class="enumerate-headings-plugin enumerate-heading-plugin">55.3</span> OAuth/OAuth 2.0<a class="headerlink" href="#oauthoauth-20" title="Permanent link">¶</a></h2>
+<h2 id="oauthoauth-20"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> OAuth/OAuth 2.0<a class="headerlink" href="#oauthoauth-20" title="Permanent link">¶</a></h2>
 <p>basic authentication really bad (shared password with 3rd party apps)</p>
 <p>for authorization b/w services</p>
 <p>the saviour (no sharing password, can revoke access, granular access to resources)</p>
@@ -1897,7 +1897,7 @@
 <p class="admonition-title">Tip</p>
 <p>use specific access <strong>scopes</strong> instead of read, read/write, write --&gt; use read-tweets, write-post etc</p>
 </div>
-<h2 id="jwt"><span class="enumerate-headings-plugin enumerate-heading-plugin">55.4</span> JWT<a class="headerlink" href="#jwt" title="Permanent link">¶</a></h2>
+<h2 id="jwt"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> JWT<a class="headerlink" href="#jwt" title="Permanent link">¶</a></h2>
 <p>once authenticated JWT comes in for future access.</p>
 <p><strong>for ONLY authorization</strong>, transmitting information between parties securely. JWTs are often used as OAuth 2.0 access tokens. Both <strong>API tokens</strong> and JWTs can be used for authenticating requests to an API, but JWTs are more feature-rich</p>
 <p>

@@ -1786,8 +1786,8 @@
 <a class="md-content__button md-icon" href="https://github.com/dpi0/notes/raw/main/dev/linux-tips.md" title="View source of this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 3.3S19.3 3 17.2 3c-5.5 0-15.6 2.1-14 17.8 1.1.1 2.2.2 3.2.2C24.3 21 20.7 3.3 20.7 3.3M7 17S7 7 17 7c0 0-6 2-10 10"></path></svg>
 </a>
-<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">123.</span> Linux Tips</h1>
-<h2 id="pacman-tips"><span class="enumerate-headings-plugin enumerate-heading-plugin">123.1</span> pacman tips<a class="headerlink" href="#pacman-tips" title="Permanent link">¶</a></h2>
+<h1><span class="enumerate-headings-plugin enumerate-heading-plugin">1.</span> Linux Tips</h1>
+<h2 id="pacman-tips"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.1</span> pacman tips<a class="headerlink" href="#pacman-tips" title="Permanent link">¶</a></h2>
 <ul>
 <li>create a list of explicitly installed packages: <code>pacman -Qqe &gt; ~/pkgs</code></li>
 <li>list last 20 pkgs: <code>expac --timefmt='%Y-%m-%d %T' '%l %n' | sort | tail -n 20</code></li>
@@ -1795,7 +1795,7 @@
 <li>list explicitly installed packages not in the meta package base nor package group xorg with size and description: <code>expac -H M "%011m  %-20n   %10d" $(comm -23 &lt;(pacman -Qqen | sort) &lt;({ pacman -Qqg xorg; expac -l '
 ' '%E' base; } | sort -u)) | sort -n</code></li>
 </ul>
-<h2 id="fd"><span class="enumerate-headings-plugin enumerate-heading-plugin">123.2</span> <code>fd</code><a class="headerlink" href="#fd" title="Permanent link">¶</a></h2>
+<h2 id="fd"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> <code>fd</code><a class="headerlink" href="#fd" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>fd<span class="w"> </span><span class="s2">"Amy"</span><span class="w"> </span>--base-directory<span class="w"> </span><span class="s2">"/hdd/downloads/films/div/Amy.2015.1080p.BluRay.x265-RARBG"</span>
 fd<span class="w"> </span>-e<span class="w"> </span>srt<span class="w"> </span>--base-directory<span class="w"> </span><span class="s2">"/hdd/downloads/films/div"</span>
 
@@ -1810,7 +1810,7 @@ fd<span class="w"> </span>-t<span class="w"> </span>d<span class="w"> </span>-i<
 fd<span class="w"> </span>-e<span class="w"> </span>srt<span class="w"> </span>.<span class="w"> </span>dir_name
 fd<span class="w"> </span>-e<span class="w"> </span>srt<span class="w"> </span>--full-path<span class="w"> </span><span class="s2">"dir_name"</span>
 </code></pre></div>
-<h2 id="f2-bulk-file-rename"><span class="enumerate-headings-plugin enumerate-heading-plugin">123.3</span> <code>f2</code> bulk file rename<a class="headerlink" href="#f2-bulk-file-rename" title="Permanent link">¶</a></h2>
+<h2 id="f2-bulk-file-rename"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> <code>f2</code> bulk file rename<a class="headerlink" href="#f2-bulk-file-rename" title="Permanent link">¶</a></h2>
 <p><a href="https://github.com/ayoisaiah/f2/wiki/F2-tutorial">https://github.com/ayoisaiah/f2/wiki/F2-tutorial</a></p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>chown<span class="w"> </span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>&lt;dir&gt;
 
@@ -1821,7 +1821,7 @@ f2<span class="w"> </span>-f<span class="w"> </span><span class="s1">'-'</span><
 f2<span class="w"> </span>-f<span class="w"> </span><span class="s1">'yml'</span><span class="w"> </span>-r<span class="w"> </span><span class="s1">'yml'</span><span class="w"> </span>-R<span class="w"> </span>-H
 f2<span class="w"> </span>-f<span class="w"> </span><span class="s1">'docker-compose.yml'</span><span class="w"> </span>-r<span class="w"> </span><span class="s1">'compose.yml'</span><span class="w"> </span>-R<span class="w"> </span>-H
 </code></pre></div>
-<h2 id="sed"><span class="enumerate-headings-plugin enumerate-heading-plugin">123.4</span> <code>sed</code><a class="headerlink" href="#sed" title="Permanent link">¶</a></h2>
+<h2 id="sed"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.4</span> <code>sed</code><a class="headerlink" href="#sed" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># remove "- " from the start of each line it is present on</span>
 sed<span class="w"> </span><span class="s1">'s/^- //'</span><span class="w"> </span>inputfile<span class="w"> </span>&gt;<span class="w"> </span>outputfile
 
@@ -1831,11 +1831,11 @@ sed<span class="w"> </span><span class="s1">'s/^#\(.*\)/##\1/'</span><span class
 <span class="c1"># ## with ### at start of each line</span>
 sed<span class="w"> </span><span class="s1">'s/^##\(.*\)/###\1/'</span><span class="w"> </span>inputfile<span class="w"> </span>&gt;<span class="w"> </span>outputfile
 </code></pre></div>
-<h2 id="date"><span class="enumerate-headings-plugin enumerate-heading-plugin">123.5</span> <code>date</code><a class="headerlink" href="#date" title="Permanent link">¶</a></h2>
+<h2 id="date"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.5</span> <code>date</code><a class="headerlink" href="#date" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># convert an unix timestamp to a human readable date</span>
 date<span class="w"> </span>-d<span class="w"> </span><span class="s2">"@1732004208"</span>
 </code></pre></div>
-<h2 id="check-program-running-or-not"><span class="enumerate-headings-plugin enumerate-heading-plugin">123.6</span> check program running or not<a class="headerlink" href="#check-program-running-or-not" title="Permanent link">¶</a></h2>
+<h2 id="check-program-running-or-not"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.6</span> check program running or not<a class="headerlink" href="#check-program-running-or-not" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># ps lists the currently running processes. a (all users), u (show process owner/user), x (show only the processes not running inside a terminal)</span>
 ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;program_name&gt;
 
@@ -1845,7 +1845,7 @@ pidof<span class="w"> </span>&lt;program_name&gt;
 <span class="c1"># pgrep searches for processes by name and returns the process IDs (PIDs). -x (exact match)</span>
 pgrep<span class="w"> </span>-x<span class="w"> </span>&lt;program_name&gt;
 </code></pre></div>
-<h2 id="docker-remove-all-images-except-a-few"><span class="enumerate-headings-plugin enumerate-heading-plugin">123.7</span> docker remove all images except a few<a class="headerlink" href="#docker-remove-all-images-except-a-few" title="Permanent link">¶</a></h2>
+<h2 id="docker-remove-all-images-except-a-few"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.7</span> docker remove all images except a few<a class="headerlink" href="#docker-remove-all-images-except-a-few" title="Permanent link">¶</a></h2>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>rmi<span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>images<span class="w"> </span>-aq<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-vE<span class="w"> </span><span class="s1">'caddy|garethgeorge/backrest'</span><span class="k">)</span>
 </code></pre></div>
 <aside class="md-source-file">
