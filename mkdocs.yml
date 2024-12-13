@@ -90,6 +90,7 @@ plugins:
       add_icon: false
   - glightbox
   - callouts
+  - enumerate-headings
   # - awesome-pages
   # - mkdocs-video
   # - exclude:
